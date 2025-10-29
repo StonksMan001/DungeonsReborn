@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:block/carpet",
+  "textures": {
+    "wool": "dungeons_reborn:block/dried_moss_block"
+  }
+}

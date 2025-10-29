@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:block/cross",
+  "textures": {
+    "cross": "dungeons_reborn:block/pop_flower_0"
+  }
+}

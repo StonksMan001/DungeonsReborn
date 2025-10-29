@@ -1,0 +1,22 @@
+{
+  "required": true,
+  "package": "net.stonksman01.dungeons_reborn.mixin",
+  "compatibilityLevel": "JAVA_21",
+  "mixins": [
+    "ArrowEntityMixin",
+    "CrossbowItemAccessors",
+    "CrossBowItemMixin",
+    "GrindStoneScreenHandlerMixin"
+  ],
+  "injectors": {
+    "defaultRequire": 1
+  },
+  "overwrites": {
+    "requireAnnotations": true
+  },
+  "client": [
+    "AbstractClientPlayerEntityMixin",
+    "HeldItemRendererMixin",
+    "PlayerEntityRendererMixin"
+  ]
+}

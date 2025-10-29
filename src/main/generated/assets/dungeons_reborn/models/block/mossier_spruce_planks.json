@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:block/cube_all",
+  "textures": {
+    "all": "dungeons_reborn:block/mossier_spruce_planks"
+  }
+}

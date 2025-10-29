@@ -1,0 +1,59 @@
+{
+  "block.dungeons_reborn.mossier_cobblestone": "Elmohásodott zúzottkő",
+  "block.dungeons_reborn.spirit_torch": "Szellemfáklya",
+  "item.dungeons_reborn.ancient_gold_ingot": "Ősi aranyrúd",
+  "block.dungeons_reborn.ancient_gold_block": "Ősi aranyblokk",
+  "block.dungeons_reborn.pop_flower": "Popvirág",
+  "block.dungeons_reborn.dried_moss_block": "Száraz mohablokk",
+  "block.dungeons_reborn.dried_moss_carpet": "Száraz mohaszőnyeg",
+  "block.dungeons_reborn.midnight_moss_block": "Éjféli mohablokk",
+  "block.dungeons_reborn.midnight_moss_carpet": "Éjféli mohaszőnyeg",
+  "block.dungeons_reborn.midnight_sprouts": "Éjféli csírák",
+  "block.dungeons_reborn.mossier_oak_planks": "Elmohásodott tölgydeszka",
+  "block.dungeons_reborn.mossier_spruce_planks": "Elmohásodott fenyődeszka",
+  
+  "tooltip.dungeons_reborn.minecraft_dungeons_header": "Minecraft Dungeons leírás:",
+  "item.dungeons_reborn.artifact_iron_hide_amulet": "Vasba foglalt amulett",
+  "tooltip.dungeons_reborn.artifact.iron_hide_amulet.tooltip1": "A Vasba foglalt amulett egy ősrégi",
+  "tooltip.dungeons_reborn.artifact.iron_hide_amulet.tooltip2": "tárgy. A benne lévő repedésekből",
+  "tooltip.dungeons_reborn.artifact.iron_hide_amulet.tooltip3": "a homok időnként kipereg.",
+  "tooltip.dungeons_reborn.artifact.iron_hide_amulet.personal": "Személyes",
+  "tooltip.dungeons_reborn.artifact.iron_hide_amulet.tooltip4": "Jelentősen megnöveli a játékos védelmét egy rövid ideig",
+
+  "item.dungeons_reborn.twin_bow": "Iker íj",
+  "tooltip.dungeons_reborn.twin_bow.tooltip1": "Az Iker íj a hős biztos társa, akire számíthat",
+  "tooltip.dungeons_reborn.twin_bow.tooltip2": "ha túlerővel szemben egyedül találja magát.",
+
+  "item.dungeons_reborn.auto_crossbow": "Automatizált számszeríj",
+  "tooltip.dungeons_reborn.auto_crossbow.tooltip1": "Az Arch-Illager elmondása szerint ennek az erőteljes számszeríjnak",
+  "tooltip.dungeons_reborn.auto_crossbow.tooltip2": "az elképzelése egy látomáson keresztül jutott el hozzá.",
+
+  "item.dungeons_reborn.artifact_death_cap_mushroom": "Gyilkos galóca",
+  "tooltip.dungeons_reborn.artifact.death_cap_mushroom.tooltip1": "A vakmerő harcosok mindig a csata előtt fogyasztották, a",
+  "tooltip.dungeons_reborn.artifact.death_cap_mushroom.tooltip2": "Gyilkos galóca képes őrületbe kergetni azt aki elfogyasztja.",
+  "tooltip.dungeons_reborn.artifact.death_cap_mushroom.tooltip3": "Jelentősen megnöveli a sebzést és a gyorsaságot",
+
+  "item.dungeons_reborn.rough_diamond_sword": "Csiszolatlan gyémántkard",
+  "tooltip.dungeons_reborn.rough_diamond_sword.tooltip1": "A Csiszolatlan gyémántkard egy igazi hős",
+  "tooltip.dungeons_reborn.rough_diamond_sword.tooltip2": "és egy elszánt kalandor méltó jelképe.",
+
+  "item.dungeons_reborn.steel_mace": "Acél buzogány",
+  "tooltip.dungeons_reborn.steel_mace.tooltip1": "Az Acél buzogány a háború egyik legbrutálisabb eszköze.",
+  "tooltip.dungeons_reborn.steel_mace.tooltip2": "Amivel alulmarad gyorsaságban, azt visszahozza ütőképességben.",
+
+  "tooltip.dungeons_reborn.rarity.common": "Gyakoriság: §r[§7ɢʏᴀᴋᴏʀɪ§r]",
+  "tooltip.dungeons_reborn.rarity.rare": "Gyakoriság: §r[§aʀɪᴛᴋᴀ§r]",
+  "tooltip.dungeons_reborn.rarity.unique": "Gyakoriság: §r[§6ᴋüʟöɴʟᴇɢᴇѕ§r]",
+  "tooltip.dungeons_reborn.rarity_info_extended.custom": "§r[§5ᴇɢʏᴇᴅɪ§r]",
+  "tooltip.dungeons_reborn.rarity_info_extended.gilded": "§r[§eᴀʀᴀɴʏᴏᴢᴏᴛᴛ§r]",
+  "tooltip.dungeons_reborn.rarity_info_extended.gifted": "§r[§aᴀᴊáɴᴅéᴋ§r]",
+
+  "tooltip.dungeons_reborn.special_resource": "Egy különleges nyersanyag",
+
+  "enchantment.dungeons_reborn.primitiveness_curse": "Primitivitás átka",
+  "enchantment.dungeons_reborn.bonus_shot": "Bónusz Lövés",
+  "enchantment.dungeons_reborn.accelerate": "Gyorsulás",
+  "tooltip.dungeons_reborn.bonus_shot.target_players": "Célozzon játékosokat",
+  "tooltip.dungeons_reborn.built_in": "Beépített",
+  "tooltip.dungeons_reborn.powerful_combo": "Erőteljes kombó"
+}

@@ -1,0 +1,6 @@
+{
+    "parent": "item/bow",
+    "textures": {
+        "layer0": "dungeons_reborn:item/twin_bow_pulling_0"
+    }
+}
