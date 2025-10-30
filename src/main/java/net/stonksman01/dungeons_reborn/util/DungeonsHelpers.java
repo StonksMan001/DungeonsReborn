@@ -14,10 +14,16 @@ import net.minecraft.text.Text;
 import net.minecraft.world.World;
 import net.stonksman01.dungeons_reborn.components.McdRarity;
 import net.stonksman01.dungeons_reborn.registries.MCD_DataComponentTypes;
+import net.stonksman01.dungeons_reborn.registries.MCD_Enchantments;
 
 import java.util.List;
+import java.util.Objects;
+import java.util.Random;
 
 public interface DungeonsHelpers {
+    static void enchantStackWithPrimitiveness(ItemStack stack, RegistryWrapper.WrapperLookup provider) {
+        addEnchantmentToStack(stack, provider, MCD_Enchantments.PRIMITIVENESS_CURSE, 1);
+    }
     static boolean wrapRangedWeaponHardcodedCallsIfPresent(ItemStack instance, Item item, Operation<Boolean> original) {
         if (item instanceof BowItem) {
             return original.call(instance, item) || instance.getItem() instanceof BowItem;
@@ -39,9 +45,7 @@ public interface DungeonsHelpers {
                         .append(Text.translatable("tooltip.dungeons_reborn.rarity_info_extended.custom")));
             }
         } else {
-            tooltip.add(Text.translatable("tooltip.dungeons_reborn.rarity.common")
-                    .append(Text.literal(" "))
-                    .append(Text.translatable("tooltip.dungeons_reborn.rarity_info_extended.custom")));
+            tooltip.add(Text.translatable("tooltip.dungeons_reborn.rarity.unknown"));
         }
     }
     static boolean addEnchantmentToStack(ItemStack itemStack, RegistryWrapper.WrapperLookup wrapper, RegistryKey<Enchantment> enchantment, int level) {
@@ -57,5 +61,12 @@ public interface DungeonsHelpers {
     }
     static RegistryEntry<Enchantment> getEnchantmentRegistryEntry(World world, RegistryKey<Enchantment> enchantment) {
         return world.getRegistryManager().get(RegistryKeys.ENCHANTMENT).getEntry(enchantment).orElseThrow();
+    }
+    static void setRareOrCommonVariant(ItemStack stack) {
+        if (Objects.isNull(stack.get(MCD_DataComponentTypes.MCD_RARITY))) {
+            Random random = new Random();
+            if (random.nextInt(5) == 1) stack.set(MCD_DataComponentTypes.MCD_RARITY, McdRarity.RARE);
+            else stack.set(MCD_DataComponentTypes.MCD_RARITY, McdRarity.COMMON);
+        }
     }
 }

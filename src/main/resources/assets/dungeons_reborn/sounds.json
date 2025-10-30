@@ -1,0 +1,162 @@
+{
+  "wanderlust": {
+    "sounds": [
+      {
+        "name": "dungeons_reborn:wanderlust",
+        "stream": true
+      }
+    ]
+  },
+  "skogsstuga": {
+    "sounds": [
+      {
+        "name": "dungeons_reborn:skogsstuga",
+        "stream": true
+      }
+    ]
+  },
+  "intertile": {
+    "sounds": [
+      {
+        "name": "dungeons_reborn:intertile",
+        "stream": true
+      }
+    ]
+  },
+  "halland": {
+    "sounds": [
+      {
+        "name": "dungeons_reborn:halland",
+        "stream": true
+      }
+    ]
+  },
+  "finnbacka": {
+    "sounds": [
+      {
+        "name": "dungeons_reborn:finnbacka",
+        "stream": true
+      }
+    ]
+  },
+  "dalarna": {
+    "sounds": [
+      {
+        "name": "dungeons_reborn:dalarna",
+        "stream": true
+      }
+    ]
+  },
+  "crypt": {
+    "sounds": [
+      {
+        "name": "dungeons_reborn:crypt",
+        "stream": true
+      }
+    ]
+  },
+  "creeper_woods": {
+    "sounds": [
+      {
+        "name": "dungeons_reborn:creeper_woods",
+        "stream": true
+      }
+    ]
+  },
+  "caravan": {
+    "sounds": [
+      {
+        "name": "dungeons_reborn:caravan",
+        "stream": true
+      }
+    ]
+  },
+  "broken_hearth_of_ender": {
+    "sounds": [
+      {
+        "name": "dungeons_reborn:broken_hearth_of_ender",
+        "stream": true
+      }
+    ]
+  },
+  "obsidian_cavern": {
+    "sounds": [
+      {
+        "name": "dungeons_reborn:obsidian_cavern",
+        "stream": true
+      }
+    ]
+  },
+  "to_the_beginning": {
+    "sounds": [
+      {
+        "name": "dungeons_reborn:to_the_beginning",
+        "stream": true
+      }
+    ]
+  },
+  "artifact_iron_hide_amulet_used": {
+    "sounds": [
+      {
+        "name": "dungeons_reborn:iron_hide_amulet/use/iron_hide_amulet_use1",
+        "stream": true
+      },
+      {
+        "name": "dungeons_reborn:iron_hide_amulet/use/iron_hide_amulet_use2",
+        "stream": true
+      },
+      {
+        "name": "dungeons_reborn:iron_hide_amulet/use/iron_hide_amulet_use3",
+        "stream": true
+      }
+    ]
+  },
+  "twin_bow_shoot": {
+    "sounds": [
+      {
+        "name": "dungeons_reborn:twin_bow/shoot/twin_bow_shoot1",
+        "stream": true
+      },
+      {
+        "name": "dungeons_reborn:twin_bow/shoot/twin_bow_shoot2",
+        "stream": true
+      },
+      {
+        "name": "dungeons_reborn:twin_bow/shoot/twin_bow_shoot3",
+        "stream": true
+      }
+    ]
+  },
+  "death_cap_mushroom_use": {
+    "sounds": [
+      {
+        "name": "dungeons_reborn:death_cap_mushroom/use/death_cap_mushroom_use1",
+        "stream": true
+      },
+      {
+        "name": "dungeons_reborn:death_cap_mushroom/use/death_cap_mushroom_use2",
+        "stream": true
+      },
+      {
+        "name": "dungeons_reborn:death_cap_mushroom/use/death_cap_mushroom_use3",
+        "stream": true
+      }
+    ]
+  },
+  "ancient_gold_pick_up": {
+    "sounds": [
+      {
+        "name": "dungeons_reborn:ancient_gold/pick_up/ancient_gold_pick_up1",
+        "stream": true
+      },
+      {
+        "name": "dungeons_reborn:ancient_gold/pick_up/ancient_gold_pick_up2",
+        "stream": true
+      },
+      {
+        "name": "dungeons_reborn:ancient_gold/pick_up/ancient_gold_pick_up3",
+        "stream": true
+      }
+    ]
+  }
+}

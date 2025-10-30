@@ -4,6 +4,7 @@ import net.minecraft.entity.Entity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.registry.RegistryWrapper;
 import net.minecraft.world.World;
+import net.stonksman01.dungeons_reborn.util.DungeonsHelpers;
 
 public class McdArtifactItem extends McdItem {
     public McdArtifactItem(Settings settings) {
@@ -20,6 +21,6 @@ public class McdArtifactItem extends McdItem {
     }
     @Override
     public void inventoryTick(ItemStack stack, World world, Entity entity, int slot, boolean selected) {
-        //enchantStackWithPrimitiveness(stack, world.getRegistryManager()); //TODO
+        DungeonsHelpers.enchantStackWithPrimitiveness(stack, world.getRegistryManager());
     }
 }

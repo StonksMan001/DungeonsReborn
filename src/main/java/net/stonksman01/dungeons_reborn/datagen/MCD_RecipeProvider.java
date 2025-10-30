@@ -25,18 +25,23 @@ public class MCD_RecipeProvider extends FabricRecipeProvider {
         offerCarpetRecipe(exporter, MCD_Blocks.MIDNIGHT_MOSS_CARPET, MCD_Blocks.MIDNIGHT_MOSS_BLOCK);
         offerMossyVariantRecipes(exporter, MCD_Blocks.MOSSIER_OAK_PLANKS, Blocks.OAK_PLANKS);
         offerMossyVariantRecipes(exporter, MCD_Blocks.MOSSIER_SPRUCE_PLANKS, Blocks.SPRUCE_PLANKS);
+        ShapelessRecipeJsonBuilder.create(RecipeCategory.BUILDING_BLOCKS, MCD_Blocks.MOSSIER_COBBLESTONE)
+                .input(Blocks.COBBLESTONE)
+                .input(MCD_Blocks.MIDNIGHT_MOSS_BLOCK)
+                .criterion(hasItem(MCD_Blocks.MIDNIGHT_MOSS_BLOCK), conditionsFromItem(MCD_Blocks.MIDNIGHT_MOSS_BLOCK))
+                .criterion(hasItem(MCD_Blocks.MOSSIER_COBBLESTONE), conditionsFromItem(MCD_Blocks.MOSSIER_COBBLESTONE))
+                .criterion(hasItem(Blocks.COBBLESTONE), conditionsFromItem(Blocks.COBBLESTONE))
+                .offerTo(exporter);
     }
     private void offerMossyVariantRecipes(RecipeExporter exporter, Block mossyBlock, Block baseBlock) {
         ShapelessRecipeJsonBuilder.create(RecipeCategory.BUILDING_BLOCKS, mossyBlock)
                 .input(baseBlock)
                 .input(Blocks.VINE)
-                .group("mossy_cobblestone")
                 .criterion("has_vine", conditionsFromItem(Blocks.VINE))
                 .offerTo(exporter, convertBetween(mossyBlock, Blocks.VINE));
         ShapelessRecipeJsonBuilder.create(RecipeCategory.BUILDING_BLOCKS, mossyBlock)
                 .input(baseBlock)
                 .input(Blocks.MOSS_BLOCK)
-                .group("mossy_cobblestone")
                 .criterion("has_moss_block", conditionsFromItem(Blocks.MOSS_BLOCK))
                 .offerTo(exporter, convertBetween(mossyBlock, Blocks.MOSS_BLOCK));
     }

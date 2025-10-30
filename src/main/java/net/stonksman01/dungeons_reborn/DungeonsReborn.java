@@ -15,10 +15,14 @@ public class DungeonsReborn implements ModInitializer {
 		MCD_BlockEntities.register();
 		MCD_Blocks.register();
 		MCD_DataComponentTypes.register();
+		MCD_Enchantments.register();
 		MCD_GameRules.register();
 		MCD_ItemGroups.register();
 		MCD_Items.register();
 		MCD_ItemTags.register();
+		MCD_LootTableModifiers.register();
 		MCD_Sounds.register();
+
+		MCD_LootTableModifiers.modifyLootTables();
 	}
 }

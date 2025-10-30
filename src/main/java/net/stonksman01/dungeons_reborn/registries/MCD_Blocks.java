@@ -3,10 +3,7 @@ package net.stonksman01.dungeons_reborn.registries;
 import net.minecraft.block.*;
 import net.stonksman01.dungeons_reborn.DungeonsReborn;
 import net.stonksman01.dungeons_reborn._included_libs.SkyCore;
-import net.stonksman01.dungeons_reborn.blocks.MossyOakPlanksBlock;
-import net.stonksman01.dungeons_reborn.blocks.PopFlowerBlock;
-import net.stonksman01.dungeons_reborn.blocks.SpiritTorchBlock;
-import net.stonksman01.dungeons_reborn.blocks.WallSpiritTorchBlock;
+import net.stonksman01.dungeons_reborn.blocks.*;
 
 public class MCD_Blocks {
     public static final Block MOSSIER_COBBLESTONE = SkyCore.BuiltinRegistries.registerBlockAndItem("mossier_cobblestone",
@@ -33,7 +30,7 @@ public class MCD_Blocks {
                     .copy(Blocks.MOSS_CARPET)
                     .mapColor(MapColor.ORANGE)));
     public static final Block MIDNIGHT_MOSS_BLOCK = SkyCore.BuiltinRegistries.registerBlockAndItem("midnight_moss_block",
-            new Block(AbstractBlock.Settings
+            new MidnightMossBlock(AbstractBlock.Settings
                     .copy(Blocks.MOSS_BLOCK)
                     .mapColor(MapColor.CYAN)));
     public static final Block MIDNIGHT_MOSS_CARPET = SkyCore.BuiltinRegistries.registerBlockAndItem("midnight_moss_carpet",

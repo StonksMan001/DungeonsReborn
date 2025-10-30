@@ -1,5 +1,6 @@
 package net.stonksman01.dungeons_reborn.items.mcd_artifact;
 
+import net.minecraft.entity.Entity;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.effect.StatusEffectInstance;
 import net.minecraft.entity.effect.StatusEffects;
@@ -59,5 +60,9 @@ public class DeathCapMushroomItem extends McdArtifactItem {
         DungeonsHelpers.appendMcdRarity(stack, tooltip);
         tooltip.add(Text.translatable("tooltip.dungeons_reborn.artifact.death_cap_mushroom.tooltip3").setStyle(Style.EMPTY.withFormatting(Formatting.GREEN).withItalic(true)));
         super.appendTooltip(stack, context, tooltip, type);
+    }
+    @Override
+    public void inventoryTick(ItemStack stack, World world, Entity entity, int slot, boolean selected) {
+        DungeonsHelpers.setRareOrCommonVariant(stack);
     }
 }

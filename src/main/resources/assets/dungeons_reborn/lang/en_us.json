@@ -44,6 +44,7 @@
   "tooltip.dungeons_reborn.rarity.common": "Rarity: §r[§7ᴄᴏᴍᴍᴏɴ§r]",
   "tooltip.dungeons_reborn.rarity.rare": "Rarity: §r[§aʀᴀʀᴇ§r]",
   "tooltip.dungeons_reborn.rarity.unique": "Rarity: §r[§6ᴜɴɪǫᴜᴇ§r]",
+  "tooltip.dungeons_reborn.rarity.unknown": "Rarity: §r[§7???§r]",
   "tooltip.dungeons_reborn.rarity_info_extended.custom": "§r[§5ᴄᴜѕᴛᴏᴍ§r]",
   "tooltip.dungeons_reborn.rarity_info_extended.gilded": "§r[§eɢɪʟᴅᴇᴅ§r]",
   "tooltip.dungeons_reborn.rarity_info_extended.gifted": "§r[§aɢɪꜰᴛᴇᴅ§r]",

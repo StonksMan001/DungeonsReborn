@@ -3,6 +3,7 @@ package net.stonksman01.dungeons_reborn.items.mcd_meele;
 import net.minecraft.component.DataComponentTypes;
 import net.minecraft.component.type.AttributeModifierSlot;
 import net.minecraft.component.type.AttributeModifiersComponent;
+import net.minecraft.entity.Entity;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.attribute.EntityAttributeModifier;
 import net.minecraft.entity.attribute.EntityAttributes;
@@ -14,6 +15,7 @@ import net.minecraft.sound.SoundEvents;
 import net.minecraft.text.Style;
 import net.minecraft.text.Text;
 import net.minecraft.util.Formatting;
+import net.minecraft.world.World;
 import net.stonksman01.dungeons_reborn._included_libs.SkyCore;
 import net.stonksman01.dungeons_reborn.components.McdRarity;
 import net.stonksman01.dungeons_reborn.items.McdItem;
@@ -74,5 +76,9 @@ public class SteelMaceItem extends SkyCore.ToolAPI.SwordItem {
     @Override
     public boolean canRepair(ItemStack stack, ItemStack ingredient) {
         return false;
+    }
+    @Override
+    public void inventoryTick(ItemStack stack, World world, Entity entity, int slot, boolean selected) {
+        DungeonsHelpers.setRareOrCommonVariant(stack);
     }
 }
