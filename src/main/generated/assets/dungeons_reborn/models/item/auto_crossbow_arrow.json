@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:item/crossbow",
+  "textures": {
+    "layer0": "dungeons_reborn:item/auto_crossbow_arrow"
+  }
+}
