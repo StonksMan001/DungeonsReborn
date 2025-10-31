@@ -55,7 +55,7 @@ public class TwinBowItem extends BowItem {
     }
     @Override
     public boolean onStoppedUsing(ItemStack stack, World world, LivingEntity user, int remainingUseTicks) {
-        if (!world.isClient && user instanceof PlayerEntity playerEntity) {
+        if (world instanceof ServerWorld && user instanceof PlayerEntity playerEntity) {
             ItemStack itemStack = playerEntity.getProjectileType(stack);
             if (!itemStack.isEmpty()) {
                 int i = this.getMaxUseTime(stack, user) - remainingUseTicks;
@@ -113,7 +113,7 @@ public class TwinBowItem extends BowItem {
                                 persistentProjectileEntity0.pickupType = PersistentProjectileEntity.PickupPermission.ALLOWED;
                             }
                             world.spawnEntity(persistentProjectileEntity0);
-                            stack.damage(this.getWeaponStackDamage(itemStack), playerEntity, LivingEntity.getSlotForHand(playerEntity.getActiveHand()));
+                            stack.damage(this.getWeaponStackDamage(itemStack), playerEntity, playerEntity.getActiveHand().getEquipmentSlot());
                         }
                     }
                     world.playSound(null, playerEntity.getX(), playerEntity.getY(), playerEntity.getZ(), MCD_Sounds.TWIN_BOW_SHOOT, SoundCategory.PLAYERS, 1.0F, 1.0F / (world.getRandom().nextFloat() * 0.4F + 1.2F) + f * 0.5F);

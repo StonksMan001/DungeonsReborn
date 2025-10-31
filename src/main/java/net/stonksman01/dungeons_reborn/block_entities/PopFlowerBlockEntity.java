@@ -19,7 +19,7 @@ public class PopFlowerBlockEntity extends BlockEntity {
         if (world instanceof ServerWorld serverWorld) {
             boolean hide = false;
             for (PlayerEntity playerEntity : world.getPlayers()) {
-                if (!playerEntity.isSpectator() && Vec3d.ofCenter(pos).squaredDistanceTo(playerEntity.getPos()) <= Math.pow(PopFlowerBlock.HIDE_DISTANCE, 2))
+                if (!playerEntity.isSpectator() && Vec3d.ofCenter(pos).squaredDistanceTo(playerEntity.getEntityPos()) <= Math.pow(PopFlowerBlock.HIDE_DISTANCE, 2))
                     hide = true;
             }
             if (hide || world.isDay() || serverWorld.getGameRules().getBoolean(MCD_GameRules.POP_FLOWERS_ALWAYS_HIDE)) {

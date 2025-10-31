@@ -62,14 +62,14 @@ public class IronSkinItem extends McdArtifactItem {
             }
             case null, default -> {}
         }
-        if (!world.isClient && duration != 0) {
+        if (world instanceof ServerWorld && duration != 0) {
             if (Boolean.TRUE.equals(stack.get(MCD_DataComponentTypes.IRON_HIDE_AMULET_PERSONAL_TOGGLE))) {
                 user.addStatusEffect(new StatusEffectInstance(StatusEffects.RESISTANCE, duration, amplifier, false, true, true));
                 world.playSoundFromEntity(null, user, MCD_Sounds.IRON_HIDE_AMULET_USE, SoundCategory.PLAYERS, 1.0F, 1.0F);
-                stack.damage(1, user, LivingEntity.getSlotForHand(hand));
+                stack.damage(1, user, hand.getEquipmentSlot());
             } else if (Boolean.FALSE.equals(stack.get(MCD_DataComponentTypes.IRON_HIDE_AMULET_PERSONAL_TOGGLE))) {
                 world.playSoundFromEntity(null, user, MCD_Sounds.IRON_HIDE_AMULET_USE, SoundCategory.PLAYERS, 1.0F, 1.0F);
-                stack.damage(1, user, LivingEntity.getSlotForHand(hand));
+                stack.damage(1, user, hand.getEquipmentSlot());
                 int j = distance;
                 int k = user.getBlockPos().getX();
                 int l = user.getBlockPos().getY();

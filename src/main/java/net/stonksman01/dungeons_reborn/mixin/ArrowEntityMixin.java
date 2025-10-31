@@ -15,7 +15,7 @@ import java.util.Objects;
 @Mixin(ProjectileEntity.class)
 public abstract class ArrowEntityMixin {
     @Inject(method = "onDeflected", at = @At(value = "HEAD"))
-    public void discardIfWeaponIsTwinBow(Entity deflector, boolean fromAttack, CallbackInfo ci) {
+    public void discardIfWeaponIsTwinBow(boolean bl, CallbackInfo ci) {
         if ((Object)this instanceof PersistentProjectileEntity persistentProjectileEntity) {
             ItemStack weaponStack = persistentProjectileEntity.getWeaponStack();
             if (Objects.nonNull(weaponStack) && weaponStack.getItem() instanceof TwinBowItem) {

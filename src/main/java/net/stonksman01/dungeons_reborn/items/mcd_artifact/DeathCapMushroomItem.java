@@ -48,11 +48,11 @@ public class DeathCapMushroomItem extends McdArtifactItem {
             }
             case null, default -> {}
         }
-        if (!world.isClient && duration != 0) {
+        if (world instanceof ServerWorld && duration != 0) {
             user.addStatusEffect(new StatusEffectInstance(StatusEffects.STRENGTH, duration, amplifier, false, true, true));
             user.addStatusEffect(new StatusEffectInstance(StatusEffects.SPEED, duration, amplifier, false, true, true));
             world.playSoundFromEntity(null, user, MCD_Sounds.DEATH_CAP_MUSHROOM_USE, SoundCategory.PLAYERS, 1.0F, 1.0F);
-            stack.damage(1, user, LivingEntity.getSlotForHand(hand));
+            stack.damage(1, user, hand.getEquipmentSlot());
         }
         return ActionResult.SUCCESS;
     }
