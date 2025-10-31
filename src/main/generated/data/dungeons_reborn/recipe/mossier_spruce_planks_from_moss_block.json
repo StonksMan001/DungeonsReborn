@@ -2,12 +2,8 @@
   "type": "minecraft:crafting_shapeless",
   "category": "building",
   "ingredients": [
-    {
-      "item": "minecraft:spruce_planks"
-    },
-    {
-      "item": "minecraft:moss_block"
-    }
+    "minecraft:spruce_planks",
+    "minecraft:moss_block"
   ],
   "result": {
     "count": 1,

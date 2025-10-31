@@ -8,9 +8,9 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.item.tooltip.TooltipType;
 import net.minecraft.text.Style;
 import net.minecraft.text.Text;
+import net.minecraft.util.ActionResult;
 import net.minecraft.util.Formatting;
 import net.minecraft.util.Hand;
-import net.minecraft.util.TypedActionResult;
 import net.minecraft.world.World;
 import net.stonksman01.dungeons_reborn.items.McdItem;
 import net.stonksman01.dungeons_reborn.mixin.CrossbowItemAccessors;
@@ -27,7 +27,7 @@ public class AutoCrossbowItem extends CrossbowItem {
     }
     
     @Override
-    public TypedActionResult<ItemStack> use(World world, PlayerEntity user, Hand hand) {
+    public ActionResult use(World world, PlayerEntity user, Hand hand) {
         ItemStack itemStack = user.getStackInHand(hand);
 
         long currentTime = world.getTime();
@@ -39,14 +39,14 @@ public class AutoCrossbowItem extends CrossbowItem {
             this.shootAll(world, user, hand, itemStack, CrossbowItemAccessors.getSpeed(chargedProjectilesComponent), 1.0F, null);
             itemStack.set(MCD_DataComponentTypes.ACCELERATE_LAST_SHOT_TIME, currentTime);
             itemStack.set(MCD_DataComponentTypes.ACCELERATE_RELOAD_BONUS, Math.max(MIN_RELOAD_TIME, itemStack.getOrDefault(MCD_DataComponentTypes.ACCELERATE_RELOAD_BONUS, 1.0f) - RELOAD_DECREASE_PERCENT));
-            return TypedActionResult.consume(itemStack);
+            return ActionResult.CONSUME;
         } else if (!user.getProjectileType(itemStack).isEmpty()) {
             ((CrossbowItemAccessors) this).setCharged(false);
             ((CrossbowItemAccessors) this).setLoaded(false);
             user.setCurrentHand(hand);
-            return TypedActionResult.consume(itemStack);
+            return ActionResult.CONSUME;
         } else {
-            return TypedActionResult.fail(itemStack);
+            return ActionResult.FAIL;
         }
     }
 

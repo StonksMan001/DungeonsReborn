@@ -36,14 +36,10 @@ public class RoughDiamondPickaxeItem extends SkyCore.ToolAPI.PickaxeItem {
     @Override
     public void inventoryTick(ItemStack stack, World world, Entity entity, int slot, boolean selected) {
         DungeonsHelpers.addEnchantmentToStack(stack, world.getRegistryManager(), Enchantments.SHARPNESS, 5);
+        DungeonsHelpers.makeUnrepairable(stack);
     }
     @Override
     public int getItemBarColor(ItemStack stack) {
         return McdItem.getMcdItemBarColor();
-    }
-
-    @Override
-    public boolean canRepair(ItemStack stack, ItemStack ingredient) {
-        return false;
     }
 }

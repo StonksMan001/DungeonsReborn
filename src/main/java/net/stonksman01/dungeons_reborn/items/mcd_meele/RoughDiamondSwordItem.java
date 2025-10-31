@@ -1,5 +1,6 @@
 package net.stonksman01.dungeons_reborn.items.mcd_meele;
 
+import net.minecraft.component.DataComponentTypes;
 import net.minecraft.enchantment.Enchantments;
 import net.minecraft.entity.Entity;
 import net.minecraft.item.ItemStack;
@@ -36,14 +37,10 @@ public class RoughDiamondSwordItem extends SkyCore.ToolAPI.SwordItem implements 
     @Override
     public void inventoryTick(ItemStack stack, World world, Entity entity, int slot, boolean selected) {
         DungeonsHelpers.addEnchantmentToStack(stack, world.getRegistryManager(), Enchantments.SHARPNESS, 5);
+        DungeonsHelpers.makeUnrepairable(stack);
     }
     @Override
     public int getItemBarColor(ItemStack stack) {
         return McdItem.getMcdItemBarColor();
-    }
-
-    @Override
-    public boolean canRepair(ItemStack stack, ItemStack ingredient) {
-        return false;
     }
 }

@@ -2,12 +2,8 @@
   "type": "minecraft:crafting_shapeless",
   "category": "building",
   "ingredients": [
-    {
-      "item": "minecraft:cobblestone"
-    },
-    {
-      "item": "dungeons_reborn:midnight_moss_block"
-    }
+    "minecraft:cobblestone",
+    "dungeons_reborn:midnight_moss_block"
   ],
   "result": {
     "count": 1,

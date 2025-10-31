@@ -13,7 +13,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "dungeons_reborn:ancient_gold_block"
+        "recipe": "minecraft:ancient_gold_block"
       },
       "trigger": "minecraft:recipe_unlocked"
     }
@@ -26,7 +26,7 @@
   ],
   "rewards": {
     "recipes": [
-      "dungeons_reborn:ancient_gold_block"
+      "minecraft:ancient_gold_block"
     ]
   }
 }

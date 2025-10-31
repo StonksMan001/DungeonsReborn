@@ -1,7 +1,6 @@
 package net.stonksman01.dungeons_reborn.registries;
 
 import net.minecraft.block.BlockState;
-import net.minecraft.block.Blocks;
 import net.minecraft.registry.Registerable;
 import net.minecraft.registry.RegistryEntryLookup;
 import net.minecraft.registry.RegistryKey;
@@ -16,7 +15,6 @@ import net.minecraft.world.gen.stateprovider.BlockStateProvider;
 import net.minecraft.world.gen.stateprovider.WeightedBlockStateProvider;
 import net.stonksman01.dungeons_reborn.DungeonsReborn;
 import net.stonksman01.dungeons_reborn._included_libs.SkyCore;
-import net.stonksman01.dungeons_reborn.blocks.MidnightMossBlock;
 
 public class MCD_ConfiguredFeatures {
     public static final RegistryKey<ConfiguredFeature<?, ?>> MIDNIGHT_MOSS_PATCH_BONEMEAL = SkyCore.BuiltinRegistries.ofConfiguredFeatureRegistry("midnight_moss_parch_bonemeal");

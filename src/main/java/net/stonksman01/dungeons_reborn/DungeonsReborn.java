@@ -22,6 +22,7 @@ public class DungeonsReborn implements ModInitializer {
 		MCD_ItemTags.register();
 		MCD_LootTableModifiers.register();
 		MCD_Sounds.register();
+		MCD_ToolMaterials.register();
 
 		MCD_LootTableModifiers.modifyLootTables();
 	}

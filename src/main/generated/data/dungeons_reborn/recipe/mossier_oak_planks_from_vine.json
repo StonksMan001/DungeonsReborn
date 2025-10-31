@@ -2,15 +2,11 @@
   "type": "minecraft:crafting_shapeless",
   "category": "building",
   "ingredients": [
-    {
-      "item": "minecraft:oak_planks"
-    },
-    {
-      "item": "minecraft:vine"
-    }
+    "minecraft:oak_planks",
+    "minecraft:vine"
   ],
   "result": {
     "count": 1,
-    "id": "dungeons_reborn:mossier_oak_planks"
+    "id": "minecraft:mossy_cobblestone"
   }
 }

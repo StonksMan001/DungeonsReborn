@@ -2,9 +2,7 @@
   "type": "minecraft:crafting_shaped",
   "category": "building",
   "key": {
-    "#": {
-      "item": "dungeons_reborn:ancient_gold_ingot"
-    }
+    "#": "dungeons_reborn:ancient_gold_ingot"
   },
   "pattern": [
     "###",

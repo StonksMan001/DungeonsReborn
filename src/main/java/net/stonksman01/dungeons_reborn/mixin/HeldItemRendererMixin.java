@@ -39,7 +39,7 @@ public abstract class HeldItemRendererMixin {
     private static boolean itemTagCheck7(ItemStack instance, Item item, Operation<Boolean> original) {
         return DungeonsHelpers.wrapRangedWeaponHardcodedCallsIfPresent(instance, item, original);
     }
-    @WrapOperation(method = "renderFirstPersonItem", at = @At(value = "INVOKE", ordinal = 1, target = "Lnet/minecraft/item/ItemStack;isOf(Lnet/minecraft/item/Item;)Z"))
+    @WrapOperation(method = "renderFirstPersonItem", at = @At(value = "INVOKE", ordinal = 0, target = "Lnet/minecraft/item/ItemStack;isOf(Lnet/minecraft/item/Item;)Z"))
     private boolean itemTagCheck8(ItemStack instance, Item item, Operation<Boolean> original) {
         return DungeonsHelpers.wrapRangedWeaponHardcodedCallsIfPresent(instance, item, original);
     }

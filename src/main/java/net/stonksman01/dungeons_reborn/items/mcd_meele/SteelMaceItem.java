@@ -23,6 +23,7 @@ import net.stonksman01.dungeons_reborn.registries.MCD_DataComponentTypes;
 import net.stonksman01.dungeons_reborn.util.DungeonsHelpers;
 
 import java.util.List;
+import java.util.Objects;
 
 public class SteelMaceItem extends SkyCore.ToolAPI.SwordItem {
     float baseAttackDamage;
@@ -50,11 +51,11 @@ public class SteelMaceItem extends SkyCore.ToolAPI.SwordItem {
         McdRarity mcdRarity = stack.get(MCD_DataComponentTypes.MCD_RARITY);
         stack.set(DataComponentTypes.ATTRIBUTE_MODIFIERS, stack.getOrDefault(DataComponentTypes.ATTRIBUTE_MODIFIERS, AttributeModifiersComponent.DEFAULT)
                 .with(
-                        EntityAttributes.GENERIC_ATTACK_DAMAGE,
+                        EntityAttributes.ATTACK_DAMAGE,
                         new EntityAttributeModifier(BASE_ATTACK_DAMAGE_MODIFIER_ID, mcdRarity == McdRarity.RARE ? attackDamage + 1d : attackDamage, EntityAttributeModifier.Operation.ADD_VALUE),
                         AttributeModifierSlot.MAINHAND)
                 .with(
-                        EntityAttributes.GENERIC_ATTACK_SPEED,
+                        EntityAttributes.ATTACK_SPEED,
                         new EntityAttributeModifier(BASE_ATTACK_SPEED_MODIFIER_ID, attackSpeed, EntityAttributeModifier.Operation.ADD_VALUE),
                         AttributeModifierSlot.MAINHAND
                 ));
@@ -72,13 +73,9 @@ public class SteelMaceItem extends SkyCore.ToolAPI.SwordItem {
     public int getItemBarColor(ItemStack stack) {
         return McdItem.getMcdItemBarColor();
     }
-
-    @Override
-    public boolean canRepair(ItemStack stack, ItemStack ingredient) {
-        return false;
-    }
     @Override
     public void inventoryTick(ItemStack stack, World world, Entity entity, int slot, boolean selected) {
         DungeonsHelpers.setRareOrCommonVariant(stack);
+        DungeonsHelpers.makeUnrepairable(stack);
     }
 }

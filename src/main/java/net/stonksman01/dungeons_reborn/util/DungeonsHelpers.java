@@ -1,6 +1,7 @@
 package net.stonksman01.dungeons_reborn.util;
 
 import com.llamalad7.mixinextras.injector.wrapoperation.Operation;
+import net.minecraft.component.DataComponentTypes;
 import net.minecraft.enchantment.Enchantment;
 import net.minecraft.item.BowItem;
 import net.minecraft.item.CrossbowItem;
@@ -48,9 +49,12 @@ public interface DungeonsHelpers {
             tooltip.add(Text.translatable("tooltip.dungeons_reborn.rarity.unknown"));
         }
     }
+    static void makeUnrepairable(ItemStack stack) {
+        if (Objects.nonNull(stack.get(DataComponentTypes.REPAIRABLE))) stack.set(DataComponentTypes.REPAIRABLE, null);
+    }
     static boolean addEnchantmentToStack(ItemStack itemStack, RegistryWrapper.WrapperLookup wrapper, RegistryKey<Enchantment> enchantment, int level) {
         if (wrapper == null) return false;
-        return enchantInWorld(itemStack, enchantment, level, wrapper.getOptionalWrapper(RegistryKeys.ENCHANTMENT).orElse(null));
+        return enchantInWorld(itemStack, enchantment, level, wrapper.getOptional(RegistryKeys.ENCHANTMENT).orElse(null));
     }
     private static boolean enchantInWorld( ItemStack stack, RegistryKey<Enchantment> enchantment, int level, RegistryWrapper.Impl<Enchantment> lookup ) {
         if (lookup == null) return false;
@@ -60,7 +64,7 @@ public interface DungeonsHelpers {
         }).orElse(false);
     }
     static RegistryEntry<Enchantment> getEnchantmentRegistryEntry(World world, RegistryKey<Enchantment> enchantment) {
-        return world.getRegistryManager().get(RegistryKeys.ENCHANTMENT).getEntry(enchantment).orElseThrow();
+        return world.getRegistryManager().getOrThrow(RegistryKeys.ENCHANTMENT).getOptional(enchantment).orElseThrow();
     }
     static void setRareOrCommonVariant(ItemStack stack) {
         if (Objects.isNull(stack.get(MCD_DataComponentTypes.MCD_RARITY))) {

@@ -13,7 +13,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "dungeons_reborn:ancient_gold_ingot"
+        "recipe": "minecraft:ancient_gold_ingot"
       },
       "trigger": "minecraft:recipe_unlocked"
     }
@@ -26,7 +26,7 @@
   ],
   "rewards": {
     "recipes": [
-      "dungeons_reborn:ancient_gold_ingot"
+      "minecraft:ancient_gold_ingot"
     ]
   }
 }

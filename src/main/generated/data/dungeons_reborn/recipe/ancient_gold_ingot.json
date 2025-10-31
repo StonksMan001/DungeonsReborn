@@ -2,9 +2,7 @@
   "type": "minecraft:crafting_shapeless",
   "category": "misc",
   "ingredients": [
-    {
-      "item": "dungeons_reborn:ancient_gold_block"
-    }
+    "dungeons_reborn:ancient_gold_block"
   ],
   "result": {
     "count": 9,
