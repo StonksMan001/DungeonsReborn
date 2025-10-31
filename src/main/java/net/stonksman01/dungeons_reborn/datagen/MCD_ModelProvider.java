@@ -2,9 +2,13 @@ package net.stonksman01.dungeons_reborn.datagen;
 
 import net.fabricmc.fabric.api.client.datagen.v1.provider.FabricModelProvider;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
-import net.minecraft.client.data.BlockStateModelGenerator;
-import net.minecraft.client.data.ItemModelGenerator;
-import net.minecraft.client.data.Models;
+import net.minecraft.block.Block;
+import net.minecraft.block.Blocks;
+import net.minecraft.client.data.*;
+import net.minecraft.client.render.model.json.WeightedVariant;
+import net.minecraft.state.property.BooleanProperty;
+import net.minecraft.state.property.Properties;
+import net.stonksman01.dungeons_reborn.blocks.MossyOakPlanksBlock;
 import net.stonksman01.dungeons_reborn.registries.MCD_Blocks;
 import net.stonksman01.dungeons_reborn.registries.MCD_Items;
 
@@ -22,6 +26,13 @@ public class MCD_ModelProvider extends FabricModelProvider {
         blockStateModelGenerator.registerSimpleCubeAll(MCD_Blocks.ANCIENT_GOLD_BLOCK);
 
         blockStateModelGenerator.registerItemModel(MCD_Blocks.POP_FLOWER,"_0");
+        registerBlockWith2Variants(blockStateModelGenerator, MCD_Blocks.MOSSIER_OAK_PLANKS, MossyOakPlanksBlock.MOSSIER, "_2");
+    }
+    private void registerBlockWith2Variants(BlockStateModelGenerator blockStateModelGenerator, Block block, BooleanProperty booleanProperty, String suffix) {
+        WeightedVariant weightedVariant = BlockStateModelGenerator.createWeightedVariant(TexturedModel.CUBE_ALL.upload(block, blockStateModelGenerator.modelCollector));
+        WeightedVariant weightedVariant2 = BlockStateModelGenerator.createWeightedVariant(blockStateModelGenerator.createSubModel(block, suffix, Models.CUBE_ALL, TextureMap::all));
+        blockStateModelGenerator.blockStateCollector
+                .accept(VariantsBlockModelDefinitionCreator.of(block).with(BlockStateModelGenerator.createBooleanModelMap(booleanProperty, weightedVariant2, weightedVariant)));
     }
     @Override
     public void generateItemModels(ItemModelGenerator itemModelGenerator) {

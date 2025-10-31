@@ -3,7 +3,7 @@
   "criteria": {
     "has_the_recipe": {
       "conditions": {
-        "recipe": "minecraft:mossier_oak_planks_from_vine"
+        "recipe": "dungeons_reborn:mossier_oak_planks_from_vine"
       },
       "trigger": "minecraft:recipe_unlocked"
     },
@@ -26,7 +26,7 @@
   ],
   "rewards": {
     "recipes": [
-      "minecraft:mossier_oak_planks_from_vine"
+      "dungeons_reborn:mossier_oak_planks_from_vine"
     ]
   }
 }

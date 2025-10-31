@@ -1,8 +1,10 @@
 package net.stonksman01.dungeons_reborn.items.mcd_ranged;
 
+import net.minecraft.component.type.TooltipDisplayComponent;
 import net.minecraft.enchantment.EnchantmentHelper;
 import net.minecraft.enchantment.Enchantments;
 import net.minecraft.entity.Entity;
+import net.minecraft.entity.EquipmentSlot;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.mob.HostileEntity;
 import net.minecraft.entity.mob.Monster;
@@ -26,8 +28,10 @@ import net.stonksman01.dungeons_reborn.items.McdItem;
 import net.stonksman01.dungeons_reborn.registries.MCD_DataComponentTypes;
 import net.stonksman01.dungeons_reborn.registries.MCD_Sounds;
 import net.stonksman01.dungeons_reborn.util.DungeonsHelpers;
+import org.jetbrains.annotations.Nullable;
 
 import java.util.List;
+import java.util.function.Consumer;
 
 public class TwinBowItem extends BowItem {
     public TwinBowItem(Settings settings) {
@@ -43,11 +47,11 @@ public class TwinBowItem extends BowItem {
         }
     }
     @Override
-    public void inventoryTick(ItemStack stack, World world, Entity entity, int slot, boolean selected) {
+    public void inventoryTick(ItemStack stack, ServerWorld world, Entity entity, @Nullable EquipmentSlot slot) {
         if (stack.get(MCD_DataComponentTypes.TWIN_BOW_TARGET_PLAYER_ENTITIES_TOGGLE) == null) {
             stack.set(MCD_DataComponentTypes.TWIN_BOW_TARGET_PLAYER_ENTITIES_TOGGLE, false);
         }
-        super.inventoryTick(stack, world, entity, slot, selected);
+        super.inventoryTick(stack, world, entity, slot);
     }
     @Override
     public boolean onStoppedUsing(ItemStack stack, World world, LivingEntity user, int remainingUseTicks) {
@@ -137,18 +141,18 @@ public class TwinBowItem extends BowItem {
         return persistentProjectileEntity;
     }
     @Override
-    public void appendTooltip(ItemStack stack, TooltipContext context, List<Text> tooltip, TooltipType type) {
-        tooltip.add(Text.translatable("tooltip.dungeons_reborn.minecraft_dungeons_header").setStyle(Style.EMPTY.withBold(true).withFormatting(Formatting.GRAY)));
-        tooltip.add(Text.translatable("tooltip.dungeons_reborn.twin_bow.tooltip1").setStyle(Style.EMPTY.withItalic(true).withFormatting(Formatting.GRAY)));
-        tooltip.add(Text.translatable("tooltip.dungeons_reborn.twin_bow.tooltip2").setStyle(Style.EMPTY.withItalic(true).withFormatting(Formatting.GRAY)));
-        tooltip.add(Text.translatable("tooltip.dungeons_reborn.rarity.unique"));
-        tooltip.add(Text.translatable("tooltip.dungeons_reborn.bonus_shot.target_players")
+    public void appendTooltip(ItemStack stack, Item.TooltipContext context, TooltipDisplayComponent displayComponent, Consumer<Text> textConsumer, TooltipType type) {
+        textConsumer.accept(Text.translatable("tooltip.dungeons_reborn.minecraft_dungeons_header").setStyle(Style.EMPTY.withBold(true).withFormatting(Formatting.GRAY)));
+        textConsumer.accept(Text.translatable("tooltip.dungeons_reborn.twin_bow.tooltip1").setStyle(Style.EMPTY.withItalic(true).withFormatting(Formatting.GRAY)));
+        textConsumer.accept(Text.translatable("tooltip.dungeons_reborn.twin_bow.tooltip2").setStyle(Style.EMPTY.withItalic(true).withFormatting(Formatting.GRAY)));
+        textConsumer.accept(Text.translatable("tooltip.dungeons_reborn.rarity.unique"));
+        textConsumer.accept(Text.translatable("tooltip.dungeons_reborn.bonus_shot.target_players")
                 .append(Text.literal(": ")
                         .append(Boolean.TRUE.equals(stack.get(MCD_DataComponentTypes.TWIN_BOW_TARGET_PLAYER_ENTITIES_TOGGLE)) ?
                                 Text.translatable("options.on").formatted(Formatting.GREEN):
                                 Text.translatable("options.off").formatted(Formatting.RED))));
-        tooltip.add(Text.translatable("enchantment.dungeons_reborn.bonus_shot").setStyle(Style.EMPTY.withFormatting(Formatting.GREEN)));
-        super.appendTooltip(stack, context, tooltip, type);
+        textConsumer.accept(Text.translatable("enchantment.dungeons_reborn.bonus_shot").setStyle(Style.EMPTY.withFormatting(Formatting.GREEN)));
+        super.appendTooltip(stack, context, displayComponent, textConsumer, type);
     }
     @Override
     public int getItemBarColor(ItemStack stack) {

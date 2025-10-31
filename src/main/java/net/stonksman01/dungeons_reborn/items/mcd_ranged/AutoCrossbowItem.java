@@ -2,8 +2,10 @@ package net.stonksman01.dungeons_reborn.items.mcd_ranged;
 
 import net.minecraft.component.DataComponentTypes;
 import net.minecraft.component.type.ChargedProjectilesComponent;
+import net.minecraft.component.type.TooltipDisplayComponent;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.CrossbowItem;
+import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.tooltip.TooltipType;
 import net.minecraft.text.Style;
@@ -17,6 +19,7 @@ import net.stonksman01.dungeons_reborn.mixin.CrossbowItemAccessors;
 import net.stonksman01.dungeons_reborn.registries.MCD_DataComponentTypes;
 
 import java.util.List;
+import java.util.function.Consumer;
 
 public class AutoCrossbowItem extends CrossbowItem {
     private static final float RELOAD_DECREASE_PERCENT = 0.09f;
@@ -51,13 +54,13 @@ public class AutoCrossbowItem extends CrossbowItem {
     }
 
     @Override
-    public void appendTooltip(ItemStack stack, TooltipContext context, List<Text> tooltip, TooltipType type) {
-        tooltip.add(Text.translatable("tooltip.dungeons_reborn.minecraft_dungeons_header").setStyle(Style.EMPTY.withBold(true).withFormatting(Formatting.GRAY)));
-        tooltip.add(Text.translatable("tooltip.dungeons_reborn.auto_crossbow.tooltip1").setStyle(Style.EMPTY.withItalic(true).withFormatting(Formatting.GRAY)));
-        tooltip.add(Text.translatable("tooltip.dungeons_reborn.auto_crossbow.tooltip2").setStyle(Style.EMPTY.withItalic(true).withFormatting(Formatting.GRAY)));
-        tooltip.add(Text.translatable("tooltip.dungeons_reborn.rarity.unique"));
-        tooltip.add(Text.translatable("enchantment.dungeons_reborn.accelerate").setStyle(Style.EMPTY.withFormatting(Formatting.GREEN)));
-        super.appendTooltip(stack, context, tooltip, type);
+    public void appendTooltip(ItemStack stack, Item.TooltipContext context, TooltipDisplayComponent displayComponent, Consumer<Text> textConsumer, TooltipType type) {
+        textConsumer.accept(Text.translatable("tooltip.dungeons_reborn.minecraft_dungeons_header").setStyle(Style.EMPTY.withBold(true).withFormatting(Formatting.GRAY)));
+        textConsumer.accept(Text.translatable("tooltip.dungeons_reborn.auto_crossbow.tooltip1").setStyle(Style.EMPTY.withItalic(true).withFormatting(Formatting.GRAY)));
+        textConsumer.accept(Text.translatable("tooltip.dungeons_reborn.auto_crossbow.tooltip2").setStyle(Style.EMPTY.withItalic(true).withFormatting(Formatting.GRAY)));
+        textConsumer.accept(Text.translatable("tooltip.dungeons_reborn.rarity.unique"));
+        textConsumer.accept(Text.translatable("enchantment.dungeons_reborn.accelerate").setStyle(Style.EMPTY.withFormatting(Formatting.GREEN)));
+        super.appendTooltip(stack, context, displayComponent, textConsumer, type);
     }
 
     @Override

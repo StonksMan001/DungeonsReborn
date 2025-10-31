@@ -164,29 +164,29 @@ public class SkyCore {
         }
     }
     public static class ToolAPI {
-        public static class ShovelItem extends net.minecraft.item.ShovelItem {
+        public static class ShovelItem extends Item {
             public ShovelItem(ToolMaterial toolMaterial, float baseAttackDamage, float attackSpeed, Settings settings) {
-                super(toolMaterial, baseAttackDamage, attackSpeed, settings);
+                super(settings.shovel(toolMaterial, baseAttackDamage, attackSpeed));
             }
         }
-        public static class SwordItem extends net.minecraft.item.SwordItem {
+        public static class SwordItem extends Item {
             public SwordItem(ToolMaterial toolMaterial, float baseAttackDamage, float attackSpeed, Settings settings) {
-                super(toolMaterial, baseAttackDamage, attackSpeed, settings);
+                super(settings.sword(toolMaterial, baseAttackDamage, attackSpeed));
             }
         }
-        public static class AxeItem extends net.minecraft.item.AxeItem {
+        public static class AxeItem extends Item {
             public AxeItem(ToolMaterial toolMaterial, float baseAttackDamage, float attackSpeed, Settings settings) {
-                super(toolMaterial, baseAttackDamage, attackSpeed, settings);
+                super(settings.axe(toolMaterial, baseAttackDamage, attackSpeed));
             }
         }
-        public static class PickaxeItem extends net.minecraft.item.PickaxeItem {
+        public static class PickaxeItem extends Item {
             public PickaxeItem(ToolMaterial toolMaterial, float baseAttackDamage, float attackSpeed, Settings settings) {
-                super(toolMaterial, baseAttackDamage, attackSpeed, settings);
+                super(settings.pickaxe(toolMaterial, baseAttackDamage, attackSpeed));
             }
         }
-        public static class HoeItem extends net.minecraft.item.HoeItem {
+        public static class HoeItem extends Item {
             public HoeItem(ToolMaterial toolMaterial, float baseAttackDamage, float attackSpeed, Settings settings) {
-                super(toolMaterial, baseAttackDamage, attackSpeed, settings);
+                super(settings.hoe(toolMaterial, baseAttackDamage, attackSpeed));
             }
         }
     }

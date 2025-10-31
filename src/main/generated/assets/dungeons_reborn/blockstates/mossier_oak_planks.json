@@ -1,0 +1,10 @@
+{
+  "variants": {
+    "mossier=false": {
+      "model": "dungeons_reborn:block/mossier_oak_planks"
+    },
+    "mossier=true": {
+      "model": "dungeons_reborn:block/mossier_oak_planks_2"
+    }
+  }
+}

@@ -22,6 +22,6 @@ public class SpiritTorchBlock extends AbstractTorchBlock {
         double d = (double)pos.getX() + (double)0.5F + (random.nextDouble() - (double)0.5F) * 0.2;
         double e = (double)pos.getY() + 0.7 + (random.nextDouble() - (double)0.5F) * 0.2;
         double f = (double)pos.getZ() + (double)0.5F + (random.nextDouble() - (double)0.5F) * 0.2;
-        world.addParticle(new DustParticleEffect(65343, 1.0f), d, e, f, 0.0F, 0.0F, 0.0F);
+        world.addParticleClient(new DustParticleEffect(65343, 1.0f), d, e, f, 0.0F, 0.0F, 0.0F);
     }
 }

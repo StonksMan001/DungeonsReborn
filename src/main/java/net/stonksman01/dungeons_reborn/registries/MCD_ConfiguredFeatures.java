@@ -1,12 +1,13 @@
 package net.stonksman01.dungeons_reborn.registries;
 
 import net.minecraft.block.BlockState;
+import net.minecraft.block.Blocks;
 import net.minecraft.registry.Registerable;
 import net.minecraft.registry.RegistryEntryLookup;
 import net.minecraft.registry.RegistryKey;
 import net.minecraft.registry.RegistryKeys;
 import net.minecraft.registry.tag.BlockTags;
-import net.minecraft.util.collection.DataPool;
+import net.minecraft.util.collection.Pool;
 import net.minecraft.util.math.VerticalSurfaceType;
 import net.minecraft.util.math.intprovider.ConstantIntProvider;
 import net.minecraft.util.math.intprovider.UniformIntProvider;
@@ -28,7 +29,7 @@ public class MCD_ConfiguredFeatures {
                 Feature.SIMPLE_BLOCK,
                 new SimpleBlockFeatureConfig(
                         new WeightedBlockStateProvider(
-                                DataPool.<BlockState>builder()
+                                Pool.<BlockState>builder()
                                         .add(MCD_Blocks.MIDNIGHT_MOSS_CARPET.getDefaultState(), 25)
                                         .add(MCD_Blocks.MIDNIGHT_SPROUTS.getDefaultState(), 50)
                                         .add(MCD_Blocks.POP_FLOWER.getDefaultState(), 10)

@@ -22,27 +22,27 @@ import java.util.List;
 
 public class MCD_Items {
     public static final Item TWIN_BOW = SkyCore.BuiltinRegistries.registerItem("twin_bow",
-            TwinBowItem::new, new Item.Settings()
+            settings -> new TwinBowItem(settings
                     .maxDamage(384)
                     .rarity(Rarity.EPIC)
-                    .enchantable(1));
+                    .enchantable(1)));
     public static final Item ROUGH_DIAMOND_SWORD = SkyCore.BuiltinRegistries.registerItem("rough_diamond_sword",
-            settings -> new RoughDiamondSwordItem(ToolMaterial.DIAMOND, 3, 1.6f - 4f, settings), new Item.Settings()
-                    .rarity(Rarity.EPIC));
+            settings -> new RoughDiamondSwordItem(ToolMaterial.DIAMOND, 3, 1.6f - 4f, settings
+                    .rarity(Rarity.EPIC)));
     public static final Item STEEL_MACE = SkyCore.BuiltinRegistries.registerItem("steel_mace",
             settings -> new SteelMaceItem(MCD_ToolMaterials.STEEL_MACE, 3, 1.6f - 4f, settings));
     public static final Item AUTO_CROSSBOW = SkyCore.BuiltinRegistries.registerItem("auto_crossbow",
-            AutoCrossbowItem::new, new Item.Settings()
+            settings -> new AutoCrossbowItem(settings
                     .maxDamage(465)
                     .rarity(Rarity.EPIC)
                     .component(DataComponentTypes.CHARGED_PROJECTILES, ChargedProjectilesComponent.DEFAULT)
-                    .enchantable(1));
+                    .enchantable(1)));
     public static final Item ARTIFACT_IRON_HIDE_AMULET = SkyCore.BuiltinRegistries.registerItem("artifact_iron_hide_amulet",
-            IronSkinItem::new, new Item.Settings()
-                    .useCooldown(25.0f));
+            settings -> new IronSkinItem(settings
+                    .useCooldown(25.0f)));
     public static final Item ARTIFACT_DEATH_CAP_MUSHROOM = SkyCore.BuiltinRegistries.registerItem("artifact_death_cap_mushroom",
-            DeathCapMushroomItem::new, new Item.Settings()
-                    .useCooldown(30.0f));
+            settings -> new DeathCapMushroomItem(settings
+                    .useCooldown(30.0f)));
     public static final Item ANCIENT_GOLD_INGOT = SkyCore.BuiltinRegistries.registerItem("ancient_gold_ingot");
     public static void register() {
         DungeonsReborn.LOGGER.info("[DungeonsReborn] Registering Items");

@@ -20,6 +20,7 @@ import net.stonksman01.dungeons_reborn.registries.MCD_Enchantments;
 import java.util.List;
 import java.util.Objects;
 import java.util.Random;
+import java.util.function.Consumer;
 
 public interface DungeonsHelpers {
     static void enchantStackWithPrimitiveness(ItemStack stack, RegistryWrapper.WrapperLookup provider) {
@@ -34,19 +35,19 @@ public interface DungeonsHelpers {
         }
         return original.call(instance, item);
     }
-    static void appendMcdRarity(ItemStack stack, List<Text> tooltip) {
+    static void appendMcdRarity(ItemStack stack, Consumer<Text> textConsumer) {
         McdRarity mcdRarity = stack.get(MCD_DataComponentTypes.MCD_RARITY);
         if (mcdRarity != null) {
             switch (mcdRarity) {
-                case McdRarity.COMMON -> tooltip.add(Text.translatable("tooltip.dungeons_reborn.rarity.common"));
-                case McdRarity.RARE -> tooltip.add(Text.translatable("tooltip.dungeons_reborn.rarity.rare"));
-                case McdRarity.UNIQUE -> tooltip.add(Text.translatable("tooltip.dungeons_reborn.rarity.unique"));
-                default -> tooltip.add(Text.translatable("tooltip.dungeons_reborn.rarity.common")
+                case McdRarity.COMMON -> textConsumer.accept(Text.translatable("tooltip.dungeons_reborn.rarity.common"));
+                case McdRarity.RARE -> textConsumer.accept(Text.translatable("tooltip.dungeons_reborn.rarity.rare"));
+                case McdRarity.UNIQUE -> textConsumer.accept(Text.translatable("tooltip.dungeons_reborn.rarity.unique"));
+                default -> textConsumer.accept(Text.translatable("tooltip.dungeons_reborn.rarity.common")
                         .append(Text.literal(" "))
                         .append(Text.translatable("tooltip.dungeons_reborn.rarity_info_extended.custom")));
             }
         } else {
-            tooltip.add(Text.translatable("tooltip.dungeons_reborn.rarity.unknown"));
+            textConsumer.accept(Text.translatable("tooltip.dungeons_reborn.rarity.unknown"));
         }
     }
     static void makeUnrepairable(ItemStack stack) {
