@@ -1,17 +1,17 @@
-// 1.21.3	2025-10-31T09:18:54.6705323	DungeonsReborn/Tags for minecraft:item
-1e8a8b5158a160a76fc4db1f619d0300eb129d14 data\minecraft\tags\item\enchantable\durability.json
-a711ef9ef44c267b7c157f7b380cef06a2622659 data\minecraft\tags\item\head_armor.json
-e522705c772ed1115ed7ed7776af25f749267838 data\minecraft\tags\item\axes.json
-8ab7b4617a377310e5c8fdd810d6aa73204e3c26 data\dungeons_reborn\tags\item\has_durability\bows.json
-8adae71a17a736dab3b668d3d61a3dbe19c8019c data\minecraft\tags\item\leg_armor.json
-117621b871fb952d182ac9be8721a1cab4accfd5 data\dungeons_reborn\tags\item\has_durability\crossbows.json
-a3835a389f511e126d07c62556ef19ff9cf4338f data\dungeons_reborn\tags\item\has_durability\swords.json
-5d2a8395295b2ffd1628ecfcbf3c3ca2efd9a9e3 data\minecraft\tags\item\hoes.json
-7c5e0001ce5f20bc7c9b38514e80273b3f0e90c3 data\minecraft\tags\item\shovels.json
-39b33871993590c024fb708a0a67bfa55a4aafc2 data\minecraft\tags\item\swords.json
-02db3bfdfe0ec93cc04d96a4b80786c24f5297bc data\minecraft\tags\item\chest_armor.json
-76edd2b989ff753e09f0fe34031c45aaa8b01dda data\minecraft\tags\item\enchantable\bow.json
-5e19bb9922d4a425650ae97168d5f3ee40a1eafc data\minecraft\tags\item\enchantable\crossbow.json
-00af5a2c53ab777b483ff475aae110b330a90f87 data\minecraft\tags\item\pickaxes.json
-b87528718d455867e638d963135777da76eb2d16 data\minecraft\tags\item\foot_armor.json
-544d360674c644305f3449336dd914ee42c8fc2a data\dungeons_reborn\tags\item\has_durability\durable.json
+// 1.21.4	-999999999-01-01T00:00:00	DungeonsReborn/Tags for minecraft:item
+8ab7b4617a377310e5c8fdd810d6aa73204e3c26 data/dungeons_reborn/tags/item/has_durability/bows.json
+117621b871fb952d182ac9be8721a1cab4accfd5 data/dungeons_reborn/tags/item/has_durability/crossbows.json
+544d360674c644305f3449336dd914ee42c8fc2a data/dungeons_reborn/tags/item/has_durability/durable.json
+a3835a389f511e126d07c62556ef19ff9cf4338f data/dungeons_reborn/tags/item/has_durability/swords.json
+e522705c772ed1115ed7ed7776af25f749267838 data/minecraft/tags/item/axes.json
+02db3bfdfe0ec93cc04d96a4b80786c24f5297bc data/minecraft/tags/item/chest_armor.json
+76edd2b989ff753e09f0fe34031c45aaa8b01dda data/minecraft/tags/item/enchantable/bow.json
+5e19bb9922d4a425650ae97168d5f3ee40a1eafc data/minecraft/tags/item/enchantable/crossbow.json
+1e8a8b5158a160a76fc4db1f619d0300eb129d14 data/minecraft/tags/item/enchantable/durability.json
+b87528718d455867e638d963135777da76eb2d16 data/minecraft/tags/item/foot_armor.json
+a711ef9ef44c267b7c157f7b380cef06a2622659 data/minecraft/tags/item/head_armor.json
+5d2a8395295b2ffd1628ecfcbf3c3ca2efd9a9e3 data/minecraft/tags/item/hoes.json
+8adae71a17a736dab3b668d3d61a3dbe19c8019c data/minecraft/tags/item/leg_armor.json
+00af5a2c53ab777b483ff475aae110b330a90f87 data/minecraft/tags/item/pickaxes.json
+7c5e0001ce5f20bc7c9b38514e80273b3f0e90c3 data/minecraft/tags/item/shovels.json
+39b33871993590c024fb708a0a67bfa55a4aafc2 data/minecraft/tags/item/swords.json

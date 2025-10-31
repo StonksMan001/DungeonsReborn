@@ -32,9 +32,9 @@ public class MCD_ItemGroups {
                 ItemStack rareMushroom = new ItemStack(MCD_Items.ARTIFACT_DEATH_CAP_MUSHROOM);
                 rareMushroom.set(MCD_DataComponentTypes.MCD_RARITY, McdRarity.RARE);
                 entries.add(rareMushroom);
-                entries.add(MCD_Blocks.MOSSIER_COBBLESTONE);
                 entries.add(MCD_Blocks.DRIED_MOSS_BLOCK);
                 entries.add(MCD_Blocks.DRIED_MOSS_CARPET);
+                entries.add(MCD_Blocks.MOSSIER_COBBLESTONE);
                 entries.add(MCD_Blocks.MIDNIGHT_MOSS_BLOCK);
                 entries.add(MCD_Blocks.MIDNIGHT_MOSS_CARPET);
                 entries.add(MCD_Blocks.MIDNIGHT_SPROUTS);

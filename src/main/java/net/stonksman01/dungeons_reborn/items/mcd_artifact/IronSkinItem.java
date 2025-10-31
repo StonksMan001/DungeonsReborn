@@ -40,14 +40,6 @@ public class IronSkinItem extends McdArtifactItem {
         }
     }
     @Override
-    public void inventoryTick(ItemStack stack, World world, Entity entity, int slot, boolean selected) {
-        if (stack.get(MCD_DataComponentTypes.IRON_HIDE_AMULET_PERSONAL_TOGGLE) == null) {
-            stack.set(MCD_DataComponentTypes.IRON_HIDE_AMULET_PERSONAL_TOGGLE, false);
-        }
-        super.inventoryTick(stack, world, entity, slot, selected);
-        DungeonsHelpers.setRareOrCommonVariant(stack);
-    }
-    @Override
     public ActionResult use(World world, PlayerEntity user, Hand hand) { //TODO
         ItemStack stack = user.getStackInHand(hand);
         McdRarity mcdRarity = stack.get(MCD_DataComponentTypes.MCD_RARITY);
@@ -108,5 +100,13 @@ public class IronSkinItem extends McdArtifactItem {
                                 Text.translatable("options.off").formatted(Formatting.RED))));
         tooltip.add(Text.translatable("tooltip.dungeons_reborn.artifact.iron_hide_amulet.tooltip4").setStyle(Style.EMPTY.withFormatting(Formatting.GREEN).withItalic(true)));
         super.appendTooltip(stack, context, tooltip, type);
+    }
+    @Override
+    public void inventoryTick(ItemStack stack, World world, Entity entity, int slot, boolean selected) {
+        if (stack.get(MCD_DataComponentTypes.IRON_HIDE_AMULET_PERSONAL_TOGGLE) == null) {
+            stack.set(MCD_DataComponentTypes.IRON_HIDE_AMULET_PERSONAL_TOGGLE, false);
+        }
+        super.inventoryTick(stack, world, entity, slot, selected);
+        DungeonsHelpers.setRareOrCommonVariant(stack);
     }
 }
