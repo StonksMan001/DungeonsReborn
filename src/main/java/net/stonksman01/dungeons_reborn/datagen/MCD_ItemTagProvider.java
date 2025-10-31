@@ -16,30 +16,30 @@ public class MCD_ItemTagProvider extends FabricTagProvider.ItemTagProvider {
     }
     @Override
     protected void configure(RegistryWrapper.WrapperLookup wrapperLookup) {
-        getOrCreateTagBuilder(ItemTags.BOW_ENCHANTABLE).addOptionalTag(MCD_ItemTags.HAS_DURABILITY_BOWS);
-        getOrCreateTagBuilder(ItemTags.CROSSBOW_ENCHANTABLE).addOptionalTag(MCD_ItemTags.HAS_DURABILITY_CROSSBOWS);
-        getOrCreateTagBuilder(ItemTags.DURABILITY_ENCHANTABLE)
+        valueLookupBuilder(ItemTags.BOW_ENCHANTABLE).addOptionalTag(MCD_ItemTags.HAS_DURABILITY_BOWS);
+        valueLookupBuilder(ItemTags.CROSSBOW_ENCHANTABLE).addOptionalTag(MCD_ItemTags.HAS_DURABILITY_CROSSBOWS);
+        valueLookupBuilder(ItemTags.DURABILITY_ENCHANTABLE)
                 .addOptionalTag(MCD_ItemTags.HAS_DURABILITY_DURABLE)
                 .addOptionalTag(MCD_ItemTags.HAS_DURABILITY_BOWS)
                 .addOptionalTag(MCD_ItemTags.HAS_DURABILITY_CROSSBOWS);
-        getOrCreateTagBuilder(ItemTags.CHEST_ARMOR).addOptionalTag(MCD_ItemTags.HAS_DURABILITY_ARMOR_CHEST);
-        getOrCreateTagBuilder(ItemTags.FOOT_ARMOR).addOptionalTag(MCD_ItemTags.HAS_DURABILITY_ARMOR_FOOT);
-        getOrCreateTagBuilder(ItemTags.HEAD_ARMOR).addOptionalTag(MCD_ItemTags.HAS_DURABILITY_ARMOR_HEAD);
-        getOrCreateTagBuilder(ItemTags.LEG_ARMOR).addOptionalTag(MCD_ItemTags.HAS_DURABILITY_ARMOR_LEG);
-        getOrCreateTagBuilder(ItemTags.AXES).addOptionalTag(MCD_ItemTags.HAS_DURABILITY_AXES);
-        getOrCreateTagBuilder(ItemTags.HOES).addOptionalTag(MCD_ItemTags.HAS_DURABILITY_HOES);
-        getOrCreateTagBuilder(ItemTags.PICKAXES).addOptionalTag(MCD_ItemTags.HAS_DURABILITY_PICKAXES);
-        getOrCreateTagBuilder(ItemTags.SHOVELS).addOptionalTag(MCD_ItemTags.HAS_DURABILITY_SHOVELS);
-        getOrCreateTagBuilder(ItemTags.SWORDS).addOptionalTag(MCD_ItemTags.HAS_DURABILITY_SWORDS);
+        valueLookupBuilder(ItemTags.CHEST_ARMOR).addOptionalTag(MCD_ItemTags.HAS_DURABILITY_ARMOR_CHEST);
+        valueLookupBuilder(ItemTags.FOOT_ARMOR).addOptionalTag(MCD_ItemTags.HAS_DURABILITY_ARMOR_FOOT);
+        valueLookupBuilder(ItemTags.HEAD_ARMOR).addOptionalTag(MCD_ItemTags.HAS_DURABILITY_ARMOR_HEAD);
+        valueLookupBuilder(ItemTags.LEG_ARMOR).addOptionalTag(MCD_ItemTags.HAS_DURABILITY_ARMOR_LEG);
+        valueLookupBuilder(ItemTags.AXES).addOptionalTag(MCD_ItemTags.HAS_DURABILITY_AXES);
+        valueLookupBuilder(ItemTags.HOES).addOptionalTag(MCD_ItemTags.HAS_DURABILITY_HOES);
+        valueLookupBuilder(ItemTags.PICKAXES).addOptionalTag(MCD_ItemTags.HAS_DURABILITY_PICKAXES);
+        valueLookupBuilder(ItemTags.SHOVELS).addOptionalTag(MCD_ItemTags.HAS_DURABILITY_SHOVELS);
+        valueLookupBuilder(ItemTags.SWORDS).addOptionalTag(MCD_ItemTags.HAS_DURABILITY_SWORDS);
 
-        getOrCreateTagBuilder(MCD_ItemTags.HAS_DURABILITY_BOWS)
+        valueLookupBuilder(MCD_ItemTags.HAS_DURABILITY_BOWS)
                 .add(MCD_Items.TWIN_BOW);
-        getOrCreateTagBuilder(MCD_ItemTags.HAS_DURABILITY_CROSSBOWS)
+        valueLookupBuilder(MCD_ItemTags.HAS_DURABILITY_CROSSBOWS)
                 .add(MCD_Items.AUTO_CROSSBOW);
-        getOrCreateTagBuilder(MCD_ItemTags.HAS_DURABILITY_DURABLE)
+        valueLookupBuilder(MCD_ItemTags.HAS_DURABILITY_DURABLE)
                 .add(MCD_Items.ARTIFACT_IRON_HIDE_AMULET)
                 .add(MCD_Items.ARTIFACT_DEATH_CAP_MUSHROOM);
-        getOrCreateTagBuilder(MCD_ItemTags.HAS_DURABILITY_SWORDS)
+        valueLookupBuilder(MCD_ItemTags.HAS_DURABILITY_SWORDS)
                 .add(MCD_Items.ROUGH_DIAMOND_SWORD)
                 .add(MCD_Items.STEEL_MACE);
     }
