@@ -8,7 +8,6 @@ import net.stonksman01.dungeons_reborn._included_libs.SkyCore;
 import net.stonksman01.dungeons_reborn.items.mcd_artifact.DeathCapMushroomItem;
 import net.stonksman01.dungeons_reborn.items.mcd_artifact.IronSkinItem;
 import net.stonksman01.dungeons_reborn.items.mcd_meele.*;
-import net.stonksman01.dungeons_reborn.items.mcd_meele.template.ClaymoreTemplateItem;
 import net.stonksman01.dungeons_reborn.items.mcd_ranged.AutoCrossbowItem;
 import net.stonksman01.dungeons_reborn.items.mcd_ranged.TwinBowItem;
 
@@ -28,7 +27,7 @@ public class MCD_Items {
     public static final Item CLAYMORE = SkyCore.BuiltinRegistries.registerItem("claymore",
             new ClaymoreItem(MCD_ToolMaterials.CLAYMORE, 4, 1.0f - 4f, new Item.Settings()));
     public static final Item BROADSWORD = SkyCore.BuiltinRegistries.registerItem("broadsword",
-            new BroadswordItem(MCD_ToolMaterials.CLAYMORE, 4, 1.0f - 4f, new Item.Settings()
+            new BroadswordItem(MCD_ToolMaterials.CLAYMORE, 5, 1.0f - 4f, new Item.Settings()
                     .rarity(Rarity.EPIC)));
     public static final Item AUTO_CROSSBOW = SkyCore.BuiltinRegistries.registerItem("auto_crossbow",
             new AutoCrossbowItem(new Item.Settings()
