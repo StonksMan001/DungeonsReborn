@@ -37,9 +37,21 @@
   "tooltip.dungeons_reborn.rough_diamond_sword.tooltip1": "A Csiszolatlan gyémántkard egy igazi hős",
   "tooltip.dungeons_reborn.rough_diamond_sword.tooltip2": "és egy elszánt kalandor méltó jelképe.",
 
+  "item.dungeons_reborn.rough_diamond_pickaxe": "Csiszolatlan gyémántcsákány",
+  "tooltip.dungeons_reborn.rough_diamond_pickaxe.tooltip1": "A gyémánt az egyik legkeményebb anyag,",
+  "tooltip.dungeons_reborn.rough_diamond_pickaxe.tooltip2": "kíváló választás egy csákány alapanyagaként.",
+
   "item.dungeons_reborn.steel_mace": "Acél buzogány",
   "tooltip.dungeons_reborn.steel_mace.tooltip1": "Az Acél buzogány a háború egyik legbrutálisabb eszköze.",
   "tooltip.dungeons_reborn.steel_mace.tooltip2": "Amivel alulmarad gyorsaságban, azt visszahozza ütőképességben.",
+
+  "item.dungeons_reborn.claymore": "Klémor",
+  "tooltip.dungeons_reborn.claymore.tooltip1": "Egy hatalmas kard, ami hihetetlenül nehéznek tűnik,",
+  "tooltip.dungeons_reborn.claymore.tooltip2": "mégis könnyedén megfér egy igaz harcos kezében.",
+
+  "item.dungeons_reborn.broadsword": "Pallos",
+  "tooltip.dungeons_reborn.broadsword.tooltip1": "Csak azok képesek megemelni ezt a hatalmas pengét",
+  "tooltip.dungeons_reborn.broadsword.tooltip2": "akik egy bajnok és egy hős szívével rendelkeznek.",
 
   "tooltip.dungeons_reborn.rarity.common": "Gyakoriság: §r[§7ɢʏᴀᴋᴏʀɪ§r]",
   "tooltip.dungeons_reborn.rarity.rare": "Gyakoriság: §r[§aʀɪᴛᴋᴀ§r]",
@@ -52,9 +64,11 @@
   "tooltip.dungeons_reborn.special_resource": "Egy különleges nyersanyag",
 
   "enchantment.dungeons_reborn.primitiveness_curse": "Primitivitás átka",
-  "enchantment.dungeons_reborn.bonus_shot": "Bónusz Lövés",
+  "enchantment.dungeons_reborn.bonus_shot": "Bónusz lövés",
   "enchantment.dungeons_reborn.accelerate": "Gyorsulás",
+  "enchantment.dungeons_reborn.prospector": "Átkutatás",
   "tooltip.dungeons_reborn.bonus_shot.target_players": "Célozzon játékosokat",
   "tooltip.dungeons_reborn.built_in": "Beépített",
-  "tooltip.dungeons_reborn.powerful_combo": "Erőteljes kombó"
+  "tooltip.dungeons_reborn.powerful_combo": "Erőteljes kombó",
+  "tooltip.dungeons_reborn.powerful_pushback": "Erőteljes hátralökés"
 }

@@ -12,7 +12,9 @@ import java.util.Objects;
 import java.util.function.Supplier;
 
 public enum MCD_ToolMaterials implements ToolMaterial {
-    STEEL_MACE(BlockTags.INCORRECT_FOR_NETHERITE_TOOL, 1000, 9.0F, 4.0F, 15, () -> Ingredient.ofItems(Items.IRON_INGOT));
+    STEEL_MACE(BlockTags.INCORRECT_FOR_NETHERITE_TOOL, 1000, 9.0F, 4.0F, 15, () -> Ingredient.ofItems(Items.IRON_INGOT)),
+    BROADSWORD(BlockTags.INCORRECT_FOR_NETHERITE_TOOL, 1000, 9.0F, 4.0F, 15, () -> Ingredient.ofItems(Items.IRON_INGOT)),
+    CLAYMORE(BlockTags.INCORRECT_FOR_NETHERITE_TOOL, 1000, 9.0F, 4.0F, 15, () -> Ingredient.ofItems(Items.IRON_INGOT));
 
     private final TagKey<Block> inverseTag;
     private final int itemDurability;

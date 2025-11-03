@@ -17,7 +17,15 @@ public class MCD_ItemGroups {
                 ItemStack rareSteelMace = new ItemStack(MCD_Items.STEEL_MACE);
                 rareSteelMace.set(MCD_DataComponentTypes.MCD_RARITY, McdRarity.RARE);
                 entries.add(rareSteelMace);
+                ItemStack commonClaymore = new ItemStack(MCD_Items.CLAYMORE);
+                commonClaymore.set(MCD_DataComponentTypes.MCD_RARITY, McdRarity.COMMON);
+                entries.add(commonClaymore);
+                ItemStack rareClaymore = new ItemStack(MCD_Items.CLAYMORE);
+                rareClaymore.set(MCD_DataComponentTypes.MCD_RARITY, McdRarity.RARE);
+                entries.add(rareClaymore);
+                entries.add(MCD_Items.BROADSWORD);
                 entries.add(MCD_Items.ROUGH_DIAMOND_SWORD);
+                entries.add(MCD_Items.ROUGH_DIAMOND_PICKAXE);
                 entries.add(MCD_Items.TWIN_BOW);
                 entries.add(MCD_Items.AUTO_CROSSBOW);
                 ItemStack commonAmulet = new ItemStack(MCD_Items.ARTIFACT_IRON_HIDE_AMULET);
@@ -32,9 +40,9 @@ public class MCD_ItemGroups {
                 ItemStack rareMushroom = new ItemStack(MCD_Items.ARTIFACT_DEATH_CAP_MUSHROOM);
                 rareMushroom.set(MCD_DataComponentTypes.MCD_RARITY, McdRarity.RARE);
                 entries.add(rareMushroom);
-                entries.add(MCD_Blocks.MOSSIER_COBBLESTONE);
                 entries.add(MCD_Blocks.DRIED_MOSS_BLOCK);
                 entries.add(MCD_Blocks.DRIED_MOSS_CARPET);
+                entries.add(MCD_Blocks.MOSSIER_COBBLESTONE);
                 entries.add(MCD_Blocks.MIDNIGHT_MOSS_BLOCK);
                 entries.add(MCD_Blocks.MIDNIGHT_MOSS_CARPET);
                 entries.add(MCD_Blocks.MIDNIGHT_SPROUTS);

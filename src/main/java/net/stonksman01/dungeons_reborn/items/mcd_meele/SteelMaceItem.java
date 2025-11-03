@@ -16,6 +16,7 @@ import net.minecraft.text.Style;
 import net.minecraft.text.Text;
 import net.minecraft.util.Formatting;
 import net.minecraft.world.World;
+import net.stonksman01.dungeons_reborn.DungeonsReborn;
 import net.stonksman01.dungeons_reborn._included_libs.SkyCore;
 import net.stonksman01.dungeons_reborn.components.McdRarity;
 import net.stonksman01.dungeons_reborn.items.McdItem;
@@ -36,6 +37,7 @@ public class SteelMaceItem extends SkyCore.ToolAPI.SwordItem {
     public boolean postHit(ItemStack stack, LivingEntity target, LivingEntity attacker) {
         int current_chain_step = stack.getOrDefault(MCD_DataComponentTypes.STEEL_MACE_ATTACK_CHAIN, 1);
         int next_chain_step;
+        DungeonsReborn.LOGGER.info("Chain step: {}", current_chain_step);
         if (current_chain_step == 1) attacker.getWorld().playSoundFromEntity(null, attacker, SoundEvents.ITEM_MACE_SMASH_GROUND, SoundCategory.NEUTRAL, 1.0F, 1.0F);
         if (current_chain_step == 3) modifySpeedAndAttackDamage(stack, baseAttackDamage + 8d, attackSpeed -1d);
         else modifySpeedAndAttackDamage(stack, baseAttackDamage + 4d, attackSpeed);
@@ -45,7 +47,6 @@ public class SteelMaceItem extends SkyCore.ToolAPI.SwordItem {
         stack.set(MCD_DataComponentTypes.STEEL_MACE_ATTACK_CHAIN, next_chain_step);
         return super.postHit(stack, target, attacker);
     }
-
     private void modifySpeedAndAttackDamage(ItemStack stack, double attackDamage, double attackSpeed) {
         McdRarity mcdRarity = stack.get(MCD_DataComponentTypes.MCD_RARITY);
         stack.set(DataComponentTypes.ATTRIBUTE_MODIFIERS, stack.getOrDefault(DataComponentTypes.ATTRIBUTE_MODIFIERS, AttributeModifiersComponent.DEFAULT)
@@ -69,8 +70,10 @@ public class SteelMaceItem extends SkyCore.ToolAPI.SwordItem {
         super.appendTooltip(stack, context, tooltip, type);
     }
     @Override
-    public int getItemBarColor(ItemStack stack) {
-        return McdItem.getMcdItemBarColor();
+    public int getItemBarColor(ItemStack stack) { //TODO
+        int current_chain_step = stack.getOrDefault(MCD_DataComponentTypes.STEEL_MACE_ATTACK_CHAIN, 1);
+        if (current_chain_step == 1) return McdItem.getMcdChargedItemBarColor();
+        else return McdItem.getMcdItemBarColor();
     }
 
     @Override

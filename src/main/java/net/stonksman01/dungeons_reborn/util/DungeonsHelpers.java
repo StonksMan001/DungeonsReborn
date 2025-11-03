@@ -48,16 +48,16 @@ public interface DungeonsHelpers {
             tooltip.add(Text.translatable("tooltip.dungeons_reborn.rarity.unknown"));
         }
     }
-    static boolean addEnchantmentToStack(ItemStack itemStack, RegistryWrapper.WrapperLookup wrapper, RegistryKey<Enchantment> enchantment, int level) {
-        if (wrapper == null) return false;
-        return enchantInWorld(itemStack, enchantment, level, wrapper.getOptionalWrapper(RegistryKeys.ENCHANTMENT).orElse(null));
+    static void addEnchantmentToStack(ItemStack itemStack, RegistryWrapper.WrapperLookup wrapper, RegistryKey<Enchantment> enchantment, int level) {
+        if (wrapper == null) return;
+        enchantInWorld(itemStack, enchantment, level, wrapper.getOptionalWrapper(RegistryKeys.ENCHANTMENT).orElse(null));
     }
-    private static boolean enchantInWorld( ItemStack stack, RegistryKey<Enchantment> enchantment, int level, RegistryWrapper.Impl<Enchantment> lookup ) {
-        if (lookup == null) return false;
-        return lookup.getOptional(enchantment).map(e -> {
-                    stack.addEnchantment(e, level);
-                    return true;
-        }).orElse(false);
+    private static void enchantInWorld(ItemStack stack, RegistryKey<Enchantment> enchantment, int level, RegistryWrapper.Impl<Enchantment> lookup ) {
+        if (lookup == null) return;
+        lookup.getOptional(enchantment).map(e -> {
+            stack.addEnchantment(e, level);
+            return true;
+        });
     }
     static RegistryEntry<Enchantment> getEnchantmentRegistryEntry(World world, RegistryKey<Enchantment> enchantment) {
         return world.getRegistryManager().get(RegistryKeys.ENCHANTMENT).getEntry(enchantment).orElseThrow();

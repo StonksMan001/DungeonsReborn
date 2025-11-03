@@ -32,6 +32,8 @@ public class MCD_ItemTagProvider extends FabricTagProvider.ItemTagProvider {
         getOrCreateTagBuilder(ItemTags.SHOVELS).addOptionalTag(MCD_ItemTags.HAS_DURABILITY_SHOVELS);
         getOrCreateTagBuilder(ItemTags.SWORDS).addOptionalTag(MCD_ItemTags.HAS_DURABILITY_SWORDS);
 
+        getOrCreateTagBuilder(MCD_ItemTags.HAS_DURABILITY_PICKAXES)
+                .add(MCD_Items.ROUGH_DIAMOND_PICKAXE);
         getOrCreateTagBuilder(MCD_ItemTags.HAS_DURABILITY_BOWS)
                 .add(MCD_Items.TWIN_BOW);
         getOrCreateTagBuilder(MCD_ItemTags.HAS_DURABILITY_CROSSBOWS)
@@ -41,6 +43,8 @@ public class MCD_ItemTagProvider extends FabricTagProvider.ItemTagProvider {
                 .add(MCD_Items.ARTIFACT_DEATH_CAP_MUSHROOM);
         getOrCreateTagBuilder(MCD_ItemTags.HAS_DURABILITY_SWORDS)
                 .add(MCD_Items.ROUGH_DIAMOND_SWORD)
-                .add(MCD_Items.STEEL_MACE);
+                .add(MCD_Items.STEEL_MACE)
+                .add(MCD_Items.CLAYMORE)
+                .add(MCD_Items.BROADSWORD);
     }
 }
