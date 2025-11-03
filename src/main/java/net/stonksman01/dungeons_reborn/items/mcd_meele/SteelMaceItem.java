@@ -19,7 +19,6 @@ import net.minecraft.sound.SoundEvents;
 import net.minecraft.text.Style;
 import net.minecraft.text.Text;
 import net.minecraft.util.Formatting;
-import net.minecraft.world.World;
 import net.stonksman01.dungeons_reborn._included_libs.SkyCore;
 import net.stonksman01.dungeons_reborn.components.McdRarity;
 import net.stonksman01.dungeons_reborn.items.McdItem;
@@ -27,8 +26,6 @@ import net.stonksman01.dungeons_reborn.registries.MCD_DataComponentTypes;
 import net.stonksman01.dungeons_reborn.util.DungeonsHelpers;
 import org.jetbrains.annotations.Nullable;
 
-import java.util.List;
-import java.util.Objects;
 import java.util.function.Consumer;
 
 public class SteelMaceItem extends SkyCore.ToolAPI.SwordItem {
@@ -76,7 +73,9 @@ public class SteelMaceItem extends SkyCore.ToolAPI.SwordItem {
     }
     @Override
     public int getItemBarColor(ItemStack stack) {
-        return McdItem.getMcdItemBarColor();
+        int current_chain_step = stack.getOrDefault(MCD_DataComponentTypes.STEEL_MACE_ATTACK_CHAIN, 1);
+        if (current_chain_step == 1) return McdItem.getMcdChargedItemBarColor();
+        else return McdItem.getMcdItemBarColor();
     }
     @Override
     public void inventoryTick(ItemStack stack, ServerWorld world, Entity entity, @Nullable EquipmentSlot slot) {

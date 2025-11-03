@@ -111,7 +111,7 @@ public class IronSkinItem extends McdArtifactItem {
         if (stack.get(MCD_DataComponentTypes.IRON_HIDE_AMULET_PERSONAL_TOGGLE) == null) {
             stack.set(MCD_DataComponentTypes.IRON_HIDE_AMULET_PERSONAL_TOGGLE, false);
         }
-        super.inventoryTick(stack, world, entity, slot);
         DungeonsHelpers.setRareOrCommonVariant(stack);
+        super.inventoryTick(stack, world, entity, slot);
     }
 }

@@ -2,7 +2,8 @@
 8ab7b4617a377310e5c8fdd810d6aa73204e3c26 data/dungeons_reborn/tags/item/has_durability/bows.json
 117621b871fb952d182ac9be8721a1cab4accfd5 data/dungeons_reborn/tags/item/has_durability/crossbows.json
 544d360674c644305f3449336dd914ee42c8fc2a data/dungeons_reborn/tags/item/has_durability/durable.json
-a3835a389f511e126d07c62556ef19ff9cf4338f data/dungeons_reborn/tags/item/has_durability/swords.json
+49df45da1aa80af61a57695ea941e6b61e7aa892 data/dungeons_reborn/tags/item/has_durability/pickaxes.json
+b8ca3f27be7a6945c18a23667141d2f7433b335b data/dungeons_reborn/tags/item/has_durability/swords.json
 e522705c772ed1115ed7ed7776af25f749267838 data/minecraft/tags/item/axes.json
 02db3bfdfe0ec93cc04d96a4b80786c24f5297bc data/minecraft/tags/item/chest_armor.json
 76edd2b989ff753e09f0fe34031c45aaa8b01dda data/minecraft/tags/item/enchantable/bow.json

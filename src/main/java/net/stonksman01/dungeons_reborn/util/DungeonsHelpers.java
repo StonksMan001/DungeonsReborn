@@ -53,16 +53,16 @@ public interface DungeonsHelpers {
     static void makeUnrepairable(ItemStack stack) {
         if (Objects.nonNull(stack.get(DataComponentTypes.REPAIRABLE))) stack.set(DataComponentTypes.REPAIRABLE, null);
     }
-    static boolean addEnchantmentToStack(ItemStack itemStack, RegistryWrapper.WrapperLookup wrapper, RegistryKey<Enchantment> enchantment, int level) {
-        if (wrapper == null) return false;
-        return enchantInWorld(itemStack, enchantment, level, wrapper.getOptional(RegistryKeys.ENCHANTMENT).orElse(null));
+    static void addEnchantmentToStack(ItemStack itemStack, RegistryWrapper.WrapperLookup wrapper, RegistryKey<Enchantment> enchantment, int level) {
+        if (wrapper == null) return;
+        enchantInWorld(itemStack, enchantment, level, wrapper.getOptional(RegistryKeys.ENCHANTMENT).orElse(null));
     }
-    private static boolean enchantInWorld( ItemStack stack, RegistryKey<Enchantment> enchantment, int level, RegistryWrapper.Impl<Enchantment> lookup ) {
-        if (lookup == null) return false;
-        return lookup.getOptional(enchantment).map(e -> {
-                    stack.addEnchantment(e, level);
-                    return true;
-        }).orElse(false);
+    private static void enchantInWorld(ItemStack stack, RegistryKey<Enchantment> enchantment, int level, RegistryWrapper.Impl<Enchantment> lookup ) {
+        if (lookup == null) return;
+        lookup.getOptional(enchantment).map(e -> {
+            stack.addEnchantment(e, level);
+            return true;
+        });
     }
     static RegistryEntry<Enchantment> getEnchantmentRegistryEntry(World world, RegistryKey<Enchantment> enchantment) {
         return world.getRegistryManager().getOrThrow(RegistryKeys.ENCHANTMENT).getOptional(enchantment).orElseThrow();

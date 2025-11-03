@@ -13,8 +13,7 @@ import net.stonksman01.dungeons_reborn.DungeonsReborn;
 import net.stonksman01.dungeons_reborn._included_libs.SkyCore;
 import net.stonksman01.dungeons_reborn.items.mcd_artifact.DeathCapMushroomItem;
 import net.stonksman01.dungeons_reborn.items.mcd_artifact.IronSkinItem;
-import net.stonksman01.dungeons_reborn.items.mcd_meele.RoughDiamondSwordItem;
-import net.stonksman01.dungeons_reborn.items.mcd_meele.SteelMaceItem;
+import net.stonksman01.dungeons_reborn.items.mcd_meele.*;
 import net.stonksman01.dungeons_reborn.items.mcd_ranged.AutoCrossbowItem;
 import net.stonksman01.dungeons_reborn.items.mcd_ranged.TwinBowItem;
 
@@ -29,8 +28,16 @@ public class MCD_Items {
     public static final Item ROUGH_DIAMOND_SWORD = SkyCore.BuiltinRegistries.registerItem("rough_diamond_sword",
             settings -> new RoughDiamondSwordItem(ToolMaterial.DIAMOND, 3, 1.6f - 4f, settings
                     .rarity(Rarity.EPIC)));
+    public static final Item ROUGH_DIAMOND_PICKAXE = SkyCore.BuiltinRegistries.registerItem("rough_diamond_pickaxe",
+            settings -> new RoughDiamondPickaxeItem(ToolMaterial.DIAMOND, 1, 1.2f - 4f, settings
+                    .rarity(Rarity.EPIC)));
     public static final Item STEEL_MACE = SkyCore.BuiltinRegistries.registerItem("steel_mace",
-            settings -> new SteelMaceItem(MCD_ToolMaterials.STEEL_MACE, 3, 1.6f - 4f, settings));
+            settings -> new SteelMaceItem(MCD_ToolMaterials.STEEL_MACE, 2, 1.6f - 4f, settings));
+    public static final Item CLAYMORE = SkyCore.BuiltinRegistries.registerItem("claymore",
+            settings -> new ClaymoreItem(MCD_ToolMaterials.CLAYMORE, 4, 1.0f - 4f, settings));
+    public static final Item BROADSWORD = SkyCore.BuiltinRegistries.registerItem("broadsword",
+            settings -> new BroadswordItem(MCD_ToolMaterials.CLAYMORE, 4, 1.0f - 4f, settings
+                    .rarity(Rarity.EPIC)));
     public static final Item AUTO_CROSSBOW = SkyCore.BuiltinRegistries.registerItem("auto_crossbow",
             settings -> new AutoCrossbowItem(settings
                     .maxDamage(465)

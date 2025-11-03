@@ -24,6 +24,8 @@ public class MCD_DataComponentTypes {
     });
     public static final ComponentType<Integer> STEEL_MACE_ATTACK_CHAIN = SkyCore.BuiltinRegistries.registerComponentType("steel_mace_attack_chain", integerBuilder -> {
         return integerBuilder.codec(Codec.INT);
+    });public static final ComponentType<Integer> CLAYMORE_ATTACK_CHAIN = SkyCore.BuiltinRegistries.registerComponentType("claymore_attack_chain", integerBuilder -> {
+        return integerBuilder.codec(Codec.INT);
     });
     public static void register() {
         DungeonsReborn.LOGGER.info("[DungeonsReborn] Registering DataComponentTypes");

@@ -12,24 +12,25 @@ import net.minecraft.server.world.ServerWorld;
 import net.minecraft.text.Style;
 import net.minecraft.text.Text;
 import net.minecraft.util.Formatting;
+import net.minecraft.world.World;
+import net.stonksman01.dungeons_reborn.items.mcd_meele.template.ClaymoreTemplateItem;
 import net.stonksman01.dungeons_reborn.util.DungeonsHelpers;
-import net.stonksman01.dungeons_reborn._included_libs.SkyCore;
-import net.stonksman01.dungeons_reborn.items.McdItem;
-import net.stonksman01.dungeons_reborn.util.GrindStoneExperienceNotDropping;
 import org.jetbrains.annotations.Nullable;
 
+import java.util.List;
 import java.util.function.Consumer;
 
-public class RoughDiamondSwordItem extends SkyCore.ToolAPI.SwordItem implements GrindStoneExperienceNotDropping {
-    public RoughDiamondSwordItem(ToolMaterial toolMaterial, float baseAttackDamage, float attackSpeed, Settings settings) {
+public class BroadswordItem extends ClaymoreTemplateItem {
+    public BroadswordItem(ToolMaterial toolMaterial, float baseAttackDamage, float attackSpeed, Settings settings) {
         super(toolMaterial, baseAttackDamage, attackSpeed, settings);
     }
     @Override
     public void appendTooltip(ItemStack stack, Item.TooltipContext context, TooltipDisplayComponent displayComponent, Consumer<Text> textConsumer, TooltipType type) {
         textConsumer.accept(Text.translatable("tooltip.dungeons_reborn.minecraft_dungeons_header").setStyle(Style.EMPTY.withBold(true).withFormatting(Formatting.GRAY)));
-        textConsumer.accept(Text.translatable("tooltip.dungeons_reborn.rough_diamond_sword.tooltip1").setStyle(Style.EMPTY.withItalic(true).withFormatting(Formatting.GRAY)));
-        textConsumer.accept(Text.translatable("tooltip.dungeons_reborn.rough_diamond_sword.tooltip2").setStyle(Style.EMPTY.withItalic(true).withFormatting(Formatting.GRAY)));
+        textConsumer.accept(Text.translatable("tooltip.dungeons_reborn.broadsword.tooltip1").setStyle(Style.EMPTY.withItalic(true).withFormatting(Formatting.GRAY)));
+        textConsumer.accept(Text.translatable("tooltip.dungeons_reborn.broadsword.tooltip2").setStyle(Style.EMPTY.withItalic(true).withFormatting(Formatting.GRAY)));
         textConsumer.accept(Text.translatable("tooltip.dungeons_reborn.rarity.unique"));
+        textConsumer.accept(Text.translatable("tooltip.dungeons_reborn.powerful_pushback").setStyle(Style.EMPTY.withFormatting(Formatting.GREEN).withItalic(true)));
         textConsumer.accept(
                 Text.translatable("tooltip.dungeons_reborn.built_in").setStyle(Style.EMPTY.withFormatting(Formatting.GREEN).withItalic(true))
                         .append(Text.literal(" "))
@@ -40,11 +41,6 @@ public class RoughDiamondSwordItem extends SkyCore.ToolAPI.SwordItem implements 
     @Override
     public void inventoryTick(ItemStack stack, ServerWorld world, Entity entity, @Nullable EquipmentSlot slot) {
         DungeonsHelpers.addEnchantmentToStack(stack, world.getRegistryManager(), Enchantments.SHARPNESS, 5);
-        DungeonsHelpers.makeUnrepairable(stack);
         super.inventoryTick(stack, world, entity, slot);
-    }
-    @Override
-    public int getItemBarColor(ItemStack stack) {
-        return McdItem.getMcdItemBarColor();
     }
 }

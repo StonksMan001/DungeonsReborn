@@ -67,7 +67,7 @@ public class DeathCapMushroomItem extends McdArtifactItem {
     }
     @Override
     public void inventoryTick(ItemStack stack, ServerWorld world, Entity entity, @Nullable EquipmentSlot slot) {
-        super.inventoryTick(stack, world, entity, slot);
         DungeonsHelpers.setRareOrCommonVariant(stack);
+        super.inventoryTick(stack, world, entity, slot);
     }
 }

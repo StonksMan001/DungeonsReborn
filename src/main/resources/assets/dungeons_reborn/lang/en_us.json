@@ -37,9 +37,21 @@
   "tooltip.dungeons_reborn.rough_diamond_sword.tooltip1": "The Rough Diamond Sword is the true mark",
   "tooltip.dungeons_reborn.rough_diamond_sword.tooltip2": "of a hero and an accomplished adventurer.",
 
+  "item.dungeons_reborn.rough_diamond_pickaxe": "Rough Diamond Pickaxe",
+  "tooltip.dungeons_reborn.rough_diamond_pickaxe.tooltip1": "Diamond is one of the most durable materials,",
+  "tooltip.dungeons_reborn.rough_diamond_pickaxe.tooltip2": "making it an excellent choice for a pickaxe.",
+
   "item.dungeons_reborn.steel_mace": "Steel Mace",
   "tooltip.dungeons_reborn.steel_mace.tooltip1": "The Steel Mace is a brutal tool of war and what",
   "tooltip.dungeons_reborn.steel_mace.tooltip2": "it lacks in finesse; it makes up for in power.",
+
+  "item.dungeons_reborn.claymore": "Claymore",
+  "tooltip.dungeons_reborn.claymore.tooltip1": "A massive sword that seems impossibly heavy",
+  "tooltip.dungeons_reborn.claymore.tooltip2": "yet rests easily in a just warrior's hands",
+
+  "item.dungeons_reborn.broadsword": "Broadsword",
+  "tooltip.dungeons_reborn.broadsword.tooltip1": "Only those with the strength of a champion and",
+  "tooltip.dungeons_reborn.broadsword.tooltip2": "the heart of a hero can carry this massive blade.",
 
   "tooltip.dungeons_reborn.rarity.common": "Rarity: §r[§7ᴄᴏᴍᴍᴏɴ§r]",
   "tooltip.dungeons_reborn.rarity.rare": "Rarity: §r[§aʀᴀʀᴇ§r]",
@@ -54,7 +66,9 @@
   "enchantment.dungeons_reborn.primitiveness_curse": "Primitiveness Curse",
   "enchantment.dungeons_reborn.bonus_shot": "Bonus Shot",
   "enchantment.dungeons_reborn.accelerate": "Accelerate",
+  "enchantment.dungeons_reborn.prospector": "Prospector",
   "tooltip.dungeons_reborn.bonus_shot.target_players": "Target players",
   "tooltip.dungeons_reborn.built_in": "Built in",
-  "tooltip.dungeons_reborn.powerful_combo": "Powerful combo"
+  "tooltip.dungeons_reborn.powerful_combo": "Powerful combo",
+  "tooltip.dungeons_reborn.powerful_pushback": "Powerful pushback"
 }

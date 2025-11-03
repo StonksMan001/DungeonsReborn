@@ -11,6 +11,7 @@ import net.minecraft.state.property.Properties;
 import net.stonksman01.dungeons_reborn.blocks.MossyOakPlanksBlock;
 import net.stonksman01.dungeons_reborn.registries.MCD_Blocks;
 import net.stonksman01.dungeons_reborn.registries.MCD_Items;
+import net.stonksman01.dungeons_reborn.registries.MCD_Models;
 
 public class MCD_ModelProvider extends FabricModelProvider {
     public MCD_ModelProvider(FabricDataOutput output) {
@@ -46,6 +47,9 @@ public class MCD_ModelProvider extends FabricModelProvider {
         itemModelGenerator.register(MCD_Items.ARTIFACT_IRON_HIDE_AMULET, Models.GENERATED);
 
         itemModelGenerator.register(MCD_Items.ROUGH_DIAMOND_SWORD, Models.HANDHELD);
+        itemModelGenerator.register(MCD_Items.ROUGH_DIAMOND_PICKAXE, Models.HANDHELD);
         itemModelGenerator.register(MCD_Items.STEEL_MACE, Models.HANDHELD);
+        itemModelGenerator.register(MCD_Items.CLAYMORE, MCD_Models.HANDHELD_CLAYMORE);
+        itemModelGenerator.register(MCD_Items.BROADSWORD, MCD_Models.HANDHELD_CLAYMORE);
     }
 }

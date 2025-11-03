@@ -17,7 +17,15 @@ public class MCD_ItemGroups {
                 ItemStack rareSteelMace = new ItemStack(MCD_Items.STEEL_MACE);
                 rareSteelMace.set(MCD_DataComponentTypes.MCD_RARITY, McdRarity.RARE);
                 entries.add(rareSteelMace);
+                ItemStack commonClaymore = new ItemStack(MCD_Items.CLAYMORE);
+                commonClaymore.set(MCD_DataComponentTypes.MCD_RARITY, McdRarity.COMMON);
+                entries.add(commonClaymore);
+                ItemStack rareClaymore = new ItemStack(MCD_Items.CLAYMORE);
+                rareClaymore.set(MCD_DataComponentTypes.MCD_RARITY, McdRarity.RARE);
+                entries.add(rareClaymore);
+                entries.add(MCD_Items.BROADSWORD);
                 entries.add(MCD_Items.ROUGH_DIAMOND_SWORD);
+                entries.add(MCD_Items.ROUGH_DIAMOND_PICKAXE);
                 entries.add(MCD_Items.TWIN_BOW);
                 entries.add(MCD_Items.AUTO_CROSSBOW);
                 ItemStack commonAmulet = new ItemStack(MCD_Items.ARTIFACT_IRON_HIDE_AMULET);
