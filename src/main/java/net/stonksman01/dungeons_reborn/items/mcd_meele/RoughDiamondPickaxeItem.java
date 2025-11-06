@@ -42,7 +42,6 @@ public class RoughDiamondPickaxeItem extends SkyCore.ToolAPI.PickaxeItem {
             Random random = new Random();
             int range = (int) Math.round(6.0 * (20.0 / Math.max(1, (int) target.getMaxHealth())));
             int range_capped = Math.min(Math.max(range, 3), 120); // capped range to avoid extreme values
-            DungeonsReborn.LOGGER.info("Range: {}", range_capped);
             if (random.nextInt(range_capped - 1) == 0) { // algorithm for hp-based Prospector trigger probability
                 serverWorld.spawnEntity(new ItemEntity(serverWorld, target.getX(), target.getY(), target.getZ(), new ItemStack(Items.EMERALD, random.nextInt(5) + 1)));
                 serverWorld.spawnParticles(new DustParticleEffect(Vec3d.unpackRgb(65343).toVector3f(), 1.0f),

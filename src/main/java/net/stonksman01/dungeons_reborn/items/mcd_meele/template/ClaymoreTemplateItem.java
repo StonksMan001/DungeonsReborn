@@ -26,7 +26,6 @@ public abstract class ClaymoreTemplateItem extends SkyCore.ToolAPI.SwordItem {
     public boolean postHit(ItemStack stack, LivingEntity target, LivingEntity attacker) {
         int current_chain_step = stack.getOrDefault(MCD_DataComponentTypes.CLAYMORE_ATTACK_CHAIN, 1);
         int next_chain_step;
-        DungeonsReborn.LOGGER.info("Chain step: {}", current_chain_step);
         if (current_chain_step == 1) attacker.getWorld().playSoundFromEntity(null, attacker, SoundEvents.ITEM_TRIDENT_RETURN, SoundCategory.NEUTRAL, 1.0F, 1.0F);
         if (current_chain_step == 3) modifyKnockback(stack, 3.0);
         else modifyKnockback(stack, 0.0);
