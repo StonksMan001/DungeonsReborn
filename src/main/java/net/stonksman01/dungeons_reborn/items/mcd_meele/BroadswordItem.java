@@ -9,12 +9,12 @@ import net.minecraft.text.Style;
 import net.minecraft.text.Text;
 import net.minecraft.util.Formatting;
 import net.minecraft.world.World;
-import net.stonksman01.dungeons_reborn.items.mcd_meele.template.ClaymoreTemplateItem;
+import net.stonksman01.dungeons_reborn.items.mcd_meele.templates.ClaymoreBaseItem;
 import net.stonksman01.dungeons_reborn.util.DungeonsHelpers;
 
 import java.util.List;
 
-public class BroadswordItem extends ClaymoreTemplateItem {
+public class BroadswordItem extends ClaymoreBaseItem {
     public BroadswordItem(ToolMaterial toolMaterial, float baseAttackDamage, float attackSpeed, Settings settings) {
         super(toolMaterial, baseAttackDamage, attackSpeed, settings);
     }

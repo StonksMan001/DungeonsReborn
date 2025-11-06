@@ -1,9 +1,8 @@
-package net.stonksman01.dungeons_reborn.items.mcd_meele.template;
+package net.stonksman01.dungeons_reborn.items.mcd_meele.templates;
 
 import net.minecraft.component.DataComponentTypes;
 import net.minecraft.component.type.AttributeModifierSlot;
 import net.minecraft.component.type.AttributeModifiersComponent;
-import net.minecraft.entity.Entity;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.attribute.EntityAttributeModifier;
 import net.minecraft.entity.attribute.EntityAttributes;
@@ -11,14 +10,13 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.item.ToolMaterial;
 import net.minecraft.sound.SoundCategory;
 import net.minecraft.sound.SoundEvents;
-import net.stonksman01.dungeons_reborn.DungeonsReborn;
 import net.stonksman01.dungeons_reborn._included_libs.SkyCore;
 import net.stonksman01.dungeons_reborn.items.McdItem;
 import net.stonksman01.dungeons_reborn.registries.MCD_DataComponentTypes;
 
-public abstract class ClaymoreTemplateItem extends SkyCore.ToolAPI.SwordItem {
+public abstract class ClaymoreBaseItem extends SkyCore.ToolAPI.SwordItem {
     protected float baseAttackDamage;
-    public ClaymoreTemplateItem(ToolMaterial toolMaterial, float baseAttackDamage, float attackSpeed, Settings settings) {
+    public ClaymoreBaseItem(ToolMaterial toolMaterial, float baseAttackDamage, float attackSpeed, Settings settings) {
         super(toolMaterial, baseAttackDamage, attackSpeed, settings);
         this.baseAttackDamage = baseAttackDamage;
     }

@@ -10,13 +10,13 @@ import net.minecraft.text.Text;
 import net.minecraft.util.Formatting;
 import net.minecraft.world.World;
 import net.stonksman01.dungeons_reborn.components.McdRarity;
-import net.stonksman01.dungeons_reborn.items.mcd_meele.template.ClaymoreTemplateItem;
+import net.stonksman01.dungeons_reborn.items.mcd_meele.templates.ClaymoreBaseItem;
 import net.stonksman01.dungeons_reborn.registries.MCD_DataComponentTypes;
 import net.stonksman01.dungeons_reborn.util.DungeonsHelpers;
 
 import java.util.List;
 
-public class ClaymoreItem extends ClaymoreTemplateItem {
+public class ClaymoreItem extends ClaymoreBaseItem {
     public ClaymoreItem(ToolMaterial toolMaterial, float baseAttackDamage, float attackSpeed, Settings settings) {
         super(toolMaterial, baseAttackDamage, attackSpeed, settings);
     }
