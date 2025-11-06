@@ -37,7 +37,7 @@ public class RoughDiamondPickaxeItem extends SkyCore.ToolAPI.PickaxeItem {
         super.appendTooltip(stack, context, tooltip, type);
     }
     @Override
-    public boolean postHit(ItemStack stack, LivingEntity target, LivingEntity attacker) {
+    public void postDamageEntity(ItemStack stack, LivingEntity target, LivingEntity attacker) {
         if (target.isDead() && target instanceof MobEntity && attacker.getWorld() instanceof ServerWorld serverWorld) {
             Random random = new Random();
             int range = (int) Math.round(6.0 * (20.0 / Math.max(1, (int) target.getMaxHealth())));
@@ -51,7 +51,7 @@ public class RoughDiamondPickaxeItem extends SkyCore.ToolAPI.PickaxeItem {
                         10, 0.25F, 0.25F, 0.25F, 3);
             }
         }
-        return super.postHit(stack, target, attacker);
+        super.postHit(stack, target, attacker);
     }
     @Override
     public int getItemBarColor(ItemStack stack) {
