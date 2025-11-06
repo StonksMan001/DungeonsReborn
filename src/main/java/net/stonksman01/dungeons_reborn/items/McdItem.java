@@ -9,6 +9,10 @@ public class McdItem extends Item {
     public McdItem(Settings settings) {
         super(settings);
     }
+    @Override
+    public int getItemBarColor(ItemStack stack) {
+        return ITEM_BAR_COLOR;
+    }
     public static int getMcdItemBarColor() {
         return ITEM_BAR_COLOR;
     }

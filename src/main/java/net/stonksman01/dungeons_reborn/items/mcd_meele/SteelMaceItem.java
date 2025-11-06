@@ -37,7 +37,7 @@ public class SteelMaceItem extends SkyCore.ToolAPI.SwordItem {
         this.baseAttackDamage = baseAttackDamage;
     }
     @Override
-    public void postHit(ItemStack stack, LivingEntity target, LivingEntity attacker) {
+    public void postDamageEntity(ItemStack stack, LivingEntity target, LivingEntity attacker) {
         int current_chain_step = stack.getOrDefault(MCD_DataComponentTypes.STEEL_MACE_ATTACK_CHAIN, 1);
         int next_chain_step;
         if (current_chain_step == 1) attacker.getEntityWorld().playSoundFromEntity(null, attacker, SoundEvents.ITEM_MACE_SMASH_GROUND, SoundCategory.NEUTRAL, 1.0F, 1.0F);

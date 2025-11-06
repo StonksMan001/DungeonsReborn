@@ -27,7 +27,7 @@ public abstract class ClaymoreTemplateItem extends SkyCore.ToolAPI.SwordItem {
         this.baseAttackDamage = baseAttackDamage;
     }
     @Override
-    public void postHit(ItemStack stack, LivingEntity target, LivingEntity attacker) {
+    public void postDamageEntity(ItemStack stack, LivingEntity target, LivingEntity attacker) {
         int current_chain_step = stack.getOrDefault(MCD_DataComponentTypes.CLAYMORE_ATTACK_CHAIN, 1);
         int next_chain_step;
         if (current_chain_step == 1) attacker.getEntityWorld().playSoundFromEntity(null, attacker, SoundEvents.ITEM_TRIDENT_RETURN, SoundCategory.NEUTRAL, 1.0F, 1.0F);
@@ -37,7 +37,7 @@ public abstract class ClaymoreTemplateItem extends SkyCore.ToolAPI.SwordItem {
             next_chain_step = current_chain_step + 1;
         } else next_chain_step = 1;
         stack.set(MCD_DataComponentTypes.CLAYMORE_ATTACK_CHAIN, next_chain_step);
-        super.postHit(stack, target, attacker);
+        super.postDamageEntity(stack, target, attacker);
     }
     protected void modifyKnockback(ItemStack stack, double knockback) {
         stack.set(DataComponentTypes.ATTRIBUTE_MODIFIERS, stack.getOrDefault(DataComponentTypes.ATTRIBUTE_MODIFIERS, AttributeModifiersComponent.DEFAULT)
