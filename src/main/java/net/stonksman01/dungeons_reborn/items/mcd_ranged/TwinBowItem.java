@@ -56,83 +56,50 @@ public class TwinBowItem extends BowItem {
             if (!itemStack.isEmpty()) {
                 int i = this.getMaxUseTime(stack, user) - remainingUseTicks;
                 float f = getPullProgress(i);
-                if (!((double)f < 0.1)) {
+                if (!(f < 0.1)) {
                     List<ItemStack> list = load(stack, itemStack, playerEntity);
-                    if (world instanceof ServerWorld) {
-                        ServerWorld serverWorld = ((ServerWorld) world).toServerWorld();
-                        if (!list.isEmpty()) {
-                            boolean bowHasInfinity = false;
-                            if (EnchantmentHelper.getLevel(DungeonsHelpers.getEnchantmentRegistryEntry(world, Enchantments.INFINITY), stack) > 0) {
-                                bowHasInfinity = true;
-                            }
-                            boolean critical = f == 1.0F;
-                            float speed = f * 3.0F;
-                            float divergence = 1.0F;
-                            int index = 0; //redundant
-                            Box searchBox = new Box(playerEntity.getBlockPos()).expand(20);
-                            List<LivingEntity> targetEntities =
-                                    Boolean.TRUE.equals(stack.get(MCD_DataComponentTypes.TWIN_BOW_TARGET_PLAYER_ENTITIES_TOGGLE))
-                                            ?
-                                    serverWorld.getEntitiesByClass(LivingEntity.class, searchBox,
-                                            entity ->
-                                                    (entity instanceof Monster || entity instanceof HostileEntity || (entity instanceof PlayerEntity playerEntity2 && !playerEntity2.isCreative() && !playerEntity2.isSpectator())) &&
-                                                    entity != playerEntity &&
-                                                    (entity.getScoreboardTeam() != playerEntity.getScoreboardTeam() ||
-                                                            (entity.getScoreboardTeam() == null && playerEntity.getScoreboardTeam() == null)
-                                                    ))
-                                            :
-                                    serverWorld.getEntitiesByClass(LivingEntity.class, searchBox,
-                                            entity ->
-                                                    (entity instanceof Monster || entity instanceof HostileEntity) &&
-                                                    (entity.getScoreboardTeam() != playerEntity.getScoreboardTeam() ||
-                                                            (entity.getScoreboardTeam() == null && playerEntity.getScoreboardTeam() == null)
-                                                    ));
-                            boolean bonus_shot = false;
-                            if (!targetEntities.isEmpty() && !playerEntity.isSneaking()) {
-                                bonus_shot = true;
-                                LivingEntity closestHostile = targetEntities.getFirst();
-                                // bonus projectile
-                                PersistentProjectileEntity persistentProjectileEntity1 = this.createArrowEntity(serverWorld, playerEntity, stack, itemStack, critical);
-                                this.shoot(playerEntity, persistentProjectileEntity1, index, speed, divergence, playerEntity.getYaw(), null);
-                                persistentProjectileEntity1.pickupType = PersistentProjectileEntity.PickupPermission.DISALLOWED;
-                                persistentProjectileEntity1.setVelocity(closestHostile.getX() - playerEntity.getX(), closestHostile.getEyeY() - playerEntity.getEyeY(), closestHostile.getZ() - playerEntity.getZ(), 1.5F, 0);
-                                world.spawnEntity(persistentProjectileEntity1);
-                            }
-                            // main projectile
-                            PersistentProjectileEntity persistentProjectileEntity0 = this.createArrowEntity(serverWorld, playerEntity, stack, itemStack, critical);
-                            this.shoot(playerEntity, persistentProjectileEntity0, index, speed, divergence, 0.0f, null);
-                            if (bonus_shot || (bowHasInfinity && persistentProjectileEntity0 instanceof ArrowEntity)) {
-                                persistentProjectileEntity0.pickupType = PersistentProjectileEntity.PickupPermission.DISALLOWED;
-                            } else if (playerEntity.isCreative()) {
-                                persistentProjectileEntity0.pickupType = PersistentProjectileEntity.PickupPermission.CREATIVE_ONLY;
-                            } else {
-                                persistentProjectileEntity0.pickupType = PersistentProjectileEntity.PickupPermission.ALLOWED;
-                            }
-                            world.spawnEntity(persistentProjectileEntity0);
-                            stack.damage(this.getWeaponStackDamage(itemStack), playerEntity, LivingEntity.getSlotForHand(playerEntity.getActiveHand()));
+                    if (world instanceof ServerWorld serverWorld && !list.isEmpty()) {
+                        boolean bowHasInfinity = EnchantmentHelper.getLevel(DungeonsHelpers.getEnchantmentRegistryEntry(world, Enchantments.INFINITY), stack) > 0;
+                        boolean critical = f == 1.0F;
+                        float speed = f * 3.0F;
+                        float divergence = 1.0F;
+                        int index = 0; // redundant
+                        Box searchBox = new Box(playerEntity.getBlockPos()).expand(20);
+                        boolean targetPlayers = Boolean.TRUE.equals(stack.get(MCD_DataComponentTypes.TWIN_BOW_TARGET_PLAYER_ENTITIES_TOGGLE));
+                        List<LivingEntity> targetEntities = serverWorld.getEntitiesByClass(
+                                LivingEntity.class,
+                                searchBox,
+                                entity -> DungeonsHelpers.isEntityEnemy(entity, playerEntity, targetPlayers)
+                        );
+                        boolean bonus_shot = false;
+                        if (!targetEntities.isEmpty() && !playerEntity.isSneaking()) {
+                            bonus_shot = true;
+                            LivingEntity targetEntity = targetEntities.getFirst();
+                            // bonus projectile
+                            PersistentProjectileEntity persistentProjectileEntity1 = (PersistentProjectileEntity) super.createArrowEntity(serverWorld, playerEntity, stack, itemStack, critical);
+                            this.shoot(playerEntity, persistentProjectileEntity1, index, speed, divergence, playerEntity.getYaw(), null);
+                            persistentProjectileEntity1.pickupType = PersistentProjectileEntity.PickupPermission.DISALLOWED;
+                            persistentProjectileEntity1.setVelocity(targetEntity.getX() - playerEntity.getX(), targetEntity.getEyeY() - playerEntity.getEyeY(), targetEntity.getZ() - playerEntity.getZ(), 1.5F, 0);
+                            world.spawnEntity(persistentProjectileEntity1);
                         }
+                        // main projectile
+                        PersistentProjectileEntity persistentProjectileEntity0 = (PersistentProjectileEntity) super.createArrowEntity(serverWorld, playerEntity, stack, itemStack, critical);
+                        this.shoot(playerEntity, persistentProjectileEntity0, index, speed, divergence, 0.0f, null);
+                        if (bonus_shot || (bowHasInfinity && persistentProjectileEntity0 instanceof ArrowEntity)) {
+                            persistentProjectileEntity0.pickupType = PersistentProjectileEntity.PickupPermission.DISALLOWED;
+                        } else if (playerEntity.isCreative()) {
+                            persistentProjectileEntity0.pickupType = PersistentProjectileEntity.PickupPermission.CREATIVE_ONLY;
+                        } else {
+                            persistentProjectileEntity0.pickupType = PersistentProjectileEntity.PickupPermission.ALLOWED;
+                        }
+                        world.spawnEntity(persistentProjectileEntity0);
+                        stack.damage(this.getWeaponStackDamage(itemStack), playerEntity, LivingEntity.getSlotForHand(playerEntity.getActiveHand()));
                     }
                     world.playSound(null, playerEntity.getX(), playerEntity.getY(), playerEntity.getZ(), MCD_Sounds.TWIN_BOW_SHOOT, SoundCategory.PLAYERS, 1.0F, 1.0F / (world.getRandom().nextFloat() * 0.4F + 1.2F) + f * 0.5F);
                     playerEntity.incrementStat(Stats.USED.getOrCreateStat(this));
                 }
             }
         }
-    }
-    @Override
-    protected PersistentProjectileEntity createArrowEntity(World world, LivingEntity shooter, ItemStack weaponStack, ItemStack projectileStack, boolean critical) {
-        Item var8 = projectileStack.getItem();
-        ArrowItem var10000;
-        if (var8 instanceof ArrowItem arrowItem) {
-            var10000 = arrowItem;
-        } else {
-            var10000 = (ArrowItem)Items.ARROW;
-        }
-        ArrowItem arrowItem2 = var10000;
-        PersistentProjectileEntity persistentProjectileEntity = arrowItem2.createArrow(world, projectileStack, shooter, weaponStack);
-        if (critical) {
-            persistentProjectileEntity.setCritical(true);
-        }
-        return persistentProjectileEntity;
     }
     @Override
     public void appendTooltip(ItemStack stack, TooltipContext context, List<Text> tooltip, TooltipType type) {

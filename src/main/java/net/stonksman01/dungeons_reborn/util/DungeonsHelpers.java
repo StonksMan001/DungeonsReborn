@@ -2,6 +2,11 @@ package net.stonksman01.dungeons_reborn.util;
 
 import com.llamalad7.mixinextras.injector.wrapoperation.Operation;
 import net.minecraft.enchantment.Enchantment;
+import net.minecraft.entity.Entity;
+import net.minecraft.entity.LivingEntity;
+import net.minecraft.entity.mob.HostileEntity;
+import net.minecraft.entity.mob.Monster;
+import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.BowItem;
 import net.minecraft.item.CrossbowItem;
 import net.minecraft.item.Item;
@@ -10,6 +15,7 @@ import net.minecraft.registry.RegistryKey;
 import net.minecraft.registry.RegistryKeys;
 import net.minecraft.registry.RegistryWrapper;
 import net.minecraft.registry.entry.RegistryEntry;
+import net.minecraft.scoreboard.Team;
 import net.minecraft.text.Text;
 import net.minecraft.world.World;
 import net.stonksman01.dungeons_reborn.components.McdRarity;
@@ -59,6 +65,22 @@ public interface DungeonsHelpers {
             return true;
         });
     }
+    static boolean isEntityEnemy(LivingEntity target, PlayerEntity playerEntity, boolean targetPlayers) {
+        if (!targetPlayers && target instanceof PlayerEntity) return false;
+        if (target == playerEntity) return false;
+        boolean isHostile = target instanceof Monster
+                || target instanceof HostileEntity
+                || (target instanceof PlayerEntity otherPlayer
+                && !otherPlayer.isCreative()
+                && !otherPlayer.isSpectator());
+        if (!isHostile) return false;
+
+        Team entityTeam = target.getScoreboardTeam();
+        Team playerTeam = playerEntity.getScoreboardTeam();
+
+        return (entityTeam == null && playerTeam == null) || entityTeam != playerTeam;
+    }
+
     static RegistryEntry<Enchantment> getEnchantmentRegistryEntry(World world, RegistryKey<Enchantment> enchantment) {
         return world.getRegistryManager().get(RegistryKeys.ENCHANTMENT).getEntry(enchantment).orElseThrow();
     }
