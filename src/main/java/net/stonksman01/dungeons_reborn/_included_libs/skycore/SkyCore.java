@@ -1,9 +1,9 @@
-package net.stonksman01.dungeons_reborn._included_libs;
+package net.stonksman01.dungeons_reborn._included_libs.skycore;
 
+import com.llamalad7.mixinextras.injector.wrapoperation.Operation;
 import net.fabricmc.fabric.api.object.builder.v1.world.poi.PointOfInterestHelper;
 import net.minecraft.block.Block;
 import net.minecraft.block.entity.BlockEntity;
-import net.minecraft.block.entity.BlockEntityTicker;
 import net.minecraft.block.entity.BlockEntityType;
 import net.minecraft.block.jukebox.JukeboxSong;
 import net.minecraft.component.ComponentType;
@@ -31,7 +31,8 @@ import net.minecraft.world.gen.feature.Feature;
 import net.minecraft.world.gen.feature.FeatureConfig;
 import net.minecraft.world.poi.PointOfInterestType;
 import net.stonksman01.dungeons_reborn.DungeonsReborn;
-import org.jetbrains.annotations.Nullable;
+import net.stonksman01.dungeons_reborn._included_libs.skycore.items.SC_BowItem;
+import net.stonksman01.dungeons_reborn._included_libs.skycore.items.SC_CrossbowItem;
 
 import java.util.EnumMap;
 import java.util.List;
@@ -41,6 +42,15 @@ import java.util.function.UnaryOperator;
 public class SkyCore {
     public static Identifier identifierOfDungeonsReborn(String id) {
         return Identifier.of(DungeonsReborn.MOD_ID, id);
+    }
+    public static boolean wrapRangedWeaponHardcodedCallsIfPresent(ItemStack instance, Item item, Operation<Boolean> original) {
+        if (item instanceof BowItem) {
+            return original.call(instance, item) || instance.getItem() instanceof SC_BowItem;
+        }
+        if (item instanceof CrossbowItem) {
+            return original.call(instance, item) || instance.getItem() instanceof SC_CrossbowItem;
+        }
+        return original.call(instance, item);
     }
     public static class BuiltinRegistries {
         public static RegistryKey<Enchantment> ofEnchantmentRegistry(String name) {
@@ -75,17 +85,31 @@ public class SkyCore {
             return Registry.register(Registries.ITEM, RegistryKey.of(Registries.ITEM.getKey(), Registries.BLOCK.getId(blockItem.getBlock())), blockItem);
         }
         public static Item registerItem(String name, Item item) {
-            return Registry.register(Registries.ITEM, identifierOfDungeonsReborn(name), item);
+            var registry = Registries.ITEM;
+            Identifier parentId = identifierOfDungeonsReborn(name);
+            if (SkyCoreDataFixerAPI.ITEM_WITH_ALIAS.containsKey(parentId.toString())) {
+                for (String alias : SkyCoreDataFixerAPI.ITEM_WITH_ALIAS.get(parentId.toString())) {
+                    registry.addAlias(Identifier.of(alias), parentId);
+                }
+            }
+            return Registry.register(registry, identifierOfDungeonsReborn(name), item);
         }
         public static Block registerBlock(String name, Block block) {
-            return Registry.register(Registries.BLOCK, identifierOfDungeonsReborn(name), block);
+            var registry = Registries.BLOCK;
+            Identifier parentId = identifierOfDungeonsReborn(name);
+            if (SkyCoreDataFixerAPI.BLOCKS_WITH_ALIAS.containsKey(parentId.toString())) {
+                for (String alias : SkyCoreDataFixerAPI.BLOCKS_WITH_ALIAS.get(parentId.toString())) {
+                    registry.addAlias(Identifier.of(alias), parentId);
+                }
+            }
+            return Registry.register(registry, identifierOfDungeonsReborn(name), block);
         }
         public static Block registerBlockAndItem(String name, Block block) {
             registerBlockItem(name, block);
             return registerBlock(name, block);
         }
         public static Item registerBlockItem(String name, Block block) {
-            return Registry.register(Registries.ITEM, identifierOfDungeonsReborn(name), new BlockItem(block, new Item.Settings()));
+            return registerItem(name, new BlockItem(block, new Item.Settings()));
         }
         public static SoundEvent registerSoundEvent(String name) {
             Identifier identifier = identifierOfDungeonsReborn(name);
@@ -147,39 +171,6 @@ public class SkyCore {
         }
         public static <FC extends FeatureConfig, F extends Feature<FC>> void registerConfiguredFeature(Registerable<ConfiguredFeature<?, ?>> context, RegistryKey<ConfiguredFeature<?, ?>> key, F feature, FC configuration) {
             context.register(key, new ConfiguredFeature<>(feature, configuration));
-        }
-
-    }
-    public static class ToolAPI {
-        public static class ShovelItem extends net.minecraft.item.ShovelItem {
-            public ShovelItem(ToolMaterial toolMaterial, float baseAttackDamage, float attackSpeed, Settings settings) {
-                super(toolMaterial, settings.attributeModifiers(net.minecraft.item.ShovelItem.createAttributeModifiers(toolMaterial, baseAttackDamage, attackSpeed)));
-            }
-        }
-        public static class SwordItem extends net.minecraft.item.SwordItem {
-            public SwordItem(ToolMaterial toolMaterial, float baseAttackDamage, float attackSpeed, Settings settings) {
-                super(toolMaterial, settings.attributeModifiers(net.minecraft.item.ShovelItem.createAttributeModifiers(toolMaterial, baseAttackDamage, attackSpeed)));
-            }
-        }
-        public static class AxeItem extends net.minecraft.item.AxeItem {
-            public AxeItem(ToolMaterial toolMaterial, float baseAttackDamage, float attackSpeed, Settings settings) {
-                super(toolMaterial, settings.attributeModifiers(net.minecraft.item.ShovelItem.createAttributeModifiers(toolMaterial, baseAttackDamage, attackSpeed)));
-            }
-        }
-        public static class PickaxeItem extends net.minecraft.item.PickaxeItem {
-            public PickaxeItem(ToolMaterial toolMaterial, float baseAttackDamage, float attackSpeed, Settings settings) {
-                super(toolMaterial, settings.attributeModifiers(net.minecraft.item.ShovelItem.createAttributeModifiers(toolMaterial, baseAttackDamage, attackSpeed)));
-            }
-        }
-        public static class HoeItem extends net.minecraft.item.HoeItem {
-            public HoeItem(ToolMaterial toolMaterial, float baseAttackDamage, float attackSpeed, Settings settings) {
-                super(toolMaterial, settings.attributeModifiers(net.minecraft.item.ShovelItem.createAttributeModifiers(toolMaterial, baseAttackDamage, attackSpeed)));
-            }
-        }
-    }
-    public static class BlockEntityAPI {
-        public static <E extends BlockEntity, A extends BlockEntity> @Nullable BlockEntityTicker<A> createTickerHelper(BlockEntityType<A> thisType, BlockEntityType<E> targetType, BlockEntityTicker<? super E> ticker) {
-            return targetType == thisType ? (BlockEntityTicker<A>) ticker : null;
         }
     }
 }
