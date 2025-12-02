@@ -1,16 +1,12 @@
 package net.stonksman01.dungeons_reborn.util;
 
-import com.llamalad7.mixinextras.injector.wrapoperation.Operation;
+import net.minecraft.block.ComposterBlock;
 import net.minecraft.enchantment.Enchantment;
-import net.minecraft.entity.Entity;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.mob.HostileEntity;
 import net.minecraft.entity.mob.Monster;
 import net.minecraft.entity.player.PlayerEntity;
-import net.minecraft.item.BowItem;
-import net.minecraft.item.CrossbowItem;
-import net.minecraft.item.Item;
-import net.minecraft.item.ItemStack;
+import net.minecraft.item.*;
 import net.minecraft.registry.RegistryKey;
 import net.minecraft.registry.RegistryKeys;
 import net.minecraft.registry.RegistryWrapper;
@@ -30,15 +26,7 @@ public interface DungeonsHelpers {
     static void enchantStackWithPrimitiveness(ItemStack stack, RegistryWrapper.WrapperLookup provider) {
         addEnchantmentToStack(stack, provider, MCD_Enchantments.PRIMITIVENESS_CURSE, 1);
     }
-    static boolean wrapRangedWeaponHardcodedCallsIfPresent(ItemStack instance, Item item, Operation<Boolean> original) {
-        if (item instanceof BowItem) {
-            return original.call(instance, item) || instance.getItem() instanceof BowItem;
-        }
-        if (item instanceof CrossbowItem) {
-            return original.call(instance, item) || instance.getItem() instanceof CrossbowItem;
-        }
-        return original.call(instance, item);
-    }
+
     static void appendMcdRarity(ItemStack stack, List<Text> tooltip) {
         McdRarity mcdRarity = stack.get(MCD_DataComponentTypes.MCD_RARITY);
         if (mcdRarity != null) {
@@ -67,18 +55,19 @@ public interface DungeonsHelpers {
     }
     static boolean isEntityEnemy(LivingEntity target, PlayerEntity playerEntity, boolean targetPlayers) {
         if (!targetPlayers && target instanceof PlayerEntity) return false;
-        if (target == playerEntity) return false;
         boolean isHostile = target instanceof Monster
                 || target instanceof HostileEntity
                 || (target instanceof PlayerEntity otherPlayer
                 && !otherPlayer.isCreative()
                 && !otherPlayer.isSpectator());
         if (!isHostile) return false;
-
-        Team entityTeam = target.getScoreboardTeam();
-        Team playerTeam = playerEntity.getScoreboardTeam();
-
-        return (entityTeam == null && playerTeam == null) || entityTeam != playerTeam;
+        return !areAllies(target, playerEntity);
+    }
+    static boolean areAllies(LivingEntity livingEntity, LivingEntity livingEntity2) {
+        Team team1 = livingEntity.getScoreboardTeam();
+        Team team2 = livingEntity2.getScoreboardTeam();
+        if (livingEntity == livingEntity2) return true;
+        return team1 == team2 && team1 != null;
     }
 
     static RegistryEntry<Enchantment> getEnchantmentRegistryEntry(World world, RegistryKey<Enchantment> enchantment) {
@@ -90,5 +79,8 @@ public interface DungeonsHelpers {
             if (random.nextInt(5) == 1) stack.set(MCD_DataComponentTypes.MCD_RARITY, McdRarity.RARE);
             else stack.set(MCD_DataComponentTypes.MCD_RARITY, McdRarity.COMMON);
         }
+    }
+    static float getCompostingValue(ItemConvertible item) {
+        return ComposterBlock.ITEM_TO_LEVEL_INCREASE_CHANCE.getFloat(item.asItem());
     }
 }

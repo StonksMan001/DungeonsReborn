@@ -1,10 +1,12 @@
 package net.stonksman01.dungeons_reborn.registries;
 
+import net.minecraft.component.type.FoodComponents;
+import net.minecraft.item.AliasedBlockItem;
 import net.minecraft.item.Item;
 import net.minecraft.item.ToolMaterials;
 import net.minecraft.util.Rarity;
 import net.stonksman01.dungeons_reborn.DungeonsReborn;
-import net.stonksman01.dungeons_reborn._included_libs.SkyCore;
+import net.stonksman01.dungeons_reborn._included_libs.skycore.SkyCore;
 import net.stonksman01.dungeons_reborn.items.mcd_artifact.DeathCapMushroomItem;
 import net.stonksman01.dungeons_reborn.items.mcd_artifact.IronSkinItem;
 import net.stonksman01.dungeons_reborn.items.mcd_meele.*;
@@ -37,6 +39,8 @@ public class MCD_Items {
             new IronSkinItem(new Item.Settings()));
     public static final Item ARTIFACT_DEATH_CAP_MUSHROOM = SkyCore.BuiltinRegistries.registerItem("artifact_death_cap_mushroom",
             new DeathCapMushroomItem(new Item.Settings()));
+    public static final Item SOUR_BERRIES = SkyCore.BuiltinRegistries.registerItem("sour_berries",
+            new AliasedBlockItem(MCD_Blocks.SOUR_BERRY_BUSH, new Item.Settings().food(FoodComponents.SWEET_BERRIES)));
     public static final Item ANCIENT_GOLD_INGOT = SkyCore.BuiltinRegistries.registerItem("ancient_gold_ingot",
             new Item(new Item.Settings()));
     public static void register() {

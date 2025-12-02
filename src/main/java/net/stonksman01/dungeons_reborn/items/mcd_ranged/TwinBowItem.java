@@ -22,6 +22,7 @@ import net.minecraft.util.ClickType;
 import net.minecraft.util.Formatting;
 import net.minecraft.util.math.Box;
 import net.minecraft.world.World;
+import net.stonksman01.dungeons_reborn._included_libs.skycore.items.SC_BowItem;
 import net.stonksman01.dungeons_reborn.items.McdItem;
 import net.stonksman01.dungeons_reborn.registries.MCD_DataComponentTypes;
 import net.stonksman01.dungeons_reborn.registries.MCD_Sounds;
@@ -29,7 +30,7 @@ import net.stonksman01.dungeons_reborn.util.DungeonsHelpers;
 
 import java.util.List;
 
-public class TwinBowItem extends BowItem {
+public class TwinBowItem extends SC_BowItem {
     public TwinBowItem(Settings settings) {
         super(settings);
     }

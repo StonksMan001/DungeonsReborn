@@ -3,7 +3,7 @@ package net.stonksman01.dungeons_reborn.registries;
 import net.minecraft.item.Item;
 import net.minecraft.registry.tag.TagKey;
 import net.stonksman01.dungeons_reborn.DungeonsReborn;
-import net.stonksman01.dungeons_reborn._included_libs.SkyCore;
+import net.stonksman01.dungeons_reborn._included_libs.skycore.SkyCore;
 
 public class MCD_ItemTags {
     public static final TagKey<Item> HAS_DURABILITY_ARMOR_CHEST = SkyCore.BuiltinRegistries.createItemTag("has_durability/armor/chest");

@@ -5,7 +5,7 @@ import net.minecraft.item.ItemGroup;
 import net.minecraft.item.ItemStack;
 import net.minecraft.text.Text;
 import net.stonksman01.dungeons_reborn.DungeonsReborn;
-import net.stonksman01.dungeons_reborn._included_libs.SkyCore;
+import net.stonksman01.dungeons_reborn._included_libs.skycore.SkyCore;
 import net.stonksman01.dungeons_reborn.components.McdRarity;
 
 public class MCD_ItemGroups {
@@ -40,9 +40,10 @@ public class MCD_ItemGroups {
                 ItemStack rareMushroom = new ItemStack(MCD_Items.ARTIFACT_DEATH_CAP_MUSHROOM);
                 rareMushroom.set(MCD_DataComponentTypes.MCD_RARITY, McdRarity.RARE);
                 entries.add(rareMushroom);
-                entries.add(MCD_Blocks.DRIED_MOSS_BLOCK);
-                entries.add(MCD_Blocks.DRIED_MOSS_CARPET);
-                entries.add(MCD_Blocks.MOSSIER_COBBLESTONE);
+                entries.add(MCD_Blocks.HIGHLAND_MOSS_BLOCK);
+                entries.add(MCD_Blocks.HIGHLAND_MOSS_CARPET);
+                entries.add(MCD_Items.SOUR_BERRIES);
+                entries.add(MCD_Blocks.MIDNIGHT_MOSSY_COBBLESTONE);
                 entries.add(MCD_Blocks.MIDNIGHT_MOSS_BLOCK);
                 entries.add(MCD_Blocks.MIDNIGHT_MOSS_CARPET);
                 entries.add(MCD_Blocks.MIDNIGHT_SPROUTS);

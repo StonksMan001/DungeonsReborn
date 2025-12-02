@@ -11,7 +11,8 @@ public class DungeonsRebornClient implements ClientModInitializer {
     public void onInitializeClient() {
         BlockRenderLayerMap.INSTANCE.putBlock(MCD_Blocks.POP_FLOWER, RenderLayer.getCutout());
         BlockRenderLayerMap.INSTANCE.putBlock(MCD_Blocks.MIDNIGHT_SPROUTS, RenderLayer.getCutout());
-        
+        BlockRenderLayerMap.INSTANCE.putBlock(MCD_Blocks.SOUR_BERRY_BUSH, RenderLayer.getCutout());
+
         MCD_ModelPredicateProviders.registerModels();
     }
 }

@@ -10,11 +10,11 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.item.ToolMaterial;
 import net.minecraft.sound.SoundCategory;
 import net.minecraft.sound.SoundEvents;
-import net.stonksman01.dungeons_reborn._included_libs.SkyCore;
+import net.stonksman01.dungeons_reborn._included_libs.skycore.SkyCoreToolAPI;
 import net.stonksman01.dungeons_reborn.items.McdItem;
 import net.stonksman01.dungeons_reborn.registries.MCD_DataComponentTypes;
 
-public abstract class ClaymoreBaseItem extends SkyCore.ToolAPI.SwordItem {
+public abstract class ClaymoreBaseItem extends SkyCoreToolAPI.SwordItem {
     protected float baseAttackDamage;
     public ClaymoreBaseItem(ToolMaterial toolMaterial, float baseAttackDamage, float attackSpeed, Settings settings) {
         super(toolMaterial, baseAttackDamage, attackSpeed, settings);
@@ -22,7 +22,7 @@ public abstract class ClaymoreBaseItem extends SkyCore.ToolAPI.SwordItem {
     }
     @Override
     public void postDamageEntity(ItemStack stack, LivingEntity target, LivingEntity attacker) {
-        int current_chain_step = stack.getOrDefault(MCD_DataComponentTypes.CLAYMORE_ATTACK_CHAIN, 1);
+        int current_chain_step = stack.getOrDefault(MCD_DataComponentTypes.ATTACK_CHAIN_STEP, 1);
         int next_chain_step;
         if (current_chain_step == 1) attacker.getWorld().playSoundFromEntity(null, attacker, SoundEvents.ITEM_TRIDENT_RETURN, SoundCategory.NEUTRAL, 1.0F, 1.0F);
         if (current_chain_step == 3) modifyKnockback(stack, 3.0);
@@ -30,7 +30,7 @@ public abstract class ClaymoreBaseItem extends SkyCore.ToolAPI.SwordItem {
         if (!(current_chain_step >= 3)) {
             next_chain_step = current_chain_step + 1;
         } else next_chain_step = 1;
-        stack.set(MCD_DataComponentTypes.CLAYMORE_ATTACK_CHAIN, next_chain_step);
+        stack.set(MCD_DataComponentTypes.ATTACK_CHAIN_STEP, next_chain_step);
         super.postDamageEntity(stack, target, attacker);
     }
     protected void modifyKnockback(ItemStack stack, double knockback) {
@@ -51,7 +51,7 @@ public abstract class ClaymoreBaseItem extends SkyCore.ToolAPI.SwordItem {
     }
     @Override
     public int getItemBarColor(ItemStack stack) {
-        int current_chain_step = stack.getOrDefault(MCD_DataComponentTypes.CLAYMORE_ATTACK_CHAIN, 1);
+        int current_chain_step = stack.getOrDefault(MCD_DataComponentTypes.ATTACK_CHAIN_STEP, 1);
         if (current_chain_step == 1) return McdItem.getMcdChargedItemBarColor();
         else return McdItem.getMcdItemBarColor();
     }
