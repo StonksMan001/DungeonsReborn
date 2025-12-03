@@ -1,6 +1,7 @@
 package net.stonksman01.dungeons_reborn._included_libs.skycore;
 
 import com.llamalad7.mixinextras.injector.wrapoperation.Operation;
+import net.fabricmc.fabric.api.gamerule.v1.GameRuleRegistry;
 import net.fabricmc.fabric.api.object.builder.v1.world.poi.PointOfInterestHelper;
 import net.minecraft.block.Block;
 import net.minecraft.block.entity.BlockEntity;
@@ -23,6 +24,7 @@ import net.minecraft.sound.SoundEvent;
 import net.minecraft.text.Text;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.Util;
+import net.minecraft.world.GameRules;
 import net.minecraft.world.World;
 import net.minecraft.world.biome.Biome;
 import net.minecraft.world.dimension.DimensionType;
@@ -156,6 +158,9 @@ public class SkyCore {
             }
 
             return Registry.registerReference(Registries.ARMOR_MATERIAL, identifierOfDungeonsReborn(name), new ArmorMaterial(enumMap, enchantability, equipSound, repairIngredient, layers, toughness, knockbackResistance));
+        }
+        public static <T extends GameRules.Rule<T>> GameRules.Key<T> registerGameRule(String id, GameRules.Category category, GameRules.Type<T> rule) {
+            return GameRuleRegistry.register("dr_" + id, category, rule);
         }
         public static RegistryEntry<ArmorMaterial> registerArmorMaterial(String id, EnumMap<ArmorItem.Type, Integer> defense, int enchantability, RegistryEntry<SoundEvent> equipSound, float toughness, float knockbackResistance, Supplier<Ingredient> repairIngredient) {
             List<ArmorMaterial.Layer> list = List.of(new ArmorMaterial.Layer(identifierOfDungeonsReborn(id)));

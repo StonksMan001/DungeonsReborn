@@ -8,11 +8,14 @@ import net.minecraft.item.tooltip.TooltipType;
 import net.minecraft.text.Style;
 import net.minecraft.text.Text;
 import net.minecraft.util.Formatting;
+import net.minecraft.util.Pair;
 import net.minecraft.world.World;
 import net.stonksman01.dungeons_reborn.components.McdRarity;
 import net.stonksman01.dungeons_reborn.items.mcd_meele.templates.ClaymoreBaseItem;
 import net.stonksman01.dungeons_reborn.registries.MCD_DataComponentTypes;
 import net.stonksman01.dungeons_reborn.util.DungeonsHelpers;
+import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 
 import java.util.List;
 
@@ -21,9 +24,9 @@ public class ClaymoreItem extends ClaymoreBaseItem {
         super(toolMaterial, baseAttackDamage, attackSpeed, settings);
     }
     @Override
-    public boolean postHit(ItemStack stack, LivingEntity target, LivingEntity attacker) {
-        if (stack.get(MCD_DataComponentTypes.MCD_RARITY) == McdRarity.RARE) modifyAttackDamage(stack, super.baseAttackDamage + 5d);
-        return super.postHit(stack, target, attacker);
+    public void postDamageEntity(ItemStack stack, LivingEntity target, LivingEntity attacker) {
+        if (stack.get(MCD_DataComponentTypes.MCD_RARITY) == McdRarity.RARE) DungeonsHelpers.modifyAttackDamage(stack, super.baseAttackDamage + 5d);
+        super.postDamageEntity(stack, target, attacker);
     }
     @Override
     public void appendTooltip(ItemStack stack, TooltipContext context, List<Text> tooltip, TooltipType type) {
@@ -38,5 +41,11 @@ public class ClaymoreItem extends ClaymoreBaseItem {
     public void inventoryTick(ItemStack stack, World world, Entity entity, int slot, boolean selected) {
         DungeonsHelpers.setRareOrCommonVariant(stack);
         super.inventoryTick(stack, world, entity, slot, selected);
+    }
+    @Override
+    public @Nullable Pair<@NotNull Double, @Nullable Double> getAttackDamagePair(@Nullable McdRarity mcdRarity) {
+        if (mcdRarity == McdRarity.COMMON) return new Pair<>(9d, null);
+        if (mcdRarity == McdRarity.RARE) return new Pair<>(10d, null);
+        return null;
     }
 }

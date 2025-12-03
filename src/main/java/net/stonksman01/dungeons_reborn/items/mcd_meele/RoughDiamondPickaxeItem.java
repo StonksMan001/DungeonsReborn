@@ -47,7 +47,7 @@ public class RoughDiamondPickaxeItem extends SkyCoreToolAPI.PickaxeItem {
                         10, 0.25F, 0.25F, 0.25F, 3);
             }
         }
-        super.postHit(stack, target, attacker);
+        super.postDamageEntity(stack, target, attacker);
     }
     @Override
     public int getItemBarColor(ItemStack stack) {

@@ -6,6 +6,7 @@
     "CrossbowItemAccessors",
     "CrossBowItemMixin",
     "GrindStoneScreenHandlerMixin",
+    "ItemStackMixin",
     "ProjectileEntityMixin"
   ],
   "injectors": {

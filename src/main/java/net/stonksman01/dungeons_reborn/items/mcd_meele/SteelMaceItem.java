@@ -7,9 +7,13 @@ import net.minecraft.item.tooltip.TooltipType;
 import net.minecraft.text.Style;
 import net.minecraft.text.Text;
 import net.minecraft.util.Formatting;
+import net.minecraft.util.Pair;
 import net.minecraft.world.World;
+import net.stonksman01.dungeons_reborn.components.McdRarity;
 import net.stonksman01.dungeons_reborn.items.mcd_meele.templates.MaceBaseItem;
 import net.stonksman01.dungeons_reborn.util.DungeonsHelpers;
+import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 
 import java.util.List;
 
@@ -29,5 +33,16 @@ public class SteelMaceItem extends MaceBaseItem {
     @Override
     public void inventoryTick(ItemStack stack, World world, Entity entity, int slot, boolean selected) {
         DungeonsHelpers.setRareOrCommonVariant(stack);
+    }
+    @Override
+    public @Nullable Pair<@NotNull Double, @Nullable Double> getAttackDamagePair(@Nullable McdRarity mcdRarity) {
+        if (mcdRarity == McdRarity.COMMON) return new Pair<>(7d, 11d);
+        if (mcdRarity == McdRarity.RARE) return new Pair<>(8d, 12d);
+        return null;
+    }
+    @Override
+    public @Nullable Pair<@NotNull Double, @Nullable Double> getAttackSpeedPair(@Nullable McdRarity mcdRarity) {
+        if (mcdRarity == McdRarity.COMMON || mcdRarity == McdRarity.RARE) return new Pair<>(1.6d, 0.6d);
+        return null;
     }
 }
