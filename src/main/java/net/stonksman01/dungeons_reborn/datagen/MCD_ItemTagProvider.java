@@ -48,6 +48,6 @@ public class MCD_ItemTagProvider extends FabricTagProvider.ItemTagProvider {
                 .add(MCD_Items.CLAYMORE)
                 .add(MCD_Items.BROADSWORD);
 
-        getOrCreateTagBuilder(ItemTags.FOX_FOOD).add(Items.SWEET_BERRIES, Items.GLOW_BERRIES);
+        getOrCreateTagBuilder(ItemTags.FOX_FOOD).add(MCD_Items.SOUR_BERRIES);
     }
 }

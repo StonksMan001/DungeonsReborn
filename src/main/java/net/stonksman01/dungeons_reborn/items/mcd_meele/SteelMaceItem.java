@@ -33,6 +33,7 @@ public class SteelMaceItem extends MaceBaseItem {
     @Override
     public void inventoryTick(ItemStack stack, World world, Entity entity, int slot, boolean selected) {
         DungeonsHelpers.setRareOrCommonVariant(stack);
+        super.inventoryTick(stack, world, entity, slot, selected);
     }
     @Override
     public @Nullable Pair<@NotNull Double, @Nullable Double> getAttackDamagePair(@Nullable McdRarity mcdRarity) {

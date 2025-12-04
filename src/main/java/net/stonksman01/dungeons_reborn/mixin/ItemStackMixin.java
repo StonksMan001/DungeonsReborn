@@ -30,7 +30,6 @@ public abstract class ItemStackMixin implements ComponentHolder {
     public String modifyTooltip(DecimalFormat instance, double e, Operation<String> original, @Local(ordinal = 0, argsOnly = true) RegistryEntry<EntityAttribute> attribute) {
         if (this.getItem() instanceof ChainAttackWeapon chainAttackWeapon) {
             String attributeString = attribute.value().getTranslationKey();
-            DungeonsReborn.LOGGER.info(attributeString);
             switch (attributeString) {
                 case "attribute.name.generic.attack_damage" -> {
                     String string = getChainAttackWeaponParameters(original, instance, chainAttackWeapon.getAttackDamagePair(this.get(MCD_DataComponentTypes.MCD_RARITY)));
