@@ -1,10 +1,10 @@
-// 1.21.1	2025-12-02T17:03:15.2471461	DungeonsReborn/Tags for minecraft:item
+// 1.21.1	2025-12-04T14:25:06.3613526	DungeonsReborn/Tags for minecraft:item
 1e8a8b5158a160a76fc4db1f619d0300eb129d14 data\minecraft\tags\item\enchantable\durability.json
 a711ef9ef44c267b7c157f7b380cef06a2622659 data\minecraft\tags\item\head_armor.json
 e522705c772ed1115ed7ed7776af25f749267838 data\minecraft\tags\item\axes.json
 8ab7b4617a377310e5c8fdd810d6aa73204e3c26 data\dungeons_reborn\tags\item\has_durability\bows.json
 8adae71a17a736dab3b668d3d61a3dbe19c8019c data\minecraft\tags\item\leg_armor.json
-02dfdb41688ccea8169a8d046943461f0aa3c361 data\minecraft\tags\item\fox_food.json
+f9af55dfe9e8e158051fbc62ec54247f1104e923 data\minecraft\tags\item\fox_food.json
 117621b871fb952d182ac9be8721a1cab4accfd5 data\dungeons_reborn\tags\item\has_durability\crossbows.json
 b8ca3f27be7a6945c18a23667141d2f7433b335b data\dungeons_reborn\tags\item\has_durability\swords.json
 5d2a8395295b2ffd1628ecfcbf3c3ca2efd9a9e3 data\minecraft\tags\item\hoes.json
