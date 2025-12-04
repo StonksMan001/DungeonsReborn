@@ -2,6 +2,7 @@ package net.stonksman01.dungeons_reborn.datagen;
 
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricTagProvider;
+import net.minecraft.item.Items;
 import net.minecraft.registry.RegistryWrapper;
 import net.minecraft.registry.tag.ItemTags;
 import net.stonksman01.dungeons_reborn.registries.MCD_ItemTags;
@@ -46,5 +47,7 @@ public class MCD_ItemTagProvider extends FabricTagProvider.ItemTagProvider {
                 .add(MCD_Items.STEEL_MACE)
                 .add(MCD_Items.CLAYMORE)
                 .add(MCD_Items.BROADSWORD);
+
+        valueLookupBuilder(ItemTags.FOX_FOOD).add(MCD_Items.SOUR_BERRIES);
     }
 }

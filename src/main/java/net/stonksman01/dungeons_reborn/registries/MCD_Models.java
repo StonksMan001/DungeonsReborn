@@ -3,7 +3,7 @@ package net.stonksman01.dungeons_reborn.registries;
 import net.minecraft.client.data.Model;
 import net.minecraft.client.data.TextureKey;
 import net.stonksman01.dungeons_reborn.DungeonsReborn;
-import net.stonksman01.dungeons_reborn._included_libs.SkyCore;
+import net.stonksman01.dungeons_reborn._included_libs.skycore.SkyCore;
 
 import java.util.Optional;
 

@@ -3,10 +3,12 @@
   "package": "net.stonksman01.dungeons_reborn.mixin",
   "compatibilityLevel": "JAVA_21",
   "mixins": [
-    "ArrowEntityMixin",
+    "AttributeModifiersComponent$Display$DefaultMixin",
     "CrossbowItemAccessors",
     "CrossBowItemMixin",
-    "GrindStoneScreenHandlerMixin"
+    "GrindStoneScreenHandlerMixin",
+    "ItemStackMixin",
+    "ProjectileEntityMixin"
   ],
   "injectors": {
     "defaultRequire": 1

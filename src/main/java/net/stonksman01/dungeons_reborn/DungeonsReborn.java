@@ -12,8 +12,11 @@ public class DungeonsReborn implements ModInitializer {
 
 	@Override
 	public void onInitialize() {
+		MCD_DataFixers.register();
+
 		MCD_BlockEntities.register();
 		MCD_Blocks.register();
+		MCD_CompostableItems.register();
 		MCD_DataComponentTypes.register();
 		MCD_Enchantments.register();
 		MCD_GameRules.register();
@@ -24,7 +27,5 @@ public class DungeonsReborn implements ModInitializer {
 		MCD_Models.register();
 		MCD_Sounds.register();
 		MCD_ToolMaterials.register();
-
-		MCD_LootTableModifiers.modifyLootTables();
 	}
 }

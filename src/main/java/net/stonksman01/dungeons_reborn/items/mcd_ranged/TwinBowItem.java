@@ -24,6 +24,7 @@ import net.minecraft.util.ClickType;
 import net.minecraft.util.Formatting;
 import net.minecraft.util.math.Box;
 import net.minecraft.world.World;
+import net.stonksman01.dungeons_reborn._included_libs.skycore.items.SC_BowItem;
 import net.stonksman01.dungeons_reborn.items.McdItem;
 import net.stonksman01.dungeons_reborn.registries.MCD_DataComponentTypes;
 import net.stonksman01.dungeons_reborn.registries.MCD_Sounds;
@@ -33,7 +34,7 @@ import org.jetbrains.annotations.Nullable;
 import java.util.List;
 import java.util.function.Consumer;
 
-public class TwinBowItem extends BowItem {
+public class TwinBowItem extends SC_BowItem {
     public TwinBowItem(Settings settings) {
         super(settings);
     }
@@ -74,36 +75,25 @@ public class TwinBowItem extends BowItem {
                             float divergence = 1.0F;
                             int index = 0; //redundant
                             Box searchBox = new Box(playerEntity.getBlockPos()).expand(20);
-                            List<LivingEntity> targetEntities =
-                                    Boolean.TRUE.equals(stack.get(MCD_DataComponentTypes.TWIN_BOW_TARGET_PLAYER_ENTITIES_TOGGLE))
-                                            ?
-                                    serverWorld.getEntitiesByClass(LivingEntity.class, searchBox,
-                                            entity ->
-                                                    (entity instanceof Monster || entity instanceof HostileEntity || (entity instanceof PlayerEntity playerEntity2 && !playerEntity2.isCreative() && !playerEntity2.isSpectator())) &&
-                                                    entity != playerEntity &&
-                                                    (entity.getScoreboardTeam() != playerEntity.getScoreboardTeam() ||
-                                                            (entity.getScoreboardTeam() == null && playerEntity.getScoreboardTeam() == null)
-                                                    ))
-                                            :
-                                    serverWorld.getEntitiesByClass(LivingEntity.class, searchBox,
-                                            entity ->
-                                                    (entity instanceof Monster || entity instanceof HostileEntity) &&
-                                                    (entity.getScoreboardTeam() != playerEntity.getScoreboardTeam() ||
-                                                            (entity.getScoreboardTeam() == null && playerEntity.getScoreboardTeam() == null)
-                                                    ));
+                            boolean targetPlayers = Boolean.TRUE.equals(stack.get(MCD_DataComponentTypes.TWIN_BOW_TARGET_PLAYER_ENTITIES_TOGGLE));
+                            List<LivingEntity> targetEntities = serverWorld.getEntitiesByClass(
+                                    LivingEntity.class,
+                                    searchBox,
+                                    entity -> DungeonsHelpers.isEntityEnemy(entity, playerEntity, targetPlayers)
+                            );
                             boolean bonus_shot = false;
                             if (!targetEntities.isEmpty() && !playerEntity.isSneaking()) {
                                 bonus_shot = true;
                                 LivingEntity closestHostile = targetEntities.getFirst();
                                 // bonus projectile
-                                PersistentProjectileEntity persistentProjectileEntity1 = this.createArrowEntity(serverWorld, playerEntity, stack, itemStack, critical);
+                                PersistentProjectileEntity persistentProjectileEntity1 = (PersistentProjectileEntity) super.createArrowEntity(serverWorld, playerEntity, stack, itemStack, critical);
                                 this.shoot(playerEntity, persistentProjectileEntity1, index, speed, divergence, playerEntity.getYaw(), null);
                                 persistentProjectileEntity1.pickupType = PersistentProjectileEntity.PickupPermission.DISALLOWED;
                                 persistentProjectileEntity1.setVelocity(closestHostile.getX() - playerEntity.getX(), closestHostile.getEyeY() - playerEntity.getEyeY(), closestHostile.getZ() - playerEntity.getZ(), 1.5F, 0);
                                 world.spawnEntity(persistentProjectileEntity1);
                             }
                             // main projectile
-                            PersistentProjectileEntity persistentProjectileEntity0 = this.createArrowEntity(serverWorld, playerEntity, stack, itemStack, critical);
+                            PersistentProjectileEntity persistentProjectileEntity0 = (PersistentProjectileEntity) super.createArrowEntity(serverWorld, playerEntity, stack, itemStack, critical);
                             this.shoot(playerEntity, persistentProjectileEntity0, index, speed, divergence, 0.0f, null);
                             if (bonus_shot || (bowHasInfinity && persistentProjectileEntity0 instanceof ArrowEntity)) {
                                 persistentProjectileEntity0.pickupType = PersistentProjectileEntity.PickupPermission.DISALLOWED;
@@ -123,22 +113,6 @@ public class TwinBowItem extends BowItem {
             }
         }
         return false;
-    }
-    @Override
-    protected PersistentProjectileEntity createArrowEntity(World world, LivingEntity shooter, ItemStack weaponStack, ItemStack projectileStack, boolean critical) {
-        Item var8 = projectileStack.getItem();
-        ArrowItem var10000;
-        if (var8 instanceof ArrowItem arrowItem) {
-            var10000 = arrowItem;
-        } else {
-            var10000 = (ArrowItem)Items.ARROW;
-        }
-        ArrowItem arrowItem2 = var10000;
-        PersistentProjectileEntity persistentProjectileEntity = arrowItem2.createArrow(world, projectileStack, shooter, weaponStack);
-        if (critical) {
-            persistentProjectileEntity.setCritical(true);
-        }
-        return persistentProjectileEntity;
     }
     @Override
     public void appendTooltip(ItemStack stack, Item.TooltipContext context, TooltipDisplayComponent displayComponent, Consumer<Text> textConsumer, TooltipType type) {

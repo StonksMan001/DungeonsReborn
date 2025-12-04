@@ -5,8 +5,9 @@ import net.minecraft.item.ItemGroup;
 import net.minecraft.item.ItemStack;
 import net.minecraft.text.Text;
 import net.stonksman01.dungeons_reborn.DungeonsReborn;
-import net.stonksman01.dungeons_reborn._included_libs.SkyCore;
+import net.stonksman01.dungeons_reborn._included_libs.skycore.SkyCore;
 import net.stonksman01.dungeons_reborn.components.McdRarity;
+import net.stonksman01.dungeons_reborn.util.DungeonsHelpers;
 
 public class MCD_ItemGroups {
     public static ItemGroup DUNGEONS_REBORN = SkyCore.BuiltinRegistries.registerItemGroup("dungeons_reborn",
@@ -19,11 +20,15 @@ public class MCD_ItemGroups {
                 entries.add(rareSteelMace);
                 ItemStack commonClaymore = new ItemStack(MCD_Items.CLAYMORE);
                 commonClaymore.set(MCD_DataComponentTypes.MCD_RARITY, McdRarity.COMMON);
+                DungeonsHelpers.modifyAttackKnockback(commonClaymore, 0.0);
                 entries.add(commonClaymore);
                 ItemStack rareClaymore = new ItemStack(MCD_Items.CLAYMORE);
                 rareClaymore.set(MCD_DataComponentTypes.MCD_RARITY, McdRarity.RARE);
+                DungeonsHelpers.modifyAttackKnockback(rareClaymore, 0.0);
                 entries.add(rareClaymore);
-                entries.add(MCD_Items.BROADSWORD);
+                ItemStack broadSword = new ItemStack(MCD_Items.BROADSWORD);
+                DungeonsHelpers.modifyAttackKnockback(broadSword, 0.0);
+                entries.add(broadSword);
                 entries.add(MCD_Items.ROUGH_DIAMOND_SWORD);
                 entries.add(MCD_Items.ROUGH_DIAMOND_PICKAXE);
                 entries.add(MCD_Items.TWIN_BOW);
@@ -42,6 +47,7 @@ public class MCD_ItemGroups {
                 entries.add(rareMushroom);
                 entries.add(MCD_Blocks.DRIED_MOSS_BLOCK);
                 entries.add(MCD_Blocks.DRIED_MOSS_CARPET);
+                entries.add(MCD_Items.SOUR_BERRIES);
                 entries.add(MCD_Blocks.MOSSIER_COBBLESTONE);
                 entries.add(MCD_Blocks.MIDNIGHT_MOSS_BLOCK);
                 entries.add(MCD_Blocks.MIDNIGHT_MOSS_CARPET);

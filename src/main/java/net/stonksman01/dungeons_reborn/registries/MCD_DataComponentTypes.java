@@ -3,14 +3,14 @@ package net.stonksman01.dungeons_reborn.registries;
 import com.mojang.serialization.Codec;
 import net.minecraft.component.ComponentType;
 import net.stonksman01.dungeons_reborn.DungeonsReborn;
-import net.stonksman01.dungeons_reborn._included_libs.SkyCore;
+import net.stonksman01.dungeons_reborn._included_libs.skycore.SkyCore;
 import net.stonksman01.dungeons_reborn.components.McdRarity;
 
 public class MCD_DataComponentTypes {
     public static final ComponentType<Boolean> TWIN_BOW_TARGET_PLAYER_ENTITIES_TOGGLE = SkyCore.BuiltinRegistries.registerComponentType("twin_bow_attack_player_entities_toggle", booleanBuilder -> {
         return booleanBuilder.codec(Codec.BOOL);
     });
-    public static final ComponentType<Boolean> IRON_HIDE_AMULET_PERSONAL_TOGGLE = SkyCore.BuiltinRegistries.registerComponentType("iron_hide_amulet_personal_toggle", booleanBuilder -> {
+    public static final ComponentType<Boolean> IRON_HIDE_AMULET_TEAMMATE_ONLY_TOGGLE = SkyCore.BuiltinRegistries.registerComponentType("iron_hide_amulet_personal_toggle", booleanBuilder -> {
         return booleanBuilder.codec(Codec.BOOL);
     });
     public static final ComponentType<McdRarity> MCD_RARITY = SkyCore.BuiltinRegistries.registerComponentType("mcd_rarity", (mcdRarityBuilder) -> {
@@ -22,9 +22,7 @@ public class MCD_DataComponentTypes {
     public static final ComponentType<Float> ACCELERATE_RELOAD_BONUS = SkyCore.BuiltinRegistries.registerComponentType("accelerate_reload_bonus", floatBuilder -> {
         return floatBuilder.codec(Codec.FLOAT);
     });
-    public static final ComponentType<Integer> STEEL_MACE_ATTACK_CHAIN = SkyCore.BuiltinRegistries.registerComponentType("steel_mace_attack_chain", integerBuilder -> {
-        return integerBuilder.codec(Codec.INT);
-    });public static final ComponentType<Integer> CLAYMORE_ATTACK_CHAIN = SkyCore.BuiltinRegistries.registerComponentType("claymore_attack_chain", integerBuilder -> {
+    public static final ComponentType<Integer> ATTACK_CHAIN_STEP = SkyCore.BuiltinRegistries.registerComponentType("attack_chain_step", integerBuilder -> {
         return integerBuilder.codec(Codec.INT);
     });
     public static void register() {

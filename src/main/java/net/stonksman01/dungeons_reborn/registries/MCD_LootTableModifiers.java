@@ -14,8 +14,7 @@ import net.stonksman01.dungeons_reborn.DungeonsReborn;
 import java.util.List;
 
 public class MCD_LootTableModifiers {
-
-    public static void modifyLootTables() {
+    private static void init() {
         LootTableEvents.MODIFY.register(((registryKey, builder, lootTableSource, wrapperLookup) -> {
             modifyChestLootTable(registryKey, builder, LootTables.WOODLAND_MANSION_CHEST, MCD_Items.AUTO_CROSSBOW, 1, 0.05f);
             modifyChestLootTable(registryKey, builder, LootTables.WOODLAND_MANSION_CHEST, MCD_Items.BROADSWORD, 1, 0.05f);
@@ -49,6 +48,7 @@ public class MCD_LootTableModifiers {
         }
     }
     public static void register() {
+        init();
         DungeonsReborn.LOGGER.info("[DungeonsReborn] Registering LootTableModifiers");
     }
 }

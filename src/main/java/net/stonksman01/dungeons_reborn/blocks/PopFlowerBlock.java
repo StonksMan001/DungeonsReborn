@@ -20,7 +20,7 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.shape.VoxelShape;
 import net.minecraft.world.BlockView;
 import net.minecraft.world.World;
-import net.stonksman01.dungeons_reborn._included_libs.SkyCore;
+import net.stonksman01.dungeons_reborn._included_libs.skycore.SkyCoreBlockEntityAPI;
 import net.stonksman01.dungeons_reborn.block_entities.PopFlowerBlockEntity;
 import net.stonksman01.dungeons_reborn.registries.MCD_BlockEntities;
 import org.jetbrains.annotations.Nullable;
@@ -60,7 +60,7 @@ public class PopFlowerBlock extends PlantBlock implements BlockEntityProvider {
     }
     @Override
     public @Nullable <T extends BlockEntity> BlockEntityTicker<T> getTicker(World world, BlockState state, BlockEntityType<T> type) {
-        return SkyCore.BlockEntityAPI.createTickerHelper(type, MCD_BlockEntities.POP_FLOWER_BLOCK_ENTITY, PopFlowerBlockEntity::serverTick);
+        return SkyCoreBlockEntityAPI.createTickerHelper(type, MCD_BlockEntities.POP_FLOWER_BLOCK_ENTITY, PopFlowerBlockEntity::serverTick);
     }
     @Override
     protected void appendProperties(StateManager.Builder<Block, BlockState> builder) {

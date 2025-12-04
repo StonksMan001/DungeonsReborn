@@ -12,15 +12,16 @@ import net.minecraft.server.world.ServerWorld;
 import net.minecraft.text.Style;
 import net.minecraft.text.Text;
 import net.minecraft.util.Formatting;
-import net.minecraft.world.World;
-import net.stonksman01.dungeons_reborn.items.mcd_meele.template.ClaymoreTemplateItem;
+import net.minecraft.util.Pair;
+import net.stonksman01.dungeons_reborn.components.McdRarity;
+import net.stonksman01.dungeons_reborn.items.mcd_meele.templates.ClaymoreBaseItem;
 import net.stonksman01.dungeons_reborn.util.DungeonsHelpers;
+import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
-import java.util.List;
 import java.util.function.Consumer;
 
-public class BroadswordItem extends ClaymoreTemplateItem {
+public class BroadswordItem extends ClaymoreBaseItem {
     public BroadswordItem(ToolMaterial toolMaterial, float baseAttackDamage, float attackSpeed, Settings settings) {
         super(toolMaterial, baseAttackDamage, attackSpeed, settings);
     }
@@ -42,5 +43,9 @@ public class BroadswordItem extends ClaymoreTemplateItem {
     public void inventoryTick(ItemStack stack, ServerWorld world, Entity entity, @Nullable EquipmentSlot slot) {
         DungeonsHelpers.addEnchantmentToStack(stack, world.getRegistryManager(), Enchantments.SHARPNESS, 5);
         super.inventoryTick(stack, world, entity, slot);
+    }
+    @Override
+    public @Nullable Pair<@NotNull Double, @Nullable Double> getAttackDamagePair(@Nullable McdRarity mcdRarity) {
+        return new Pair<>(10d, null);
     }
 }

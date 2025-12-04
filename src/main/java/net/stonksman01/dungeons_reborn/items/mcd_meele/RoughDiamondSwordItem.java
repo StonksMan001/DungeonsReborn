@@ -12,15 +12,15 @@ import net.minecraft.server.world.ServerWorld;
 import net.minecraft.text.Style;
 import net.minecraft.text.Text;
 import net.minecraft.util.Formatting;
+import net.stonksman01.dungeons_reborn._included_libs.skycore.SkyCoreToolAPI;
 import net.stonksman01.dungeons_reborn.util.DungeonsHelpers;
-import net.stonksman01.dungeons_reborn._included_libs.SkyCore;
 import net.stonksman01.dungeons_reborn.items.McdItem;
 import net.stonksman01.dungeons_reborn.util.GrindStoneExperienceNotDropping;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.function.Consumer;
 
-public class RoughDiamondSwordItem extends SkyCore.ToolAPI.SwordItem implements GrindStoneExperienceNotDropping {
+public class RoughDiamondSwordItem extends SkyCoreToolAPI.SwordItem implements GrindStoneExperienceNotDropping {
     public RoughDiamondSwordItem(ToolMaterial toolMaterial, float baseAttackDamage, float attackSpeed, Settings settings) {
         super(toolMaterial, baseAttackDamage, attackSpeed, settings);
     }

@@ -2,7 +2,7 @@ package net.stonksman01.dungeons_reborn.registries;
 
 import net.minecraft.sound.SoundEvent;
 import net.stonksman01.dungeons_reborn.DungeonsReborn;
-import net.stonksman01.dungeons_reborn._included_libs.SkyCore;
+import net.stonksman01.dungeons_reborn._included_libs.skycore.SkyCore;
 
 public class MCD_Sounds {
     public static SoundEvent WANDERLUST = SkyCore.BuiltinRegistries.registerSoundEvent("wanderlust");

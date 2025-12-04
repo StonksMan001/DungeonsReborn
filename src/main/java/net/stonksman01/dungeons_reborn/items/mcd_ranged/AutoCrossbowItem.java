@@ -14,6 +14,7 @@ import net.minecraft.util.ActionResult;
 import net.minecraft.util.Formatting;
 import net.minecraft.util.Hand;
 import net.minecraft.world.World;
+import net.stonksman01.dungeons_reborn._included_libs.skycore.items.SC_CrossbowItem;
 import net.stonksman01.dungeons_reborn.items.McdItem;
 import net.stonksman01.dungeons_reborn.mixin.CrossbowItemAccessors;
 import net.stonksman01.dungeons_reborn.registries.MCD_DataComponentTypes;
@@ -21,7 +22,7 @@ import net.stonksman01.dungeons_reborn.registries.MCD_DataComponentTypes;
 import java.util.List;
 import java.util.function.Consumer;
 
-public class AutoCrossbowItem extends CrossbowItem {
+public class AutoCrossbowItem extends SC_CrossbowItem {
     private static final float RELOAD_DECREASE_PERCENT = 0.09f;
     private static final float MIN_RELOAD_TIME = 0.10f;
 

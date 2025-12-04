@@ -25,6 +25,7 @@ public class MCD_ModelProvider extends FabricModelProvider {
         blockStateModelGenerator.registerWoolAndCarpet(MCD_Blocks.MIDNIGHT_MOSS_BLOCK, MCD_Blocks.MIDNIGHT_MOSS_CARPET);
         blockStateModelGenerator.registerTintableCross(MCD_Blocks.MIDNIGHT_SPROUTS, BlockStateModelGenerator.CrossType.NOT_TINTED);
         blockStateModelGenerator.registerSimpleCubeAll(MCD_Blocks.ANCIENT_GOLD_BLOCK);
+        registerBerryBushBlock(blockStateModelGenerator, MCD_Blocks.SOUR_BERRY_BUSH);
 
         blockStateModelGenerator.registerItemModel(MCD_Blocks.POP_FLOWER,"_0");
         registerBlockWith2Variants(blockStateModelGenerator, MCD_Blocks.MOSSIER_OAK_PLANKS, MossyOakPlanksBlock.MOSSIER, "_2");
@@ -35,6 +36,18 @@ public class MCD_ModelProvider extends FabricModelProvider {
         blockStateModelGenerator.blockStateCollector
                 .accept(VariantsBlockModelDefinitionCreator.of(block).with(BlockStateModelGenerator.createBooleanModelMap(booleanProperty, weightedVariant2, weightedVariant)));
     }
+    private void registerBerryBushBlock(BlockStateModelGenerator blockStateModelGenerator, Block berryBushBlock) {
+        blockStateModelGenerator.blockStateCollector
+                .accept(
+                        VariantsBlockModelDefinitionCreator.of(berryBushBlock)
+                                .with(
+                                        BlockStateVariantMap.models(Properties.AGE_3)
+                                                .generate(stage -> BlockStateModelGenerator.createWeightedVariant(
+                                                        blockStateModelGenerator.createSubModel(berryBushBlock, "_stage" + stage,
+                                                                Models.CROSS, TextureMap::cross)))
+                                )
+                );
+    }
     @Override
     public void generateItemModels(ItemModelGenerator itemModelGenerator) {
         itemModelGenerator.upload(MCD_Items.TWIN_BOW, Models.BOW);
@@ -43,6 +56,7 @@ public class MCD_ModelProvider extends FabricModelProvider {
         itemModelGenerator.registerCrossbow(MCD_Items.AUTO_CROSSBOW);
 
         itemModelGenerator.register(MCD_Items.ANCIENT_GOLD_INGOT, Models.GENERATED);
+        itemModelGenerator.register(MCD_Items.SOUR_BERRIES, Models.GENERATED);
         itemModelGenerator.register(MCD_Items.ARTIFACT_DEATH_CAP_MUSHROOM, Models.GENERATED);
         itemModelGenerator.register(MCD_Items.ARTIFACT_IRON_HIDE_AMULET, Models.GENERATED);
 

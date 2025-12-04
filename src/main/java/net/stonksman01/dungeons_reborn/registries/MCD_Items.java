@@ -2,7 +2,7 @@ package net.stonksman01.dungeons_reborn.registries;
 
 import net.minecraft.component.DataComponentTypes;
 import net.minecraft.component.type.ChargedProjectilesComponent;
-import net.minecraft.component.type.RepairableComponent;
+import net.minecraft.component.type.FoodComponents;
 import net.minecraft.item.Item;
 import net.minecraft.item.Items;
 import net.minecraft.item.ToolMaterial;
@@ -10,7 +10,7 @@ import net.minecraft.recipe.Ingredient;
 import net.minecraft.registry.entry.RegistryEntryList;
 import net.minecraft.util.Rarity;
 import net.stonksman01.dungeons_reborn.DungeonsReborn;
-import net.stonksman01.dungeons_reborn._included_libs.SkyCore;
+import net.stonksman01.dungeons_reborn._included_libs.skycore.SkyCore;
 import net.stonksman01.dungeons_reborn.items.mcd_artifact.DeathCapMushroomItem;
 import net.stonksman01.dungeons_reborn.items.mcd_artifact.IronSkinItem;
 import net.stonksman01.dungeons_reborn.items.mcd_meele.*;
@@ -50,7 +50,11 @@ public class MCD_Items {
     public static final Item ARTIFACT_DEATH_CAP_MUSHROOM = SkyCore.BuiltinRegistries.registerItem("artifact_death_cap_mushroom",
             settings -> new DeathCapMushroomItem(settings
                     .useCooldown(30.0f)));
-    public static final Item ANCIENT_GOLD_INGOT = SkyCore.BuiltinRegistries.registerItem("ancient_gold_ingot");
+    public static final Item SOUR_BERRIES = SkyCore.BuiltinRegistries.registerItemThatHasBlock("sour_berries",
+                    MCD_Blocks.SOUR_BERRY_BUSH, new Item.Settings()
+                    .food(FoodComponents.SWEET_BERRIES));
+
+    public static final Item ANCIENT_GOLD_INGOT = SkyCore.BuiltinRegistries.registerItem("ancient_gold_ingot", Item::new);
     public static void register() {
         DungeonsReborn.LOGGER.info("[DungeonsReborn] Registering Items");
     }

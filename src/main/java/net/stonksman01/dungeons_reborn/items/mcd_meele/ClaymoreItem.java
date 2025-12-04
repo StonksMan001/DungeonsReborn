@@ -12,23 +12,23 @@ import net.minecraft.server.world.ServerWorld;
 import net.minecraft.text.Style;
 import net.minecraft.text.Text;
 import net.minecraft.util.Formatting;
-import net.minecraft.world.World;
+import net.minecraft.util.Pair;
 import net.stonksman01.dungeons_reborn.components.McdRarity;
-import net.stonksman01.dungeons_reborn.items.mcd_meele.template.ClaymoreTemplateItem;
+import net.stonksman01.dungeons_reborn.items.mcd_meele.templates.ClaymoreBaseItem;
 import net.stonksman01.dungeons_reborn.registries.MCD_DataComponentTypes;
 import net.stonksman01.dungeons_reborn.util.DungeonsHelpers;
+import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
-import java.util.List;
 import java.util.function.Consumer;
 
-public class ClaymoreItem extends ClaymoreTemplateItem {
+public class ClaymoreItem extends ClaymoreBaseItem {
     public ClaymoreItem(ToolMaterial toolMaterial, float baseAttackDamage, float attackSpeed, Settings settings) {
         super(toolMaterial, baseAttackDamage, attackSpeed, settings);
     }
     @Override
     public void postHit(ItemStack stack, LivingEntity target, LivingEntity attacker) {
-        if (stack.get(MCD_DataComponentTypes.MCD_RARITY) == McdRarity.RARE) modifyAttackDamage(stack, super.baseAttackDamage + 5d);
+        if (stack.get(MCD_DataComponentTypes.MCD_RARITY) == McdRarity.RARE) DungeonsHelpers.modifyAttackDamage(stack, super.baseAttackDamage + 5d);
         super.postHit(stack, target, attacker);
     }
     @Override
@@ -44,5 +44,11 @@ public class ClaymoreItem extends ClaymoreTemplateItem {
     public void inventoryTick(ItemStack stack, ServerWorld world, Entity entity, @Nullable EquipmentSlot slot) {
         DungeonsHelpers.setRareOrCommonVariant(stack);
         super.inventoryTick(stack, world, entity, slot);
+    }
+    @Override
+    public @Nullable Pair<@NotNull Double, @Nullable Double> getAttackDamagePair(@Nullable McdRarity mcdRarity) {
+        if (mcdRarity == McdRarity.COMMON) return new Pair<>(9d, null);
+        if (mcdRarity == McdRarity.RARE) return new Pair<>(10d, null);
+        return null;
     }
 }
