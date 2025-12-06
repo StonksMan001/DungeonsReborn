@@ -1,6 +1,6 @@
 {
   "parent": "minecraft:item/crossbow",
   "textures": {
-    "layer0": "dungeons_reborn:item/auto_crossbow_standby"
+    "layer0": "dungeons_reborn:item/heavy_crossbow_firework"
   }
 }

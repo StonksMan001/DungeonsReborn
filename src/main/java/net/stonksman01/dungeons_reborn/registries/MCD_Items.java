@@ -15,6 +15,7 @@ import net.stonksman01.dungeons_reborn.items.mcd_artifact.DeathCapMushroomItem;
 import net.stonksman01.dungeons_reborn.items.mcd_artifact.IronSkinItem;
 import net.stonksman01.dungeons_reborn.items.mcd_meele.*;
 import net.stonksman01.dungeons_reborn.items.mcd_ranged.AutoCrossbowItem;
+import net.stonksman01.dungeons_reborn.items.mcd_ranged.HeavyCrossbowItem;
 import net.stonksman01.dungeons_reborn.items.mcd_ranged.TwinBowItem;
 
 import java.util.List;
@@ -26,22 +27,31 @@ public class MCD_Items {
                     .rarity(Rarity.EPIC)
                     .enchantable(1)));
     public static final Item ROUGH_DIAMOND_SWORD = SkyCore.BuiltinRegistries.registerItem("rough_diamond_sword",
-            settings -> new RoughDiamondSwordItem(ToolMaterial.DIAMOND, 3, 1.6f - 4f, settings
+            settings -> new RoughDiamondSwordItem(ToolMaterial.DIAMOND, 3, 1.6f, settings
                     .rarity(Rarity.EPIC)));
     public static final Item ROUGH_DIAMOND_PICKAXE = SkyCore.BuiltinRegistries.registerItem("rough_diamond_pickaxe",
-            settings -> new RoughDiamondPickaxeItem(ToolMaterial.DIAMOND, 1, 1.2f - 4f, settings
+            settings -> new RoughDiamondPickaxeItem(ToolMaterial.DIAMOND, 1, 1.2f, settings
                     .rarity(Rarity.EPIC)));
     public static final Item STEEL_MACE = SkyCore.BuiltinRegistries.registerItem("steel_mace",
-            settings -> new SteelMaceItem(MCD_ToolMaterials.STEEL_MACE, 2, 1.6f - 4f, settings));
+            settings -> new SteelMaceItem(MCD_ToolMaterials.DEFAULT, 2, 1.6f, settings));
+    public static final Item SUNS_GRACE = SkyCore.BuiltinRegistries.registerItem("suns_grace",
+            settings -> new SunsGraceItem(MCD_ToolMaterials.DEFAULT, 2, 1.6f, settings));
     public static final Item CLAYMORE = SkyCore.BuiltinRegistries.registerItem("claymore",
-            settings -> new ClaymoreItem(MCD_ToolMaterials.CLAYMORE, 4, 1.0f - 4f, settings));
+            settings -> new ClaymoreItem(MCD_ToolMaterials.DEFAULT, 4, 1.0f, settings));
+    public static final Item HEARTSTEALER = SkyCore.BuiltinRegistries.registerItem("heartstealer",
+            settings -> new HeartstealerItem(MCD_ToolMaterials.DEFAULT, 4, 1.0f, settings));
     public static final Item BROADSWORD = SkyCore.BuiltinRegistries.registerItem("broadsword",
-            settings -> new BroadswordItem(MCD_ToolMaterials.CLAYMORE, 4, 1.0f - 4f, settings
+            settings -> new BroadswordItem(MCD_ToolMaterials.DEFAULT, 5, 1.0f, settings
                     .rarity(Rarity.EPIC)));
     public static final Item AUTO_CROSSBOW = SkyCore.BuiltinRegistries.registerItem("auto_crossbow",
             settings -> new AutoCrossbowItem(settings
                     .maxDamage(465)
                     .rarity(Rarity.EPIC)
+                    .component(DataComponentTypes.CHARGED_PROJECTILES, ChargedProjectilesComponent.DEFAULT)
+                    .enchantable(1)));
+    public static final Item HEAVY_CROSSBOW = SkyCore.BuiltinRegistries.registerItem("heavy_crossbow",
+            settings -> new HeavyCrossbowItem(settings
+                    .maxDamage(465)
                     .component(DataComponentTypes.CHARGED_PROJECTILES, ChargedProjectilesComponent.DEFAULT)
                     .enchantable(1)));
     public static final Item ARTIFACT_IRON_HIDE_AMULET = SkyCore.BuiltinRegistries.registerItem("artifact_iron_hide_amulet",

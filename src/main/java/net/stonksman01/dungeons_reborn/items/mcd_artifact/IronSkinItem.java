@@ -108,7 +108,7 @@ public class IronSkinItem extends McdArtifactItem {
         textConsumer.accept(Text.translatable("tooltip.dungeons_reborn.artifact.iron_hide_amulet.tooltip1").setStyle(Style.EMPTY.withItalic(true).withFormatting(Formatting.GRAY)));
         textConsumer.accept(Text.translatable("tooltip.dungeons_reborn.artifact.iron_hide_amulet.tooltip2").setStyle(Style.EMPTY.withItalic(true).withFormatting(Formatting.GRAY)));
         textConsumer.accept(Text.translatable("tooltip.dungeons_reborn.artifact.iron_hide_amulet.tooltip3").setStyle(Style.EMPTY.withItalic(true).withFormatting(Formatting.GRAY)));
-        DungeonsHelpers.appendMcdRarity(stack, textConsumer);
+        DungeonsHelpers.Tooltip.appendMcdRarity(stack, textConsumer);
         textConsumer.accept(Text.translatable("tooltip.dungeons_reborn.artifact.iron_hide_amulet.teammate_only")
                 .append(Text.literal(": ")
                         .append(Boolean.TRUE.equals(stack.get(MCD_DataComponentTypes.IRON_HIDE_AMULET_TEAMMATE_ONLY_TOGGLE)) ?

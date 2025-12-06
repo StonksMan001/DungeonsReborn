@@ -1,4 +1,4 @@
-package net.stonksman01.dungeons_reborn.items.mcd_meele;
+package net.stonksman01.dungeons_reborn.util;
 
 import net.minecraft.util.Pair;
 import net.stonksman01.dungeons_reborn.components.McdRarity;

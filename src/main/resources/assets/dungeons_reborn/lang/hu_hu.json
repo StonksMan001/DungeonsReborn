@@ -29,6 +29,10 @@
   "tooltip.dungeons_reborn.auto_crossbow.tooltip1": "Az Arch-Illager elmondása szerint ennek az erőteljes számszeríjnak",
   "tooltip.dungeons_reborn.auto_crossbow.tooltip2": "az elképzelése egy látomáson keresztül jutott el hozzá.",
 
+  "item.dungeons_reborn.heavy_crossbow": "Nehéz számszeríj",
+  "tooltip.dungeons_reborn.heavy_crossbow.tooltip1": "A súlyozott számszeríj nagy sebzést okozó veszély,",
+  "tooltip.dungeons_reborn.heavy_crossbow.tooltip2": "amely távolról is valós fenyegetést jelent.",
+
   "item.dungeons_reborn.artifact_death_cap_mushroom": "Gyilkos galóca",
   "tooltip.dungeons_reborn.artifact.death_cap_mushroom.tooltip1": "A vakmerő harcosok mindig a csata előtt fogyasztották, a",
   "tooltip.dungeons_reborn.artifact.death_cap_mushroom.tooltip2": "Gyilkos galóca képes őrületbe kergetni azt aki elfogyasztja.",
@@ -46,9 +50,18 @@
   "tooltip.dungeons_reborn.steel_mace.tooltip1": "Az Acél buzogány a háború egyik legbrutálisabb eszköze.",
   "tooltip.dungeons_reborn.steel_mace.tooltip2": "Amivel alulmarad gyorsaságban, azt visszahozza ütőképességben.",
 
+  "item.dungeons_reborn.suns_grace": "Nap kegyelme",
+  "tooltip.dungeons_reborn.suns_grace.tooltip1": "Ez a titkos gyógyító rúnákkal vésett buzogány",
+  "tooltip.dungeons_reborn.suns_grace.tooltip2": "erőteljes gyógyító erőkkel rendelkezik.",
+
   "item.dungeons_reborn.claymore": "Klémor",
   "tooltip.dungeons_reborn.claymore.tooltip1": "Egy hatalmas kard, ami hihetetlenül nehéznek tűnik,",
   "tooltip.dungeons_reborn.claymore.tooltip2": "mégis könnyedén megfér egy igaz harcos kezében.",
+
+  "item.dungeons_reborn.heartstealer": "Szívlopó",
+  "tooltip.dungeons_reborn.heartstealer.tooltip1": "Az Arch-Illagerek egyik legkiválóbb tábornokának",
+  "tooltip.dungeons_reborn.heartstealer.tooltip2": "ajándékozták, amikor meghódították a Tintahal-partot",
+  "tooltip.dungeons_reborn.heartstealer.tooltip3": "- ezt a rúnakardot sötét boszorkánysággal itatták át.",
 
   "item.dungeons_reborn.broadsword": "Pallos",
   "tooltip.dungeons_reborn.broadsword.tooltip1": "Csak azok képesek megemelni ezt a hatalmas pengét",
@@ -68,6 +81,7 @@
   "enchantment.dungeons_reborn.bonus_shot": "Bónusz lövés",
   "enchantment.dungeons_reborn.accelerate": "Gyorsulás",
   "enchantment.dungeons_reborn.prospector": "Átkutatás",
+  "enchantment.dungeons_reborn.leeching": "Pióca",
   "tooltip.dungeons_reborn.bonus_shot.target_players": "Célozzon játékosokat",
   "tooltip.dungeons_reborn.built_in": "Beépített",
   "tooltip.dungeons_reborn.powerful_combo": "Erőteljes kombó",

@@ -33,10 +33,10 @@ public class ClaymoreItem extends ClaymoreBaseItem {
     }
     @Override
     public void appendTooltip(ItemStack stack, Item.TooltipContext context, TooltipDisplayComponent displayComponent, Consumer<Text> textConsumer, TooltipType type) {
-        textConsumer.accept(Text.translatable("tooltip.dungeons_reborn.minecraft_dungeons_header").setStyle(Style.EMPTY.withBold(true).withFormatting(Formatting.GRAY)));
+        DungeonsHelpers.Tooltip.appendDungeonsHeader(textConsumer);
         textConsumer.accept(Text.translatable("tooltip.dungeons_reborn.claymore.tooltip1").setStyle(Style.EMPTY.withItalic(true).withFormatting(Formatting.GRAY)));
         textConsumer.accept(Text.translatable("tooltip.dungeons_reborn.claymore.tooltip2").setStyle(Style.EMPTY.withItalic(true).withFormatting(Formatting.GRAY)));
-        DungeonsHelpers.appendMcdRarity(stack, textConsumer);
+        DungeonsHelpers.Tooltip.appendMcdRarity(stack, textConsumer);
         textConsumer.accept(Text.translatable("tooltip.dungeons_reborn.powerful_pushback").setStyle(Style.EMPTY.withFormatting(Formatting.GREEN).withItalic(true)));
         super.appendTooltip(stack, context, displayComponent, textConsumer, type);
     }

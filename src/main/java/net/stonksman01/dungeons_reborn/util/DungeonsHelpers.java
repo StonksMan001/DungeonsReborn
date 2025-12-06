@@ -1,6 +1,5 @@
 package net.stonksman01.dungeons_reborn.util;
 
-import com.llamalad7.mixinextras.injector.wrapoperation.Operation;
 import net.minecraft.block.ComposterBlock;
 import net.minecraft.component.DataComponentTypes;
 import net.minecraft.component.type.AttributeModifierSlot;
@@ -18,39 +17,44 @@ import net.minecraft.registry.RegistryKeys;
 import net.minecraft.registry.RegistryWrapper;
 import net.minecraft.registry.entry.RegistryEntry;
 import net.minecraft.scoreboard.Team;
+import net.minecraft.text.Style;
 import net.minecraft.text.Text;
+import net.minecraft.util.Formatting;
 import net.minecraft.world.World;
 import net.stonksman01.dungeons_reborn.components.McdRarity;
 import net.stonksman01.dungeons_reborn.registries.MCD_DataComponentTypes;
 import net.stonksman01.dungeons_reborn.registries.MCD_Enchantments;
 
-import java.util.List;
 import java.util.Objects;
 import java.util.Random;
 import java.util.function.Consumer;
 
 public interface DungeonsHelpers {
-    static void enchantStackWithPrimitiveness(ItemStack stack, RegistryWrapper.WrapperLookup provider) {
-        addEnchantmentToStack(stack, provider, MCD_Enchantments.PRIMITIVENESS_CURSE, 1);
-    }
-
-    static void appendMcdRarity(ItemStack stack, Consumer<Text> textConsumer) {
-        McdRarity mcdRarity = stack.get(MCD_DataComponentTypes.MCD_RARITY);
-        if (mcdRarity != null) {
-            switch (mcdRarity) {
-                case McdRarity.COMMON -> textConsumer.accept(Text.translatable("tooltip.dungeons_reborn.rarity.common"));
-                case McdRarity.RARE -> textConsumer.accept(Text.translatable("tooltip.dungeons_reborn.rarity.rare"));
-                case McdRarity.UNIQUE -> textConsumer.accept(Text.translatable("tooltip.dungeons_reborn.rarity.unique"));
-                default -> textConsumer.accept(Text.translatable("tooltip.dungeons_reborn.rarity.common")
-                        .append(Text.literal(" "))
-                        .append(Text.translatable("tooltip.dungeons_reborn.rarity_info_extended.custom")));
+    interface Tooltip {
+        static void appendDungeonsHeader(Consumer<Text> textConsumer) {
+            textConsumer.accept(Text.translatable("tooltip.dungeons_reborn.minecraft_dungeons_header").setStyle(Style.EMPTY.withBold(true).withFormatting(Formatting.GRAY)));
+        }
+        static void appendMcdRarity(ItemStack stack, Consumer<Text> textConsumer) {
+            McdRarity mcdRarity = stack.get(MCD_DataComponentTypes.MCD_RARITY);
+            if (mcdRarity != null) {
+                switch (mcdRarity) {
+                    case McdRarity.COMMON -> textConsumer.accept(Text.translatable("tooltip.dungeons_reborn.rarity.common"));
+                    case McdRarity.RARE -> textConsumer.accept(Text.translatable("tooltip.dungeons_reborn.rarity.rare"));
+                    case McdRarity.UNIQUE -> textConsumer.accept(Text.translatable("tooltip.dungeons_reborn.rarity.unique"));
+                    default -> textConsumer.accept(Text.translatable("tooltip.dungeons_reborn.rarity.common")
+                            .append(Text.literal(" "))
+                            .append(Text.translatable("tooltip.dungeons_reborn.rarity_info_extended.custom")));
+                }
+            } else {
+                textConsumer.accept(Text.translatable("tooltip.dungeons_reborn.rarity.unknown"));
             }
-        } else {
-            textConsumer.accept(Text.translatable("tooltip.dungeons_reborn.rarity.unknown"));
         }
     }
     static void makeUnrepairable(ItemStack stack) {
         if (Objects.nonNull(stack.get(DataComponentTypes.REPAIRABLE))) stack.set(DataComponentTypes.REPAIRABLE, null);
+    }
+    static void enchantStackWithPrimitiveness(ItemStack stack, RegistryWrapper.WrapperLookup provider) {
+        addEnchantmentToStack(stack, provider, MCD_Enchantments.PRIMITIVENESS_CURSE, 1);
     }
     static void addEnchantmentToStack(ItemStack itemStack, RegistryWrapper.WrapperLookup wrapper, RegistryKey<Enchantment> enchantment, int level) {
         if (wrapper == null) return;

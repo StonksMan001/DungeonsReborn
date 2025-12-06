@@ -17,7 +17,6 @@ import net.minecraft.server.world.ServerWorld;
 import net.minecraft.text.Style;
 import net.minecraft.text.Text;
 import net.minecraft.util.Formatting;
-import net.minecraft.util.math.Vec3d;
 import net.stonksman01.dungeons_reborn._included_libs.skycore.SkyCoreToolAPI;
 import net.stonksman01.dungeons_reborn.items.McdItem;
 import net.stonksman01.dungeons_reborn.util.DungeonsHelpers;
@@ -32,7 +31,7 @@ public class RoughDiamondPickaxeItem extends SkyCoreToolAPI.PickaxeItem {
     }
     @Override
     public void appendTooltip(ItemStack stack, Item.TooltipContext context, TooltipDisplayComponent displayComponent, Consumer<Text> textConsumer, TooltipType type) {
-        textConsumer.accept(Text.translatable("tooltip.dungeons_reborn.minecraft_dungeons_header").setStyle(Style.EMPTY.withBold(true).withFormatting(Formatting.GRAY)));
+        DungeonsHelpers.Tooltip.appendDungeonsHeader(textConsumer);
         textConsumer.accept(Text.translatable("tooltip.dungeons_reborn.rough_diamond_pickaxe.tooltip1").setStyle(Style.EMPTY.withItalic(true).withFormatting(Formatting.GRAY)));
         textConsumer.accept(Text.translatable("tooltip.dungeons_reborn.rough_diamond_pickaxe.tooltip2").setStyle(Style.EMPTY.withItalic(true).withFormatting(Formatting.GRAY)));
         textConsumer.accept(Text.translatable("tooltip.dungeons_reborn.rarity.unique"));

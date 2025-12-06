@@ -2,12 +2,10 @@ package net.stonksman01.dungeons_reborn.datagen;
 
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricTagProvider;
-import net.minecraft.item.Items;
 import net.minecraft.registry.RegistryWrapper;
 import net.minecraft.registry.tag.ItemTags;
 import net.stonksman01.dungeons_reborn.registries.MCD_ItemTags;
 import net.stonksman01.dungeons_reborn.registries.MCD_Items;
-import org.jetbrains.annotations.Nullable;
 
 import java.util.concurrent.CompletableFuture;
 
@@ -38,14 +36,17 @@ public class MCD_ItemTagProvider extends FabricTagProvider.ItemTagProvider {
         valueLookupBuilder(MCD_ItemTags.HAS_DURABILITY_BOWS)
                 .add(MCD_Items.TWIN_BOW);
         valueLookupBuilder(MCD_ItemTags.HAS_DURABILITY_CROSSBOWS)
-                .add(MCD_Items.AUTO_CROSSBOW);
+                .add(MCD_Items.AUTO_CROSSBOW)
+                .add(MCD_Items.HEAVY_CROSSBOW);
         valueLookupBuilder(MCD_ItemTags.HAS_DURABILITY_DURABLE)
                 .add(MCD_Items.ARTIFACT_IRON_HIDE_AMULET)
                 .add(MCD_Items.ARTIFACT_DEATH_CAP_MUSHROOM);
         valueLookupBuilder(MCD_ItemTags.HAS_DURABILITY_SWORDS)
                 .add(MCD_Items.ROUGH_DIAMOND_SWORD)
                 .add(MCD_Items.STEEL_MACE)
+                .add(MCD_Items.SUNS_GRACE)
                 .add(MCD_Items.CLAYMORE)
+                .add(MCD_Items.HEARTSTEALER)
                 .add(MCD_Items.BROADSWORD);
 
         valueLookupBuilder(ItemTags.FOX_FOOD).add(MCD_Items.SOUR_BERRIES);

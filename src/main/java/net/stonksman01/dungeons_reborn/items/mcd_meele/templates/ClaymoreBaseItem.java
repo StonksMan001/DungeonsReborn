@@ -12,7 +12,7 @@ import net.minecraft.util.Pair;
 import net.stonksman01.dungeons_reborn._included_libs.skycore.SkyCoreToolAPI;
 import net.stonksman01.dungeons_reborn.components.McdRarity;
 import net.stonksman01.dungeons_reborn.items.McdItem;
-import net.stonksman01.dungeons_reborn.items.mcd_meele.ChainAttackWeapon;
+import net.stonksman01.dungeons_reborn.util.ChainAttackWeapon;
 import net.stonksman01.dungeons_reborn.registries.MCD_DataComponentTypes;
 import net.stonksman01.dungeons_reborn.util.DungeonsHelpers;
 import org.jetbrains.annotations.Nullable;
