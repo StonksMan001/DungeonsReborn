@@ -10,7 +10,7 @@ import net.stonksman01.dungeons_reborn.items.McdItem;
 
 public class ShortBowItem extends SC_BowItem {
     public ShortBowItem(Settings settings) {
-        super(settings); //TODO: this
+        super(settings);
     }
     @Override
     public int getItemBarColor(ItemStack stack) {

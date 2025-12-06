@@ -17,7 +17,9 @@ import net.minecraft.registry.RegistryKeys;
 import net.minecraft.registry.RegistryWrapper;
 import net.minecraft.registry.entry.RegistryEntry;
 import net.minecraft.scoreboard.Team;
+import net.minecraft.text.Style;
 import net.minecraft.text.Text;
+import net.minecraft.util.Formatting;
 import net.minecraft.world.World;
 import net.stonksman01.dungeons_reborn.components.McdRarity;
 import net.stonksman01.dungeons_reborn.registries.MCD_DataComponentTypes;
@@ -28,24 +30,28 @@ import java.util.Objects;
 import java.util.Random;
 
 public interface DungeonsHelpers {
+    interface Tooltip {
+        static void appendDungeonsHeader(List<Text> tooltip) {
+            tooltip.add(Text.translatable("tooltip.dungeons_reborn.minecraft_dungeons_header").setStyle(Style.EMPTY.withBold(true).withFormatting(Formatting.GRAY)));
+        }
+        static void appendMcdRarity(ItemStack stack, List<Text> tooltip) {
+            McdRarity mcdRarity = stack.get(MCD_DataComponentTypes.MCD_RARITY);
+            if (mcdRarity != null) {
+                switch (mcdRarity) {
+                    case McdRarity.COMMON -> tooltip.add(Text.translatable("tooltip.dungeons_reborn.rarity.common"));
+                    case McdRarity.RARE -> tooltip.add(Text.translatable("tooltip.dungeons_reborn.rarity.rare"));
+                    case McdRarity.UNIQUE -> tooltip.add(Text.translatable("tooltip.dungeons_reborn.rarity.unique"));
+                    default -> tooltip.add(Text.translatable("tooltip.dungeons_reborn.rarity.common")
+                            .append(Text.literal(" "))
+                            .append(Text.translatable("tooltip.dungeons_reborn.rarity_info_extended.custom")));
+                }
+            } else {
+                tooltip.add(Text.translatable("tooltip.dungeons_reborn.rarity.unknown"));
+            }
+        }
+    }
     static void enchantStackWithPrimitiveness(ItemStack stack, RegistryWrapper.WrapperLookup provider) {
         addEnchantmentToStack(stack, provider, MCD_Enchantments.PRIMITIVENESS_CURSE, 1);
-    }
-
-    static void appendMcdRarity(ItemStack stack, List<Text> tooltip) {
-        McdRarity mcdRarity = stack.get(MCD_DataComponentTypes.MCD_RARITY);
-        if (mcdRarity != null) {
-            switch (mcdRarity) {
-                case McdRarity.COMMON -> tooltip.add(Text.translatable("tooltip.dungeons_reborn.rarity.common"));
-                case McdRarity.RARE -> tooltip.add(Text.translatable("tooltip.dungeons_reborn.rarity.rare"));
-                case McdRarity.UNIQUE -> tooltip.add(Text.translatable("tooltip.dungeons_reborn.rarity.unique"));
-                default -> tooltip.add(Text.translatable("tooltip.dungeons_reborn.rarity.common")
-                        .append(Text.literal(" "))
-                        .append(Text.translatable("tooltip.dungeons_reborn.rarity_info_extended.custom")));
-            }
-        } else {
-            tooltip.add(Text.translatable("tooltip.dungeons_reborn.rarity.unknown"));
-        }
     }
     static void addEnchantmentToStack(ItemStack itemStack, RegistryWrapper.WrapperLookup wrapper, RegistryKey<Enchantment> enchantment, int level) {
         if (wrapper == null) return;

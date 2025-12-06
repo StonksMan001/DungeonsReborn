@@ -1,4 +1,4 @@
-// 1.21.1	2025-12-04T14:25:06.3603548	DungeonsReborn/Model Definitions
+// 1.21.1	2025-12-06T13:17:18.5781742	DungeonsReborn/Model Definitions
 162837e6b707ea6729f4849cad456e05059f16c3 assets\dungeons_reborn\blockstates\mossy_oak_planks.json
 22b7b495621590c2bce9a6ea342838fe2ff48e81 assets\dungeons_reborn\models\item\highland_moss_carpet.json
 43b91b8a4c2d494eca2467eb7fe4c01c6655869d assets\dungeons_reborn\models\item\sour_berries.json
@@ -11,6 +11,7 @@ c44c9ebf166d974c157ca6c47718883055a99b52 assets\dungeons_reborn\models\block\mid
 d5f0ad86c09bb544201d545aa053890dcae73099 assets\dungeons_reborn\models\item\midnight_mossy_cobblestone.json
 f0698bb1c2f34f59a31944c2d9525d1847b10454 assets\dungeons_reborn\blockstates\sour_berry_bush.json
 dc26ab31d3d161d51c8ab8b1fa1170a896afa664 assets\dungeons_reborn\models\item\broadsword.json
+870f5d543590111804af118473bd6a2d6bbc5e34 assets\dungeons_reborn\models\item\suns_grace.json
 8d234056f0847bfa8f9ee8a2e7d853b6bd5ca9ee assets\dungeons_reborn\models\block\highland_moss_carpet.json
 7a1f020ace71099ac59b7a459358113782e8696f assets\dungeons_reborn\models\block\midnight_moss_carpet.json
 02e6d0fb5a79599985882a808be0c64b9003a67f assets\dungeons_reborn\models\item\mossy_oak_planks.json
@@ -22,6 +23,7 @@ b3382a101ee71595668af7d8f16ed082403b43d3 assets\dungeons_reborn\blockstates\moss
 6d672a309afaa2a68f1e285cd184326322cb4ea2 assets\dungeons_reborn\models\item\claymore.json
 df328f9c0c041fdf58c4ddcb2e1249c14ca278fa assets\dungeons_reborn\blockstates\ancient_gold_block.json
 146c4ed0c13b50e68773207fa30ba2457b9f6c60 assets\dungeons_reborn\models\item\midnight_moss_carpet.json
+73a6723d5e6ae67a9d1eddcd5a6658aa3056b3a0 assets\dungeons_reborn\models\item\heartstealer.json
 e211a846e4bbbcc22b38dfa9dc085969f4faee18 assets\dungeons_reborn\blockstates\midnight_moss_block.json
 050fa953de0aeafdc4ab8f9ae178e30a20573e33 assets\dungeons_reborn\blockstates\midnight_moss_carpet.json
 1fc875e4cdc7c2b4cbceb338c3a5c8f571c36430 assets\dungeons_reborn\models\item\ancient_gold_block.json

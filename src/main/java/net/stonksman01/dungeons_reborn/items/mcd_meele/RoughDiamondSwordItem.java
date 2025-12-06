@@ -22,7 +22,7 @@ public class RoughDiamondSwordItem extends SkyCoreToolAPI.SwordItem implements G
     }
     @Override
     public void appendTooltip(ItemStack stack, TooltipContext context, List<Text> tooltip, TooltipType type) {
-        tooltip.add(Text.translatable("tooltip.dungeons_reborn.minecraft_dungeons_header").setStyle(Style.EMPTY.withBold(true).withFormatting(Formatting.GRAY)));
+        DungeonsHelpers.Tooltip.appendDungeonsHeader(tooltip);
         tooltip.add(Text.translatable("tooltip.dungeons_reborn.rough_diamond_sword.tooltip1").setStyle(Style.EMPTY.withItalic(true).withFormatting(Formatting.GRAY)));
         tooltip.add(Text.translatable("tooltip.dungeons_reborn.rough_diamond_sword.tooltip2").setStyle(Style.EMPTY.withItalic(true).withFormatting(Formatting.GRAY)));
         tooltip.add(Text.translatable("tooltip.dungeons_reborn.rarity.unique"));

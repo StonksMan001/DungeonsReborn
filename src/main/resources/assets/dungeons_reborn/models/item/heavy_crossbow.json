@@ -1,7 +1,7 @@
 {
 	"parent": "item/generated",
 	"textures": {
-		"layer0": "dungeons_reborn:item/auto_crossbow_standby"
+		"layer0": "dungeons_reborn:item/heavy_crossbow_standby"
 	},
 	"display": {
 		"thirdperson_righthand": {
@@ -30,34 +30,34 @@
 			"predicate": {
 				"pulling": 1
 			},
-			"model": "dungeons_reborn:item/auto_crossbow_pulling_0"
+			"model": "dungeons_reborn:item/heavy_crossbow_pulling_0"
 		},
 		{
 			"predicate": {
 				"pulling": 1,
 				"pull": 0.58
 			},
-			"model": "dungeons_reborn:item/auto_crossbow_pulling_1"
+			"model": "dungeons_reborn:item/heavy_crossbow_pulling_1"
 		},
 		{
 			"predicate": {
 				"pulling": 1,
 				"pull": 1.0
 			},
-			"model": "dungeons_reborn:item/auto_crossbow_pulling_2"
+			"model": "dungeons_reborn:item/heavy_crossbow_pulling_2"
 		},
 		{
 			"predicate": {
 				"charged": 1
 			},
-			"model": "dungeons_reborn:item/auto_crossbow_arrow"
+			"model": "dungeons_reborn:item/heavy_crossbow_arrow"
 		},
 		{
 			"predicate": {
 				"charged": 1,
 				"firework": 1
 			},
-			"model": "dungeons_reborn:item/auto_crossbow_firework"
+			"model": "dungeons_reborn:item/heavy_crossbow_firework"
 		}
 	]
 }

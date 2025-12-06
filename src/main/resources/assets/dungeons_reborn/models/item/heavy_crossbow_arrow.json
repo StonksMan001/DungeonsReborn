@@ -1,0 +1,6 @@
+{
+    "parent": "dungeons_reborn:item/heavy_crossbow",
+    "textures": {
+        "layer0": "dungeons_reborn:item/heavy_crossbow_arrow"
+    }
+}

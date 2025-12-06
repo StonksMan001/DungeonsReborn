@@ -38,14 +38,17 @@ public class MCD_ItemTagProvider extends FabricTagProvider.ItemTagProvider {
         getOrCreateTagBuilder(MCD_ItemTags.HAS_DURABILITY_BOWS)
                 .add(MCD_Items.TWIN_BOW);
         getOrCreateTagBuilder(MCD_ItemTags.HAS_DURABILITY_CROSSBOWS)
-                .add(MCD_Items.AUTO_CROSSBOW);
+                .add(MCD_Items.AUTO_CROSSBOW)
+                .add(MCD_Items.HEAVY_CROSSBOW);
         getOrCreateTagBuilder(MCD_ItemTags.HAS_DURABILITY_DURABLE)
                 .add(MCD_Items.ARTIFACT_IRON_HIDE_AMULET)
                 .add(MCD_Items.ARTIFACT_DEATH_CAP_MUSHROOM);
         getOrCreateTagBuilder(MCD_ItemTags.HAS_DURABILITY_SWORDS)
                 .add(MCD_Items.ROUGH_DIAMOND_SWORD)
                 .add(MCD_Items.STEEL_MACE)
+                .add(MCD_Items.SUNS_GRACE)
                 .add(MCD_Items.CLAYMORE)
+                .add(MCD_Items.HEARTSTEALER)
                 .add(MCD_Items.BROADSWORD);
 
         getOrCreateTagBuilder(ItemTags.FOX_FOOD).add(MCD_Items.SOUR_BERRIES);

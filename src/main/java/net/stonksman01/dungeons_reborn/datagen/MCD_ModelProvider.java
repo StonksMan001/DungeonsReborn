@@ -58,7 +58,9 @@ public class MCD_ModelProvider extends FabricModelProvider {
         itemModelGenerator.register(MCD_Items.ROUGH_DIAMOND_SWORD, Models.HANDHELD);
         itemModelGenerator.register(MCD_Items.ROUGH_DIAMOND_PICKAXE, Models.HANDHELD);
         itemModelGenerator.register(MCD_Items.STEEL_MACE, Models.HANDHELD);
+        itemModelGenerator.register(MCD_Items.SUNS_GRACE, Models.HANDHELD);
         itemModelGenerator.register(MCD_Items.CLAYMORE, MCD_Models.HANDHELD_CLAYMORE);
+        itemModelGenerator.register(MCD_Items.HEARTSTEALER, MCD_Models.HANDHELD_CLAYMORE);
         itemModelGenerator.register(MCD_Items.BROADSWORD, MCD_Models.HANDHELD_CLAYMORE);
     }
 }

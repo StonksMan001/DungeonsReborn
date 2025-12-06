@@ -12,12 +12,7 @@ import net.stonksman01.dungeons_reborn.util.DungeonsHelpers;
 public class MCD_ItemGroups {
     public static ItemGroup DUNGEONS_REBORN = SkyCore.BuiltinRegistries.registerItemGroup("dungeons_reborn",
             FabricItemGroup.builder().displayName(Text.literal("Dungeons Reborn")).icon(() -> new ItemStack(MCD_Items.ANCIENT_GOLD_INGOT)).entries((displayContext, entries) -> {
-                ItemStack commonSteelMace = new ItemStack(MCD_Items.STEEL_MACE);
-                commonSteelMace.set(MCD_DataComponentTypes.MCD_RARITY, McdRarity.COMMON);
-                entries.add(commonSteelMace);
-                ItemStack rareSteelMace = new ItemStack(MCD_Items.STEEL_MACE);
-                rareSteelMace.set(MCD_DataComponentTypes.MCD_RARITY, McdRarity.RARE);
-                entries.add(rareSteelMace);
+                //TODO: clean this mess in MCD_ItemGroups
                 ItemStack commonClaymore = new ItemStack(MCD_Items.CLAYMORE);
                 commonClaymore.set(MCD_DataComponentTypes.MCD_RARITY, McdRarity.COMMON);
                 DungeonsHelpers.modifyAttackKnockback(commonClaymore, 0.0);
@@ -26,13 +21,29 @@ public class MCD_ItemGroups {
                 rareClaymore.set(MCD_DataComponentTypes.MCD_RARITY, McdRarity.RARE);
                 DungeonsHelpers.modifyAttackKnockback(rareClaymore, 0.0);
                 entries.add(rareClaymore);
+                ItemStack heartstealer = new ItemStack(MCD_Items.HEARTSTEALER);
+                DungeonsHelpers.modifyAttackKnockback(heartstealer, 0.0);
+                entries.add(heartstealer);
                 ItemStack broadSword = new ItemStack(MCD_Items.BROADSWORD);
                 DungeonsHelpers.modifyAttackKnockback(broadSword, 0.0);
                 entries.add(broadSword);
                 entries.add(MCD_Items.ROUGH_DIAMOND_SWORD);
                 entries.add(MCD_Items.ROUGH_DIAMOND_PICKAXE);
-                entries.add(MCD_Items.TWIN_BOW);
+                ItemStack commonSteelMace = new ItemStack(MCD_Items.STEEL_MACE);
+                commonSteelMace.set(MCD_DataComponentTypes.MCD_RARITY, McdRarity.COMMON);
+                entries.add(commonSteelMace);
+                ItemStack rareSteelMace = new ItemStack(MCD_Items.STEEL_MACE);
+                rareSteelMace.set(MCD_DataComponentTypes.MCD_RARITY, McdRarity.RARE);
+                entries.add(rareSteelMace);
+                entries.add(MCD_Items.SUNS_GRACE);
+                ItemStack commonHeavyCrossBow = new ItemStack(MCD_Items.HEAVY_CROSSBOW);
+                commonHeavyCrossBow.set(MCD_DataComponentTypes.MCD_RARITY, McdRarity.COMMON);
+                entries.add(commonHeavyCrossBow);
+                ItemStack rareHeavyCrossBow = new ItemStack(MCD_Items.HEAVY_CROSSBOW);
+                rareHeavyCrossBow.set(MCD_DataComponentTypes.MCD_RARITY, McdRarity.RARE);
+                entries.add(rareHeavyCrossBow);
                 entries.add(MCD_Items.AUTO_CROSSBOW);
+                entries.add(MCD_Items.TWIN_BOW);
                 ItemStack commonAmulet = new ItemStack(MCD_Items.ARTIFACT_IRON_HIDE_AMULET);
                 commonAmulet.set(MCD_DataComponentTypes.MCD_RARITY, McdRarity.COMMON);
                 entries.add(commonAmulet);
