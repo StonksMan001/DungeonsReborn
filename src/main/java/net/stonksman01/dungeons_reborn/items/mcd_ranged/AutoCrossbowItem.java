@@ -13,9 +13,11 @@ import net.minecraft.util.Hand;
 import net.minecraft.util.TypedActionResult;
 import net.minecraft.world.World;
 import net.stonksman01.dungeons_reborn._included_libs.skycore.items.SC_CrossbowItem;
+import net.stonksman01.dungeons_reborn.components.McdRarity;
 import net.stonksman01.dungeons_reborn.items.McdItem;
 import net.stonksman01.dungeons_reborn.mixin.CrossbowItemAccessors;
 import net.stonksman01.dungeons_reborn.registries.MCD_DataComponentTypes;
+import net.stonksman01.dungeons_reborn.util.DungeonsHelpers;
 
 import java.util.List;
 
@@ -53,11 +55,11 @@ public class AutoCrossbowItem extends SC_CrossbowItem {
 
     @Override
     public void appendTooltip(ItemStack stack, TooltipContext context, List<Text> tooltip, TooltipType type) {
-        tooltip.add(Text.translatable("tooltip.dungeons_reborn.minecraft_dungeons_header").setStyle(Style.EMPTY.withBold(true).withFormatting(Formatting.GRAY)));
+        DungeonsHelpers.Tooltip.appendDungeonsHeader(tooltip);
         tooltip.add(Text.translatable("tooltip.dungeons_reborn.auto_crossbow.tooltip1").setStyle(Style.EMPTY.withItalic(true).withFormatting(Formatting.GRAY)));
         tooltip.add(Text.translatable("tooltip.dungeons_reborn.auto_crossbow.tooltip2").setStyle(Style.EMPTY.withItalic(true).withFormatting(Formatting.GRAY)));
-        tooltip.add(Text.translatable("tooltip.dungeons_reborn.rarity.unique"));
-        tooltip.add(Text.translatable("enchantment.dungeons_reborn.accelerate").setStyle(Style.EMPTY.withFormatting(Formatting.GREEN)));
+        DungeonsHelpers.Tooltip.appendMcdRarity(tooltip, McdRarity.UNIQUE);
+        tooltip.add(Text.translatable("ability.dungeons_reborn.accelerate").setStyle(Style.EMPTY.withFormatting(Formatting.GREEN)));
         super.appendTooltip(stack, context, tooltip, type);
     }
 

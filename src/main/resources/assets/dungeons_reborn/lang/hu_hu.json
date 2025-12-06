@@ -67,22 +67,25 @@
   "tooltip.dungeons_reborn.broadsword.tooltip1": "Csak azok képesek megemelni ezt a hatalmas pengét",
   "tooltip.dungeons_reborn.broadsword.tooltip2": "akik egy bajnok és egy hős szívével rendelkeznek.",
 
-  "tooltip.dungeons_reborn.rarity.common": "Gyakoriság: §r[§7ɢʏᴀᴋᴏʀɪ§r]",
-  "tooltip.dungeons_reborn.rarity.rare": "Gyakoriság: §r[§aʀɪᴛᴋᴀ§r]",
-  "tooltip.dungeons_reborn.rarity.unique": "Gyakoriság: §r[§6ᴋüʟöɴʟᴇɢᴇѕ§r]",
-  "tooltip.dungeons_reborn.rarity.unknown": "Gyakoriság: §r[§7???§r]",
-  "tooltip.dungeons_reborn.rarity_info_extended.custom": "§r[§5ᴇɢʏᴇᴅɪ§r]",
-  "tooltip.dungeons_reborn.rarity_info_extended.gilded": "§r[§eᴀʀᴀɴʏᴏᴢᴏᴛᴛ§r]",
-  "tooltip.dungeons_reborn.rarity_info_extended.gifted": "§r[§aᴀᴊáɴᴅéᴋ§r]",
+  "tooltip.dungeons_reborn.rarity": "Gyakoriság",
+  "mcdRarity.dungeons_reborn.common": "§r[§7ɢʏᴀᴋᴏʀɪ§r]",
+  "mcdRarity.dungeons_reborn.rare": "§r[§aʀɪᴛᴋᴀ§r]",
+  "mcdRarity.dungeons_reborn.unique": "§r[§6ᴋüʟöɴʟᴇɢᴇѕ§r]",
+  "mcdRarity.dungeons_reborn.unknown": "§r[§7???§r]",
+  "mcdRarity.extended.dungeons_reborn.custom": "§r[§5ᴇɢʏᴇᴅɪ§r]",
+  "mcdRarity.extended.dungeons_reborn.gilded": "§r[§eᴀʀᴀɴʏᴏᴢᴏᴛᴛ§r]",
+  "mcdRarity.extended.dungeons_reborn.gifted": "§r[§aᴀᴊáɴᴅéᴋ§r]",
 
   "tooltip.dungeons_reborn.special_resource": "Egy különleges nyersanyag",
 
   "enchantment.dungeons_reborn.primitiveness_curse": "Primitivitás átka",
-  "enchantment.dungeons_reborn.bonus_shot": "Bónusz lövés",
-  "enchantment.dungeons_reborn.accelerate": "Gyorsulás",
-  "enchantment.dungeons_reborn.prospector": "Átkutatás",
-  "enchantment.dungeons_reborn.leeching": "Pióca",
-  "tooltip.dungeons_reborn.bonus_shot.target_players": "Célozzon játékosokat",
+
+  "ability.dungeons_reborn.bonus_shot": "Bónusz lövés",
+  "ability.dungeons_reborn.bonus_shot.target_players": "Célozzon játékosokat",
+  "ability.dungeons_reborn.accelerate": "Gyorsulás",
+  "ability.dungeons_reborn.prospector": "Átkutatás",
+  "ability.dungeons_reborn.leeching": "Pióca",
+
   "tooltip.dungeons_reborn.built_in": "Beépített",
   "tooltip.dungeons_reborn.powerful_combo": "Erőteljes kombó",
   "tooltip.dungeons_reborn.powerful_pushback": "Erőteljes hátralökés"

@@ -17,6 +17,7 @@ import net.minecraft.registry.RegistryKeys;
 import net.minecraft.registry.RegistryWrapper;
 import net.minecraft.registry.entry.RegistryEntry;
 import net.minecraft.scoreboard.Team;
+import net.minecraft.text.MutableText;
 import net.minecraft.text.Style;
 import net.minecraft.text.Text;
 import net.minecraft.util.Formatting;
@@ -34,20 +35,28 @@ public interface DungeonsHelpers {
         static void appendDungeonsHeader(List<Text> tooltip) {
             tooltip.add(Text.translatable("tooltip.dungeons_reborn.minecraft_dungeons_header").setStyle(Style.EMPTY.withBold(true).withFormatting(Formatting.GRAY)));
         }
-        static void appendMcdRarity(ItemStack stack, List<Text> tooltip) {
-            McdRarity mcdRarity = stack.get(MCD_DataComponentTypes.MCD_RARITY);
+        static void appendMcdRarity(List<Text> tooltip, ItemStack stack) {
+            appendMcdRarity(tooltip, stack.get(MCD_DataComponentTypes.MCD_RARITY));
+        }
+        static void appendMcdRarity(List<Text> tooltip, McdRarity mcdRarity) {
+            MutableText text = Text.translatable("tooltip.dungeons_reborn.rarity").append(Text.literal(": "));
             if (mcdRarity != null) {
                 switch (mcdRarity) {
-                    case McdRarity.COMMON -> tooltip.add(Text.translatable("tooltip.dungeons_reborn.rarity.common"));
-                    case McdRarity.RARE -> tooltip.add(Text.translatable("tooltip.dungeons_reborn.rarity.rare"));
-                    case McdRarity.UNIQUE -> tooltip.add(Text.translatable("tooltip.dungeons_reborn.rarity.unique"));
-                    default -> tooltip.add(Text.translatable("tooltip.dungeons_reborn.rarity.common")
-                            .append(Text.literal(" "))
-                            .append(Text.translatable("tooltip.dungeons_reborn.rarity_info_extended.custom")));
+                    case McdRarity.COMMON -> tooltip.add(text.append(Text.translatable("mcdRarity.dungeons_reborn.common")));
+                    case McdRarity.RARE -> tooltip.add(text.append(Text.translatable("mcdRarity.dungeons_reborn.rare")));
+                    case McdRarity.UNIQUE -> tooltip.add(text.append(Text.translatable("mcdRarity.dungeons_reborn.unique")));
+                    default -> tooltip.add(text.append(Text.translatable("mcdRarity.extended.dungeons_reborn.custom")));
                 }
             } else {
-                tooltip.add(Text.translatable("tooltip.dungeons_reborn.rarity.unknown"));
+                tooltip.add(text.append(Text.translatable("tooltip.dungeons_reborn.rarity.unknown")));
             }
+        }
+        static void appendBuiltInEnchantment(List<Text> tooltip, MutableText enchantmentText) {
+            tooltip.add(
+                    Text.translatable("tooltip.dungeons_reborn.built_in").setStyle(Style.EMPTY.withFormatting(Formatting.GREEN).withItalic(true))
+                            .append(Text.literal(" "))
+                            .append(enchantmentText.setStyle(Style.EMPTY.withFormatting(Formatting.GREEN).withItalic(true)))
+            );
         }
     }
     static void enchantStackWithPrimitiveness(ItemStack stack, RegistryWrapper.WrapperLookup provider) {

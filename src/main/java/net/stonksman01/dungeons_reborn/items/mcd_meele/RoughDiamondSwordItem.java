@@ -10,6 +10,7 @@ import net.minecraft.text.Text;
 import net.minecraft.util.Formatting;
 import net.minecraft.world.World;
 import net.stonksman01.dungeons_reborn._included_libs.skycore.SkyCoreToolAPI;
+import net.stonksman01.dungeons_reborn.components.McdRarity;
 import net.stonksman01.dungeons_reborn.util.DungeonsHelpers;
 import net.stonksman01.dungeons_reborn.items.McdItem;
 import net.stonksman01.dungeons_reborn.util.GrindStoneExperienceNotDropping;
@@ -25,12 +26,8 @@ public class RoughDiamondSwordItem extends SkyCoreToolAPI.SwordItem implements G
         DungeonsHelpers.Tooltip.appendDungeonsHeader(tooltip);
         tooltip.add(Text.translatable("tooltip.dungeons_reborn.rough_diamond_sword.tooltip1").setStyle(Style.EMPTY.withItalic(true).withFormatting(Formatting.GRAY)));
         tooltip.add(Text.translatable("tooltip.dungeons_reborn.rough_diamond_sword.tooltip2").setStyle(Style.EMPTY.withItalic(true).withFormatting(Formatting.GRAY)));
-        tooltip.add(Text.translatable("tooltip.dungeons_reborn.rarity.unique"));
-        tooltip.add(
-                Text.translatable("tooltip.dungeons_reborn.built_in").setStyle(Style.EMPTY.withFormatting(Formatting.GREEN).withItalic(true))
-                        .append(Text.literal(" "))
-                        .append(Text.translatable("enchantment.minecraft.sharpness").setStyle(Style.EMPTY.withFormatting(Formatting.GREEN).withItalic(true)))
-        );
+        DungeonsHelpers.Tooltip.appendMcdRarity(tooltip, McdRarity.UNIQUE);
+        DungeonsHelpers.Tooltip.appendBuiltInEnchantment(tooltip, Text.translatable("enchantment.minecraft.sharpness"));
         super.appendTooltip(stack, context, tooltip, type);
     }
     @Override

@@ -24,7 +24,7 @@ public class SunsGraceItem extends MaceBaseItem {
         DungeonsHelpers.Tooltip.appendDungeonsHeader(tooltip);
         tooltip.add(Text.translatable("tooltip.dungeons_reborn.suns_grace.tooltip1").setStyle(Style.EMPTY.withItalic(true).withFormatting(Formatting.GRAY)));
         tooltip.add(Text.translatable("tooltip.dungeons_reborn.suns_grace.tooltip2").setStyle(Style.EMPTY.withItalic(true).withFormatting(Formatting.GRAY)));
-        tooltip.add(Text.translatable("tooltip.dungeons_reborn.rarity.unique"));
+        DungeonsHelpers.Tooltip.appendMcdRarity(tooltip, McdRarity.UNIQUE);
         super.appendTooltip(stack, context, tooltip, type);
     }
     @Override

@@ -33,7 +33,7 @@ public class ClaymoreItem extends ClaymoreBaseItem {
         DungeonsHelpers.Tooltip.appendDungeonsHeader(tooltip);
         tooltip.add(Text.translatable("tooltip.dungeons_reborn.claymore.tooltip1").setStyle(Style.EMPTY.withItalic(true).withFormatting(Formatting.GRAY)));
         tooltip.add(Text.translatable("tooltip.dungeons_reborn.claymore.tooltip2").setStyle(Style.EMPTY.withItalic(true).withFormatting(Formatting.GRAY)));
-        DungeonsHelpers.Tooltip.appendMcdRarity(stack, tooltip);
+        DungeonsHelpers.Tooltip.appendMcdRarity(tooltip, stack);
         tooltip.add(Text.translatable("tooltip.dungeons_reborn.powerful_pushback").setStyle(Style.EMPTY.withFormatting(Formatting.GREEN).withItalic(true)));
         super.appendTooltip(stack, context, tooltip, type);
     }

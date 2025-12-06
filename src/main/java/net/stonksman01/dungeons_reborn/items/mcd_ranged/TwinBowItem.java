@@ -23,6 +23,7 @@ import net.minecraft.util.Formatting;
 import net.minecraft.util.math.Box;
 import net.minecraft.world.World;
 import net.stonksman01.dungeons_reborn._included_libs.skycore.items.SC_BowItem;
+import net.stonksman01.dungeons_reborn.components.McdRarity;
 import net.stonksman01.dungeons_reborn.items.McdItem;
 import net.stonksman01.dungeons_reborn.registries.MCD_DataComponentTypes;
 import net.stonksman01.dungeons_reborn.registries.MCD_Sounds;
@@ -104,22 +105,21 @@ public class TwinBowItem extends SC_BowItem {
     }
     @Override
     public void appendTooltip(ItemStack stack, TooltipContext context, List<Text> tooltip, TooltipType type) {
-        tooltip.add(Text.translatable("tooltip.dungeons_reborn.minecraft_dungeons_header").setStyle(Style.EMPTY.withBold(true).withFormatting(Formatting.GRAY)));
+        DungeonsHelpers.Tooltip.appendDungeonsHeader(tooltip);
         tooltip.add(Text.translatable("tooltip.dungeons_reborn.twin_bow.tooltip1").setStyle(Style.EMPTY.withItalic(true).withFormatting(Formatting.GRAY)));
         tooltip.add(Text.translatable("tooltip.dungeons_reborn.twin_bow.tooltip2").setStyle(Style.EMPTY.withItalic(true).withFormatting(Formatting.GRAY)));
-        tooltip.add(Text.translatable("tooltip.dungeons_reborn.rarity.unique"));
-        tooltip.add(Text.translatable("tooltip.dungeons_reborn.bonus_shot.target_players")
+        DungeonsHelpers.Tooltip.appendMcdRarity(tooltip, McdRarity.UNIQUE);
+        tooltip.add(Text.translatable("ability.dungeons_reborn.bonus_shot.target_players")
                 .append(Text.literal(": ")
                         .append(Boolean.TRUE.equals(stack.get(MCD_DataComponentTypes.TWIN_BOW_TARGET_PLAYER_ENTITIES_TOGGLE)) ?
                                 Text.translatable("options.on").formatted(Formatting.GREEN):
                                 Text.translatable("options.off").formatted(Formatting.RED))));
-        tooltip.add(Text.translatable("enchantment.dungeons_reborn.bonus_shot").setStyle(Style.EMPTY.withFormatting(Formatting.GREEN)));
+        tooltip.add(Text.translatable("ability.dungeons_reborn.bonus_shot").setStyle(Style.EMPTY.withFormatting(Formatting.GREEN)));
         super.appendTooltip(stack, context, tooltip, type);
     }
     @Override
     public int getItemBarColor(ItemStack stack) {
         return McdItem.getMcdItemBarColor();
     }
-
 }
 

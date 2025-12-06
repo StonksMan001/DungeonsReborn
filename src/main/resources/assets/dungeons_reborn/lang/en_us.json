@@ -67,22 +67,25 @@
   "tooltip.dungeons_reborn.broadsword.tooltip1": "Only those with the strength of a champion and",
   "tooltip.dungeons_reborn.broadsword.tooltip2": "the heart of a hero can carry this massive blade.",
 
-  "tooltip.dungeons_reborn.rarity.common": "Rarity: §r[§7ᴄᴏᴍᴍᴏɴ§r]",
-  "tooltip.dungeons_reborn.rarity.rare": "Rarity: §r[§aʀᴀʀᴇ§r]",
-  "tooltip.dungeons_reborn.rarity.unique": "Rarity: §r[§6ᴜɴɪǫᴜᴇ§r]",
-  "tooltip.dungeons_reborn.rarity.unknown": "Rarity: §r[§7???§r]",
-  "tooltip.dungeons_reborn.rarity_info_extended.custom": "§r[§5ᴄᴜѕᴛᴏᴍ§r]",
-  "tooltip.dungeons_reborn.rarity_info_extended.gilded": "§r[§eɢɪʟᴅᴇᴅ§r]",
-  "tooltip.dungeons_reborn.rarity_info_extended.gifted": "§r[§aɢɪꜰᴛᴇᴅ§r]",
+  "tooltip.dungeons_reborn.rarity": "Rarity",
+  "mcdRarity.dungeons_reborn.common": "§r[§7ᴄᴏᴍᴍᴏɴ§r]",
+  "mcdRarity.dungeons_reborn.rare": "§r[§aʀᴀʀᴇ§r]",
+  "mcdRarity.dungeons_reborn.unique": "§r[§6ᴜɴɪǫᴜᴇ§r]",
+  "mcdRarity.dungeons_reborn.unknown": "§r[§7???§r]",
+  "mcdRarity.extended.dungeons_reborn.custom": "§r[§5ᴄᴜѕᴛᴏᴍ§r]",
+  "mcdRarity.extended.dungeons_reborn.gilded": "§r[§eɢɪʟᴅᴇᴅ§r]",
+  "mcdRarity.extended.dungeons_reborn.gifted": "§r[§aɢɪꜰᴛᴇᴅ§r]",
 
   "tooltip.dungeons_reborn.special_resource": "A special resource",
 
   "enchantment.dungeons_reborn.primitiveness_curse": "Primitiveness Curse",
-  "enchantment.dungeons_reborn.bonus_shot": "Bonus Shot",
-  "enchantment.dungeons_reborn.accelerate": "Accelerate",
-  "enchantment.dungeons_reborn.prospector": "Prospector",
-  "enchantment.dungeons_reborn.leeching": "Leeching",
-  "tooltip.dungeons_reborn.bonus_shot.target_players": "Target players",
+
+  "ability.dungeons_reborn.bonus_shot": "Bonus Shot",
+  "ability.dungeons_reborn.bonus_shot.target_players": "Target players",
+  "ability.dungeons_reborn.accelerate": "Accelerate",
+  "ability.dungeons_reborn.prospector": "Prospector",
+  "ability.dungeons_reborn.leeching": "Leeching",
+
   "tooltip.dungeons_reborn.built_in": "Built in",
   "tooltip.dungeons_reborn.powerful_combo": "Powerful combo",
   "tooltip.dungeons_reborn.powerful_pushback": "Powerful pushback"
