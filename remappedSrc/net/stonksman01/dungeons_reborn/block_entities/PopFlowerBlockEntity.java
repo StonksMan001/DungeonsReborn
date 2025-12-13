@@ -25,7 +25,7 @@ public class PopFlowerBlockEntity extends BlockEntity {
                 if (Vec3d.ofCenter(pos).squaredDistanceTo(playerEntity.getEntityPos()) <= Math.pow(PopFlowerBlock.HIDE_DISTANCE, 2))
                     hide = true;
             }
-            if (hide || world.isDay() || serverWorld.getGameRules().getValue(MCD_GameRules.POP_FLOWERS_ALWAYS_HIDE)) {
+            if (hide || world.isDay() || serverWorld.getGameRules().getBoolean(MCD_GameRules.POP_FLOWERS_ALWAYS_HIDE)) {
                 PopFlowerBlock.decrease(world, pos);
             } else PopFlowerBlock.increase(world, pos);
         }

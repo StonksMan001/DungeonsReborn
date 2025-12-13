@@ -1,13 +1,12 @@
 package net.stonksman01.dungeons_reborn.registries;
 
-import net.minecraft.world.rule.GameRule;
-import net.minecraft.world.rule.GameRuleCategory;
-import net.minecraft.world.rule.GameRules;
+import net.fabricmc.fabric.api.gamerule.v1.GameRuleFactory;
+import net.minecraft.world.GameRules;
 import net.stonksman01.dungeons_reborn.DungeonsReborn;
 import net.stonksman01.dungeons_reborn._included_libs.skycore.SkyCore;
 
 public class MCD_GameRules {
-    public static final GameRule<Boolean> POP_FLOWERS_ALWAYS_HIDE = SkyCore.BuiltinRegistries.registerBooleanGameRule("pop_flowers_always_hide", GameRuleCategory.UPDATES, false);
+    public static final GameRules.Key<GameRules.BooleanRule> POP_FLOWERS_ALWAYS_HIDE = SkyCore.BuiltinRegistries.registerGameRule("popFlowersAlwaysHide", GameRules.Category.UPDATES, GameRuleFactory.createBooleanRule(false));
     public static void register() {
         DungeonsReborn.LOGGER.info("[DungeonsReborn] Registering GameRules");
     }

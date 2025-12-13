@@ -1,9 +1,7 @@
 package net.stonksman01.dungeons_reborn._included_libs.skycore;
 
 import com.llamalad7.mixinextras.injector.wrapoperation.Operation;
-import com.mojang.brigadier.arguments.ArgumentType;
-import com.mojang.brigadier.arguments.BoolArgumentType;
-import com.mojang.serialization.Codec;
+import net.fabricmc.fabric.api.gamerule.v1.GameRuleRegistry;
 import net.fabricmc.fabric.api.object.builder.v1.world.poi.PointOfInterestHelper;
 import net.minecraft.block.AbstractBlock;
 import net.minecraft.block.Block;
@@ -20,13 +18,13 @@ import net.minecraft.item.*;
 import net.minecraft.registry.*;
 import net.minecraft.registry.entry.RegistryEntry;
 import net.minecraft.registry.tag.TagKey;
-import net.minecraft.resource.featuretoggle.FeatureSet;
 import net.minecraft.screen.ScreenHandler;
 import net.minecraft.screen.ScreenHandlerType;
 import net.minecraft.sound.SoundEvent;
 import net.minecraft.text.Text;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.Util;
+import net.minecraft.world.GameRules;
 import net.minecraft.world.World;
 import net.minecraft.world.biome.Biome;
 import net.minecraft.world.dimension.DimensionType;
@@ -34,14 +32,12 @@ import net.minecraft.world.gen.feature.ConfiguredFeature;
 import net.minecraft.world.gen.feature.Feature;
 import net.minecraft.world.gen.feature.FeatureConfig;
 import net.minecraft.world.poi.PointOfInterestType;
-import net.minecraft.world.rule.*;
 import net.stonksman01.dungeons_reborn.DungeonsReborn;
 import net.stonksman01.dungeons_reborn._included_libs.skycore.items.SC_BowItem;
 import net.stonksman01.dungeons_reborn._included_libs.skycore.items.SC_CrossbowItem;
 
 import java.util.function.Function;
 import java.util.function.Supplier;
-import java.util.function.ToIntFunction;
 import java.util.function.UnaryOperator;
 
 public class SkyCore {
@@ -167,33 +163,8 @@ public class SkyCore {
         public static TagKey<Item> createItemTag(String name) {
             return TagKey.of(RegistryKeys.ITEM, identifierOfDungeonsReborn(name));
         }
-        public static GameRule<Boolean> registerBooleanGameRule(String name, GameRuleCategory category, boolean defaultValue) {
-            return registerGameRule(
-                    name,
-                    category,
-                    GameRuleType.BOOL,
-                    BoolArgumentType.bool(),
-                    Codec.BOOL,
-                    defaultValue,
-                    FeatureSet.empty(),
-                    GameRuleVisitor::visitBoolean,
-                    value -> value ? 1 : 0
-            );
-        }
-        private static <T> GameRule<T> registerGameRule(
-                String name,
-                GameRuleCategory category,
-                GameRuleType type,
-                ArgumentType<T> argumentType,
-                Codec<T> codec,
-                T defaultValue,
-                FeatureSet requiredFeatures,
-                GameRules.Acceptor<T> acceptor,
-                ToIntFunction<T> commandResultSupplier
-        ) {
-            return Registry.register(
-                    Registries.GAME_RULE, "dr__" + name, new GameRule<>(category, type, argumentType, acceptor, codec, commandResultSupplier, defaultValue, requiredFeatures)
-            );
+        public static <T extends GameRules.Rule<T>> GameRules.Key<T> registerGameRule(String id, GameRules.Category category, GameRules.Type<T> rule) {
+            return GameRuleRegistry.register("dr_" + id, category, rule);
         }
         public static <FC extends FeatureConfig, F extends Feature<FC>> void registerConfiguredFeature(Registerable<ConfiguredFeature<?, ?>> context, RegistryKey<ConfiguredFeature<?, ?>> key, F feature, FC configuration) {
             context.register(key, new ConfiguredFeature<>(feature, configuration));
