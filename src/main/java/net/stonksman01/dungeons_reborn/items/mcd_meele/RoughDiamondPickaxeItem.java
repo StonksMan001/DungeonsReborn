@@ -1,7 +1,6 @@
 package net.stonksman01.dungeons_reborn.items.mcd_meele;
 
 import net.minecraft.component.type.TooltipDisplayComponent;
-import net.minecraft.enchantment.Enchantments;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EquipmentSlot;
 import net.minecraft.entity.ItemEntity;
@@ -14,10 +13,9 @@ import net.minecraft.item.ToolMaterial;
 import net.minecraft.item.tooltip.TooltipType;
 import net.minecraft.particle.DustParticleEffect;
 import net.minecraft.server.world.ServerWorld;
-import net.minecraft.text.Style;
 import net.minecraft.text.Text;
-import net.minecraft.util.Formatting;
 import net.stonksman01.dungeons_reborn._included_libs.skycore.SkyCoreToolAPI;
+import net.stonksman01.dungeons_reborn.components.McdRarity;
 import net.stonksman01.dungeons_reborn.items.McdItem;
 import net.stonksman01.dungeons_reborn.util.DungeonsHelpers;
 import org.jetbrains.annotations.Nullable;
@@ -32,10 +30,9 @@ public class RoughDiamondPickaxeItem extends SkyCoreToolAPI.PickaxeItem {
     @Override
     public void appendTooltip(ItemStack stack, Item.TooltipContext context, TooltipDisplayComponent displayComponent, Consumer<Text> textConsumer, TooltipType type) {
         DungeonsHelpers.Tooltip.appendDungeonsHeader(textConsumer);
-        textConsumer.accept(Text.translatable("tooltip.dungeons_reborn.rough_diamond_pickaxe.tooltip1").setStyle(Style.EMPTY.withItalic(true).withFormatting(Formatting.GRAY)));
-        textConsumer.accept(Text.translatable("tooltip.dungeons_reborn.rough_diamond_pickaxe.tooltip2").setStyle(Style.EMPTY.withItalic(true).withFormatting(Formatting.GRAY)));
-        textConsumer.accept(Text.translatable("tooltip.dungeons_reborn.rarity.unique"));
-        textConsumer.accept(Text.translatable("enchantment.dungeons_reborn.prospector").setStyle(Style.EMPTY.withFormatting(Formatting.GREEN)));
+        DungeonsHelpers.Tooltip.appendDescription(textConsumer, Text.translatable("tooltip.dungeons_reborn.rough_diamond_pickaxe"));
+        DungeonsHelpers.Tooltip.appendMcdRarity(textConsumer, McdRarity.UNIQUE);
+        DungeonsHelpers.Tooltip.appendAbility(textConsumer, Text.translatable("ability.dungeons_reborn.prospector"), false);
         super.appendTooltip(stack, context, displayComponent, textConsumer, type);
     }
     @Override

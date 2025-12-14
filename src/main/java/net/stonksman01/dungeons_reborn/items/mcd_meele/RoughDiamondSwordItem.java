@@ -9,10 +9,9 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.item.ToolMaterial;
 import net.minecraft.item.tooltip.TooltipType;
 import net.minecraft.server.world.ServerWorld;
-import net.minecraft.text.Style;
 import net.minecraft.text.Text;
-import net.minecraft.util.Formatting;
 import net.stonksman01.dungeons_reborn._included_libs.skycore.SkyCoreToolAPI;
+import net.stonksman01.dungeons_reborn.components.McdRarity;
 import net.stonksman01.dungeons_reborn.util.DungeonsHelpers;
 import net.stonksman01.dungeons_reborn.items.McdItem;
 import net.stonksman01.dungeons_reborn.util.GrindStoneExperienceNotDropping;
@@ -27,14 +26,9 @@ public class RoughDiamondSwordItem extends SkyCoreToolAPI.SwordItem implements G
     @Override
     public void appendTooltip(ItemStack stack, Item.TooltipContext context, TooltipDisplayComponent displayComponent, Consumer<Text> textConsumer, TooltipType type) {
         DungeonsHelpers.Tooltip.appendDungeonsHeader(textConsumer);
-        textConsumer.accept(Text.translatable("tooltip.dungeons_reborn.rough_diamond_sword.tooltip1").setStyle(Style.EMPTY.withItalic(true).withFormatting(Formatting.GRAY)));
-        textConsumer.accept(Text.translatable("tooltip.dungeons_reborn.rough_diamond_sword.tooltip2").setStyle(Style.EMPTY.withItalic(true).withFormatting(Formatting.GRAY)));
-        textConsumer.accept(Text.translatable("tooltip.dungeons_reborn.rarity.unique"));
-        textConsumer.accept(
-                Text.translatable("tooltip.dungeons_reborn.built_in").setStyle(Style.EMPTY.withFormatting(Formatting.GREEN).withItalic(true))
-                        .append(Text.literal(" "))
-                        .append(Text.translatable("enchantment.minecraft.sharpness").setStyle(Style.EMPTY.withFormatting(Formatting.GREEN).withItalic(true)))
-        );
+        DungeonsHelpers.Tooltip.appendDescription(textConsumer, Text.translatable("tooltip.dungeons_reborn.rough_diamond_sword"));
+        DungeonsHelpers.Tooltip.appendMcdRarity(textConsumer, McdRarity.UNIQUE);
+        DungeonsHelpers.Tooltip.appendBuiltInEnchantment(textConsumer, Text.translatable("enchantment.minecraft.sharpness"));
         super.appendTooltip(stack, context, displayComponent, textConsumer, type);
     }
     @Override

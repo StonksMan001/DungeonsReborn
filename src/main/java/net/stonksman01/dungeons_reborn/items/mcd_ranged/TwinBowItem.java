@@ -6,8 +6,6 @@ import net.minecraft.enchantment.Enchantments;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EquipmentSlot;
 import net.minecraft.entity.LivingEntity;
-import net.minecraft.entity.mob.HostileEntity;
-import net.minecraft.entity.mob.Monster;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.projectile.ArrowEntity;
 import net.minecraft.entity.projectile.PersistentProjectileEntity;
@@ -18,13 +16,12 @@ import net.minecraft.screen.slot.Slot;
 import net.minecraft.server.world.ServerWorld;
 import net.minecraft.sound.SoundCategory;
 import net.minecraft.stat.Stats;
-import net.minecraft.text.Style;
 import net.minecraft.text.Text;
 import net.minecraft.util.ClickType;
-import net.minecraft.util.Formatting;
 import net.minecraft.util.math.Box;
 import net.minecraft.world.World;
 import net.stonksman01.dungeons_reborn._included_libs.skycore.items.SC_BowItem;
+import net.stonksman01.dungeons_reborn.components.McdRarity;
 import net.stonksman01.dungeons_reborn.items.McdItem;
 import net.stonksman01.dungeons_reborn.registries.MCD_DataComponentTypes;
 import net.stonksman01.dungeons_reborn.registries.MCD_Sounds;
@@ -116,22 +113,17 @@ public class TwinBowItem extends SC_BowItem {
     }
     @Override
     public void appendTooltip(ItemStack stack, Item.TooltipContext context, TooltipDisplayComponent displayComponent, Consumer<Text> textConsumer, TooltipType type) {
-        textConsumer.accept(Text.translatable("tooltip.dungeons_reborn.minecraft_dungeons_header").setStyle(Style.EMPTY.withBold(true).withFormatting(Formatting.GRAY)));
-        textConsumer.accept(Text.translatable("tooltip.dungeons_reborn.twin_bow.tooltip1").setStyle(Style.EMPTY.withItalic(true).withFormatting(Formatting.GRAY)));
-        textConsumer.accept(Text.translatable("tooltip.dungeons_reborn.twin_bow.tooltip2").setStyle(Style.EMPTY.withItalic(true).withFormatting(Formatting.GRAY)));
-        textConsumer.accept(Text.translatable("tooltip.dungeons_reborn.rarity.unique"));
-        textConsumer.accept(Text.translatable("tooltip.dungeons_reborn.bonus_shot.target_players")
-                .append(Text.literal(": ")
-                        .append(Boolean.TRUE.equals(stack.get(MCD_DataComponentTypes.TWIN_BOW_TARGET_PLAYER_ENTITIES_TOGGLE)) ?
-                                Text.translatable("options.on").formatted(Formatting.GREEN):
-                                Text.translatable("options.off").formatted(Formatting.RED))));
-        textConsumer.accept(Text.translatable("enchantment.dungeons_reborn.bonus_shot").setStyle(Style.EMPTY.withFormatting(Formatting.GREEN)));
+        DungeonsHelpers.Tooltip.appendDungeonsHeader(textConsumer);
+        DungeonsHelpers.Tooltip.appendDescription(textConsumer, Text.translatable("tooltip.dungeons_reborn.twin_bow"));
+        DungeonsHelpers.Tooltip.appendMcdRarity(textConsumer, McdRarity.UNIQUE);
+        DungeonsHelpers.Tooltip.appendToggle(textConsumer, Text.translatable("toggle.dungeons_reborn.target_players"),
+                stack, MCD_DataComponentTypes.TWIN_BOW_TARGET_PLAYER_ENTITIES_TOGGLE);
+        DungeonsHelpers.Tooltip.appendAbility(textConsumer, Text.translatable("ability.dungeons_reborn.bonus_shot"), false);
         super.appendTooltip(stack, context, displayComponent, textConsumer, type);
     }
     @Override
     public int getItemBarColor(ItemStack stack) {
         return McdItem.getMcdItemBarColor();
     }
-
 }
 

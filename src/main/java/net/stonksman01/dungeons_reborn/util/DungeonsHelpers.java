@@ -1,6 +1,7 @@
 package net.stonksman01.dungeons_reborn.util;
 
 import net.minecraft.block.ComposterBlock;
+import net.minecraft.component.ComponentType;
 import net.minecraft.component.DataComponentTypes;
 import net.minecraft.component.type.AttributeModifierSlot;
 import net.minecraft.component.type.AttributeModifiersComponent;
@@ -17,6 +18,7 @@ import net.minecraft.registry.RegistryKeys;
 import net.minecraft.registry.RegistryWrapper;
 import net.minecraft.registry.entry.RegistryEntry;
 import net.minecraft.scoreboard.Team;
+import net.minecraft.text.MutableText;
 import net.minecraft.text.Style;
 import net.minecraft.text.Text;
 import net.minecraft.util.Formatting;
@@ -34,20 +36,40 @@ public interface DungeonsHelpers {
         static void appendDungeonsHeader(Consumer<Text> textConsumer) {
             textConsumer.accept(Text.translatable("tooltip.dungeons_reborn.minecraft_dungeons_header").setStyle(Style.EMPTY.withBold(true).withFormatting(Formatting.GRAY)));
         }
-        static void appendMcdRarity(ItemStack stack, Consumer<Text> textConsumer) {
-            McdRarity mcdRarity = stack.get(MCD_DataComponentTypes.MCD_RARITY);
+        static void appendMcdRarity(Consumer<Text> textConsumer, ItemStack stack) {
+            appendMcdRarity(textConsumer, stack.get(MCD_DataComponentTypes.MCD_RARITY));
+        }
+        static void appendMcdRarity(Consumer<Text> textConsumer, McdRarity mcdRarity) {
+            MutableText text = Text.translatable("tooltip.dungeons_reborn.rarity").append(Text.literal(": "));
             if (mcdRarity != null) {
                 switch (mcdRarity) {
-                    case McdRarity.COMMON -> textConsumer.accept(Text.translatable("tooltip.dungeons_reborn.rarity.common"));
-                    case McdRarity.RARE -> textConsumer.accept(Text.translatable("tooltip.dungeons_reborn.rarity.rare"));
-                    case McdRarity.UNIQUE -> textConsumer.accept(Text.translatable("tooltip.dungeons_reborn.rarity.unique"));
-                    default -> textConsumer.accept(Text.translatable("tooltip.dungeons_reborn.rarity.common")
-                            .append(Text.literal(" "))
-                            .append(Text.translatable("tooltip.dungeons_reborn.rarity_info_extended.custom")));
+                    case McdRarity.COMMON -> textConsumer.accept(text.append(Text.translatable("mcdRarity.dungeons_reborn.common")));
+                    case McdRarity.RARE -> textConsumer.accept(text.append(Text.translatable("mcdRarity.dungeons_reborn.rare")));
+                    case McdRarity.UNIQUE -> textConsumer.accept(text.append(Text.translatable("mcdRarity.dungeons_reborn.unique")));
+                    default -> textConsumer.accept(text.append(Text.translatable("mcdRarity.extended.dungeons_reborn.custom")));
                 }
             } else {
-                textConsumer.accept(Text.translatable("tooltip.dungeons_reborn.rarity.unknown"));
+                textConsumer.accept(text.append(Text.translatable("tooltip.dungeons_reborn.rarity.unknown")));
             }
+        }
+        static void appendBuiltInEnchantment(Consumer<Text> textConsumer, MutableText enchantmentText) {
+            appendAbility(textConsumer, Text.translatable("ability.dungeons_reborn.built_in").append(Text.literal(" ").append(enchantmentText)), true);
+        }
+        static void appendAbility(Consumer<Text> textConsumer, MutableText abilityText, boolean italic) {
+            Style style = Style.EMPTY.withFormatting(Formatting.GREEN).withItalic(italic);
+            textConsumer.accept(abilityText.setStyle(style));
+        }
+        static void appendDescription(Consumer<Text> textConsumer, MutableText descriptionText) {
+            if (Objects.isNull(descriptionText.getString())) return;
+            for (String string : descriptionText.getString().split("\n")) {
+                textConsumer.accept(Text.literal(string).setStyle(Style.EMPTY.withItalic(true).withFormatting(Formatting.GRAY)));
+            }
+        }
+        static void appendToggle(Consumer<Text> textConsumer, MutableText toggleText, ItemStack stack, ComponentType<Boolean> toggleComponent) {
+            textConsumer.accept(toggleText.append(Text.literal(": ")
+                            .append(Boolean.TRUE.equals(stack.get(toggleComponent)) ?
+                                    Text.translatable("options.on").formatted(Formatting.GREEN):
+                                    Text.translatable("options.off").formatted(Formatting.RED))));
         }
     }
     static void makeUnrepairable(ItemStack stack) {

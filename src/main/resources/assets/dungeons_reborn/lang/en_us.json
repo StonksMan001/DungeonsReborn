@@ -14,76 +14,68 @@
   "block.dungeons_reborn.mossy_spruce_planks": "Mossy Spruce Planks",
 
   "tooltip.dungeons_reborn.minecraft_dungeons_header": "Minecraft Dungeons description:",
+
   "item.dungeons_reborn.artifact_iron_hide_amulet": "Iron Hide Amulet",
-  "tooltip.dungeons_reborn.artifact.iron_hide_amulet.tooltip1": "The Iron Hide Amulet is both ancient and",
-  "tooltip.dungeons_reborn.artifact.iron_hide_amulet.tooltip2": "timeless. Sand mysteriously and endlessly",
-  "tooltip.dungeons_reborn.artifact.iron_hide_amulet.tooltip3": "slips through the cracks in the iron.",
-  "tooltip.dungeons_reborn.artifact.iron_hide_amulet.teammate_only": "Teammate only",
-  "tooltip.dungeons_reborn.artifact.iron_hide_amulet.tooltip4": "Provides a major boost to defense for a short time",
-
-  "item.dungeons_reborn.twin_bow": "Twin Bow",
-  "tooltip.dungeons_reborn.twin_bow.tooltip1": "The Twin Bow is the champion of the hero",
-  "tooltip.dungeons_reborn.twin_bow.tooltip2": "who finds themselves outnumbered and alone.",
-
-  "item.dungeons_reborn.auto_crossbow": "Auto Crossbow",
-  "tooltip.dungeons_reborn.auto_crossbow.tooltip1": "The Arch-Illager said the design for this",
-  "tooltip.dungeons_reborn.auto_crossbow.tooltip2": "powerful crossbow came to him in a vision.",
-
-  "item.dungeons_reborn.heavy_crossbow": "Heavy Crossbow",
-  "tooltip.dungeons_reborn.heavy_crossbow.tooltip1": "The weighted crossbow is a damage-dealing",
-  "tooltip.dungeons_reborn.heavy_crossbow.tooltip2": "menace and a real threat from a ranged distance.",
+  "tooltip.dungeons_reborn.artifact.iron_hide_amulet": "The Iron Hide Amulet is both ancient and\ntimeless. Sand mysteriously and endlessly\nslips through the cracks in the iron.",
 
   "item.dungeons_reborn.artifact_death_cap_mushroom": "Death Cap Mushroom",
-  "tooltip.dungeons_reborn.artifact.death_cap_mushroom.tooltip1": "Eaten by daring warriors before battle, the",
-  "tooltip.dungeons_reborn.artifact.death_cap_mushroom.tooltip2": "Death Cap Mushroom drives fighters into a frenzy.",
-  "tooltip.dungeons_reborn.artifact.death_cap_mushroom.tooltip3": "Greatly increases attack damage and movement speed",
+  "tooltip.dungeons_reborn.artifact.death_cap_mushroom": "Eaten by daring warriors before battle, the\nDeath Cap Mushroom drives fighters into a frenzy.",
+
+  "item.dungeons_reborn.twin_bow": "Twin Bow",
+  "tooltip.dungeons_reborn.twin_bow": "The Twin Bow is the champion of the hero\nwho finds themselves outnumbered and alone.",
+
+  "item.dungeons_reborn.auto_crossbow": "Auto Crossbow",
+  "tooltip.dungeons_reborn.auto_crossbow": "The Arch-Illager said the design for this\npowerful crossbow came to him in a vision.",
+
+  "item.dungeons_reborn.heavy_crossbow": "Heavy Crossbow",
+  "tooltip.dungeons_reborn.heavy_crossbow": "The weighted crossbow is a damage-dealing\nmenace and a real threat from a ranged distance.",
 
   "item.dungeons_reborn.rough_diamond_sword": "Rough Diamond Sword",
-  "tooltip.dungeons_reborn.rough_diamond_sword.tooltip1": "The Rough Diamond Sword is the true mark",
-  "tooltip.dungeons_reborn.rough_diamond_sword.tooltip2": "of a hero and an accomplished adventurer.",
+  "tooltip.dungeons_reborn.rough_diamond_sword": "The Rough Diamond Sword is the true mark\nof a hero and an accomplished adventurer.",
 
   "item.dungeons_reborn.rough_diamond_pickaxe": "Rough Diamond Pickaxe",
-  "tooltip.dungeons_reborn.rough_diamond_pickaxe.tooltip1": "Diamond is one of the most durable materials,",
-  "tooltip.dungeons_reborn.rough_diamond_pickaxe.tooltip2": "making it an excellent choice for a pickaxe.",
+  "tooltip.dungeons_reborn.rough_diamond_pickaxe": "Diamond is one of the most durable materials,\nmaking it an excellent choice for a pickaxe.",
 
   "item.dungeons_reborn.steel_mace": "Steel Mace",
-  "tooltip.dungeons_reborn.steel_mace.tooltip1": "The Steel Mace is a brutal tool of war and what",
-  "tooltip.dungeons_reborn.steel_mace.tooltip2": "it lacks in finesse; it makes up for in power.",
+  "tooltip.dungeons_reborn.steel_mace": "The Steel Mace is a brutal tool of war and what\nit lacks in finesse; it makes up for in power.",
 
   "item.dungeons_reborn.suns_grace": "Sun's Grace",
-  "tooltip.dungeons_reborn.suns_grace.tooltip1": "This mace, engraved with secret healing",
-  "tooltip.dungeons_reborn.suns_grace.tooltip2": "runes, grants powerful restorative powers.",
+  "tooltip.dungeons_reborn.suns_grace": "This mace, engraved with secret healing\nrunes, grants powerful restorative powers.",
 
   "item.dungeons_reborn.claymore": "Claymore",
-  "tooltip.dungeons_reborn.claymore.tooltip1": "A massive sword that seems impossibly heavy",
-  "tooltip.dungeons_reborn.claymore.tooltip2": "yet rests easily in a just warrior's hands",
+  "tooltip.dungeons_reborn.claymore": "A massive sword that seems impossibly heavy\nyet rests easily in a just warrior's hands",
 
   "item.dungeons_reborn.heartstealer": "Heartstealer",
-  "tooltip.dungeons_reborn.heartstealer.tooltip1": "Gifted to one of the Arch-Illager's most distinguished",
-  "tooltip.dungeons_reborn.heartstealer.tooltip2": "generals upon their conquest of the Squid Coast",
-  "tooltip.dungeons_reborn.heartstealer.tooltip3": "- this runeblade is infused with dark witchcraft.",
+  "tooltip.dungeons_reborn.heartstealer": "Gifted to one of the Arch-Illager's most distinguished\ngenerals upon their conquest of the Squid Coast\n- this runeblade is infused with dark witchcraft.",
 
   "item.dungeons_reborn.broadsword": "Broadsword",
-  "tooltip.dungeons_reborn.broadsword.tooltip1": "Only those with the strength of a champion and",
-  "tooltip.dungeons_reborn.broadsword.tooltip2": "the heart of a hero can carry this massive blade.",
+  "tooltip.dungeons_reborn.broadsword": "Only those with the strength of a champion and\nthe heart of a hero can carry this massive blade.",
 
-  "tooltip.dungeons_reborn.rarity.common": "Rarity: §r[§7ᴄᴏᴍᴍᴏɴ§r]",
-  "tooltip.dungeons_reborn.rarity.rare": "Rarity: §r[§aʀᴀʀᴇ§r]",
-  "tooltip.dungeons_reborn.rarity.unique": "Rarity: §r[§6ᴜɴɪǫᴜᴇ§r]",
-  "tooltip.dungeons_reborn.rarity.unknown": "Rarity: §r[§7???§r]",
-  "tooltip.dungeons_reborn.rarity_info_extended.custom": "§r[§5ᴄᴜѕᴛᴏᴍ§r]",
-  "tooltip.dungeons_reborn.rarity_info_extended.gilded": "§r[§eɢɪʟᴅᴇᴅ§r]",
-  "tooltip.dungeons_reborn.rarity_info_extended.gifted": "§r[§aɢɪꜰᴛᴇᴅ§r]",
+  "tooltip.dungeons_reborn.rarity": "Rarity",
+  "mcdRarity.dungeons_reborn.common": "§r[§7ᴄᴏᴍᴍᴏɴ§r]",
+  "mcdRarity.dungeons_reborn.rare": "§r[§aʀᴀʀᴇ§r]",
+  "mcdRarity.dungeons_reborn.unique": "§r[§6ᴜɴɪǫᴜᴇ§r]",
+  "mcdRarity.dungeons_reborn.unknown": "§r[§7???§r]",
+  "mcdRarity.extended.dungeons_reborn.custom": "§r[§5ᴄᴜѕᴛᴏᴍ§r]",
+  "mcdRarity.extended.dungeons_reborn.gilded": "§r[§eɢɪʟᴅᴇᴅ§r]",
+  "mcdRarity.extended.dungeons_reborn.gifted": "§r[§aɢɪꜰᴛᴇᴅ§r]",
 
   "tooltip.dungeons_reborn.special_resource": "A special resource",
 
   "enchantment.dungeons_reborn.primitiveness_curse": "Primitiveness Curse",
-  "enchantment.dungeons_reborn.bonus_shot": "Bonus Shot",
-  "enchantment.dungeons_reborn.accelerate": "Accelerate",
-  "enchantment.dungeons_reborn.prospector": "Prospector",
-  "enchantment.dungeons_reborn.leeching": "Leeching",
-  "tooltip.dungeons_reborn.bonus_shot.target_players": "Target players",
-  "tooltip.dungeons_reborn.built_in": "Built in",
-  "tooltip.dungeons_reborn.powerful_combo": "Powerful combo",
-  "tooltip.dungeons_reborn.powerful_pushback": "Powerful pushback"
+
+  "ability.dungeons_reborn.bonus_shot": "Bonus Shot",
+  "ability.dungeons_reborn.accelerate": "Accelerate",
+  "ability.dungeons_reborn.prospector": "Prospector",
+  "ability.dungeons_reborn.leeching": "Leeching",
+  "ability.dungeons_reborn.radiance": "Radiance",
+
+  "ability.dungeons_reborn.built_in": "Built in",
+  "ability.dungeons_reborn.powerful_combo": "Powerful combo",
+  "ability.dungeons_reborn.powerful_pushback": "Powerful pushback",
+  "ability.dungeons_reborn.artifact.iron_hide_amulet": "Provides a major boost to defense for a short time",
+  "ability.dungeons_reborn.artifact.death_cap_mushroom": "Greatly increases attack damage and movement speed",
+
+  "toggle.dungeons_reborn.target_players": "Target players",
+  "toggle.dungeons_reborn.teammate_only": "Teammate only"
 }

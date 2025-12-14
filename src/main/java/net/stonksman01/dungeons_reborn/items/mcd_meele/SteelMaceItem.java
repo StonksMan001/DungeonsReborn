@@ -7,18 +7,14 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.item.ToolMaterial;
 import net.minecraft.item.tooltip.TooltipType;
 import net.minecraft.server.world.ServerWorld;
-import net.minecraft.text.Style;
 import net.minecraft.text.Text;
-import net.minecraft.util.Formatting;
 import net.minecraft.util.Pair;
-import net.minecraft.world.World;
 import net.stonksman01.dungeons_reborn.components.McdRarity;
 import net.stonksman01.dungeons_reborn.items.mcd_meele.templates.MaceBaseItem;
 import net.stonksman01.dungeons_reborn.util.DungeonsHelpers;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
-import java.util.List;
 import java.util.function.Consumer;
 
 public class SteelMaceItem extends MaceBaseItem {
@@ -28,10 +24,9 @@ public class SteelMaceItem extends MaceBaseItem {
     @Override
     public void appendTooltip(ItemStack stack, TooltipContext context, TooltipDisplayComponent displayComponent, Consumer<Text> textConsumer, TooltipType type) {
         DungeonsHelpers.Tooltip.appendDungeonsHeader(textConsumer);
-        textConsumer.accept(Text.translatable("tooltip.dungeons_reborn.steel_mace.tooltip1").setStyle(Style.EMPTY.withItalic(true).withFormatting(Formatting.GRAY)));
-        textConsumer.accept(Text.translatable("tooltip.dungeons_reborn.steel_mace.tooltip2").setStyle(Style.EMPTY.withItalic(true).withFormatting(Formatting.GRAY)));
-        DungeonsHelpers.Tooltip.appendMcdRarity(stack, textConsumer);
-        textConsumer.accept(Text.translatable("tooltip.dungeons_reborn.powerful_combo").setStyle(Style.EMPTY.withFormatting(Formatting.GREEN).withItalic(true)));
+        DungeonsHelpers.Tooltip.appendDescription(textConsumer, Text.translatable("tooltip.dungeons_reborn.steel_mace"));
+        DungeonsHelpers.Tooltip.appendMcdRarity(textConsumer, stack);
+        DungeonsHelpers.Tooltip.appendAbility(textConsumer, Text.translatable("ability.dungeons_reborn.powerful_combo"), true);
         super.appendTooltip(stack, context, displayComponent, textConsumer, type);
     }
     @Override
