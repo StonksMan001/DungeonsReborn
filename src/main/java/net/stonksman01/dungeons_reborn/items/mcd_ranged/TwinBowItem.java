@@ -106,15 +106,11 @@ public class TwinBowItem extends SC_BowItem {
     @Override
     public void appendTooltip(ItemStack stack, TooltipContext context, List<Text> tooltip, TooltipType type) {
         DungeonsHelpers.Tooltip.appendDungeonsHeader(tooltip);
-        tooltip.add(Text.translatable("tooltip.dungeons_reborn.twin_bow.tooltip1").setStyle(Style.EMPTY.withItalic(true).withFormatting(Formatting.GRAY)));
-        tooltip.add(Text.translatable("tooltip.dungeons_reborn.twin_bow.tooltip2").setStyle(Style.EMPTY.withItalic(true).withFormatting(Formatting.GRAY)));
+        DungeonsHelpers.Tooltip.appendDescription(tooltip, Text.translatable("tooltip.dungeons_reborn.twin_bow"));
         DungeonsHelpers.Tooltip.appendMcdRarity(tooltip, McdRarity.UNIQUE);
-        tooltip.add(Text.translatable("ability.dungeons_reborn.bonus_shot.target_players")
-                .append(Text.literal(": ")
-                        .append(Boolean.TRUE.equals(stack.get(MCD_DataComponentTypes.TWIN_BOW_TARGET_PLAYER_ENTITIES_TOGGLE)) ?
-                                Text.translatable("options.on").formatted(Formatting.GREEN):
-                                Text.translatable("options.off").formatted(Formatting.RED))));
-        tooltip.add(Text.translatable("ability.dungeons_reborn.bonus_shot").setStyle(Style.EMPTY.withFormatting(Formatting.GREEN)));
+        DungeonsHelpers.Tooltip.appendToggle(tooltip, Text.translatable("toggle.dungeons_reborn.target_players"),
+                stack, MCD_DataComponentTypes.TWIN_BOW_TARGET_PLAYER_ENTITIES_TOGGLE);
+        DungeonsHelpers.Tooltip.appendAbility(tooltip, Text.translatable("ability.dungeons_reborn.bonus_shot"), false);
         super.appendTooltip(stack, context, tooltip, type);
     }
     @Override

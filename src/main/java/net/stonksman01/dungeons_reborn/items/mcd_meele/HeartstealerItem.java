@@ -19,10 +19,10 @@ public class HeartstealerItem extends ClaymoreBaseItem {
     @Override
     public void appendTooltip(ItemStack stack, TooltipContext context, List<Text> tooltip, TooltipType type) {
         DungeonsHelpers.Tooltip.appendDungeonsHeader(tooltip);
-        tooltip.add(Text.translatable("tooltip.dungeons_reborn.heartstealer.tooltip1").setStyle(Style.EMPTY.withItalic(true).withFormatting(Formatting.GRAY)));
-        tooltip.add(Text.translatable("tooltip.dungeons_reborn.heartstealer.tooltip2").setStyle(Style.EMPTY.withItalic(true).withFormatting(Formatting.GRAY)));
-        tooltip.add(Text.translatable("tooltip.dungeons_reborn.heartstealer.tooltip3").setStyle(Style.EMPTY.withItalic(true).withFormatting(Formatting.GRAY)));
+        DungeonsHelpers.Tooltip.appendDescription(tooltip, Text.translatable("tooltip.dungeons_reborn.heartstealer"));
         DungeonsHelpers.Tooltip.appendMcdRarity(tooltip, McdRarity.UNIQUE);
+        DungeonsHelpers.Tooltip.appendAbility(tooltip, Text.translatable("ability.dungeons_reborn.powerful_pushback"), true);
+        DungeonsHelpers.Tooltip.appendAbility(tooltip, Text.translatable("ability.dungeons_reborn.leeching"), false);
         super.appendTooltip(stack, context, tooltip, type);
     }
 }

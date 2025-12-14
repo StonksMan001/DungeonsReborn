@@ -28,10 +28,9 @@ public class RoughDiamondPickaxeItem extends SkyCoreToolAPI.PickaxeItem {
     @Override
     public void appendTooltip(ItemStack stack, TooltipContext context, List<Text> tooltip, TooltipType type) {
         DungeonsHelpers.Tooltip.appendDungeonsHeader(tooltip);
-        tooltip.add(Text.translatable("tooltip.dungeons_reborn.rough_diamond_pickaxe.tooltip1").setStyle(Style.EMPTY.withItalic(true).withFormatting(Formatting.GRAY)));
-        tooltip.add(Text.translatable("tooltip.dungeons_reborn.rough_diamond_pickaxe.tooltip2").setStyle(Style.EMPTY.withItalic(true).withFormatting(Formatting.GRAY)));
+        DungeonsHelpers.Tooltip.appendDescription(tooltip, Text.translatable("tooltip.dungeons_reborn.rough_diamond_pickaxe"));
         DungeonsHelpers.Tooltip.appendMcdRarity(tooltip, McdRarity.UNIQUE);
-        tooltip.add(Text.translatable("ability.dungeons_reborn.prospector").setStyle(Style.EMPTY.withFormatting(Formatting.GREEN)));
+        DungeonsHelpers.Tooltip.appendAbility(tooltip, Text.translatable("ability.dungeons_reborn.prospector"), false);
         super.appendTooltip(stack, context, tooltip, type);
     }
     @Override

@@ -56,10 +56,9 @@ public class AutoCrossbowItem extends SC_CrossbowItem {
     @Override
     public void appendTooltip(ItemStack stack, TooltipContext context, List<Text> tooltip, TooltipType type) {
         DungeonsHelpers.Tooltip.appendDungeonsHeader(tooltip);
-        tooltip.add(Text.translatable("tooltip.dungeons_reborn.auto_crossbow.tooltip1").setStyle(Style.EMPTY.withItalic(true).withFormatting(Formatting.GRAY)));
-        tooltip.add(Text.translatable("tooltip.dungeons_reborn.auto_crossbow.tooltip2").setStyle(Style.EMPTY.withItalic(true).withFormatting(Formatting.GRAY)));
+        DungeonsHelpers.Tooltip.appendDescription(tooltip, Text.translatable("tooltip.dungeons_reborn.auto_crossbow"));
         DungeonsHelpers.Tooltip.appendMcdRarity(tooltip, McdRarity.UNIQUE);
-        tooltip.add(Text.translatable("ability.dungeons_reborn.accelerate").setStyle(Style.EMPTY.withFormatting(Formatting.GREEN)));
+        DungeonsHelpers.Tooltip.appendAbility(tooltip, Text.translatable("ability.dungeons_reborn.accelerate"), false);
         super.appendTooltip(stack, context, tooltip, type);
     }
 

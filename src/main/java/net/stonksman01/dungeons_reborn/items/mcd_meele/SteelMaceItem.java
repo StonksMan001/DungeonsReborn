@@ -24,10 +24,9 @@ public class SteelMaceItem extends MaceBaseItem {
     @Override
     public void appendTooltip(ItemStack stack, TooltipContext context, List<Text> tooltip, TooltipType type) {
         DungeonsHelpers.Tooltip.appendDungeonsHeader(tooltip);
-        tooltip.add(Text.translatable("tooltip.dungeons_reborn.steel_mace.tooltip1").setStyle(Style.EMPTY.withItalic(true).withFormatting(Formatting.GRAY)));
-        tooltip.add(Text.translatable("tooltip.dungeons_reborn.steel_mace.tooltip2").setStyle(Style.EMPTY.withItalic(true).withFormatting(Formatting.GRAY)));
+        DungeonsHelpers.Tooltip.appendDescription(tooltip, Text.translatable("tooltip.dungeons_reborn.steel_mace"));
         DungeonsHelpers.Tooltip.appendMcdRarity(tooltip, stack);
-        tooltip.add(Text.translatable("tooltip.dungeons_reborn.powerful_combo").setStyle(Style.EMPTY.withFormatting(Formatting.GREEN).withItalic(true)));
+        DungeonsHelpers.Tooltip.appendAbility(tooltip, Text.translatable("ability.dungeons_reborn.powerful_combo"), true);
         super.appendTooltip(stack, context, tooltip, type);
     }
     @Override

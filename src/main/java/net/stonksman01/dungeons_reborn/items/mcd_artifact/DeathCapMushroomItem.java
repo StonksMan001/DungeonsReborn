@@ -55,10 +55,9 @@ public class DeathCapMushroomItem extends McdArtifactItem {
     @Override
     public void appendTooltip(ItemStack stack, TooltipContext context, List<Text> tooltip, TooltipType type) {
         DungeonsHelpers.Tooltip.appendDungeonsHeader(tooltip);
-        tooltip.add(Text.translatable("tooltip.dungeons_reborn.artifact.death_cap_mushroom.tooltip1").setStyle(Style.EMPTY.withItalic(true).withFormatting(Formatting.GRAY)));
-        tooltip.add(Text.translatable("tooltip.dungeons_reborn.artifact.death_cap_mushroom.tooltip2").setStyle(Style.EMPTY.withItalic(true).withFormatting(Formatting.GRAY)));
+        DungeonsHelpers.Tooltip.appendDescription(tooltip, Text.translatable("tooltip.dungeons_reborn.artifact.death_cap_mushroom"));
         DungeonsHelpers.Tooltip.appendMcdRarity(tooltip, stack);
-        tooltip.add(Text.translatable("tooltip.dungeons_reborn.artifact.death_cap_mushroom.tooltip3").setStyle(Style.EMPTY.withFormatting(Formatting.GREEN).withItalic(true)));
+        DungeonsHelpers.Tooltip.appendAbility(tooltip, Text.translatable("ability.dungeons_reborn.artifact.death_cap_mushroom"), true);
         super.appendTooltip(stack, context, tooltip, type);
     }
     @Override

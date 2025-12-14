@@ -1,6 +1,7 @@
 package net.stonksman01.dungeons_reborn.util;
 
 import net.minecraft.block.ComposterBlock;
+import net.minecraft.component.ComponentType;
 import net.minecraft.component.DataComponentTypes;
 import net.minecraft.component.type.AttributeModifierSlot;
 import net.minecraft.component.type.AttributeModifiersComponent;
@@ -52,11 +53,23 @@ public interface DungeonsHelpers {
             }
         }
         static void appendBuiltInEnchantment(List<Text> tooltip, MutableText enchantmentText) {
-            tooltip.add(
-                    Text.translatable("tooltip.dungeons_reborn.built_in").setStyle(Style.EMPTY.withFormatting(Formatting.GREEN).withItalic(true))
-                            .append(Text.literal(" "))
-                            .append(enchantmentText.setStyle(Style.EMPTY.withFormatting(Formatting.GREEN).withItalic(true)))
-            );
+            appendAbility(tooltip, Text.translatable("ability.dungeons_reborn.built_in").append(Text.literal(" ").append(enchantmentText)), true);
+        }
+        static void appendAbility(List<Text> tooltip, MutableText abilityText, boolean italic) {
+            Style style = Style.EMPTY.withFormatting(Formatting.GREEN).withItalic(italic);
+            tooltip.add(abilityText.setStyle(style));
+        }
+        static void appendDescription(List<Text> tooltip, MutableText descriptionText) {
+            if (Objects.isNull(descriptionText.getString())) return;
+            for (String string : descriptionText.getString().split("\n")) {
+                tooltip.add(Text.literal(string).setStyle(Style.EMPTY.withItalic(true).withFormatting(Formatting.GRAY)));
+            }
+        }
+        static void appendToggle(List<Text> tooltip, MutableText toggleText, ItemStack stack, ComponentType<Boolean> toggleComponent) {
+            tooltip.add(toggleText.append(Text.literal(": ")
+                            .append(Boolean.TRUE.equals(stack.get(toggleComponent)) ?
+                                    Text.translatable("options.on").formatted(Formatting.GREEN):
+                                    Text.translatable("options.off").formatted(Formatting.RED))));
         }
     }
     static void enchantStackWithPrimitiveness(ItemStack stack, RegistryWrapper.WrapperLookup provider) {

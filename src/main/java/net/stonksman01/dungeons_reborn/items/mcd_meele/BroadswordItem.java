@@ -30,10 +30,9 @@ public class BroadswordItem extends ClaymoreBaseItem {
     @Override
     public void appendTooltip(ItemStack stack, TooltipContext context, List<Text> tooltip, TooltipType type) {
         DungeonsHelpers.Tooltip.appendDungeonsHeader(tooltip);
-        tooltip.add(Text.translatable("tooltip.dungeons_reborn.broadsword.tooltip1").setStyle(Style.EMPTY.withItalic(true).withFormatting(Formatting.GRAY)));
-        tooltip.add(Text.translatable("tooltip.dungeons_reborn.broadsword.tooltip2").setStyle(Style.EMPTY.withItalic(true).withFormatting(Formatting.GRAY)));
+        DungeonsHelpers.Tooltip.appendDescription(tooltip, Text.translatable("tooltip.dungeons_reborn.broadsword"));
         DungeonsHelpers.Tooltip.appendMcdRarity(tooltip, McdRarity.UNIQUE);
-        tooltip.add(Text.translatable("tooltip.dungeons_reborn.powerful_pushback").setStyle(Style.EMPTY.withFormatting(Formatting.GREEN).withItalic(true)));
+        DungeonsHelpers.Tooltip.appendAbility(tooltip, Text.translatable("ability.dungeons_reborn.powerful_pushback"), true);
         DungeonsHelpers.Tooltip.appendBuiltInEnchantment(tooltip, Text.translatable("enchantment.minecraft.sharpness"));
         super.appendTooltip(stack, context, tooltip, type);
     }

@@ -3,9 +3,7 @@ package net.stonksman01.dungeons_reborn.items.mcd_ranged;
 import net.minecraft.entity.Entity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.tooltip.TooltipType;
-import net.minecraft.text.Style;
 import net.minecraft.text.Text;
-import net.minecraft.util.Formatting;
 import net.minecraft.world.World;
 import net.stonksman01.dungeons_reborn._included_libs.skycore.items.SC_CrossbowItem;
 import net.stonksman01.dungeons_reborn.util.DungeonsHelpers;
@@ -19,8 +17,7 @@ public class HeavyCrossbowItem extends SC_CrossbowItem {
     @Override
     public void appendTooltip(ItemStack stack, TooltipContext context, List<Text> tooltip, TooltipType type) {
         DungeonsHelpers.Tooltip.appendDungeonsHeader(tooltip);
-        tooltip.add(Text.translatable("tooltip.dungeons_reborn.heavy_crossbow.tooltip1").setStyle(Style.EMPTY.withItalic(true).withFormatting(Formatting.GRAY)));
-        tooltip.add(Text.translatable("tooltip.dungeons_reborn.heavy_crossbow.tooltip2").setStyle(Style.EMPTY.withItalic(true).withFormatting(Formatting.GRAY)));
+        DungeonsHelpers.Tooltip.appendDescription(tooltip, Text.translatable("tooltip.dungeons_reborn.heavy_crossbow"));
         DungeonsHelpers.Tooltip.appendMcdRarity(tooltip, stack);
         super.appendTooltip(stack, context, tooltip, type);
     }

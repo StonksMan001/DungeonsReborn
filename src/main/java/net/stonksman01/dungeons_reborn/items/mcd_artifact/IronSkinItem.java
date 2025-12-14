@@ -102,16 +102,11 @@ public class IronSkinItem extends McdArtifactItem {
     @Override
     public void appendTooltip(ItemStack stack, TooltipContext context, List<Text> tooltip, TooltipType type) {
         DungeonsHelpers.Tooltip.appendDungeonsHeader(tooltip);
-        tooltip.add(Text.translatable("tooltip.dungeons_reborn.artifact.iron_hide_amulet.tooltip1").setStyle(Style.EMPTY.withItalic(true).withFormatting(Formatting.GRAY)));
-        tooltip.add(Text.translatable("tooltip.dungeons_reborn.artifact.iron_hide_amulet.tooltip2").setStyle(Style.EMPTY.withItalic(true).withFormatting(Formatting.GRAY)));
-        tooltip.add(Text.translatable("tooltip.dungeons_reborn.artifact.iron_hide_amulet.tooltip3").setStyle(Style.EMPTY.withItalic(true).withFormatting(Formatting.GRAY)));
+        DungeonsHelpers.Tooltip.appendDescription(tooltip, Text.translatable("tooltip.dungeons_reborn.artifact.iron_hide_amulet"));
         DungeonsHelpers.Tooltip.appendMcdRarity(tooltip, stack);
-        tooltip.add(Text.translatable("tooltip.dungeons_reborn.artifact.iron_hide_amulet.teammate_only")
-                .append(Text.literal(": ")
-                        .append(Boolean.TRUE.equals(stack.get(MCD_DataComponentTypes.IRON_HIDE_AMULET_TEAMMATE_ONLY_TOGGLE)) ?
-                                Text.translatable("options.on").formatted(Formatting.GREEN):
-                                Text.translatable("options.off").formatted(Formatting.RED))));
-        tooltip.add(Text.translatable("tooltip.dungeons_reborn.artifact.iron_hide_amulet.tooltip4").setStyle(Style.EMPTY.withFormatting(Formatting.GREEN).withItalic(true)));
+        DungeonsHelpers.Tooltip.appendToggle(tooltip, Text.translatable("toggle.dungeons_reborn.teammate_only"),
+                stack, MCD_DataComponentTypes.IRON_HIDE_AMULET_TEAMMATE_ONLY_TOGGLE);
+        DungeonsHelpers.Tooltip.appendAbility(tooltip, Text.translatable("ability.dungeons_reborn.artifact.iron_hide_amulet"), true);
         super.appendTooltip(stack, context, tooltip, type);
     }
 }
