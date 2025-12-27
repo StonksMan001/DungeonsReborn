@@ -1,6 +1,7 @@
 package net.stonksman01.dungeons_reborn.registries;
 
 import net.fabricmc.fabric.api.itemgroup.v1.FabricItemGroup;
+import net.minecraft.item.Item;
 import net.minecraft.item.ItemGroup;
 import net.minecraft.item.ItemStack;
 import net.minecraft.text.Text;
@@ -12,50 +13,18 @@ import net.stonksman01.dungeons_reborn.util.DungeonsHelpers;
 public class MCD_ItemGroups {
     public static ItemGroup DUNGEONS_REBORN = SkyCore.BuiltinRegistries.registerItemGroup("dungeons_reborn",
             FabricItemGroup.builder().displayName(Text.literal("Dungeons Reborn")).icon(() -> new ItemStack(MCD_Items.ANCIENT_GOLD_INGOT)).entries((displayContext, entries) -> {
-                //TODO: clean this mess in MCD_ItemGroups
-                ItemStack commonClaymore = new ItemStack(MCD_Items.CLAYMORE);
-                commonClaymore.set(MCD_DataComponentTypes.MCD_RARITY, McdRarity.COMMON);
-                DungeonsHelpers.modifyAttackKnockback(commonClaymore, 0.0);
-                entries.add(commonClaymore);
-                ItemStack rareClaymore = new ItemStack(MCD_Items.CLAYMORE);
-                rareClaymore.set(MCD_DataComponentTypes.MCD_RARITY, McdRarity.RARE);
-                DungeonsHelpers.modifyAttackKnockback(rareClaymore, 0.0);
-                entries.add(rareClaymore);
-                ItemStack heartstealer = new ItemStack(MCD_Items.HEARTSTEALER);
-                DungeonsHelpers.modifyAttackKnockback(heartstealer, 0.0);
-                entries.add(heartstealer);
-                ItemStack broadSword = new ItemStack(MCD_Items.BROADSWORD);
-                DungeonsHelpers.modifyAttackKnockback(broadSword, 0.0);
-                entries.add(broadSword);
+                addCommonAndRareClaymoreVariant(entries, MCD_Items.CLAYMORE);
+                addClaymoreVariant(entries, MCD_Items.HEARTSTEALER);
+                addClaymoreVariant(entries, MCD_Items.BROADSWORD);
                 entries.add(MCD_Items.ROUGH_DIAMOND_SWORD);
                 entries.add(MCD_Items.ROUGH_DIAMOND_PICKAXE);
-                ItemStack commonSteelMace = new ItemStack(MCD_Items.STEEL_MACE);
-                commonSteelMace.set(MCD_DataComponentTypes.MCD_RARITY, McdRarity.COMMON);
-                entries.add(commonSteelMace);
-                ItemStack rareSteelMace = new ItemStack(MCD_Items.STEEL_MACE);
-                rareSteelMace.set(MCD_DataComponentTypes.MCD_RARITY, McdRarity.RARE);
-                entries.add(rareSteelMace);
+                addCommonAndRareVariant(entries, MCD_Items.STEEL_MACE);
                 entries.add(MCD_Items.SUNS_GRACE);
-                ItemStack commonHeavyCrossBow = new ItemStack(MCD_Items.HEAVY_CROSSBOW);
-                commonHeavyCrossBow.set(MCD_DataComponentTypes.MCD_RARITY, McdRarity.COMMON);
-                entries.add(commonHeavyCrossBow);
-                ItemStack rareHeavyCrossBow = new ItemStack(MCD_Items.HEAVY_CROSSBOW);
-                rareHeavyCrossBow.set(MCD_DataComponentTypes.MCD_RARITY, McdRarity.RARE);
-                entries.add(rareHeavyCrossBow);
+                addCommonAndRareVariant(entries, MCD_Items.HEAVY_CROSSBOW);
                 entries.add(MCD_Items.AUTO_CROSSBOW);
                 entries.add(MCD_Items.TWIN_BOW);
-                ItemStack commonAmulet = new ItemStack(MCD_Items.ARTIFACT_IRON_HIDE_AMULET);
-                commonAmulet.set(MCD_DataComponentTypes.MCD_RARITY, McdRarity.COMMON);
-                entries.add(commonAmulet);
-                ItemStack rareAmulet = new ItemStack(MCD_Items.ARTIFACT_IRON_HIDE_AMULET);
-                rareAmulet.set(MCD_DataComponentTypes.MCD_RARITY, McdRarity.RARE);
-                entries.add(rareAmulet);
-                ItemStack commonMushroom = new ItemStack(MCD_Items.ARTIFACT_DEATH_CAP_MUSHROOM);
-                commonMushroom.set(MCD_DataComponentTypes.MCD_RARITY, McdRarity.COMMON);
-                entries.add(commonMushroom);
-                ItemStack rareMushroom = new ItemStack(MCD_Items.ARTIFACT_DEATH_CAP_MUSHROOM);
-                rareMushroom.set(MCD_DataComponentTypes.MCD_RARITY, McdRarity.RARE);
-                entries.add(rareMushroom);
+                addCommonAndRareVariant(entries, MCD_Items.ARTIFACT_IRON_HIDE_AMULET);
+                addCommonAndRareVariant(entries, MCD_Items.ARTIFACT_DEATH_CAP_MUSHROOM);
                 entries.add(MCD_Blocks.HIGHLAND_MOSS_BLOCK);
                 entries.add(MCD_Blocks.HIGHLAND_MOSS_CARPET);
                 entries.add(MCD_Items.SOUR_BERRIES);
@@ -69,6 +38,31 @@ public class MCD_ItemGroups {
                 entries.add(MCD_Items.ANCIENT_GOLD_INGOT);
                 entries.add(MCD_Blocks.ANCIENT_GOLD_BLOCK);
             }).build());
+
+    private static void addCommonAndRareClaymoreVariant(ItemGroup.Entries entries, Item item) {
+        ItemStack commonItem = new ItemStack(item);
+        commonItem.set(MCD_DataComponentTypes.MCD_RARITY, McdRarity.COMMON);
+        DungeonsHelpers.modifyAttackKnockback(commonItem, 0.0);
+        entries.add(commonItem);
+        ItemStack rareItem = new ItemStack(item);
+        rareItem.set(MCD_DataComponentTypes.MCD_RARITY, McdRarity.RARE);
+        DungeonsHelpers.modifyAttackKnockback(rareItem, 0.0);
+        entries.add(rareItem);
+    }
+    private static void addClaymoreVariant(ItemGroup.Entries entries, Item item) {
+        ItemStack claymoreItem = new ItemStack(item);
+        DungeonsHelpers.modifyAttackKnockback(claymoreItem, 0.0);
+        entries.add(claymoreItem);
+    }
+    private static void addCommonAndRareVariant(ItemGroup.Entries entries, Item item) {
+        ItemStack commonItem = new ItemStack(item);
+        commonItem.set(MCD_DataComponentTypes.MCD_RARITY, McdRarity.COMMON);
+        entries.add(commonItem);
+        ItemStack rareItem = new ItemStack(item);
+        rareItem.set(MCD_DataComponentTypes.MCD_RARITY, McdRarity.RARE);
+        entries.add(rareItem);
+    }
+
     public static void register() {
         DungeonsReborn.LOGGER.info("[DungeonsReborn] Registering ItemGroups");
     }
