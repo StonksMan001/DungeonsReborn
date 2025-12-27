@@ -53,14 +53,14 @@ public class TwinBowItem extends SC_BowItem {
     }
     @Override
     public void onStoppedUsing(ItemStack stack, World world, LivingEntity user, int remainingUseTicks) {
-        if (!world.isClient && user instanceof PlayerEntity playerEntity) {
+        if (world instanceof ServerWorld serverWorld && user instanceof PlayerEntity playerEntity) {
             ItemStack itemStack = playerEntity.getProjectileType(stack);
             if (!itemStack.isEmpty()) {
                 int i = this.getMaxUseTime(stack, user) - remainingUseTicks;
                 float f = getPullProgress(i);
                 if (!(f < 0.1)) {
                     List<ItemStack> list = load(stack, itemStack, playerEntity);
-                    if (world instanceof ServerWorld serverWorld && !list.isEmpty()) {
+                    if (!list.isEmpty()) {
                         boolean bowHasInfinity = EnchantmentHelper.getLevel(DungeonsHelpers.getEnchantmentRegistryEntry(world, Enchantments.INFINITY), stack) > 0;
                         boolean critical = f == 1.0F;
                         float speed = f * 3.0F;

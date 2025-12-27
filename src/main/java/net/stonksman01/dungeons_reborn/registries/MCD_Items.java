@@ -28,11 +28,13 @@ public class MCD_Items {
     public static final Item STEEL_MACE = SkyCore.BuiltinRegistries.registerItem("steel_mace",
             new SteelMaceItem(MCD_ToolMaterials.DEFAULT, 2, 1.6f, new Item.Settings()));
     public static final Item SUNS_GRACE = SkyCore.BuiltinRegistries.registerItem("suns_grace",
-            new SunsGraceItem(MCD_ToolMaterials.DEFAULT, 2, 1.6f, new Item.Settings()));
+            new SunsGraceItem(MCD_ToolMaterials.DEFAULT, 3, 1.6f, new Item.Settings()
+                    .rarity(Rarity.EPIC)));
     public static final Item CLAYMORE = SkyCore.BuiltinRegistries.registerItem("claymore",
             new ClaymoreItem(MCD_ToolMaterials.DEFAULT, 4, 1.0f, new Item.Settings()));
     public static final Item HEARTSTEALER = SkyCore.BuiltinRegistries.registerItem("heartstealer",
-            new HeartstealerItem(MCD_ToolMaterials.DEFAULT, 4, 1.0f, new Item.Settings()));
+            new HeartstealerItem(MCD_ToolMaterials.DEFAULT, 5, 1.0f, new Item.Settings()
+                    .rarity(Rarity.EPIC)));
     public static final Item BROADSWORD = SkyCore.BuiltinRegistries.registerItem("broadsword",
             new BroadswordItem(MCD_ToolMaterials.DEFAULT, 5, 1.0f, new Item.Settings()
                     .rarity(Rarity.EPIC)));

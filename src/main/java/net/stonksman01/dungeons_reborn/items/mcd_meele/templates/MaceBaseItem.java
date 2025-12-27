@@ -32,8 +32,8 @@ public abstract class MaceBaseItem extends SkyCoreToolAPI.SwordItem implements C
         int current_chain_step = stack.getOrDefault(MCD_DataComponentTypes.ATTACK_CHAIN_STEP, 1);
         int next_chain_step;
         if (current_chain_step == 1) attacker.getWorld().playSoundFromEntity(null, attacker, SoundEvents.ITEM_MACE_SMASH_GROUND, SoundCategory.NEUTRAL, 1.0F, 1.0F);
-        if (current_chain_step == 3) modifySpeedAndAttackDamage(stack, baseAttackDamage + 8d, attackSpeed -1d);
-        else modifySpeedAndAttackDamage(stack, baseAttackDamage + 4d, attackSpeed);
+        if (current_chain_step == 3) modifySpeedAndAttackDamage(stack, baseAttackDamage + 8d, attackSpeed - 5d);
+        else modifySpeedAndAttackDamage(stack, baseAttackDamage + 4d, attackSpeed - 4d);
         if (!(current_chain_step >= 3)) {
             next_chain_step = current_chain_step + 1;
         } else next_chain_step = 1;
