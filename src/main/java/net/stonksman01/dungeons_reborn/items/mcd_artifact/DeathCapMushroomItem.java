@@ -45,6 +45,7 @@ public class DeathCapMushroomItem extends McdArtifactItem {
             case null, default -> {}
         }
         if (world instanceof ServerWorld && duration != 0) {
+            user.getItemCooldownManager().set(stack, 500);
             user.addStatusEffect(new StatusEffectInstance(StatusEffects.STRENGTH, duration, amplifier, false, true, true));
             user.addStatusEffect(new StatusEffectInstance(StatusEffects.SPEED, duration, amplifier, false, true, true));
             world.playSoundFromEntity(null, user, MCD_Sounds.DEATH_CAP_MUSHROOM_USE, SoundCategory.PLAYERS, 1.0F, 1.0F);

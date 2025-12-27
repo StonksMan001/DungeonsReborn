@@ -3,6 +3,7 @@ package net.stonksman01.dungeons_reborn.items.mcd_artifact;
 import net.minecraft.component.type.TooltipDisplayComponent;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EquipmentSlot;
+import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.effect.StatusEffectInstance;
 import net.minecraft.entity.effect.StatusEffects;
 import net.minecraft.entity.player.PlayerEntity;
@@ -55,38 +56,21 @@ public class IronSkinItem extends McdArtifactItem {
     public ActionResult use(World world, PlayerEntity user, Hand hand) {
         ItemStack stack = user.getStackInHand(hand);
         McdRarity mcdRarity = stack.get(MCD_DataComponentTypes.MCD_RARITY);
-        int distance = 0;
-        int duration = 0;
-        int amplifier = 2;
-        switch (mcdRarity) {
-            case COMMON -> {
-                distance = 10;
-                duration = 200;
-            }
-            case RARE -> {
-                distance = 15;
-                duration = 260;
-            }
-            case null, default -> {}
-        }
-        if (world instanceof ServerWorld && duration != 0 && Objects.nonNull(stack.get(MCD_DataComponentTypes.IRON_HIDE_AMULET_TEAMMATE_ONLY_TOGGLE))) {
-            boolean personal = Boolean.TRUE.equals(stack.get(MCD_DataComponentTypes.IRON_HIDE_AMULET_TEAMMATE_ONLY_TOGGLE));
-            world.playSoundFromEntity(null, user, MCD_Sounds.IRON_HIDE_AMULET_USE, SoundCategory.PLAYERS, 1.0F, 1.0F);
+        Boolean teammateOnlyToggle = stack.get(MCD_DataComponentTypes.IRON_HIDE_AMULET_TEAMMATE_ONLY_TOGGLE);
+        int distance = mcdRarity == McdRarity.RARE ? 15 : 10;
+        int duration = mcdRarity == McdRarity.RARE ? 260 : 200;
+        if (world instanceof ServerWorld serverWorld && Objects.nonNull(mcdRarity) && Objects.nonNull(teammateOnlyToggle)) {
+            boolean personal = Boolean.TRUE.equals(teammateOnlyToggle);
+            user.getItemCooldownManager().set(stack, 500);
+            serverWorld.playSoundFromEntity(null, user, MCD_Sounds.IRON_HIDE_AMULET_USE, SoundCategory.PLAYERS, 1.0F, 1.0F);
             stack.damage(1, user, hand.getEquipmentSlot());
-            int k = user.getBlockPos().getX();
-            int l = user.getBlockPos().getY();
-            int m = user.getBlockPos().getZ();
-            Box box = (new Box(k, l, m, k + 1, l + 1, m + 1)).expand(distance).stretch(0.0, world.getHeight(), 0.0);
-            List<PlayerEntity> list = world.getNonSpectatingEntities(PlayerEntity.class, box);
-            if (!list.isEmpty()) {
-                for (PlayerEntity playerEntity : list) {
-                    if (user.getBlockPos().isWithinDistance(playerEntity.getBlockPos(), distance)) {
-                        if (personal && !DungeonsHelpers.areAllies(user, playerEntity)) continue;
-                        playerEntity.addStatusEffect(new StatusEffectInstance(StatusEffects.RESISTANCE, duration, amplifier, false, true, true));
-                        spawnIronHideAmuletParticle(world, playerEntity);
-                    }
+            DungeonsHelpers.executeForPlayersWithinDistance(serverWorld, user.getBlockPos(), distance, (entity) -> {
+                if (!personal || DungeonsHelpers.areAllies(user, entity)) {
+                    entity.addStatusEffect(new StatusEffectInstance(StatusEffects.RESISTANCE, duration, 2, false, true, true));
+                    spawnIronHideAmuletParticle(serverWorld, entity);
                 }
-            }
+                return null;
+            });
         }
         return ActionResult.SUCCESS;
     }

@@ -4,10 +4,7 @@ import net.minecraft.component.DataComponentTypes;
 import net.minecraft.component.type.ChargedProjectilesComponent;
 import net.minecraft.component.type.FoodComponents;
 import net.minecraft.item.Item;
-import net.minecraft.item.Items;
 import net.minecraft.item.ToolMaterial;
-import net.minecraft.recipe.Ingredient;
-import net.minecraft.registry.entry.RegistryEntryList;
 import net.minecraft.util.Rarity;
 import net.stonksman01.dungeons_reborn.DungeonsReborn;
 import net.stonksman01.dungeons_reborn._included_libs.skycore.SkyCore;
@@ -18,7 +15,6 @@ import net.stonksman01.dungeons_reborn.items.mcd_ranged.AutoCrossbowItem;
 import net.stonksman01.dungeons_reborn.items.mcd_ranged.HeavyCrossbowItem;
 import net.stonksman01.dungeons_reborn.items.mcd_ranged.TwinBowItem;
 
-import java.util.List;
 
 public class MCD_Items {
     public static final Item TWIN_BOW = SkyCore.BuiltinRegistries.registerItem("twin_bow",
@@ -35,11 +31,13 @@ public class MCD_Items {
     public static final Item STEEL_MACE = SkyCore.BuiltinRegistries.registerItem("steel_mace",
             settings -> new SteelMaceItem(MCD_ToolMaterials.DEFAULT, 2, 1.6f, settings));
     public static final Item SUNS_GRACE = SkyCore.BuiltinRegistries.registerItem("suns_grace",
-            settings -> new SunsGraceItem(MCD_ToolMaterials.DEFAULT, 2, 1.6f, settings));
+            settings -> new SunsGraceItem(MCD_ToolMaterials.DEFAULT, 3, 1.6f, settings
+                    .rarity(Rarity.RARE)));
     public static final Item CLAYMORE = SkyCore.BuiltinRegistries.registerItem("claymore",
             settings -> new ClaymoreItem(MCD_ToolMaterials.DEFAULT, 4, 1.0f, settings));
     public static final Item HEARTSTEALER = SkyCore.BuiltinRegistries.registerItem("heartstealer",
-            settings -> new HeartstealerItem(MCD_ToolMaterials.DEFAULT, 4, 1.0f, settings));
+            settings -> new HeartstealerItem(MCD_ToolMaterials.DEFAULT, 5, 1.0f, settings
+                    .rarity(Rarity.RARE)));
     public static final Item BROADSWORD = SkyCore.BuiltinRegistries.registerItem("broadsword",
             settings -> new BroadswordItem(MCD_ToolMaterials.DEFAULT, 5, 1.0f, settings
                     .rarity(Rarity.EPIC)));
@@ -55,11 +53,9 @@ public class MCD_Items {
                     .component(DataComponentTypes.CHARGED_PROJECTILES, ChargedProjectilesComponent.DEFAULT)
                     .enchantable(1)));
     public static final Item ARTIFACT_IRON_HIDE_AMULET = SkyCore.BuiltinRegistries.registerItem("artifact_iron_hide_amulet",
-            settings -> new IronSkinItem(settings
-                    .useCooldown(25.0f)));
+            IronSkinItem::new);
     public static final Item ARTIFACT_DEATH_CAP_MUSHROOM = SkyCore.BuiltinRegistries.registerItem("artifact_death_cap_mushroom",
-            settings -> new DeathCapMushroomItem(settings
-                    .useCooldown(30.0f)));
+            DeathCapMushroomItem::new);
     public static final Item SOUR_BERRIES = SkyCore.BuiltinRegistries.registerItemThatHasBlock("sour_berries",
                     MCD_Blocks.SOUR_BERRY_BUSH, new Item.Settings()
                     .food(FoodComponents.SWEET_BERRIES));

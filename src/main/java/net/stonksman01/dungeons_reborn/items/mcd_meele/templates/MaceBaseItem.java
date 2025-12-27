@@ -13,12 +13,14 @@ import net.minecraft.item.ToolMaterial;
 import net.minecraft.server.world.ServerWorld;
 import net.minecraft.sound.SoundCategory;
 import net.minecraft.sound.SoundEvents;
+import net.minecraft.util.Pair;
 import net.stonksman01.dungeons_reborn._included_libs.skycore.SkyCoreToolAPI;
 import net.stonksman01.dungeons_reborn.components.McdRarity;
 import net.stonksman01.dungeons_reborn.items.McdItem;
 import net.stonksman01.dungeons_reborn.util.ChainAttackWeapon;
 import net.stonksman01.dungeons_reborn.registries.MCD_DataComponentTypes;
 import net.stonksman01.dungeons_reborn.util.DungeonsHelpers;
+import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 public abstract class MaceBaseItem extends SkyCoreToolAPI.SwordItem implements ChainAttackWeapon {
@@ -34,8 +36,8 @@ public abstract class MaceBaseItem extends SkyCoreToolAPI.SwordItem implements C
         int current_chain_step = stack.getOrDefault(MCD_DataComponentTypes.ATTACK_CHAIN_STEP, 1);
         int next_chain_step;
         if (current_chain_step == 1) attacker.getEntityWorld().playSoundFromEntity(null, attacker, SoundEvents.ITEM_MACE_SMASH_GROUND, SoundCategory.NEUTRAL, 1.0F, 1.0F);
-        if (current_chain_step == 3) modifySpeedAndAttackDamage(stack, baseAttackDamage + 8d, attackSpeed -1d);
-        else modifySpeedAndAttackDamage(stack, baseAttackDamage + 4d, attackSpeed);
+        if (current_chain_step == 3) modifySpeedAndAttackDamage(stack, baseAttackDamage + 8d, attackSpeed - 5d);
+        else modifySpeedAndAttackDamage(stack, baseAttackDamage + 4d, attackSpeed - 4d);
         if (!(current_chain_step >= 3)) {
             next_chain_step = current_chain_step + 1;
         } else next_chain_step = 1;
@@ -68,4 +70,8 @@ public abstract class MaceBaseItem extends SkyCoreToolAPI.SwordItem implements C
         DungeonsHelpers.makeUnrepairable(stack);
         super.inventoryTick(stack, world, entity, slot);
     }
+    @Override
+    public abstract @Nullable Pair<@NotNull Double, @Nullable Double> getAttackDamagePair(@Nullable McdRarity mcdRarity);
+    @Override
+    public abstract @Nullable Pair<@NotNull Double, @Nullable Double> getAttackSpeedPair(@Nullable McdRarity mcdRarity);
 }
