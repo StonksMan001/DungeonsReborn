@@ -1,14 +1,12 @@
 package net.stonksman01.dungeons_reborn.registries;
 
 import net.minecraft.block.*;
-import net.minecraft.registry.RegistryKey;
-import net.minecraft.registry.RegistryKeys;
 import net.stonksman01.dungeons_reborn.DungeonsReborn;
 import net.stonksman01.dungeons_reborn._included_libs.skycore.SkyCore;
 import net.stonksman01.dungeons_reborn.blocks.*;
 
 public class MCD_Blocks {
-    public static final Block MOSSIER_COBBLESTONE = SkyCore.BuiltinRegistries.registerBlockAndItem("midnight_mossy_cobblestone",
+    public static final Block MIDNIGHT_MOSSY_COBBLESTONE = SkyCore.BuiltinRegistries.registerBlockAndItem("midnight_mossy_cobblestone",
             Block::new, AbstractBlock.Settings
                     .copy(Blocks.COBBLESTONE)
                     .strength(2.0F, 6.0F)
@@ -23,11 +21,11 @@ public class MCD_Blocks {
                     .copy(Blocks.SPRUCE_PLANKS)
                     .strength(2.0f, 3.0f)
                     .mapColor(MapColor.SPRUCE_BROWN));
-    public static final Block DRIED_MOSS_BLOCK = SkyCore.BuiltinRegistries.registerBlockAndItem("highland_moss_block",
+    public static final Block HIGHLAND_MOSS_BLOCK = SkyCore.BuiltinRegistries.registerBlockAndItem("highland_moss_block",
             settings -> new MossBlock(MCD_ConfiguredFeatures.HIGHLAND_MOSS_PATCH_BONEMEAL, settings), AbstractBlock.Settings
                     .copy(Blocks.MOSS_BLOCK)
                     .mapColor(MapColor.ORANGE));
-    public static final Block DRIED_MOSS_CARPET = SkyCore.BuiltinRegistries.registerBlockAndItem("highland_moss_carpet",
+    public static final Block HIGHLAND_MOSS_CARPET = SkyCore.BuiltinRegistries.registerBlockAndItem("highland_moss_carpet",
             CarpetBlock::new, AbstractBlock.Settings
                     .copy(Blocks.MOSS_CARPET)
                     .mapColor(MapColor.ORANGE));

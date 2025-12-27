@@ -31,12 +31,12 @@ public class MCD_LootTableProvider extends FabricBlockLootTableProvider {
     @Override
     public void generate() {
         addDrop(MCD_Blocks.ANCIENT_GOLD_BLOCK);
-        addDrop(MCD_Blocks.DRIED_MOSS_BLOCK);
-        addDrop(MCD_Blocks.DRIED_MOSS_CARPET);
+        addDrop(MCD_Blocks.HIGHLAND_MOSS_BLOCK);
+        addDrop(MCD_Blocks.HIGHLAND_MOSS_CARPET);
         addDrop(MCD_Blocks.MIDNIGHT_MOSS_BLOCK);
         addDrop(MCD_Blocks.MIDNIGHT_MOSS_CARPET);
         addDrop(MCD_Blocks.MIDNIGHT_SPROUTS);
-        addDrop(MCD_Blocks.MOSSIER_COBBLESTONE);
+        addDrop(MCD_Blocks.MIDNIGHT_MOSSY_COBBLESTONE);
         addDrop(MCD_Blocks.MOSSIER_OAK_PLANKS, block -> dropsWithSilkTouch(block, applyExplosionDecay(block, ItemEntry.builder(Items.OAK_PLANKS))));
         addDrop(MCD_Blocks.MOSSIER_SPRUCE_PLANKS, block -> dropsWithSilkTouch(block, applyExplosionDecay(block, ItemEntry.builder(Items.SPRUCE_PLANKS))));
         addDrop(MCD_Blocks.POP_FLOWER);

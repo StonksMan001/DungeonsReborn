@@ -31,8 +31,8 @@ public class MCD_ConfiguredFeatures {
                 .add(MCD_Blocks.MIDNIGHT_MOSS_CARPET.getDefaultState(), 25)
                 .add(MCD_Blocks.MIDNIGHT_SPROUTS.getDefaultState(), 50)
                 .add(MCD_Blocks.POP_FLOWER.getDefaultState(), 10).build());
-        registerMossFeatures(ctx, HIGHLAND_MOSS_VEGETATION, HIGHLAND_MOSS_PATCH_BONEMEAL, MCD_Blocks.DRIED_MOSS_BLOCK, Pool.<BlockState>builder()
-                .add(MCD_Blocks.DRIED_MOSS_CARPET.getDefaultState(), 25)
+        registerMossFeatures(ctx, HIGHLAND_MOSS_VEGETATION, HIGHLAND_MOSS_PATCH_BONEMEAL, MCD_Blocks.HIGHLAND_MOSS_BLOCK, Pool.<BlockState>builder()
+                .add(MCD_Blocks.HIGHLAND_MOSS_CARPET.getDefaultState(), 25)
                 .add(Blocks.SHORT_GRASS.getDefaultState(), 50)
                 .add(MCD_Blocks.SOUR_BERRY_BUSH.getDefaultState().with(SourBerryBushBlock.AGE, 0), 5)
                 .add(MCD_Blocks.SOUR_BERRY_BUSH.getDefaultState().with(SourBerryBushBlock.AGE, 1), 2)

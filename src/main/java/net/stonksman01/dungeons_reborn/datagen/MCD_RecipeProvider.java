@@ -23,15 +23,15 @@ public class MCD_RecipeProvider extends FabricRecipeProvider {
             @Override
             public void generate() {
                 offerReversibleCompactingRecipes(RecipeCategory.MISC, MCD_Items.ANCIENT_GOLD_INGOT, RecipeCategory.BUILDING_BLOCKS, MCD_Blocks.ANCIENT_GOLD_BLOCK);
-                offerCarpetRecipe(MCD_Blocks.DRIED_MOSS_CARPET, MCD_Blocks.DRIED_MOSS_BLOCK);
+                offerCarpetRecipe(MCD_Blocks.HIGHLAND_MOSS_CARPET, MCD_Blocks.HIGHLAND_MOSS_BLOCK);
                 offerCarpetRecipe(MCD_Blocks.MIDNIGHT_MOSS_CARPET, MCD_Blocks.MIDNIGHT_MOSS_BLOCK);
                 offerMossyVariantRecipes(this, exporter, MCD_Blocks.MOSSIER_OAK_PLANKS, Blocks.OAK_PLANKS);
                 offerMossyVariantRecipes(this, exporter, MCD_Blocks.MOSSIER_SPRUCE_PLANKS, Blocks.SPRUCE_PLANKS);
-                createShapeless(RecipeCategory.BUILDING_BLOCKS, MCD_Blocks.MOSSIER_COBBLESTONE)
+                createShapeless(RecipeCategory.BUILDING_BLOCKS, MCD_Blocks.MIDNIGHT_MOSSY_COBBLESTONE)
                         .input(Blocks.COBBLESTONE)
                         .input(MCD_Blocks.MIDNIGHT_MOSS_BLOCK)
                         .criterion(hasItem(MCD_Blocks.MIDNIGHT_MOSS_BLOCK), conditionsFromItem(MCD_Blocks.MIDNIGHT_MOSS_BLOCK))
-                        .criterion(hasItem(MCD_Blocks.MOSSIER_COBBLESTONE), conditionsFromItem(MCD_Blocks.MOSSIER_COBBLESTONE))
+                        .criterion(hasItem(MCD_Blocks.MIDNIGHT_MOSSY_COBBLESTONE), conditionsFromItem(MCD_Blocks.MIDNIGHT_MOSSY_COBBLESTONE))
                         .criterion(hasItem(Blocks.COBBLESTONE), conditionsFromItem(Blocks.COBBLESTONE))
                         .offerTo(exporter);
             }
