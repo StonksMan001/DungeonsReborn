@@ -77,5 +77,7 @@
   "ability.dungeons_reborn.artifact.death_cap_mushroom": "Greatly increases attack damage and movement speed",
 
   "toggle.dungeons_reborn.target_players": "Target players",
-  "toggle.dungeons_reborn.teammate_only": "Teammate only"
+  "toggle.dungeons_reborn.teammate_only": "Teammate only",
+
+  "command.dungeons_reborn.resetgamerules": "Reset %s Dungeons Reborn gamerules to their default values"
 }

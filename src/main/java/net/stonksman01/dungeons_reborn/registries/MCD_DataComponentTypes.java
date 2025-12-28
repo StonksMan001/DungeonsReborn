@@ -10,7 +10,7 @@ public class MCD_DataComponentTypes {
     public static final ComponentType<Boolean> TWIN_BOW_TARGET_PLAYER_ENTITIES_TOGGLE = SkyCore.BuiltinRegistries.registerComponentType("twin_bow_attack_player_entities_toggle", booleanBuilder -> {
         return booleanBuilder.codec(Codec.BOOL);
     });
-    public static final ComponentType<Boolean> IRON_HIDE_AMULET_TEAMMATE_ONLY_TOGGLE = SkyCore.BuiltinRegistries.registerComponentType("iron_hide_amulet_personal_toggle", booleanBuilder -> {
+    public static final ComponentType<Boolean> TEAMMATE_ONLY_TOGGLE = SkyCore.BuiltinRegistries.registerComponentType("teammate_only_toggle", booleanBuilder -> {
         return booleanBuilder.codec(Codec.BOOL);
     });
     public static final ComponentType<McdRarity> MCD_RARITY = SkyCore.BuiltinRegistries.registerComponentType("mcd_rarity", (mcdRarityBuilder) -> {

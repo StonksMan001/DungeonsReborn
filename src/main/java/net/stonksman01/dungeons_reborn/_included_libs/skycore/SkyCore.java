@@ -3,6 +3,7 @@ package net.stonksman01.dungeons_reborn._included_libs.skycore;
 import com.llamalad7.mixinextras.injector.wrapoperation.Operation;
 import com.mojang.brigadier.arguments.ArgumentType;
 import com.mojang.brigadier.arguments.BoolArgumentType;
+import com.mojang.brigadier.arguments.IntegerArgumentType;
 import com.mojang.serialization.Codec;
 import net.fabricmc.fabric.api.object.builder.v1.world.poi.PointOfInterestHelper;
 import net.minecraft.block.AbstractBlock;
@@ -38,6 +39,7 @@ import net.minecraft.world.rule.*;
 import net.stonksman01.dungeons_reborn.DungeonsReborn;
 import net.stonksman01.dungeons_reborn._included_libs.skycore.items.SC_BowItem;
 import net.stonksman01.dungeons_reborn._included_libs.skycore.items.SC_CrossbowItem;
+import org.jetbrains.annotations.Nullable;
 
 import java.util.function.Function;
 import java.util.function.Supplier;
@@ -178,6 +180,28 @@ public class SkyCore {
                     FeatureSet.empty(),
                     GameRuleVisitor::visitBoolean,
                     value -> value ? 1 : 0
+            );
+        }
+        public static GameRule<Integer> registerCappedIntRule(String name, GameRuleCategory category, int defaultValue, int minValue, int maxValue) {
+            return registerIntRule(name, category, defaultValue, minValue, maxValue, FeatureSet.empty());
+        }
+        public static GameRule<Integer> registerIntRule(String name, GameRuleCategory category, int defaultValue, int minValue, int maxValue) {
+            return registerIntRule(name, category, defaultValue, minValue, maxValue, FeatureSet.empty());
+        }
+
+        public static GameRule<Integer> registerIntRule(
+                String name, GameRuleCategory category, int defaultValue, int minValue, int maxValue, FeatureSet requiredFeatures
+        ) {
+            return registerGameRule(
+                    name,
+                    category,
+                    GameRuleType.INT,
+                    IntegerArgumentType.integer(minValue, maxValue),
+                    Codec.intRange(minValue, maxValue),
+                    defaultValue,
+                    requiredFeatures,
+                    GameRuleVisitor::visitInt,
+                    value -> value
             );
         }
         private static <T> GameRule<T> registerGameRule(
