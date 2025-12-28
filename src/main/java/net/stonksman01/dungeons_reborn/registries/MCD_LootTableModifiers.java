@@ -27,6 +27,7 @@ public class MCD_LootTableModifiers {
             modifyChestLootTable(registryKey, builder, LootTables.PILLAGER_OUTPOST_CHEST, MCD_Items.ARTIFACT_IRON_HIDE_AMULET, 1, 1.0f);
             modifyChestLootTable(registryKey, builder, LootTables.WOODLAND_MANSION_CHEST, MCD_Items.ARTIFACT_IRON_HIDE_AMULET, 1, 0.1f);
             modifyChestLootTables(registryKey, builder, List.of(LootTables.WOODLAND_MANSION_CHEST, LootTables.SIMPLE_DUNGEON_CHEST), MCD_Items.ARTIFACT_DEATH_CAP_MUSHROOM, 1, 0.1f);
+            //TODO: Sun's Grace, Heartstealer, Heavy Crossbow
         }));
     }
     public static void modifyChestLootTable(RegistryKey<LootTable> registryKey, LootTable.Builder builder, RegistryKey<LootTable> chestLootTable, ItemConvertible insertedItem, int rolls, float chance) {

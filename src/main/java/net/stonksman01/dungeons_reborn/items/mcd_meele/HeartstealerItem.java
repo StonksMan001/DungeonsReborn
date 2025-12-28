@@ -15,6 +15,7 @@ import net.minecraft.text.Text;
 import net.minecraft.util.Pair;
 import net.stonksman01.dungeons_reborn.components.McdRarity;
 import net.stonksman01.dungeons_reborn.items.mcd_meele.templates.ClaymoreBaseItem;
+import net.stonksman01.dungeons_reborn.registries.MCD_GameRules;
 import net.stonksman01.dungeons_reborn.util.DungeonsHelpers;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
@@ -36,8 +37,10 @@ public class HeartstealerItem extends ClaymoreBaseItem {
     }
     @Override
     public void postDamageEntity(ItemStack stack, LivingEntity target, LivingEntity attacker) {
-        if (target.isDead() && (target instanceof MobEntity || target instanceof PlayerEntity) && attacker.getWorld() instanceof ServerWorld serverWorld) {
-            attacker.heal(target.getMaxHealth() * 0.1f);
+        if (attacker.getWorld() instanceof ServerWorld serverWorld && target.isDead() && (target instanceof MobEntity || target instanceof PlayerEntity)) {
+            float healAmount = target.getMaxHealth() * ((float)MCD_GameRules.LEECHING_HP_STEAL_PERCENTAGE.getValue(serverWorld) / 100);
+            if (healAmount > 0) attacker.heal(healAmount);
+            if (healAmount < 0) attacker.damage(serverWorld.getDamageSources().magic(), -healAmount);
             serverWorld.spawnParticles(DustParticleEffect.DEFAULT,
                     target.getX(),
                     target.getY(),

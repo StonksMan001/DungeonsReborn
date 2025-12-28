@@ -17,6 +17,7 @@ import net.minecraft.util.ClickType;
 import net.minecraft.util.Hand;
 import net.minecraft.util.TypedActionResult;
 import net.minecraft.world.World;
+import net.stonksman01.dungeons_reborn.registries.MCD_GameRules;
 import net.stonksman01.dungeons_reborn.util.DungeonsHelpers;
 import net.stonksman01.dungeons_reborn.components.McdRarity;
 import net.stonksman01.dungeons_reborn.items.McdArtifactItem;
@@ -32,8 +33,8 @@ public class IronSkinItem extends McdArtifactItem {
     }
     @Override
     public boolean onClicked(ItemStack stack, ItemStack otherStack, Slot slot, ClickType clickType, PlayerEntity player, StackReference cursorStackReference) {
-        if (clickType == ClickType.RIGHT && MCD_DataComponentTypes.IRON_HIDE_AMULET_TEAMMATE_ONLY_TOGGLE != null) {
-            stack.set(MCD_DataComponentTypes.IRON_HIDE_AMULET_TEAMMATE_ONLY_TOGGLE, Boolean.FALSE.equals(stack.get(MCD_DataComponentTypes.IRON_HIDE_AMULET_TEAMMATE_ONLY_TOGGLE)));
+        if (clickType == ClickType.RIGHT && MCD_DataComponentTypes.TEAMMATE_ONLY_TOGGLE != null) {
+            stack.set(MCD_DataComponentTypes.TEAMMATE_ONLY_TOGGLE, Boolean.FALSE.equals(stack.get(MCD_DataComponentTypes.TEAMMATE_ONLY_TOGGLE)));
             return true;
         } else {
             return super.onClicked(stack, otherStack, slot, clickType, player, cursorStackReference);
@@ -41,8 +42,8 @@ public class IronSkinItem extends McdArtifactItem {
     }
     @Override
     public void inventoryTick(ItemStack stack, World world, Entity entity, int slot, boolean selected) {
-        if (stack.get(MCD_DataComponentTypes.IRON_HIDE_AMULET_TEAMMATE_ONLY_TOGGLE) == null) {
-            stack.set(MCD_DataComponentTypes.IRON_HIDE_AMULET_TEAMMATE_ONLY_TOGGLE, false);
+        if (stack.get(MCD_DataComponentTypes.TEAMMATE_ONLY_TOGGLE) == null) {
+            stack.set(MCD_DataComponentTypes.TEAMMATE_ONLY_TOGGLE, false);
         }
         DungeonsHelpers.setRareOrCommonVariant(stack);
         super.inventoryTick(stack, world, entity, slot, selected);
@@ -51,32 +52,37 @@ public class IronSkinItem extends McdArtifactItem {
     public TypedActionResult<ItemStack> use(World world, PlayerEntity user, Hand hand) {
         ItemStack stack = user.getStackInHand(hand);
         McdRarity mcdRarity = stack.get(MCD_DataComponentTypes.MCD_RARITY);
-        Boolean teammateOnlyToggle = stack.get(MCD_DataComponentTypes.IRON_HIDE_AMULET_TEAMMATE_ONLY_TOGGLE);
-        int distance = mcdRarity == McdRarity.RARE ? 15 : 10;
-        int duration = mcdRarity == McdRarity.RARE ? 260 : 200;
-        if (!world.isClient && Objects.nonNull(mcdRarity) && Objects.nonNull(teammateOnlyToggle)) {
-            boolean personal = Boolean.TRUE.equals(teammateOnlyToggle);
-            user.getItemCooldownManager().set(this, 500);
-            world.playSoundFromEntity(null, user, MCD_Sounds.IRON_HIDE_AMULET_USE, SoundCategory.PLAYERS, 1.0F, 1.0F);
+        Boolean teammateOnlyToggle = stack.get(MCD_DataComponentTypes.TEAMMATE_ONLY_TOGGLE);
+        if (world instanceof ServerWorld serverWorld && Objects.nonNull(mcdRarity) && Objects.nonNull(teammateOnlyToggle)) {
+            int range = MCD_GameRules.ARTIFACT_IRON_HIDE_AMULET_COMMON_RANGE.getValue(serverWorld);
+            int cooldown = MCD_GameRules.ARTIFACT_IRON_HIDE_AMULET_COMMON_COOLDOWN.getValue(serverWorld);
+            var ref = new Object() {
+                int amplifier = MCD_GameRules.ARTIFACT_IRON_HIDE_AMULET_COMMON_AMPLIFIER.getValue(serverWorld);
+                int duration = MCD_GameRules.ARTIFACT_IRON_HIDE_AMULET_COMMON_DURATION.getValue(serverWorld);
+            };
+            if (mcdRarity == McdRarity.RARE) {
+                range = MCD_GameRules.ARTIFACT_IRON_HIDE_AMULET_RARE_RANGE.getValue(serverWorld);
+                cooldown = MCD_GameRules.ARTIFACT_IRON_HIDE_AMULET_RARE_COOLDOWN.getValue(serverWorld);
+                ref.amplifier = MCD_GameRules.ARTIFACT_IRON_HIDE_AMULET_RARE_AMPLIFIER.getValue(serverWorld);
+                ref.duration = MCD_GameRules.ARTIFACT_IRON_HIDE_AMULET_RARE_DURATION.getValue(serverWorld);
+            }
+            boolean teammateOnly = Boolean.TRUE.equals(teammateOnlyToggle);
+            if (cooldown != 0) user.getItemCooldownManager().set(this, cooldown);
+            serverWorld.playSoundFromEntity(null, user, MCD_Sounds.IRON_HIDE_AMULET_USE, SoundCategory.PLAYERS, 1.0F, 1.0F);
             stack.damage(1, user, LivingEntity.getSlotForHand(hand));
-            DungeonsHelpers.executeForPlayersWithinDistance(world, user.getBlockPos(), distance, (entity) -> {
-                if (!personal || DungeonsHelpers.areAllies(user, entity)) {
-                    entity.addStatusEffect(new StatusEffectInstance(StatusEffects.RESISTANCE, duration, 2, false, true, true));
-                    spawnIronHideAmuletParticle(world, entity);
+            DungeonsHelpers.executeForPlayersWithinDistance(serverWorld, user.getBlockPos(), range, (playerEntity) -> {
+                if (!teammateOnly || DungeonsHelpers.areAllies(user, playerEntity)) {
+                    playerEntity.addStatusEffect(new StatusEffectInstance(StatusEffects.RESISTANCE, ref.duration, ref.amplifier, false, true, true));
+                    serverWorld.spawnParticles(ParticleTypes.HAPPY_VILLAGER,
+                            playerEntity.getX(),
+                            playerEntity.getY(),
+                            playerEntity.getZ(),
+                            20, 0.5F, 1.0F, 0.5F, 1);
                 }
                 return null;
             });
         }
         return TypedActionResult.success(stack, true);
-    }
-    private void spawnIronHideAmuletParticle(World world, Entity entity) {
-        if (world instanceof ServerWorld serverWorld) {
-            serverWorld.spawnParticles(ParticleTypes.HAPPY_VILLAGER,
-                    entity.getX(),
-                    entity.getY(),
-                    entity.getZ(),
-                    20, 0.5F, 1.0F, 0.5F, 1);
-        }
     }
     @Override
     public void appendTooltip(ItemStack stack, TooltipContext context, List<Text> tooltip, TooltipType type) {
@@ -84,7 +90,7 @@ public class IronSkinItem extends McdArtifactItem {
         DungeonsHelpers.Tooltip.appendDescription(tooltip, Text.translatable("tooltip.dungeons_reborn.artifact.iron_hide_amulet"));
         DungeonsHelpers.Tooltip.appendMcdRarity(tooltip, stack);
         DungeonsHelpers.Tooltip.appendToggle(tooltip, Text.translatable("toggle.dungeons_reborn.teammate_only"),
-                stack, MCD_DataComponentTypes.IRON_HIDE_AMULET_TEAMMATE_ONLY_TOGGLE);
+                stack, MCD_DataComponentTypes.TEAMMATE_ONLY_TOGGLE);
         DungeonsHelpers.Tooltip.appendAbility(tooltip, Text.translatable("ability.dungeons_reborn.artifact.iron_hide_amulet"), true);
         super.appendTooltip(stack, context, tooltip, type);
     }

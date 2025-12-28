@@ -77,5 +77,7 @@
   "ability.dungeons_reborn.artifact.death_cap_mushroom": "Jelentősen megnöveli a sebzést és a gyorsaságot",
 
   "toggle.dungeons_reborn.teammate_only": "Csak csapattársaknak",
-  "toggle.dungeons_reborn.target_players": "Célozzon játékosokat"
+  "toggle.dungeons_reborn.target_players": "Célozzon játékosokat",
+
+  "command.dungeons_reborn.resetgamerules": "%s Dungeons Reborn játékszabály visszaállítva az eredeti értékére"
 }

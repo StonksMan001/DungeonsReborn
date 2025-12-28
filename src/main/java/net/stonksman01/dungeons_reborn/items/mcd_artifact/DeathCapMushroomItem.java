@@ -7,6 +7,7 @@ import net.minecraft.entity.effect.StatusEffects;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.tooltip.TooltipType;
+import net.minecraft.server.world.ServerWorld;
 import net.minecraft.sound.SoundCategory;
 import net.minecraft.text.Style;
 import net.minecraft.text.Text;
@@ -14,6 +15,7 @@ import net.minecraft.util.Formatting;
 import net.minecraft.util.Hand;
 import net.minecraft.util.TypedActionResult;
 import net.minecraft.world.World;
+import net.stonksman01.dungeons_reborn.registries.MCD_GameRules;
 import net.stonksman01.dungeons_reborn.util.DungeonsHelpers;
 import net.stonksman01.dungeons_reborn.components.McdRarity;
 import net.stonksman01.dungeons_reborn.items.McdArtifactItem;
@@ -21,6 +23,7 @@ import net.stonksman01.dungeons_reborn.registries.MCD_DataComponentTypes;
 import net.stonksman01.dungeons_reborn.registries.MCD_Sounds;
 
 import java.util.List;
+import java.util.Objects;
 
 public class DeathCapMushroomItem extends McdArtifactItem {
     public DeathCapMushroomItem(Settings settings) {
@@ -31,23 +34,19 @@ public class DeathCapMushroomItem extends McdArtifactItem {
     public TypedActionResult<ItemStack> use(World world, PlayerEntity user, Hand hand) {
         ItemStack stack = user.getStackInHand(hand);
         McdRarity mcdRarity = stack.get(MCD_DataComponentTypes.MCD_RARITY);
-        int duration = 0;
-        int amplifier = 0;
-        switch (mcdRarity) {
-            case COMMON -> {
-                duration = 200;
+        if (world instanceof ServerWorld serverWorld && Objects.nonNull(mcdRarity)) {
+            int duration = MCD_GameRules.ARTIFACT_DEATH_CAP_MUSHROOM_COMMON_DURATION.getValue(serverWorld);
+            int amplifier = MCD_GameRules.ARTIFACT_DEATH_CAP_MUSHROOM_COMMON_AMPLIFIER.getValue(serverWorld);
+            int cooldown = MCD_GameRules.ARTIFACT_DEATH_CAP_MUSHROOM_COMMON_COOLDOWN.getValue(serverWorld);
+            if (mcdRarity == McdRarity.RARE) {
+                duration = MCD_GameRules.ARTIFACT_DEATH_CAP_MUSHROOM_RARE_DURATION.getValue(serverWorld);
+                amplifier = MCD_GameRules.ARTIFACT_DEATH_CAP_MUSHROOM_RARE_AMPLIFIER.getValue(serverWorld);
+                cooldown = MCD_GameRules.ARTIFACT_DEATH_CAP_MUSHROOM_RARE_COOLDOWN.getValue(serverWorld);
             }
-            case RARE -> {
-                duration = 300;
-                amplifier = 1;
-            }
-            case null, default -> {}
-        }
-        if (!world.isClient && duration != 0) {
-            user.getItemCooldownManager().set(this, 600);
+            if (cooldown != 0) user.getItemCooldownManager().set(this, cooldown);
             user.addStatusEffect(new StatusEffectInstance(StatusEffects.STRENGTH, duration, amplifier, false, true, true));
             user.addStatusEffect(new StatusEffectInstance(StatusEffects.SPEED, duration, amplifier, false, true, true));
-            world.playSoundFromEntity(null, user, MCD_Sounds.DEATH_CAP_MUSHROOM_USE, SoundCategory.PLAYERS, 1.0F, 1.0F);
+            serverWorld.playSoundFromEntity(null, user, MCD_Sounds.DEATH_CAP_MUSHROOM_USE, SoundCategory.PLAYERS, 1.0F, 1.0F);
             stack.damage(1, user, LivingEntity.getSlotForHand(hand));
         }
         return TypedActionResult.success(stack, true);

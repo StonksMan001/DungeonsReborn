@@ -12,10 +12,13 @@ import net.minecraft.server.world.ServerWorld;
 import net.minecraft.text.Style;
 import net.minecraft.text.Text;
 import net.minecraft.util.Formatting;
+import net.minecraft.util.math.MathHelper;
 import net.minecraft.util.math.Vec3d;
+import net.stonksman01.dungeons_reborn.DungeonsReborn;
 import net.stonksman01.dungeons_reborn._included_libs.skycore.SkyCoreToolAPI;
 import net.stonksman01.dungeons_reborn.components.McdRarity;
 import net.stonksman01.dungeons_reborn.items.McdItem;
+import net.stonksman01.dungeons_reborn.registries.MCD_GameRules;
 import net.stonksman01.dungeons_reborn.util.DungeonsHelpers;
 
 import java.util.List;
@@ -35,11 +38,14 @@ public class RoughDiamondPickaxeItem extends SkyCoreToolAPI.PickaxeItem {
     }
     @Override
     public void postDamageEntity(ItemStack stack, LivingEntity target, LivingEntity attacker) {
-        if (target.isDead() && target instanceof MobEntity && attacker.getWorld() instanceof ServerWorld serverWorld) {
+        if (attacker.getWorld() instanceof ServerWorld serverWorld && target.isDead() && target instanceof MobEntity) {
             Random random = new Random();
             int range = (int) Math.round(6.0 * (20.0 / Math.max(1, (int) target.getMaxHealth())));
-            int range_capped = Math.min(Math.max(range, 3), 120); // capped range to avoid extreme values
-            if (random.nextInt(range_capped - 1) == 0) { // algorithm for hp-based Prospector trigger probability
+            int range_capped = MathHelper.clamp(range, 3, 120); // capped range to avoid extreme values
+            double probability = (double) 1 / (range_capped - 1);
+            double h = MCD_GameRules.PROSPECTOR_MINIMUM_TRIGGER_PERCENTAGE.getValue(serverWorld) / 100.0;
+            double modifiedProbability = probability * (1.0 - h) + h;
+            if (modifiedProbability >= 1 || random.nextDouble() < modifiedProbability) { // algorithm for hp-based Prospector trigger probability
                 serverWorld.spawnEntity(new ItemEntity(serverWorld, target.getX(), target.getY(), target.getZ(), new ItemStack(Items.EMERALD, random.nextInt(5) + 1)));
                 serverWorld.spawnParticles(new DustParticleEffect(Vec3d.unpackRgb(65343).toVector3f(), 1.0f),
                         target.getX(),

@@ -1,6 +1,7 @@
 package net.stonksman01.dungeons_reborn._included_libs.skycore;
 
 import com.llamalad7.mixinextras.injector.wrapoperation.Operation;
+import net.fabricmc.fabric.api.gamerule.v1.GameRuleFactory;
 import net.fabricmc.fabric.api.gamerule.v1.GameRuleRegistry;
 import net.fabricmc.fabric.api.object.builder.v1.world.poi.PointOfInterestHelper;
 import net.minecraft.block.Block;
@@ -33,8 +34,10 @@ import net.minecraft.world.gen.feature.Feature;
 import net.minecraft.world.gen.feature.FeatureConfig;
 import net.minecraft.world.poi.PointOfInterestType;
 import net.stonksman01.dungeons_reborn.DungeonsReborn;
+import net.stonksman01.dungeons_reborn._included_libs.skycore.gamerules.CappedIntRule;
 import net.stonksman01.dungeons_reborn._included_libs.skycore.items.SC_BowItem;
 import net.stonksman01.dungeons_reborn._included_libs.skycore.items.SC_CrossbowItem;
+import org.jetbrains.annotations.Nullable;
 
 import java.util.EnumMap;
 import java.util.List;
@@ -176,6 +179,11 @@ public class SkyCore {
         }
         public static <FC extends FeatureConfig, F extends Feature<FC>> void registerConfiguredFeature(Registerable<ConfiguredFeature<?, ?>> context, RegistryKey<ConfiguredFeature<?, ?>> key, F feature, FC configuration) {
             context.register(key, new ConfiguredFeature<>(feature, configuration));
+        }
+    }
+    public static class CustomRegistries {
+        public static CappedIntRule registerCappedIntRule(String id, GameRules.Category category, int defaultValue, @Nullable Integer min, @Nullable Integer max) {
+            return new CappedIntRule(BuiltinRegistries.registerGameRule(id, category, GameRuleFactory.createIntRule(defaultValue)), min, max);
         }
     }
 }
