@@ -7,7 +7,7 @@ import org.spongepowered.asm.mixin.gen.Accessor;
 import org.spongepowered.asm.mixin.gen.Invoker;
 
 @Mixin(CrossbowItem.class)
-public interface CrossbowItemAccessors {
+public interface CrossbowItemAccessor {
     @Accessor
     public boolean getCharged();
     @Accessor

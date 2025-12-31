@@ -22,6 +22,7 @@ public class HeavyCrossbowItem extends SC_CrossbowItem {
         DungeonsHelpers.Tooltip.appendDungeonsHeader(textConsumer);
         DungeonsHelpers.Tooltip.appendDescription(textConsumer, Text.translatable("tooltip.dungeons_reborn.heavy_crossbow"));
         DungeonsHelpers.Tooltip.appendMcdRarity(textConsumer, stack);
+        DungeonsHelpers.Tooltip.appendAbility(textConsumer, Text.translatable("ability.dungeons_reborn.heavy_crossbow"), true);
         super.appendTooltip(stack, context, displayComponent, textConsumer, type);
     }
     @Override

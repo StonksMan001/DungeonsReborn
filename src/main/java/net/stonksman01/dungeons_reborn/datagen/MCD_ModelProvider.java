@@ -4,11 +4,11 @@ import net.fabricmc.fabric.api.client.datagen.v1.provider.FabricModelProvider;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.minecraft.block.Block;
 import net.minecraft.client.data.*;
-import net.minecraft.client.render.model.json.WeightedVariant;
+import net.minecraft.client.render.model.BlockStateModel;
+import net.minecraft.client.render.model.json.ModelVariant;
 import net.minecraft.item.Item;
-import net.minecraft.state.property.BooleanProperty;
 import net.minecraft.state.property.Properties;
-import net.stonksman01.dungeons_reborn.blocks.MossyOakPlanksBlock;
+import net.minecraft.util.Identifier;
 import net.stonksman01.dungeons_reborn.registries.MCD_Blocks;
 import net.stonksman01.dungeons_reborn.registries.MCD_Items;
 import net.stonksman01.dungeons_reborn.registries.MCD_Models;
@@ -19,32 +19,39 @@ public class MCD_ModelProvider extends FabricModelProvider {
         super(output);
     }
     @Override
-    public void generateBlockStateModels(BlockStateModelGenerator blockStateModelGenerator) {
-        blockStateModelGenerator.registerSimpleCubeAll(MCD_Blocks.MIDNIGHT_MOSSY_COBBLESTONE);
-        blockStateModelGenerator.registerSimpleCubeAll(MCD_Blocks.MOSSIER_SPRUCE_PLANKS);
-        blockStateModelGenerator.registerWoolAndCarpet(MCD_Blocks.HIGHLAND_MOSS_BLOCK, MCD_Blocks.HIGHLAND_MOSS_CARPET);
-        blockStateModelGenerator.registerWoolAndCarpet(MCD_Blocks.MIDNIGHT_MOSS_BLOCK, MCD_Blocks.MIDNIGHT_MOSS_CARPET);
-        blockStateModelGenerator.registerTintableCross(MCD_Blocks.MIDNIGHT_SPROUTS, BlockStateModelGenerator.CrossType.NOT_TINTED);
-        blockStateModelGenerator.registerSimpleCubeAll(MCD_Blocks.ANCIENT_GOLD_BLOCK);
-        this.registerBerryBushBlock(blockStateModelGenerator, MCD_Blocks.SOUR_BERRY_BUSH);
+    public void generateBlockStateModels(BlockStateModelGenerator bsmg) {
+        bsmg.registerSimpleCubeAll(MCD_Blocks.MIDNIGHT_MOSSY_COBBLESTONE);
+        bsmg.registerSimpleCubeAll(MCD_Blocks.MOSSIER_SPRUCE_PLANKS);
+        this.registerRotatedWoolAndCarpet(bsmg, MCD_Blocks.HIGHLAND_MOSS_BLOCK, MCD_Blocks.HIGHLAND_MOSS_CARPET);
+        this.registerRotatedWoolAndCarpet(bsmg, MCD_Blocks.MIDNIGHT_MOSS_BLOCK, MCD_Blocks.MIDNIGHT_MOSS_CARPET);
+        bsmg.registerTintableCross(MCD_Blocks.MIDNIGHT_SPROUTS, BlockStateModelGenerator.CrossType.NOT_TINTED);
+        bsmg.registerSimpleCubeAll(MCD_Blocks.ANCIENT_GOLD_BLOCK);
+        this.registerBerryBushBlock(bsmg, MCD_Blocks.SOUR_BERRY_BUSH);
 
-        blockStateModelGenerator.registerItemModel(MCD_Blocks.POP_FLOWER,"_0");
-        this.registerBlockWith2Variants(blockStateModelGenerator, MCD_Blocks.MOSSIER_OAK_PLANKS, MossyOakPlanksBlock.MOSSIER, "_2");
+        registerBlockWith2Variants(bsmg, MCD_Blocks.MOSSIER_OAK_PLANKS);
+        bsmg.registerItemModel(MCD_Blocks.POP_FLOWER,"_0");
     }
-    private void registerBlockWith2Variants(BlockStateModelGenerator blockStateModelGenerator, Block block, BooleanProperty booleanProperty, String suffix) {
-        WeightedVariant weightedVariant = BlockStateModelGenerator.createWeightedVariant(TexturedModel.CUBE_ALL.upload(block, blockStateModelGenerator.modelCollector));
-        WeightedVariant weightedVariant2 = BlockStateModelGenerator.createWeightedVariant(blockStateModelGenerator.createSubModel(block, suffix, Models.CUBE_ALL, TextureMap::all));
-        blockStateModelGenerator.blockStateCollector
-                .accept(VariantsBlockModelDefinitionCreator.of(block).with(BlockStateModelGenerator.createBooleanModelMap(booleanProperty, weightedVariant2, weightedVariant)));
+    private void registerRotatedWoolAndCarpet(BlockStateModelGenerator bsmg, Block wool, Block carpet) {
+        bsmg.registerRandomHorizontalRotations(TexturedModel.CUBE_ALL, wool);
+        bsmg.registerRandomHorizontalRotations(TexturedModel.CARPET, carpet);
     }
-    private void registerBerryBushBlock(BlockStateModelGenerator blockStateModelGenerator, Block berryBushBlock) {
-        blockStateModelGenerator.blockStateCollector
+    private void registerBlockWith2Variants(BlockStateModelGenerator bsmg, Block block) {
+        Identifier identifier1 = bsmg.createSubModel(block, "1", Models.CUBE_ALL, TextureMap::all);
+        Identifier identifier2 = bsmg.createSubModel(block, "2", Models.CUBE_ALL, TextureMap::all);
+        bsmg.blockStateCollector.accept(VariantsBlockModelDefinitionCreator.of(block, BlockStateModelGenerator.createWeightedVariant(
+                new ModelVariant(identifier1),
+                new ModelVariant(identifier2)
+        )));
+        bsmg.registerParentedItemModel(block, identifier1);
+    }
+    private void registerBerryBushBlock(BlockStateModelGenerator bsmg, Block berryBushBlock) {
+        bsmg.blockStateCollector
                 .accept(
                         VariantsBlockModelDefinitionCreator.of(berryBushBlock)
                                 .with(
                                         BlockStateVariantMap.models(Properties.AGE_3)
                                                 .generate(stage -> BlockStateModelGenerator.createWeightedVariant(
-                                                        blockStateModelGenerator.createSubModel(berryBushBlock, "_stage" + stage,
+                                                        bsmg.createSubModel(berryBushBlock, "_stage" + stage,
                                                                 Models.CROSS, TextureMap::cross)))
                                 )
                 );

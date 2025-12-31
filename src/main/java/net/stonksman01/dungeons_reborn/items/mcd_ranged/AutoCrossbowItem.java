@@ -14,7 +14,7 @@ import net.minecraft.world.World;
 import net.stonksman01.dungeons_reborn._included_libs.skycore.items.SC_CrossbowItem;
 import net.stonksman01.dungeons_reborn.components.McdRarity;
 import net.stonksman01.dungeons_reborn.items.McdItem;
-import net.stonksman01.dungeons_reborn.mixin.CrossbowItemAccessors;
+import net.stonksman01.dungeons_reborn.mixin.CrossbowItemAccessor;
 import net.stonksman01.dungeons_reborn.registries.MCD_DataComponentTypes;
 import net.stonksman01.dungeons_reborn.util.DungeonsHelpers;
 
@@ -38,13 +38,13 @@ public class AutoCrossbowItem extends SC_CrossbowItem {
 
         ChargedProjectilesComponent chargedProjectilesComponent = itemStack.get(DataComponentTypes.CHARGED_PROJECTILES);
         if (chargedProjectilesComponent != null && !chargedProjectilesComponent.isEmpty()) {
-            this.shootAll(world, user, hand, itemStack, CrossbowItemAccessors.getSpeed(chargedProjectilesComponent), 1.0F, null);
+            this.shootAll(world, user, hand, itemStack, CrossbowItemAccessor.getSpeed(chargedProjectilesComponent), 1.0F, null);
             itemStack.set(MCD_DataComponentTypes.ACCELERATE_LAST_SHOT_TIME, currentTime);
             itemStack.set(MCD_DataComponentTypes.ACCELERATE_RELOAD_BONUS, Math.max(MIN_RELOAD_TIME, itemStack.getOrDefault(MCD_DataComponentTypes.ACCELERATE_RELOAD_BONUS, 1.0f) - RELOAD_DECREASE_PERCENT));
             return ActionResult.CONSUME;
         } else if (!user.getProjectileType(itemStack).isEmpty()) {
-            ((CrossbowItemAccessors) this).setCharged(false);
-            ((CrossbowItemAccessors) this).setLoaded(false);
+            ((CrossbowItemAccessor) this).setCharged(false);
+            ((CrossbowItemAccessor) this).setLoaded(false);
             user.setCurrentHand(hand);
             return ActionResult.CONSUME;
         } else {

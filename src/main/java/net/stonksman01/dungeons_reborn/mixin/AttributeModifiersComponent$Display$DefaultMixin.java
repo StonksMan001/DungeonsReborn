@@ -8,7 +8,7 @@ import net.minecraft.entity.attribute.EntityAttribute;
 import net.minecraft.item.ItemStack;
 import net.minecraft.registry.entry.RegistryEntry;
 import net.minecraft.util.Pair;
-import net.stonksman01.dungeons_reborn.mixin_utils._ThreadLocalContainer;
+import net.stonksman01.dungeons_reborn.mixin_utils.ThreadLocalContainer;
 import net.stonksman01.dungeons_reborn.registries.MCD_DataComponentTypes;
 import net.stonksman01.dungeons_reborn.util.ChainAttackWeapon;
 import org.jetbrains.annotations.NotNull;
@@ -25,7 +25,7 @@ public abstract class AttributeModifiersComponent$Display$DefaultMixin {
 
     @WrapOperation(method = "addTooltip", at = @At(value = "INVOKE", target = "Ljava/text/DecimalFormat;format(D)Ljava/lang/String;", ordinal = 0))
     public String modifyTooltip(DecimalFormat instance, double e, Operation<String> original, @Local(ordinal = 0, argsOnly = true) RegistryEntry<EntityAttribute> attribute) {
-        ItemStack thisStack = _ThreadLocalContainer.STACK.get();
+        ItemStack thisStack = ThreadLocalContainer.STACK.get();
         if (Objects.nonNull(thisStack) && thisStack.getItem() instanceof ChainAttackWeapon chainAttackWeapon) {
             String attributeString = attribute.value().getTranslationKey();
             switch (attributeString) {

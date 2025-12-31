@@ -15,27 +15,27 @@ public class MCD_GameRules {
     public static final GameRule<Boolean> POP_FLOWERS_ALWAYS_HIDE = registerBooleanRule("popFlowersAlwaysHide", GameRuleCategory.UPDATES, false);
 
     public static final GameRule<Integer> ARTIFACT_DEATH_CAP_MUSHROOM_COMMON_DURATION = registerCappedIntRule("artifactDeathCapMushroomCommonDuration", GameRuleCategory.MISC, 200, 0, null);
-
     public static final GameRule<Integer> ARTIFACT_DEATH_CAP_MUSHROOM_COMMON_AMPLIFIER = registerCappedIntRule("artifactDeathCapMushroomCommonAmplifier", GameRuleCategory.MISC, 0, 0, 255);
     public static final GameRule<Integer> ARTIFACT_DEATH_CAP_MUSHROOM_COMMON_COOLDOWN = registerCappedIntRule("artifactDeathCapMushroomCommonCooldown", GameRuleCategory.MISC, 600, 0, null);
     public static final GameRule<Integer> ARTIFACT_DEATH_CAP_MUSHROOM_RARE_DURATION = registerCappedIntRule("artifactDeathCapMushroomRareDuration", GameRuleCategory.MISC, 300, 0, null);
     public static final GameRule<Integer> ARTIFACT_DEATH_CAP_MUSHROOM_RARE_AMPLIFIER = registerCappedIntRule("artifactDeathCapMushroomRareAmplifier", GameRuleCategory.MISC, 1, 0, 255);
     public static final GameRule<Integer> ARTIFACT_DEATH_CAP_MUSHROOM_RARE_COOLDOWN = registerCappedIntRule("artifactDeathCapMushroomRareCooldown", GameRuleCategory.MISC, 600, 0, null);
-    public static final GameRule<Integer> ARTIFACT_IRON_HIDE_AMULET_COMMON_RANGE = registerCappedIntRule("artifactIronHideAmuletCommonRange", GameRuleCategory.MISC, 10, 0, 100);
 
+    public static final GameRule<Integer> ARTIFACT_IRON_HIDE_AMULET_COMMON_RANGE = registerCappedIntRule("artifactIronHideAmuletCommonRange", GameRuleCategory.MISC, 10, 0, 100);
     public static final GameRule<Integer> ARTIFACT_IRON_HIDE_AMULET_COMMON_COOLDOWN = registerCappedIntRule("artifactIronHideAmuletCommonCooldown", GameRuleCategory.MISC, 500, 0, null);
-    public static final GameRule<Integer> ARTIFACT_IRON_HIDE_AMULET_COMMON_AMPLIFIER = registerCappedIntRule("artifactIronHideAmuletCommonAmplifier", GameRuleCategory.MISC, 2, 0, 255);;
+    public static final GameRule<Integer> ARTIFACT_IRON_HIDE_AMULET_COMMON_AMPLIFIER = registerCappedIntRule("artifactIronHideAmuletCommonAmplifier", GameRuleCategory.MISC, 2, 0, 255);
     public static final GameRule<Integer> ARTIFACT_IRON_HIDE_AMULET_COMMON_DURATION = registerCappedIntRule("artifactIronHideAmuletCommonDuration", GameRuleCategory.MISC, 200, 0, null);
     public static final GameRule<Integer> ARTIFACT_IRON_HIDE_AMULET_RARE_RANGE = registerCappedIntRule("artifactIronHideAmuletRareRange", GameRuleCategory.MISC, 15, 0, 100);
     public static final GameRule<Integer> ARTIFACT_IRON_HIDE_AMULET_RARE_COOLDOWN = registerCappedIntRule("artifactIronHideAmuletRareCooldown", GameRuleCategory.MISC, 500, 0, null);
-    public static final GameRule<Integer> ARTIFACT_IRON_HIDE_AMULET_RARE_AMPLIFIER = registerCappedIntRule("artifactIronHideAmuletRareAmplifier", GameRuleCategory.MISC, 2, 0, 255);;
+    public static final GameRule<Integer> ARTIFACT_IRON_HIDE_AMULET_RARE_AMPLIFIER = registerCappedIntRule("artifactIronHideAmuletRareAmplifier", GameRuleCategory.MISC, 2, 0, 255);
     public static final GameRule<Integer> ARTIFACT_IRON_HIDE_AMULET_RARE_DURATION = registerCappedIntRule("artifactIronHideAmuletRareDuration", GameRuleCategory.MISC, 260, 0, null);
+
     public static final GameRule<Integer> RADIANCE_HEAL = registerCappedIntRule("radianceHeal", GameRuleCategory.MISC, 4, null, null);
-
     public static final GameRule<Integer> RADIANCE_RANGE = registerCappedIntRule("radianceRange", GameRuleCategory.MISC, 5, 0, 100);
-    public static final GameRule<Integer> LEECHING_HP_STEAL_PERCENTAGE = registerCappedIntRule("leechingHpStealPercentage", GameRuleCategory.MISC, 20, null, null);
+    public static final GameRule<Integer> RADIANCE_TRIGGER_PROBABILITY = registerCappedIntRule("radianceTriggerProbability", GameRuleCategory.MISC, 25, 0, 100);
+    public static final GameRule<Integer> PROSPECTOR_MINIMUM_TRIGGER_PROBABILITY = registerCappedIntRule("prospectorMinimumTriggerProbability", GameRuleCategory.MISC, 0, 0, 100);
 
-    public static final GameRule<Integer> PROSPECTOR_MINIMUM_TRIGGER_PERCENTAGE = registerCappedIntRule("prospectorMinimumTriggerPercentage", GameRuleCategory.MISC, 0, 0, 100);
+    public static final GameRule<Integer> LEECHING_HP_STEAL_PERCENTAGE = registerCappedIntRule("leechingHpStealPercentage", GameRuleCategory.MISC, 20, null, null);
 
     private static GameRule<Integer> registerCappedIntRule(String id, GameRuleCategory category, int defaultValue, @Nullable Integer min, @Nullable Integer max) {
         id = CaseFormat.LOWER_CAMEL.to(CaseFormat.LOWER_UNDERSCORE, id);

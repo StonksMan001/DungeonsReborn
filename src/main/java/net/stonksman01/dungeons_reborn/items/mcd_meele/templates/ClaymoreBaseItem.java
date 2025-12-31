@@ -12,19 +12,20 @@ import net.minecraft.util.Pair;
 import net.stonksman01.dungeons_reborn._included_libs.skycore.SkyCoreToolAPI;
 import net.stonksman01.dungeons_reborn.components.McdRarity;
 import net.stonksman01.dungeons_reborn.items.McdItem;
+import net.stonksman01.dungeons_reborn.util.AttackCooldownDependent;
 import net.stonksman01.dungeons_reborn.util.ChainAttackWeapon;
 import net.stonksman01.dungeons_reborn.registries.MCD_DataComponentTypes;
 import net.stonksman01.dungeons_reborn.util.DungeonsHelpers;
 import org.jetbrains.annotations.Nullable;
 
-public abstract class ClaymoreBaseItem extends SkyCoreToolAPI.SwordItem implements ChainAttackWeapon {
+public abstract class ClaymoreBaseItem extends SkyCoreToolAPI.SwordItem implements ChainAttackWeapon, AttackCooldownDependent {
     protected float baseAttackDamage;
     public ClaymoreBaseItem(ToolMaterial toolMaterial, float baseAttackDamage, float attackSpeed, Settings settings) {
         super(toolMaterial, baseAttackDamage, attackSpeed, settings);
         this.baseAttackDamage = baseAttackDamage;
     }
     @Override
-    public void postDamageEntity(ItemStack stack, LivingEntity target, LivingEntity attacker) {
+    public void postChargedAttack(ItemStack stack, LivingEntity target, LivingEntity attacker) {
         int current_chain_step = stack.getOrDefault(MCD_DataComponentTypes.ATTACK_CHAIN_STEP, 1);
         int next_chain_step;
         if (current_chain_step == 1) attacker.getEntityWorld().playSoundFromEntity(null, attacker, SoundEvents.ITEM_TRIDENT_RETURN, SoundCategory.NEUTRAL, 1.0F, 1.0F);
@@ -34,7 +35,6 @@ public abstract class ClaymoreBaseItem extends SkyCoreToolAPI.SwordItem implemen
             next_chain_step = current_chain_step + 1;
         } else next_chain_step = 1;
         stack.set(MCD_DataComponentTypes.ATTACK_CHAIN_STEP, next_chain_step);
-        super.postDamageEntity(stack, target, attacker);
     }
     @Override
     public void inventoryTick(ItemStack stack, ServerWorld world, Entity entity, @Nullable EquipmentSlot slot) {
