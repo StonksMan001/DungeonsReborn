@@ -17,10 +17,12 @@ import net.minecraft.util.Pair;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Vec3d;
 import net.minecraft.world.World;
+import net.stonksman01.dungeons_reborn.DungeonsReborn;
 import net.stonksman01.dungeons_reborn.components.McdRarity;
 import net.stonksman01.dungeons_reborn.items.mcd_meele.templates.MaceBaseItem;
 import net.stonksman01.dungeons_reborn.registries.MCD_DataComponentTypes;
 import net.stonksman01.dungeons_reborn.registries.MCD_GameRules;
+import net.stonksman01.dungeons_reborn.util.AttackCooldownDependent;
 import net.stonksman01.dungeons_reborn.util.DungeonsHelpers;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
@@ -44,28 +46,32 @@ public class SunsGraceItem extends MaceBaseItem {
         super.appendTooltip(stack, context, tooltip, type);
     }
     @Override
-    public void postDamageEntity(ItemStack stack, LivingEntity target, LivingEntity attacker) {
+    public void postChargedAttack(ItemStack stack, LivingEntity target, LivingEntity attacker) {
         Random random = new Random();
-        if ((target instanceof MobEntity || target instanceof PlayerEntity) && attacker.getWorld() instanceof ServerWorld serverWorld && random.nextInt(5) == 0) {
-            BlockPos center = target.getBlockPos();
-            int radius = MCD_GameRules.RADIANCE_RANGE.getValue(serverWorld);
-            Boolean teammateOnlyToggle = stack.get(MCD_DataComponentTypes.TEAMMATE_ONLY_TOGGLE);
-            boolean teammateOnly = Boolean.TRUE.equals(teammateOnlyToggle);
-            DungeonsHelpers.executeForPlayersWithinDistance(serverWorld, center, radius, (playerEntity) -> {
-                if (!teammateOnly || DungeonsHelpers.areAllies(attacker, playerEntity)) {
-                    int healAmount = MCD_GameRules.RADIANCE_HEAL.getValue(serverWorld);
-                    if (healAmount > 0) playerEntity.heal(healAmount);
-                    if (healAmount < 0) playerEntity.damage(serverWorld.getDamageSources().magic(), -healAmount);
-                }
-                return null;
-            });
-            if (radius != 0) serverWorld.spawnParticles(new DustParticleEffect(Vec3d.unpackRgb(16757504).toVector3f(), 2.5f),
-                    target.getX(),
-                    target.getY(),
-                    target.getZ(),
-                    (int)Math.ceil(Math.sqrt(radius)) * 80, (float)radius / 2f, (float)radius / 5f, (float)radius / 2f, 1);
+        if ((target instanceof MobEntity || target instanceof PlayerEntity) && attacker.getWorld() instanceof ServerWorld serverWorld) {
+            double probability = MCD_GameRules.RADIANCE_TRIGGER_PROBABILITY.getValue(serverWorld) / 100.0;
+            if (random.nextDouble() < probability) {
+                BlockPos center = target.getBlockPos();
+                int radius = MCD_GameRules.RADIANCE_RANGE.getValue(serverWorld);
+                Boolean teammateOnlyToggle = stack.get(MCD_DataComponentTypes.TEAMMATE_ONLY_TOGGLE);
+                boolean teammateOnly = Boolean.TRUE.equals(teammateOnlyToggle);
+                DungeonsHelpers.executeForPlayersWithinDistance(serverWorld, center, radius, (playerEntity) -> {
+                    if (!teammateOnly || DungeonsHelpers.areAllies(attacker, playerEntity)) {
+                        int healAmount = MCD_GameRules.RADIANCE_HEAL.getValue(serverWorld);
+                        if (healAmount > 0) playerEntity.heal(healAmount);
+                        if (healAmount < 0) playerEntity.damage(serverWorld.getDamageSources().magic(), -healAmount);
+                    }
+                    return null;
+                });
+                if (radius != 0)
+                    serverWorld.spawnParticles(new DustParticleEffect(Vec3d.unpackRgb(16757504).toVector3f(), 2.5f),
+                            target.getX(),
+                            target.getY(),
+                            target.getZ(),
+                            (int) Math.ceil(Math.sqrt(radius)) * 80, (float) radius / 2f, (float) radius / 5f, (float) radius / 2f, 1);
+            }
         }
-        super.postDamageEntity(stack, target, attacker);
+        super.postChargedAttack(stack, target, attacker);
     }
     @Override
     public boolean onClicked(ItemStack stack, ItemStack otherStack, Slot slot, ClickType clickType, PlayerEntity player, StackReference cursorStackReference) {

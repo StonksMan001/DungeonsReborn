@@ -9,12 +9,9 @@ import net.minecraft.item.ToolMaterial;
 import net.minecraft.item.tooltip.TooltipType;
 import net.minecraft.particle.DustParticleEffect;
 import net.minecraft.server.world.ServerWorld;
-import net.minecraft.text.Style;
 import net.minecraft.text.Text;
-import net.minecraft.util.Formatting;
 import net.minecraft.util.math.MathHelper;
 import net.minecraft.util.math.Vec3d;
-import net.stonksman01.dungeons_reborn.DungeonsReborn;
 import net.stonksman01.dungeons_reborn._included_libs.skycore.SkyCoreToolAPI;
 import net.stonksman01.dungeons_reborn.components.McdRarity;
 import net.stonksman01.dungeons_reborn.items.McdItem;
@@ -43,7 +40,7 @@ public class RoughDiamondPickaxeItem extends SkyCoreToolAPI.PickaxeItem {
             int range = (int) Math.round(6.0 * (20.0 / Math.max(1, (int) target.getMaxHealth())));
             int range_capped = MathHelper.clamp(range, 3, 120); // capped range to avoid extreme values
             double probability = (double) 1 / (range_capped - 1);
-            double h = MCD_GameRules.PROSPECTOR_MINIMUM_TRIGGER_PERCENTAGE.getValue(serverWorld) / 100.0;
+            double h = MCD_GameRules.PROSPECTOR_MINIMUM_TRIGGER_PROBABILITY.getValue(serverWorld) / 100.0;
             double modifiedProbability = probability * (1.0 - h) + h;
             if (modifiedProbability >= 1 || random.nextDouble() < modifiedProbability) { // algorithm for hp-based Prospector trigger probability
                 serverWorld.spawnEntity(new ItemEntity(serverWorld, target.getX(), target.getY(), target.getZ(), new ItemStack(Items.EMERALD, random.nextInt(5) + 1)));

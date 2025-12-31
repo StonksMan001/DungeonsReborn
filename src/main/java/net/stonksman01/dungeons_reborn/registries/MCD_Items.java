@@ -23,7 +23,7 @@ public class MCD_Items {
             new RoughDiamondSwordItem(ToolMaterials.DIAMOND, 3, 1.6f, new Item.Settings()
                     .rarity(Rarity.EPIC)));
     public static final Item ROUGH_DIAMOND_PICKAXE = SkyCore.BuiltinRegistries.registerItem("rough_diamond_pickaxe",
-            new RoughDiamondPickaxeItem(ToolMaterials.DIAMOND, 1, 1.2f, new Item.Settings()
+            new RoughDiamondPickaxeItem(ToolMaterials.DIAMOND, 3, 1.2f, new Item.Settings()
                     .rarity(Rarity.EPIC)));
     public static final Item STEEL_MACE = SkyCore.BuiltinRegistries.registerItem("steel_mace",
             new SteelMaceItem(MCD_ToolMaterials.DEFAULT, 2, 1.6f, new Item.Settings()));

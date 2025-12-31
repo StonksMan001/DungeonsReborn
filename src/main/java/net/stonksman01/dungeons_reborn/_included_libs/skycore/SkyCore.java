@@ -45,9 +45,6 @@ import java.util.function.Supplier;
 import java.util.function.UnaryOperator;
 
 public class SkyCore {
-    public static Identifier identifierOfDungeonsReborn(String id) {
-        return Identifier.of(DungeonsReborn.MOD_ID, id);
-    }
     public static boolean wrapRangedWeaponHardcodedCallsIfPresent(ItemStack instance, Item item, Operation<Boolean> original) {
         if (item instanceof BowItem) {
             return original.call(instance, item) || instance.getItem() instanceof SC_BowItem;
@@ -59,28 +56,28 @@ public class SkyCore {
     }
     public static class BuiltinRegistries {
         public static RegistryKey<Enchantment> ofEnchantmentRegistry(String name) {
-            return RegistryKey.of(RegistryKeys.ENCHANTMENT, identifierOfDungeonsReborn(name));
+            return RegistryKey.of(RegistryKeys.ENCHANTMENT, DungeonsReborn.identifierOfDungeonsReborn(name));
         }
         public static RegistryKey<World> ofMinecraftWorldRegistry(String name) {
-            return RegistryKey.of(RegistryKeys.WORLD, identifierOfDungeonsReborn(name + ".json"));
+            return RegistryKey.of(RegistryKeys.WORLD, DungeonsReborn.identifierOfDungeonsReborn(name + ".json"));
         }
         public static RegistryKey<JukeboxSong> ofJukeBlockSongRegistry(String name) {
-            return RegistryKey.of(RegistryKeys.JUKEBOX_SONG, identifierOfDungeonsReborn(name));
+            return RegistryKey.of(RegistryKeys.JUKEBOX_SONG, DungeonsReborn.identifierOfDungeonsReborn(name));
         }
         public static RegistryKey<DimensionType> ofDimensionTypeRegistry(Identifier id) {
             return RegistryKey.of(RegistryKeys.DIMENSION_TYPE, id);
         }
         public static RegistryKey<DimensionType> ofDimensionTypeRegistry(String name) {
-            return RegistryKey.of(RegistryKeys.DIMENSION_TYPE, identifierOfDungeonsReborn(name));
+            return RegistryKey.of(RegistryKeys.DIMENSION_TYPE, DungeonsReborn.identifierOfDungeonsReborn(name));
         }
         public static RegistryKey<Biome> ofBiomeRegistry(String name) {
-            return RegistryKey.of(RegistryKeys.BIOME, identifierOfDungeonsReborn(name));
+            return RegistryKey.of(RegistryKeys.BIOME, DungeonsReborn.identifierOfDungeonsReborn(name));
         }
         public static RegistryKey<ConfiguredFeature<?, ?>> ofConfiguredFeatureRegistry(String name) {
-            return RegistryKey.of(RegistryKeys.CONFIGURED_FEATURE, identifierOfDungeonsReborn(name));
+            return RegistryKey.of(RegistryKeys.CONFIGURED_FEATURE, DungeonsReborn.identifierOfDungeonsReborn(name));
         }
         public static <U extends Sensor<?>> SensorType<U> registerSensorType(String name, Supplier<U> factory) {
-            return Registry.register(Registries.SENSOR_TYPE, identifierOfDungeonsReborn(name), new SensorType<>(factory));
+            return Registry.register(Registries.SENSOR_TYPE, DungeonsReborn.identifierOfDungeonsReborn(name), new SensorType<>(factory));
         }
         public static void registerJukeBlockSong(Registerable<JukeboxSong> registry, RegistryKey<JukeboxSong> key, RegistryEntry.Reference<SoundEvent> soundEvent, int lengthInSeconds, int comparatorOutput) {
             registry.register(key, new JukeboxSong(soundEvent, Text.translatable(Util.createTranslationKey("jukebox_song", key.getValue())), (float)lengthInSeconds, comparatorOutput));
@@ -91,23 +88,23 @@ public class SkyCore {
         }
         public static Item registerItem(String name, Item item) {
             var registry = Registries.ITEM;
-            Identifier parentId = identifierOfDungeonsReborn(name);
+            Identifier parentId = DungeonsReborn.identifierOfDungeonsReborn(name);
             if (SkyCoreDataFixerAPI.ITEM_WITH_ALIAS.containsKey(parentId.toString())) {
                 for (String alias : SkyCoreDataFixerAPI.ITEM_WITH_ALIAS.get(parentId.toString())) {
                     registry.addAlias(Identifier.of(alias), parentId);
                 }
             }
-            return Registry.register(registry, identifierOfDungeonsReborn(name), item);
+            return Registry.register(registry, DungeonsReborn.identifierOfDungeonsReborn(name), item);
         }
         public static Block registerBlock(String name, Block block) {
             var registry = Registries.BLOCK;
-            Identifier parentId = identifierOfDungeonsReborn(name);
+            Identifier parentId = DungeonsReborn.identifierOfDungeonsReborn(name);
             if (SkyCoreDataFixerAPI.BLOCKS_WITH_ALIAS.containsKey(parentId.toString())) {
                 for (String alias : SkyCoreDataFixerAPI.BLOCKS_WITH_ALIAS.get(parentId.toString())) {
                     registry.addAlias(Identifier.of(alias), parentId);
                 }
             }
-            return Registry.register(registry, identifierOfDungeonsReborn(name), block);
+            return Registry.register(registry, DungeonsReborn.identifierOfDungeonsReborn(name), block);
         }
         public static Block registerBlockAndItem(String name, Block block) {
             registerBlockItem(name, block);
@@ -117,40 +114,40 @@ public class SkyCore {
             return registerItem(name, new BlockItem(block, new Item.Settings()));
         }
         public static SoundEvent registerSoundEvent(String name) {
-            Identifier identifier = identifierOfDungeonsReborn(name);
+            Identifier identifier = DungeonsReborn.identifierOfDungeonsReborn(name);
             return Registry.register(Registries.SOUND_EVENT, identifier, SoundEvent.of(identifier));
         }
-        public static RegistryEntry.Reference<SoundEvent> registerSoundEventReference(String name) {
-            Identifier identifier = identifierOfDungeonsReborn(name);
+        public static RegistryEntry.Reference<SoundEvent> referenceOfSoundEvent(String name) {
+            Identifier identifier = DungeonsReborn.identifierOfDungeonsReborn(name);
             return Registry.registerReference(Registries.SOUND_EVENT, identifier, SoundEvent.of(identifier));
         }
         public static PointOfInterestType registerPointOfInterest(String name, int ticket_count, int search_distance, Block... blocks) {
-            return PointOfInterestHelper.register(identifierOfDungeonsReborn(name), ticket_count, search_distance, blocks);
+            return PointOfInterestHelper.register(DungeonsReborn.identifierOfDungeonsReborn(name), ticket_count, search_distance, blocks);
         }
         public static RegistryKey<PointOfInterestType> poiRegistryKey(String name) {
-            return RegistryKey.of(RegistryKeys.POINT_OF_INTEREST_TYPE, identifierOfDungeonsReborn(name));
+            return RegistryKey.of(RegistryKeys.POINT_OF_INTEREST_TYPE, DungeonsReborn.identifierOfDungeonsReborn(name));
         }
         public static <T extends Entity> EntityType<T> registerEntityType(String name, EntityType<T> type) {
-            return Registry.register(Registries.ENTITY_TYPE, identifierOfDungeonsReborn(name), type);
+            return Registry.register(Registries.ENTITY_TYPE, DungeonsReborn.identifierOfDungeonsReborn(name), type);
         }
         public static <T extends BlockEntity> BlockEntityType<T> registerBlockEntityType(String name, BlockEntityType<T> type) {
-            return Registry.register(Registries.BLOCK_ENTITY_TYPE, identifierOfDungeonsReborn(name), type);
+            return Registry.register(Registries.BLOCK_ENTITY_TYPE, DungeonsReborn.identifierOfDungeonsReborn(name), type);
         }
         public static <T extends ScreenHandler> ScreenHandlerType<T> registerScreenHandler(String name, ScreenHandlerType<T> type) {
-            return Registry.register(Registries.SCREEN_HANDLER, identifierOfDungeonsReborn(name), type);
+            return Registry.register(Registries.SCREEN_HANDLER, DungeonsReborn.identifierOfDungeonsReborn(name), type);
         }
         public static ItemGroup registerItemGroup(String name, ItemGroup itemGroup) {
-            return Registry.register(Registries.ITEM_GROUP, identifierOfDungeonsReborn(name), itemGroup);
+            return Registry.register(Registries.ITEM_GROUP, DungeonsReborn.identifierOfDungeonsReborn(name), itemGroup);
         }
         public static <T> ComponentType<T> registerComponentType(String name, UnaryOperator<ComponentType.Builder<T>> componentTypeBuilderOperator) {
-            return Registry.register(Registries.DATA_COMPONENT_TYPE, identifierOfDungeonsReborn(name),
+            return Registry.register(Registries.DATA_COMPONENT_TYPE, DungeonsReborn.identifierOfDungeonsReborn(name),
                     componentTypeBuilderOperator.apply(ComponentType.builder()).build());
         }
         public static TagKey<Block> createBlockTag(String name) {
-            return TagKey.of(RegistryKeys.BLOCK, identifierOfDungeonsReborn(name));
+            return TagKey.of(RegistryKeys.BLOCK, DungeonsReborn.identifierOfDungeonsReborn(name));
         }
         public static TagKey<Item> createItemTag(String name) {
-            return TagKey.of(RegistryKeys.ITEM, identifierOfDungeonsReborn(name));
+            return TagKey.of(RegistryKeys.ITEM, DungeonsReborn.identifierOfDungeonsReborn(name));
         }
         public static RegistryEntry<ArmorMaterial> registerArmorMaterial(String name, EnumMap<ArmorItem.Type, Integer> defense, int enchantability, RegistryEntry<SoundEvent> equipSound, float toughness, float knockbackResistance, Supplier<Ingredient> repairIngredient, List<ArmorMaterial.Layer> layers) {
             EnumMap<ArmorItem.Type, Integer> enumMap = new EnumMap<>(ArmorItem.Type.class);
@@ -160,21 +157,21 @@ public class SkyCore {
                 enumMap.put(type, defense.get(type));
             }
 
-            return Registry.registerReference(Registries.ARMOR_MATERIAL, identifierOfDungeonsReborn(name), new ArmorMaterial(enumMap, enchantability, equipSound, repairIngredient, layers, toughness, knockbackResistance));
+            return Registry.registerReference(Registries.ARMOR_MATERIAL, DungeonsReborn.identifierOfDungeonsReborn(name), new ArmorMaterial(enumMap, enchantability, equipSound, repairIngredient, layers, toughness, knockbackResistance));
         }
         public static <T extends GameRules.Rule<T>> GameRules.Key<T> registerGameRule(String id, GameRules.Category category, GameRules.Type<T> rule) {
             return GameRuleRegistry.register("dr_" + id, category, rule);
         }
         public static RegistryEntry<ArmorMaterial> registerArmorMaterial(String id, EnumMap<ArmorItem.Type, Integer> defense, int enchantability, RegistryEntry<SoundEvent> equipSound, float toughness, float knockbackResistance, Supplier<Ingredient> repairIngredient) {
-            List<ArmorMaterial.Layer> list = List.of(new ArmorMaterial.Layer(identifierOfDungeonsReborn(id)));
+            List<ArmorMaterial.Layer> list = List.of(new ArmorMaterial.Layer(DungeonsReborn.identifierOfDungeonsReborn(id)));
             return registerArmorMaterial(id, defense, enchantability, equipSound, toughness, knockbackResistance, repairIngredient, list);
         }
         public static RegistryEntry<ArmorMaterial> registerArmorMaterial(String id, RegistryEntry<ArmorMaterial> copyOf) {
-            List<ArmorMaterial.Layer> list = List.of(new ArmorMaterial.Layer(identifierOfDungeonsReborn(id)));
+            List<ArmorMaterial.Layer> list = List.of(new ArmorMaterial.Layer(DungeonsReborn.identifierOfDungeonsReborn(id)));
             return registerArmorMaterial(id, (EnumMap<ArmorItem.Type, Integer>) copyOf.value().defense(), copyOf.value().enchantability(), copyOf.value().equipSound(), copyOf.value().toughness(), copyOf.value().knockbackResistance(), copyOf.value().repairIngredient(), list);
         }
         public static RegistryEntry<ArmorMaterial> registerArmorMaterial(String id, RegistryEntry<ArmorMaterial> copyOf, Supplier<Ingredient> repairIngredient) {
-            List<ArmorMaterial.Layer> list = List.of(new ArmorMaterial.Layer(identifierOfDungeonsReborn(id)));
+            List<ArmorMaterial.Layer> list = List.of(new ArmorMaterial.Layer(DungeonsReborn.identifierOfDungeonsReborn(id)));
             return registerArmorMaterial(id, (EnumMap<ArmorItem.Type, Integer>) copyOf.value().defense(), copyOf.value().enchantability(), copyOf.value().equipSound(), copyOf.value().toughness(), copyOf.value().knockbackResistance(), repairIngredient, list);
         }
         public static <FC extends FeatureConfig, F extends Feature<FC>> void registerConfiguredFeature(Registerable<ConfiguredFeature<?, ?>> context, RegistryKey<ConfiguredFeature<?, ?>> key, F feature, FC configuration) {

@@ -7,7 +7,6 @@ import net.minecraft.server.world.ServerWorld;
 import net.minecraft.text.Text;
 import net.minecraft.world.GameRules;
 import net.stonksman01.dungeons_reborn.DungeonsReborn;
-import net.stonksman01.dungeons_reborn._included_libs.skycore.SkyCore;
 import net.stonksman01.dungeons_reborn._included_libs.skycore.gamerules.CappedIntRule;
 
 public class MCD_Commands {

@@ -1,7 +1,21 @@
 {
   "variants": {
-    "": {
-      "model": "dungeons_reborn:block/midnight_moss_carpet"
-    }
+    "": [
+      {
+        "model": "dungeons_reborn:block/midnight_moss_carpet"
+      },
+      {
+        "model": "dungeons_reborn:block/midnight_moss_carpet",
+        "y": 90
+      },
+      {
+        "model": "dungeons_reborn:block/midnight_moss_carpet",
+        "y": 180
+      },
+      {
+        "model": "dungeons_reborn:block/midnight_moss_carpet",
+        "y": 270
+      }
+    ]
   }
 }

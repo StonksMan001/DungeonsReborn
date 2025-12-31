@@ -12,6 +12,7 @@ public interface MCD_ModelPredicateProviders {
     public static void registerModels() {
         registerBow(MCD_Items.TWIN_BOW);
         registerCrossbow(MCD_Items.AUTO_CROSSBOW);
+        registerCrossbow(MCD_Items.HEAVY_CROSSBOW);
     }
 
     private static void registerBow(Item bow) {

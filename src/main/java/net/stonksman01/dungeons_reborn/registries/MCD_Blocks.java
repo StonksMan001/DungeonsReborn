@@ -13,7 +13,7 @@ public class MCD_Blocks {
                     .strength(2.0F, 6.0F)
                     .mapColor(MapColor.CYAN)));
     public static final Block MOSSIER_OAK_PLANKS = SkyCore.BuiltinRegistries.registerBlockAndItem("mossy_oak_planks",
-            new MossyOakPlanksBlock(AbstractBlock.Settings
+            new Block(AbstractBlock.Settings
                     .copy(Blocks.OAK_PLANKS)
                     .strength(2.0f, 3.0f)
                     .mapColor(MapColor.OAK_TAN)));
