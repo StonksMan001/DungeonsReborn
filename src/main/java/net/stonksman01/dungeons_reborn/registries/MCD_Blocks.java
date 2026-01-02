@@ -1,6 +1,11 @@
 package net.stonksman01.dungeons_reborn.registries;
 
 import net.minecraft.block.*;
+import net.minecraft.server.world.ServerWorld;
+import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.math.random.Random;
+import net.minecraft.world.World;
+import net.minecraft.world.WorldView;
 import net.stonksman01.dungeons_reborn.DungeonsReborn;
 import net.stonksman01.dungeons_reborn._included_libs.skycore.SkyCore;
 import net.stonksman01.dungeons_reborn._included_libs.skycore.blocks.SC_MossBlock;
@@ -44,7 +49,18 @@ public class MCD_Blocks {
     public static final Block MIDNIGHT_SPROUTS = SkyCore.BuiltinRegistries.registerBlockAndItem("midnight_sprouts",
             new ShortPlantBlock(AbstractBlock.Settings
                     .copy(Blocks.NETHER_SPROUTS)
-                    .mapColor(MapColor.CYAN)));
+                    .mapColor(MapColor.CYAN)) {
+                @Override
+                public boolean isFertilizable(WorldView world, BlockPos pos, BlockState state) {
+                    return false;
+                }
+                @Override
+                public boolean canGrow(World world, Random random, BlockPos pos, BlockState state) {
+                    return false;
+                }
+                @Override
+                public void grow(ServerWorld world, Random random, BlockPos pos, BlockState state) {}
+            });
     public static final Block POP_FLOWER = SkyCore.BuiltinRegistries.registerBlockAndItem("pop_flower",
             new PopFlowerBlock(AbstractBlock.Settings
                     .copy(Blocks.WARPED_ROOTS)
