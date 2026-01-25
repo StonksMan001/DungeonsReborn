@@ -28,9 +28,7 @@ public abstract class PlayerEntityMixin {
         if (instance.getItem() instanceof AttackCooldownDependent item && ThreadLocalContainer.H.get() == 1.0f) item.postChargedHit(instance, target, user);
         return original.call(instance, target, user);
     }
-    //TODO
-    /*
-    @Inject(method = "attack", at = @At(value = "INVOKE", target = "Lnet/minecraft/entity/player/PlayerEntity;resetLastAttackedTicks()V"))
+    @Inject(method = "attack", at = @At(value = "INVOKE", target = "Lnet/minecraft/entity/player/PlayerEntity;beforePlayerAttack()V"))
     private void accountForCooldownDependentItems2(Entity target, CallbackInfo ci, @Local ItemStack itemStack, @Local(ordinal = 2) float h) {
         if (((PlayerEntity)(Object) this).getEntityWorld() instanceof ServerWorld serverWorld
                 && target instanceof LivingEntity livingEntity
@@ -39,5 +37,4 @@ public abstract class PlayerEntityMixin {
             item.postChargedAttack(itemStack, livingEntity, (PlayerEntity)(Object) this);
         }
     }
-    */
 }
