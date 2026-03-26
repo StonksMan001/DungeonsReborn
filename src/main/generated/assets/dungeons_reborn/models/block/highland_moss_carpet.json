@@ -1,6 +1,6 @@
 {
   "parent": "minecraft:block/carpet",
   "textures": {
-    "wool": "dungeons_reborn:block/highland_moss_carpet"
+    "wool": "dungeons_reborn:block/highland_moss_block"
   }
 }

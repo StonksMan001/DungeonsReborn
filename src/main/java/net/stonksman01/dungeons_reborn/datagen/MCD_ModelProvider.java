@@ -6,6 +6,7 @@ import net.minecraft.block.Block;
 import net.minecraft.client.data.*;
 import net.minecraft.client.render.model.BlockStateModel;
 import net.minecraft.client.render.model.json.ModelVariant;
+import net.minecraft.client.render.model.json.WeightedVariant;
 import net.minecraft.item.Item;
 import net.minecraft.state.property.Properties;
 import net.minecraft.util.Identifier;
@@ -33,7 +34,8 @@ public class MCD_ModelProvider extends FabricModelProvider {
     }
     private void registerRotatedWoolAndCarpet(BlockStateModelGenerator bsmg, Block wool, Block carpet) {
         bsmg.registerRandomHorizontalRotations(TexturedModel.CUBE_ALL, wool);
-        bsmg.registerRandomHorizontalRotations(TexturedModel.CARPET, carpet);
+        ModelVariant modelVariant = BlockStateModelGenerator.createModelVariant(TexturedModel.CARPET.get(wool).upload(carpet, bsmg.modelCollector));
+        bsmg.blockStateCollector.accept(VariantsBlockModelDefinitionCreator.of(carpet, BlockStateModelGenerator.modelWithYRotation(modelVariant)));
     }
     private void registerBlockWith2Variants(BlockStateModelGenerator bsmg, Block block) {
         Identifier identifier1 = bsmg.createSubModel(block, "1", Models.CUBE_ALL, TextureMap::all);
