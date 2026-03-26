@@ -14,12 +14,13 @@ import net.minecraft.util.Pair;
 import net.stonksman01.dungeons_reborn.components.McdRarity;
 import net.stonksman01.dungeons_reborn.items.mcd_meele.templates.ClaymoreBaseItem;
 import net.stonksman01.dungeons_reborn.util.DungeonsHelpers;
+import net.stonksman01.dungeons_reborn.util.GrindStoneExperienceNotDropping;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.function.Consumer;
 
-public class BroadswordItem extends ClaymoreBaseItem {
+public class BroadswordItem extends ClaymoreBaseItem implements GrindStoneExperienceNotDropping {
     public BroadswordItem(ToolMaterial toolMaterial, float baseAttackDamage, float attackSpeed, Settings settings) {
         super(toolMaterial, baseAttackDamage, attackSpeed, settings);
     }
