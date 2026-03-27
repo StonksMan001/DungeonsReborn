@@ -2,6 +2,9 @@ package net.qbaesz13.dungeons_reborn.registries;
 
 import net.qbaesz13.dungeons_reborn.DungeonsReborn;
 import net.qbaesz13.dungeons_reborn._included_libs.skycore.SkyCoreDataFixerAPI;
+import net.qbaesz13.dungeons_reborn._included_libs.skycore.SkyCoreRegistryHelper;
+
+import java.lang.invoke.MethodHandles;
 
 public class MCD_DataFixers {
     private static void init() {
@@ -13,6 +16,6 @@ public class MCD_DataFixers {
     }
     public static void register() {
         init();
-        DungeonsReborn.LOGGER.info("[DungeonsReborn] Registering DataFixers");
+        SkyCoreRegistryHelper.register(MethodHandles.lookup().lookupClass(), DungeonsReborn.LOGGER);
     }
 }

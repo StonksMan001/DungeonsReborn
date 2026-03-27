@@ -10,6 +10,9 @@ import net.minecraft.loot.entry.ItemEntry;
 import net.minecraft.loot.provider.number.ConstantLootNumberProvider;
 import net.minecraft.registry.RegistryKey;
 import net.qbaesz13.dungeons_reborn.DungeonsReborn;
+import net.qbaesz13.dungeons_reborn._included_libs.skycore.SkyCoreRegistryHelper;
+
+import java.lang.invoke.MethodHandles;
 
 public class MCD_LootTableModifiers {
     private static void init() {
@@ -46,6 +49,6 @@ public class MCD_LootTableModifiers {
     }
     public static void register() {
         init();
-        DungeonsReborn.LOGGER.info("[DungeonsReborn] Registering LootTableModifiers");
+        SkyCoreRegistryHelper.register(MethodHandles.lookup().lookupClass(), DungeonsReborn.LOGGER);
     }
 }

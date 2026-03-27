@@ -4,7 +4,10 @@ import com.mojang.serialization.Codec;
 import net.minecraft.component.ComponentType;
 import net.qbaesz13.dungeons_reborn.DungeonsReborn;
 import net.qbaesz13.dungeons_reborn._included_libs.skycore.SkyCore;
+import net.qbaesz13.dungeons_reborn._included_libs.skycore.SkyCoreRegistryHelper;
 import net.qbaesz13.dungeons_reborn.components.McdRarity;
+
+import java.lang.invoke.MethodHandles;
 
 public class MCD_DataComponentTypes {
     public static final ComponentType<Boolean> TWIN_BOW_TARGET_PLAYER_ENTITIES_TOGGLE = SkyCore.BuiltinRegistries.registerComponentType("twin_bow_attack_player_entities_toggle", booleanBuilder -> {
@@ -26,6 +29,6 @@ public class MCD_DataComponentTypes {
         return integerBuilder.codec(Codec.INT);
     });
     public static void register() {
-        DungeonsReborn.LOGGER.info("[DungeonsReborn] Registering DataComponentTypes");
+        SkyCoreRegistryHelper.register(MethodHandles.lookup().lookupClass(), DungeonsReborn.LOGGER);
     }
 }

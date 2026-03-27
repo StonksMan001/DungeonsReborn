@@ -4,12 +4,15 @@ import net.fabricmc.fabric.api.object.builder.v1.block.entity.FabricBlockEntityT
 import net.minecraft.block.entity.BlockEntityType;
 import net.qbaesz13.dungeons_reborn.DungeonsReborn;
 import net.qbaesz13.dungeons_reborn._included_libs.skycore.SkyCore;
+import net.qbaesz13.dungeons_reborn._included_libs.skycore.SkyCoreRegistryHelper;
 import net.qbaesz13.dungeons_reborn.block_entities.PopFlowerBlockEntity;
 
-public class MCD_BlockEntities {
+import java.lang.invoke.MethodHandles;
+
+public class MCD_BlockEntityTypes {
     public static final BlockEntityType<PopFlowerBlockEntity> POP_FLOWER_BLOCK_ENTITY = SkyCore.BuiltinRegistries.registerBlockEntityType("pop_flower_block_entity",
             FabricBlockEntityTypeBuilder.create(PopFlowerBlockEntity::new, MCD_Blocks.POP_FLOWER).build());
     public static void register() {
-        DungeonsReborn.LOGGER.info("[DungeonsReborn] Registering BlockEntities");
+        SkyCoreRegistryHelper.register(MethodHandles.lookup().lookupClass(), DungeonsReborn.LOGGER);
     }
 }

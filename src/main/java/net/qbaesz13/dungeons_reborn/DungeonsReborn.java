@@ -19,7 +19,7 @@ public class DungeonsReborn implements ModInitializer {
 	public void onInitialize() {
 		MCD_DataFixers.register();
 
-		MCD_BlockEntities.register();
+		MCD_BlockEntityTypes.register();
 		MCD_Blocks.register();
 		MCD_Commands.register();
 		MCD_CompostableItems.register();

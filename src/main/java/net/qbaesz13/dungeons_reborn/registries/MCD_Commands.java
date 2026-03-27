@@ -8,7 +8,9 @@ import net.minecraft.text.Text;
 import net.minecraft.world.rule.GameRule;
 import net.minecraft.world.rule.GameRules;
 import net.qbaesz13.dungeons_reborn.DungeonsReborn;
+import net.qbaesz13.dungeons_reborn._included_libs.skycore.SkyCoreRegistryHelper;
 
+import java.lang.invoke.MethodHandles;
 import java.util.Objects;
 
 public class MCD_Commands {
@@ -34,6 +36,6 @@ public class MCD_Commands {
     }
     public static void register() {
         init();
-        DungeonsReborn.LOGGER.info("[DungeonsReborn] Registering Commands");
+        SkyCoreRegistryHelper.register(MethodHandles.lookup().lookupClass(), DungeonsReborn.LOGGER);
     }
 }

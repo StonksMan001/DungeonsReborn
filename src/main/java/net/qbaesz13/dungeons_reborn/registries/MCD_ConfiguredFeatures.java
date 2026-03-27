@@ -17,7 +17,10 @@ import net.minecraft.world.gen.stateprovider.BlockStateProvider;
 import net.minecraft.world.gen.stateprovider.WeightedBlockStateProvider;
 import net.qbaesz13.dungeons_reborn.DungeonsReborn;
 import net.qbaesz13.dungeons_reborn._included_libs.skycore.SkyCore;
+import net.qbaesz13.dungeons_reborn._included_libs.skycore.SkyCoreRegistryHelper;
 import net.qbaesz13.dungeons_reborn.blocks.SourBerryBushBlock;
+
+import java.lang.invoke.MethodHandles;
 
 public class MCD_ConfiguredFeatures {
     public static final RegistryKey<ConfiguredFeature<?, ?>> MIDNIGHT_MOSS_VEGETATION = SkyCore.BuiltinRegistries.ofConfiguredFeatureRegistry("midnight_moss_vegetation");
@@ -66,6 +69,6 @@ public class MCD_ConfiguredFeatures {
         );
     }
     public static void register() {
-        DungeonsReborn.LOGGER.info("[DungeonsReborn] Registering ConfiguredFeatures");
+        SkyCoreRegistryHelper.register(MethodHandles.lookup().lookupClass(), DungeonsReborn.LOGGER);
     }
 }

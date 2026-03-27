@@ -7,8 +7,11 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.text.Text;
 import net.qbaesz13.dungeons_reborn.DungeonsReborn;
 import net.qbaesz13.dungeons_reborn._included_libs.skycore.SkyCore;
+import net.qbaesz13.dungeons_reborn._included_libs.skycore.SkyCoreRegistryHelper;
 import net.qbaesz13.dungeons_reborn.components.McdRarity;
 import net.qbaesz13.dungeons_reborn.util.DungeonsHelpers;
+
+import java.lang.invoke.MethodHandles;
 
 public class MCD_ItemGroups {
     public static ItemGroup DUNGEONS_REBORN = SkyCore.BuiltinRegistries.registerItemGroup("dungeons_reborn",
@@ -64,6 +67,6 @@ public class MCD_ItemGroups {
     }
 
     public static void register() {
-        DungeonsReborn.LOGGER.info("[DungeonsReborn] Registering ItemGroups");
+        SkyCoreRegistryHelper.register(MethodHandles.lookup().lookupClass(), DungeonsReborn.LOGGER);
     }
 }

@@ -4,7 +4,10 @@ import net.fabricmc.fabric.api.registry.CompostingChanceRegistry;
 import net.minecraft.block.Blocks;
 import net.minecraft.item.Items;
 import net.qbaesz13.dungeons_reborn.DungeonsReborn;
+import net.qbaesz13.dungeons_reborn._included_libs.skycore.SkyCoreRegistryHelper;
 import net.qbaesz13.dungeons_reborn.util.DungeonsHelpers;
+
+import java.lang.invoke.MethodHandles;
 
 public class MCD_CompostableItems {
     private static void init() {
@@ -18,6 +21,6 @@ public class MCD_CompostableItems {
     }
     public static void register() {
         init();
-        DungeonsReborn.LOGGER.info("[DungeonsReborn] Registering CompostableItems");
+        SkyCoreRegistryHelper.register(MethodHandles.lookup().lookupClass(), DungeonsReborn.LOGGER);
     }
 }

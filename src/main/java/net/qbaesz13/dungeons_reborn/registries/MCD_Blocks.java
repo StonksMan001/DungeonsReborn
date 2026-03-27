@@ -3,7 +3,10 @@ package net.qbaesz13.dungeons_reborn.registries;
 import net.minecraft.block.*;
 import net.qbaesz13.dungeons_reborn.DungeonsReborn;
 import net.qbaesz13.dungeons_reborn._included_libs.skycore.SkyCore;
+import net.qbaesz13.dungeons_reborn._included_libs.skycore.SkyCoreRegistryHelper;
 import net.qbaesz13.dungeons_reborn.blocks.*;
+
+import java.lang.invoke.MethodHandles;
 
 public class MCD_Blocks {
     public static final Block MIDNIGHT_MOSSY_COBBLESTONE = SkyCore.BuiltinRegistries.registerBlockAndItem("midnight_mossy_cobblestone",
@@ -54,6 +57,6 @@ public class MCD_Blocks {
                     .strength(Blocks.NETHERITE_BLOCK.getHardness(), Blocks.NETHERITE_BLOCK.getBlastResistance())
                     .mapColor(MapColor.TERRACOTTA_ORANGE));
     public static void register() {
-        DungeonsReborn.LOGGER.info("[DungeonsReborn] Registering Blocks");
+        SkyCoreRegistryHelper.register(MethodHandles.lookup().lookupClass(), DungeonsReborn.LOGGER);
     }
 }

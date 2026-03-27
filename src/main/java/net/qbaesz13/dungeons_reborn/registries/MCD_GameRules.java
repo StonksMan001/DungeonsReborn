@@ -5,8 +5,10 @@ import net.minecraft.world.rule.GameRule;
 import net.minecraft.world.rule.GameRuleCategory;
 import net.qbaesz13.dungeons_reborn.DungeonsReborn;
 import net.qbaesz13.dungeons_reborn._included_libs.skycore.SkyCore;
+import net.qbaesz13.dungeons_reborn._included_libs.skycore.SkyCoreRegistryHelper;
 import org.jetbrains.annotations.Nullable;
 
+import java.lang.invoke.MethodHandles;
 import java.util.*;
 
 public class MCD_GameRules {
@@ -52,6 +54,6 @@ public class MCD_GameRules {
         return booleanRule;
     }
     public static void register() {
-        DungeonsReborn.LOGGER.info("[DungeonsReborn] Registering GameRules");
+        SkyCoreRegistryHelper.register(MethodHandles.lookup().lookupClass(), DungeonsReborn.LOGGER);
     }
 }

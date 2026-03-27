@@ -4,6 +4,9 @@ import net.minecraft.item.Item;
 import net.minecraft.registry.tag.TagKey;
 import net.qbaesz13.dungeons_reborn.DungeonsReborn;
 import net.qbaesz13.dungeons_reborn._included_libs.skycore.SkyCore;
+import net.qbaesz13.dungeons_reborn._included_libs.skycore.SkyCoreRegistryHelper;
+
+import java.lang.invoke.MethodHandles;
 
 public class MCD_ItemTags {
     public static final TagKey<Item> HAS_DURABILITY_ARMOR_CHEST = SkyCore.BuiltinRegistries.createItemTag("has_durability/armor/chest");
@@ -21,6 +24,6 @@ public class MCD_ItemTags {
     public static final TagKey<Item> HAS_DURABILITY_SHOVELS = SkyCore.BuiltinRegistries.createItemTag("has_durability/shovels");
     public static final TagKey<Item> HAS_DURABILITY_SWORDS = SkyCore.BuiltinRegistries.createItemTag("has_durability/swords");
     public static void register() {
-        DungeonsReborn.LOGGER.info("[DungeonsReborn] Registering ItemTags");
+        SkyCoreRegistryHelper.register(MethodHandles.lookup().lookupClass(), DungeonsReborn.LOGGER);
     }
 }

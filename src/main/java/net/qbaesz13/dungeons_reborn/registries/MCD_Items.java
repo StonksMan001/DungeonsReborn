@@ -8,12 +8,15 @@ import net.minecraft.item.ToolMaterial;
 import net.minecraft.util.Rarity;
 import net.qbaesz13.dungeons_reborn.DungeonsReborn;
 import net.qbaesz13.dungeons_reborn._included_libs.skycore.SkyCore;
+import net.qbaesz13.dungeons_reborn._included_libs.skycore.SkyCoreRegistryHelper;
 import net.qbaesz13.dungeons_reborn.items.mcd_artifact.DeathCapMushroomItem;
 import net.qbaesz13.dungeons_reborn.items.mcd_artifact.IronSkinItem;
 import net.qbaesz13.dungeons_reborn.items.mcd_meele.*;
 import net.qbaesz13.dungeons_reborn.items.mcd_ranged.AutoCrossbowItem;
 import net.qbaesz13.dungeons_reborn.items.mcd_ranged.HeavyCrossbowItem;
 import net.qbaesz13.dungeons_reborn.items.mcd_ranged.TwinBowItem;
+
+import java.lang.invoke.MethodHandles;
 
 
 public class MCD_Items {
@@ -62,6 +65,6 @@ public class MCD_Items {
 
     public static final Item ANCIENT_GOLD_INGOT = SkyCore.BuiltinRegistries.registerItem("ancient_gold_ingot", Item::new);
     public static void register() {
-        DungeonsReborn.LOGGER.info("[DungeonsReborn] Registering Items");
+        SkyCoreRegistryHelper.register(MethodHandles.lookup().lookupClass(), DungeonsReborn.LOGGER);
     }
 }
