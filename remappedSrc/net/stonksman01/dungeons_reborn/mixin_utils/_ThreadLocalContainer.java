@@ -1,4 +1,4 @@
-package net.stonksman01.dungeons_reborn.mixin_utils;
+package net.qbaesz13.dungeons_reborn.mixin_utils;
 
 import net.minecraft.item.ItemStack;
 

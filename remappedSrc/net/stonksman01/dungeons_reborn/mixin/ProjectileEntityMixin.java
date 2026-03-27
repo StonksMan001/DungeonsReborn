@@ -1,10 +1,10 @@
-package net.stonksman01.dungeons_reborn.mixin;
+package net.qbaesz13.dungeons_reborn.mixin;
 
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.projectile.PersistentProjectileEntity;
 import net.minecraft.entity.projectile.ProjectileEntity;
 import net.minecraft.item.ItemStack;
-import net.stonksman01.dungeons_reborn.items.mcd_ranged.TwinBowItem;
+import net.qbaesz13.dungeons_reborn.items.mcd_ranged.TwinBowItem;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;

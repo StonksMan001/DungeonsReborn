@@ -1,4 +1,4 @@
-package net.stonksman01.dungeons_reborn.items.mcd_meele.templates;
+package net.qbaesz13.dungeons_reborn.items.mcd_meele.templates;
 
 import net.minecraft.component.DataComponentTypes;
 import net.minecraft.component.type.AttributeModifierSlot;
@@ -13,12 +13,12 @@ import net.minecraft.item.ToolMaterial;
 import net.minecraft.server.world.ServerWorld;
 import net.minecraft.sound.SoundCategory;
 import net.minecraft.sound.SoundEvents;
-import net.stonksman01.dungeons_reborn._included_libs.skycore.SkyCoreToolAPI;
-import net.stonksman01.dungeons_reborn.components.McdRarity;
-import net.stonksman01.dungeons_reborn.items.McdItem;
-import net.stonksman01.dungeons_reborn.items.mcd_meele.ChainAttackWeapon;
-import net.stonksman01.dungeons_reborn.registries.MCD_DataComponentTypes;
-import net.stonksman01.dungeons_reborn.util.DungeonsHelpers;
+import net.qbaesz13.dungeons_reborn._included_libs.skycore.SkyCoreToolAPI;
+import net.qbaesz13.dungeons_reborn.components.McdRarity;
+import net.qbaesz13.dungeons_reborn.items.McdItem;
+import net.qbaesz13.dungeons_reborn.items.mcd_meele.ChainAttackWeapon;
+import net.qbaesz13.dungeons_reborn.registries.MCD_DataComponentTypes;
+import net.qbaesz13.dungeons_reborn.util.DungeonsHelpers;
 import org.jetbrains.annotations.Nullable;
 
 public abstract class MaceBaseItem extends SkyCoreToolAPI.SwordItem implements ChainAttackWeapon {

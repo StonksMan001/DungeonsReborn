@@ -1,11 +1,11 @@
-package net.stonksman01.dungeons_reborn.mixin;
+package net.qbaesz13.dungeons_reborn.mixin;
 
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.item.CrossbowItem;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.math.MathHelper;
-import net.stonksman01.dungeons_reborn.items.mcd_ranged.AutoCrossbowItem;
-import net.stonksman01.dungeons_reborn.registries.MCD_DataComponentTypes;
+import net.qbaesz13.dungeons_reborn.items.mcd_ranged.AutoCrossbowItem;
+import net.qbaesz13.dungeons_reborn.registries.MCD_DataComponentTypes;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;

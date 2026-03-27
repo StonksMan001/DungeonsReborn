@@ -1,4 +1,4 @@
-package net.stonksman01.dungeons_reborn.blocks;
+package net.qbaesz13.dungeons_reborn.blocks;
 
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;

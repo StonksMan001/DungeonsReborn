@@ -1,7 +1,7 @@
-package net.stonksman01.dungeons_reborn.items.mcd_meele;
+package net.qbaesz13.dungeons_reborn.items.mcd_meele;
 
 import net.minecraft.util.Pair;
-import net.stonksman01.dungeons_reborn.components.McdRarity;
+import net.qbaesz13.dungeons_reborn.components.McdRarity;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 

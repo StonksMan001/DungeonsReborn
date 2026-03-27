@@ -1,4 +1,4 @@
-package net.stonksman01.dungeons_reborn._included_libs.skycore;
+package net.qbaesz13.dungeons_reborn._included_libs.skycore;
 
 import com.llamalad7.mixinextras.injector.wrapoperation.Operation;
 import net.fabricmc.fabric.api.gamerule.v1.GameRuleRegistry;
@@ -32,9 +32,9 @@ import net.minecraft.world.gen.feature.ConfiguredFeature;
 import net.minecraft.world.gen.feature.Feature;
 import net.minecraft.world.gen.feature.FeatureConfig;
 import net.minecraft.world.poi.PointOfInterestType;
-import net.stonksman01.dungeons_reborn.DungeonsReborn;
-import net.stonksman01.dungeons_reborn._included_libs.skycore.items.SC_BowItem;
-import net.stonksman01.dungeons_reborn._included_libs.skycore.items.SC_CrossbowItem;
+import net.qbaesz13.dungeons_reborn.DungeonsReborn;
+import net.qbaesz13.dungeons_reborn._included_libs.skycore.items.SC_BowItem;
+import net.qbaesz13.dungeons_reborn._included_libs.skycore.items.SC_CrossbowItem;
 
 import java.util.function.Function;
 import java.util.function.Supplier;

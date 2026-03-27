@@ -1,4 +1,4 @@
-package net.stonksman01.dungeons_reborn.items.mcd_meele;
+package net.qbaesz13.dungeons_reborn.items.mcd_meele;
 
 import net.minecraft.component.type.TooltipDisplayComponent;
 import net.minecraft.enchantment.Enchantments;
@@ -12,10 +12,10 @@ import net.minecraft.server.world.ServerWorld;
 import net.minecraft.text.Style;
 import net.minecraft.text.Text;
 import net.minecraft.util.Formatting;
-import net.stonksman01.dungeons_reborn._included_libs.skycore.SkyCoreToolAPI;
-import net.stonksman01.dungeons_reborn.util.DungeonsHelpers;
-import net.stonksman01.dungeons_reborn.items.McdItem;
-import net.stonksman01.dungeons_reborn.util.GrindStoneExperienceNotDropping;
+import net.qbaesz13.dungeons_reborn._included_libs.skycore.SkyCoreToolAPI;
+import net.qbaesz13.dungeons_reborn.util.DungeonsHelpers;
+import net.qbaesz13.dungeons_reborn.items.McdItem;
+import net.qbaesz13.dungeons_reborn.util.GrindStoneExperienceNotDropping;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.function.Consumer;

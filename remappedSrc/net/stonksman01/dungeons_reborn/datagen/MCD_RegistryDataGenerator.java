@@ -1,4 +1,4 @@
-package net.stonksman01.dungeons_reborn.datagen;
+package net.qbaesz13.dungeons_reborn.datagen;
 
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricDynamicRegistryProvider;

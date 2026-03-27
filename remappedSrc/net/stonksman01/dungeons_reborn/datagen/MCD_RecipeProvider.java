@@ -1,4 +1,4 @@
-package net.stonksman01.dungeons_reborn.datagen;
+package net.qbaesz13.dungeons_reborn.datagen;
 
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricRecipeProvider;
@@ -8,8 +8,8 @@ import net.minecraft.data.recipe.RecipeExporter;
 import net.minecraft.data.recipe.RecipeGenerator;
 import net.minecraft.recipe.book.RecipeCategory;
 import net.minecraft.registry.RegistryWrapper;
-import net.stonksman01.dungeons_reborn.registries.MCD_Blocks;
-import net.stonksman01.dungeons_reborn.registries.MCD_Items;
+import net.qbaesz13.dungeons_reborn.registries.MCD_Blocks;
+import net.qbaesz13.dungeons_reborn.registries.MCD_Items;
 
 import java.util.concurrent.CompletableFuture;
 

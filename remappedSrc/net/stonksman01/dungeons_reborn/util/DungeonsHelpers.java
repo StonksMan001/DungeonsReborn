@@ -1,4 +1,4 @@
-package net.stonksman01.dungeons_reborn.util;
+package net.qbaesz13.dungeons_reborn.util;
 
 import com.llamalad7.mixinextras.injector.wrapoperation.Operation;
 import net.minecraft.block.ComposterBlock;
@@ -20,9 +20,9 @@ import net.minecraft.registry.entry.RegistryEntry;
 import net.minecraft.scoreboard.Team;
 import net.minecraft.text.Text;
 import net.minecraft.world.World;
-import net.stonksman01.dungeons_reborn.components.McdRarity;
-import net.stonksman01.dungeons_reborn.registries.MCD_DataComponentTypes;
-import net.stonksman01.dungeons_reborn.registries.MCD_Enchantments;
+import net.qbaesz13.dungeons_reborn.components.McdRarity;
+import net.qbaesz13.dungeons_reborn.registries.MCD_DataComponentTypes;
+import net.qbaesz13.dungeons_reborn.registries.MCD_Enchantments;
 
 import java.util.List;
 import java.util.Objects;

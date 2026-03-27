@@ -1,4 +1,4 @@
-package net.stonksman01.dungeons_reborn.items.mcd_ranged;
+package net.qbaesz13.dungeons_reborn.items.mcd_ranged;
 
 import net.minecraft.component.DataComponentTypes;
 import net.minecraft.component.type.ChargedProjectilesComponent;
@@ -14,10 +14,10 @@ import net.minecraft.util.ActionResult;
 import net.minecraft.util.Formatting;
 import net.minecraft.util.Hand;
 import net.minecraft.world.World;
-import net.stonksman01.dungeons_reborn._included_libs.skycore.items.SC_CrossbowItem;
-import net.stonksman01.dungeons_reborn.items.McdItem;
-import net.stonksman01.dungeons_reborn.mixin.CrossbowItemAccessors;
-import net.stonksman01.dungeons_reborn.registries.MCD_DataComponentTypes;
+import net.qbaesz13.dungeons_reborn._included_libs.skycore.items.SC_CrossbowItem;
+import net.qbaesz13.dungeons_reborn.items.McdItem;
+import net.qbaesz13.dungeons_reborn.mixin.CrossbowItemAccessors;
+import net.qbaesz13.dungeons_reborn.registries.MCD_DataComponentTypes;
 
 import java.util.List;
 import java.util.function.Consumer;

@@ -1,4 +1,4 @@
-package net.stonksman01.dungeons_reborn.blocks;
+package net.qbaesz13.dungeons_reborn.blocks;
 
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
@@ -16,7 +16,7 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 import net.minecraft.world.WorldView;
 import net.minecraft.world.event.GameEvent;
-import net.stonksman01.dungeons_reborn.registries.MCD_Items;
+import net.qbaesz13.dungeons_reborn.registries.MCD_Items;
 
 public class SourBerryBushBlock extends SweetBerryBushBlock {
     public SourBerryBushBlock(Settings settings) {

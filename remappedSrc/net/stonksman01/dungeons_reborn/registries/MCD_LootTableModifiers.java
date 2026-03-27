@@ -1,4 +1,4 @@
-package net.stonksman01.dungeons_reborn.registries;
+package net.qbaesz13.dungeons_reborn.registries;
 
 import net.fabricmc.fabric.api.loot.v3.LootTableEvents;
 import net.minecraft.item.ItemConvertible;
@@ -9,7 +9,7 @@ import net.minecraft.loot.condition.RandomChanceLootCondition;
 import net.minecraft.loot.entry.ItemEntry;
 import net.minecraft.loot.provider.number.ConstantLootNumberProvider;
 import net.minecraft.registry.RegistryKey;
-import net.stonksman01.dungeons_reborn.DungeonsReborn;
+import net.qbaesz13.dungeons_reborn.DungeonsReborn;
 
 import java.util.List;
 

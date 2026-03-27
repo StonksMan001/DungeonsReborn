@@ -1,4 +1,4 @@
-package net.stonksman01.dungeons_reborn.mixin;
+package net.qbaesz13.dungeons_reborn.mixin;
 
 import net.minecraft.component.type.ChargedProjectilesComponent;
 import net.minecraft.item.CrossbowItem;

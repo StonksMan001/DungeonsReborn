@@ -1,8 +1,8 @@
-package net.stonksman01.dungeons_reborn;
+package net.qbaesz13.dungeons_reborn;
 
 import net.fabricmc.api.ModInitializer;
 
-import net.stonksman01.dungeons_reborn.registries.*;
+import net.qbaesz13.dungeons_reborn.registries.*;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 

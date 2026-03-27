@@ -1,11 +1,11 @@
-package net.stonksman01.dungeons_reborn.registries;
+package net.qbaesz13.dungeons_reborn.registries;
 
 import net.minecraft.block.*;
 import net.minecraft.registry.RegistryKey;
 import net.minecraft.registry.RegistryKeys;
-import net.stonksman01.dungeons_reborn.DungeonsReborn;
-import net.stonksman01.dungeons_reborn._included_libs.skycore.SkyCore;
-import net.stonksman01.dungeons_reborn.blocks.*;
+import net.qbaesz13.dungeons_reborn.DungeonsReborn;
+import net.qbaesz13.dungeons_reborn._included_libs.skycore.SkyCore;
+import net.qbaesz13.dungeons_reborn.blocks.*;
 
 public class MCD_Blocks {
     public static final Block MOSSIER_COBBLESTONE = SkyCore.BuiltinRegistries.registerBlockAndItem("midnight_mossy_cobblestone",

@@ -1,11 +1,11 @@
-package net.stonksman01.dungeons_reborn;
+package net.qbaesz13.dungeons_reborn;
 
 import net.fabricmc.api.ClientModInitializer;
 import net.fabricmc.fabric.api.client.rendering.v1.BlockRenderLayerMap;
 import net.minecraft.client.render.BlockRenderLayer;
 import net.minecraft.client.render.RenderLayer;
-import net.stonksman01.dungeons_reborn.registries.MCD_Blocks;
-import net.stonksman01.dungeons_reborn.registries.MCD_Models;
+import net.qbaesz13.dungeons_reborn.registries.MCD_Blocks;
+import net.qbaesz13.dungeons_reborn.registries.MCD_Models;
 
 public class DungeonsRebornClient implements ClientModInitializer {
     @Override

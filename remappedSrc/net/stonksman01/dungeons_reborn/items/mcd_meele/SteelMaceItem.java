@@ -1,4 +1,4 @@
-package net.stonksman01.dungeons_reborn.items.mcd_meele;
+package net.qbaesz13.dungeons_reborn.items.mcd_meele;
 
 import net.minecraft.component.type.TooltipDisplayComponent;
 import net.minecraft.entity.Entity;
@@ -12,9 +12,9 @@ import net.minecraft.text.Text;
 import net.minecraft.util.Formatting;
 import net.minecraft.util.Pair;
 import net.minecraft.world.World;
-import net.stonksman01.dungeons_reborn.components.McdRarity;
-import net.stonksman01.dungeons_reborn.items.mcd_meele.templates.MaceBaseItem;
-import net.stonksman01.dungeons_reborn.util.DungeonsHelpers;
+import net.qbaesz13.dungeons_reborn.components.McdRarity;
+import net.qbaesz13.dungeons_reborn.items.mcd_meele.templates.MaceBaseItem;
+import net.qbaesz13.dungeons_reborn.util.DungeonsHelpers;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 

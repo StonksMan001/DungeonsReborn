@@ -1,4 +1,4 @@
-package net.stonksman01.dungeons_reborn.mixin;
+package net.qbaesz13.dungeons_reborn.mixin;
 
 import com.llamalad7.mixinextras.injector.wrapoperation.Operation;
 import com.llamalad7.mixinextras.injector.wrapoperation.WrapOperation;
@@ -8,9 +8,9 @@ import net.minecraft.entity.attribute.EntityAttribute;
 import net.minecraft.item.ItemStack;
 import net.minecraft.registry.entry.RegistryEntry;
 import net.minecraft.util.Pair;
-import net.stonksman01.dungeons_reborn.items.mcd_meele.ChainAttackWeapon;
-import net.stonksman01.dungeons_reborn.mixin_utils._ThreadLocalContainer;
-import net.stonksman01.dungeons_reborn.registries.MCD_DataComponentTypes;
+import net.qbaesz13.dungeons_reborn.items.mcd_meele.ChainAttackWeapon;
+import net.qbaesz13.dungeons_reborn.mixin_utils._ThreadLocalContainer;
+import net.qbaesz13.dungeons_reborn.registries.MCD_DataComponentTypes;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import org.spongepowered.asm.mixin.Mixin;

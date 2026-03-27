@@ -1,11 +1,11 @@
-package net.stonksman01.dungeons_reborn.mixin;
+package net.qbaesz13.dungeons_reborn.mixin;
 
 import net.minecraft.component.type.TooltipDisplayComponent;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.text.Text;
-import net.stonksman01.dungeons_reborn.items.mcd_meele.ChainAttackWeapon;
-import net.stonksman01.dungeons_reborn.mixin_utils._ThreadLocalContainer;
+import net.qbaesz13.dungeons_reborn.items.mcd_meele.ChainAttackWeapon;
+import net.qbaesz13.dungeons_reborn.mixin_utils._ThreadLocalContainer;
 import org.jetbrains.annotations.Nullable;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;

@@ -1,4 +1,4 @@
-package net.stonksman01.dungeons_reborn.datagen;
+package net.qbaesz13.dungeons_reborn.datagen;
 
 import net.fabricmc.fabric.api.client.datagen.v1.provider.FabricModelProvider;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
@@ -8,10 +8,10 @@ import net.minecraft.client.data.*;
 import net.minecraft.client.render.model.json.WeightedVariant;
 import net.minecraft.state.property.BooleanProperty;
 import net.minecraft.state.property.Properties;
-import net.stonksman01.dungeons_reborn.blocks.MossyOakPlanksBlock;
-import net.stonksman01.dungeons_reborn.registries.MCD_Blocks;
-import net.stonksman01.dungeons_reborn.registries.MCD_Items;
-import net.stonksman01.dungeons_reborn.registries.MCD_Models;
+import net.qbaesz13.dungeons_reborn.blocks.MossyOakPlanksBlock;
+import net.qbaesz13.dungeons_reborn.registries.MCD_Blocks;
+import net.qbaesz13.dungeons_reborn.registries.MCD_Items;
+import net.qbaesz13.dungeons_reborn.registries.MCD_Models;
 
 public class MCD_ModelProvider extends FabricModelProvider {
     public MCD_ModelProvider(FabricDataOutput output) {

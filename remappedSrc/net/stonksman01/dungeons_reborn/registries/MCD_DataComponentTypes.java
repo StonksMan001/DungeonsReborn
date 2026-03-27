@@ -1,10 +1,10 @@
-package net.stonksman01.dungeons_reborn.registries;
+package net.qbaesz13.dungeons_reborn.registries;
 
 import com.mojang.serialization.Codec;
 import net.minecraft.component.ComponentType;
-import net.stonksman01.dungeons_reborn.DungeonsReborn;
-import net.stonksman01.dungeons_reborn._included_libs.skycore.SkyCore;
-import net.stonksman01.dungeons_reborn.components.McdRarity;
+import net.qbaesz13.dungeons_reborn.DungeonsReborn;
+import net.qbaesz13.dungeons_reborn._included_libs.skycore.SkyCore;
+import net.qbaesz13.dungeons_reborn.components.McdRarity;
 
 public class MCD_DataComponentTypes {
     public static final ComponentType<Boolean> TWIN_BOW_TARGET_PLAYER_ENTITIES_TOGGLE = SkyCore.BuiltinRegistries.registerComponentType("twin_bow_attack_player_entities_toggle", booleanBuilder -> {

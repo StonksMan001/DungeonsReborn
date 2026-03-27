@@ -1,4 +1,4 @@
-package net.stonksman01.dungeons_reborn.items.mcd_artifact;
+package net.qbaesz13.dungeons_reborn.items.mcd_artifact;
 
 import net.minecraft.component.type.TooltipDisplayComponent;
 import net.minecraft.entity.Entity;
@@ -17,11 +17,11 @@ import net.minecraft.util.ActionResult;
 import net.minecraft.util.Formatting;
 import net.minecraft.util.Hand;
 import net.minecraft.world.World;
-import net.stonksman01.dungeons_reborn.util.DungeonsHelpers;
-import net.stonksman01.dungeons_reborn.components.McdRarity;
-import net.stonksman01.dungeons_reborn.items.McdArtifactItem;
-import net.stonksman01.dungeons_reborn.registries.MCD_DataComponentTypes;
-import net.stonksman01.dungeons_reborn.registries.MCD_Sounds;
+import net.qbaesz13.dungeons_reborn.util.DungeonsHelpers;
+import net.qbaesz13.dungeons_reborn.components.McdRarity;
+import net.qbaesz13.dungeons_reborn.items.McdArtifactItem;
+import net.qbaesz13.dungeons_reborn.registries.MCD_DataComponentTypes;
+import net.qbaesz13.dungeons_reborn.registries.MCD_Sounds;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.List;

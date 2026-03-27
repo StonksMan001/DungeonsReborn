@@ -1,4 +1,4 @@
-package net.stonksman01.dungeons_reborn._included_libs.skycore.items;
+package net.qbaesz13.dungeons_reborn._included_libs.skycore.items;
 
 import net.minecraft.item.BowItem;
 

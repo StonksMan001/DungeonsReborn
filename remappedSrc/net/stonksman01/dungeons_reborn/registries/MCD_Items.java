@@ -1,4 +1,4 @@
-package net.stonksman01.dungeons_reborn.registries;
+package net.qbaesz13.dungeons_reborn.registries;
 
 import net.minecraft.component.DataComponentTypes;
 import net.minecraft.component.type.ChargedProjectilesComponent;
@@ -9,13 +9,13 @@ import net.minecraft.item.ToolMaterial;
 import net.minecraft.recipe.Ingredient;
 import net.minecraft.registry.entry.RegistryEntryList;
 import net.minecraft.util.Rarity;
-import net.stonksman01.dungeons_reborn.DungeonsReborn;
-import net.stonksman01.dungeons_reborn._included_libs.skycore.SkyCore;
-import net.stonksman01.dungeons_reborn.items.mcd_artifact.DeathCapMushroomItem;
-import net.stonksman01.dungeons_reborn.items.mcd_artifact.IronSkinItem;
-import net.stonksman01.dungeons_reborn.items.mcd_meele.*;
-import net.stonksman01.dungeons_reborn.items.mcd_ranged.AutoCrossbowItem;
-import net.stonksman01.dungeons_reborn.items.mcd_ranged.TwinBowItem;
+import net.qbaesz13.dungeons_reborn.DungeonsReborn;
+import net.qbaesz13.dungeons_reborn._included_libs.skycore.SkyCore;
+import net.qbaesz13.dungeons_reborn.items.mcd_artifact.DeathCapMushroomItem;
+import net.qbaesz13.dungeons_reborn.items.mcd_artifact.IronSkinItem;
+import net.qbaesz13.dungeons_reborn.items.mcd_meele.*;
+import net.qbaesz13.dungeons_reborn.items.mcd_ranged.AutoCrossbowItem;
+import net.qbaesz13.dungeons_reborn.items.mcd_ranged.TwinBowItem;
 
 import java.util.List;
 

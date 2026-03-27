@@ -1,6 +1,6 @@
 {
   "required": true,
-  "package": "net.stonksman01.dungeons_reborn.mixin",
+  "package": "net.qbaesz13.dungeons_reborn.mixin",
   "compatibilityLevel": "JAVA_21",
   "mixins": [
     "AttributeModifiersComponent$Display$DefaultMixin",
@@ -14,15 +14,15 @@
     "ProjectileEntityMixin",
     "RangedWeaponItemMixin"
   ],
+  "client": [
+    "AbstractClientPlayerEntityMixin",
+    "HeldItemRendererMixin",
+    "PlayerEntityRendererMixin"
+  ],
   "injectors": {
     "defaultRequire": 1
   },
   "overwrites": {
     "requireAnnotations": true
-  },
-  "client": [
-    "AbstractClientPlayerEntityMixin",
-    "HeldItemRendererMixin",
-    "PlayerEntityRendererMixin"
-  ]
+  }
 }

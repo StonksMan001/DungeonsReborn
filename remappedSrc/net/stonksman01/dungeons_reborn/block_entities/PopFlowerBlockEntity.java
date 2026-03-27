@@ -1,4 +1,4 @@
-package net.stonksman01.dungeons_reborn.block_entities;
+package net.qbaesz13.dungeons_reborn.block_entities;
 
 import net.minecraft.block.BlockState;
 import net.minecraft.block.entity.BlockEntity;
@@ -8,9 +8,9 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Box;
 import net.minecraft.util.math.Vec3d;
 import net.minecraft.world.World;
-import net.stonksman01.dungeons_reborn.blocks.PopFlowerBlock;
-import net.stonksman01.dungeons_reborn.registries.MCD_BlockEntities;
-import net.stonksman01.dungeons_reborn.registries.MCD_GameRules;
+import net.qbaesz13.dungeons_reborn.blocks.PopFlowerBlock;
+import net.qbaesz13.dungeons_reborn.registries.MCD_BlockEntities;
+import net.qbaesz13.dungeons_reborn.registries.MCD_GameRules;
 
 public class PopFlowerBlockEntity extends BlockEntity {
     public PopFlowerBlockEntity(BlockPos pos, BlockState state) {

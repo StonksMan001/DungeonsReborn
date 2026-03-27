@@ -1,4 +1,4 @@
-package net.stonksman01.dungeons_reborn.items.mcd_ranged;
+package net.qbaesz13.dungeons_reborn.items.mcd_ranged;
 
 import net.minecraft.component.type.TooltipDisplayComponent;
 import net.minecraft.enchantment.EnchantmentHelper;
@@ -24,11 +24,11 @@ import net.minecraft.util.ClickType;
 import net.minecraft.util.Formatting;
 import net.minecraft.util.math.Box;
 import net.minecraft.world.World;
-import net.stonksman01.dungeons_reborn._included_libs.skycore.items.SC_BowItem;
-import net.stonksman01.dungeons_reborn.items.McdItem;
-import net.stonksman01.dungeons_reborn.registries.MCD_DataComponentTypes;
-import net.stonksman01.dungeons_reborn.registries.MCD_Sounds;
-import net.stonksman01.dungeons_reborn.util.DungeonsHelpers;
+import net.qbaesz13.dungeons_reborn._included_libs.skycore.items.SC_BowItem;
+import net.qbaesz13.dungeons_reborn.items.McdItem;
+import net.qbaesz13.dungeons_reborn.registries.MCD_DataComponentTypes;
+import net.qbaesz13.dungeons_reborn.registries.MCD_Sounds;
+import net.qbaesz13.dungeons_reborn.util.DungeonsHelpers;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.List;

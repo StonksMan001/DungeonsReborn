@@ -1,13 +1,13 @@
-package net.stonksman01.dungeons_reborn.registries;
+package net.qbaesz13.dungeons_reborn.registries;
 
 import net.fabricmc.fabric.api.itemgroup.v1.FabricItemGroup;
 import net.minecraft.item.ItemGroup;
 import net.minecraft.item.ItemStack;
 import net.minecraft.text.Text;
-import net.stonksman01.dungeons_reborn.DungeonsReborn;
-import net.stonksman01.dungeons_reborn._included_libs.skycore.SkyCore;
-import net.stonksman01.dungeons_reborn.components.McdRarity;
-import net.stonksman01.dungeons_reborn.util.DungeonsHelpers;
+import net.qbaesz13.dungeons_reborn.DungeonsReborn;
+import net.qbaesz13.dungeons_reborn._included_libs.skycore.SkyCore;
+import net.qbaesz13.dungeons_reborn.components.McdRarity;
+import net.qbaesz13.dungeons_reborn.util.DungeonsHelpers;
 
 public class MCD_ItemGroups {
     public static ItemGroup DUNGEONS_REBORN = SkyCore.BuiltinRegistries.registerItemGroup("dungeons_reborn",

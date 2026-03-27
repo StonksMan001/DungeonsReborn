@@ -1,4 +1,4 @@
-package net.stonksman01.dungeons_reborn.items;
+package net.qbaesz13.dungeons_reborn.items;
 
 import net.fabricmc.fabric.api.item.v1.EnchantingContext;
 import net.minecraft.enchantment.Enchantment;
@@ -9,7 +9,7 @@ import net.minecraft.registry.RegistryWrapper;
 import net.minecraft.registry.entry.RegistryEntry;
 import net.minecraft.server.world.ServerWorld;
 import net.minecraft.world.World;
-import net.stonksman01.dungeons_reborn.util.DungeonsHelpers;
+import net.qbaesz13.dungeons_reborn.util.DungeonsHelpers;
 import org.jetbrains.annotations.Nullable;
 
 public class McdArtifactItem extends McdItem {
