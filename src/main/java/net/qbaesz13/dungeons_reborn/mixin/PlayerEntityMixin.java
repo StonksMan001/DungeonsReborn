@@ -1,25 +1,38 @@
 package net.qbaesz13.dungeons_reborn.mixin;
 
+import com.llamalad7.mixinextras.expression.Definition;
+import com.llamalad7.mixinextras.expression.Expression;
+import com.llamalad7.mixinextras.injector.ModifyExpressionValue;
 import com.llamalad7.mixinextras.injector.wrapoperation.Operation;
 import com.llamalad7.mixinextras.injector.wrapoperation.WrapOperation;
 import com.llamalad7.mixinextras.sugar.Local;
 import net.minecraft.entity.Entity;
+import net.minecraft.entity.EntityType;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.damage.DamageSource;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.server.world.ServerWorld;
+import net.minecraft.world.World;
+import net.qbaesz13.dungeons_reborn.items.mcd_meele.templates.MaceBaseItem;
 import net.qbaesz13.dungeons_reborn.mixin_utils.ThreadLocalContainer;
+import net.qbaesz13.dungeons_reborn.registries.MCD_DataComponentTypes;
 import net.qbaesz13.dungeons_reborn.util.AttackCooldownDependent;
 import org.spongepowered.asm.mixin.Mixin;
+import org.spongepowered.asm.mixin.Unique;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
+import java.util.Objects;
+
 @Mixin(PlayerEntity.class)
-public abstract class PlayerEntityMixin {
+public abstract class PlayerEntityMixin extends LivingEntity {
+    protected PlayerEntityMixin(EntityType<? extends LivingEntity> entityType, World world) {
+        super(entityType, world);
+    }
     @WrapOperation(method = "attack", at = @At(value = "INVOKE", target = "Lnet/minecraft/entity/player/PlayerEntity;onTargetDamaged(Lnet/minecraft/entity/Entity;Lnet/minecraft/item/ItemStack;Lnet/minecraft/entity/damage/DamageSource;Z)V"))
-    private void accountForCooldownDependentItems0(PlayerEntity instance, Entity target, ItemStack stack, DamageSource damageSource, boolean runEnchantmentEffects, Operation<Void> original, @Local(ordinal = 2) float h) {
+    private void accountForCooldownDependentItems0(PlayerEntity instance, Entity target, ItemStack stack, DamageSource damageSource, boolean runEnchantmentEffects, Operation<Void> original, @Local(ordinal = 1) float h) {
         if (stack.getItem() instanceof AttackCooldownDependent) ThreadLocalContainer.H.set(h);
         original.call(instance, target, stack, damageSource, runEnchantmentEffects);
     }
@@ -29,12 +42,32 @@ public abstract class PlayerEntityMixin {
         return original.call(instance, target, user);
     }
     @Inject(method = "attack", at = @At(value = "INVOKE", target = "Lnet/minecraft/entity/player/PlayerEntity;beforePlayerAttack()V"))
-    private void accountForCooldownDependentItems2(Entity target, CallbackInfo ci, @Local ItemStack itemStack, @Local(ordinal = 2) float h) {
-        if (((PlayerEntity)(Object) this).getEntityWorld() instanceof ServerWorld serverWorld
+    private void accountForCooldownDependentItems2(Entity target, CallbackInfo ci, @Local ItemStack itemStack, @Local(ordinal = 1) float h) {
+        if (this.getEntityWorld() instanceof ServerWorld serverWorld
                 && target instanceof LivingEntity livingEntity
                 && itemStack.getItem() instanceof AttackCooldownDependent item
                 && h == 1.0) {
-            item.postChargedAttack(itemStack, livingEntity, (PlayerEntity)(Object) this);
+            item.postChargedAttack(itemStack, livingEntity, this);
         }
+    }
+
+    @WrapOperation(method = "takeShieldHit", at = @At(value = "INVOKE", target = "Lnet/minecraft/entity/LivingEntity;getWeaponDisableBlockingForSeconds()F"))
+    private float disableShieldOnCriticalMaceHit0(LivingEntity instance, Operation<Float> original) {
+        return isAttackCharged(instance) ? MaceBaseItem.DEFAULT_DISABLE_BLOCKING_TIME : original.call(instance);
+    }
+
+    @Definition(id = "f", local = @Local(type = float.class))
+    @Expression("f > 0.0")
+    @ModifyExpressionValue(method = "takeShieldHit", at = @At("MIXINEXTRAS:EXPRESSION"))
+    private boolean disableShieldOnCriticalMaceHit1(boolean original, @Local(argsOnly = true) LivingEntity attacker) {
+        return original || isAttackCharged(attacker);
+    }
+    @Unique
+    private boolean isAttackCharged(LivingEntity attacker) {
+        ItemStack itemStack = attacker.getWeaponStack();
+        return this.getEntityWorld() instanceof ServerWorld
+                && Objects.nonNull(itemStack)
+                && itemStack.getItem() instanceof MaceBaseItem
+                && itemStack.getOrDefault(MCD_DataComponentTypes.ATTACK_CHAIN_STEP, 0) == 2;
     }
 }

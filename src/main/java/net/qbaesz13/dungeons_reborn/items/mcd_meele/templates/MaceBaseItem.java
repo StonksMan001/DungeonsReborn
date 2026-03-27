@@ -25,6 +25,7 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 public abstract class MaceBaseItem extends SkyCoreToolAPI.SwordItem implements ChainAttackWeapon, AttackCooldownDependent {
+    public static final float DEFAULT_DISABLE_BLOCKING_TIME = 5.0f;
     float baseAttackDamage;
     float attackSpeed;
     public MaceBaseItem(ToolMaterial toolMaterial, float baseAttackDamage, float attackSpeed, Settings settings) {
