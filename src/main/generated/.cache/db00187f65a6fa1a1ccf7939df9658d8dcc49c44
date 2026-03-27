@@ -1,7 +1,0 @@
-// 1.21.11	-999999999-01-01T00:00:00	DungeonsReborn/Tags for minecraft:block
-341731956438bc68b5d23081e1db7e360fe956f7 data/minecraft/tags/block/dirt.json
-80bb1620bcb3673095c85e06e6860f82fdd78cc2 data/minecraft/tags/block/mineable/axe.json
-6dbdaa45678c331c8bf1ae87dadb180d05c1c2a0 data/minecraft/tags/block/mineable/hoe.json
-c06bedbca021c862fc34e4c1fdb172a5e0b0a72c data/minecraft/tags/block/mineable/pickaxe.json
-35133e95f1c8fdd7a1c21afcc231fc0bffefb9a8 data/minecraft/tags/block/mineable/shovel.json
-53847e5dd11ba022fd07d2bfbc24118595ebeb5a data/minecraft/tags/block/needs_diamond_tool.json

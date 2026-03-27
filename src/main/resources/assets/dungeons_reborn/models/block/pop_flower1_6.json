@@ -1,7 +1,0 @@
-{
-  "parent": "minecraft:block/crop_emissive",
-  "textures": {
-    "crop": "dungeons_reborn:block/pop_flower_6",
-    "crop_emissive": "dungeons_reborn:block/pop_flower_6_e"
-  }
-}
