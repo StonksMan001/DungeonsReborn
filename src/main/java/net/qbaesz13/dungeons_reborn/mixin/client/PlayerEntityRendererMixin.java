@@ -1,4 +1,4 @@
-package net.qbaesz13.dungeons_reborn.mixin;
+package net.qbaesz13.dungeons_reborn.mixin.client;
 
 import com.llamalad7.mixinextras.injector.wrapoperation.Operation;
 import com.llamalad7.mixinextras.injector.wrapoperation.WrapOperation;

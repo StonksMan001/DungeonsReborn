@@ -15,9 +15,9 @@
     "RangedWeaponItemMixin"
   ],
   "client": [
-    "AbstractClientPlayerEntityMixin",
-    "HeldItemRendererMixin",
-    "PlayerEntityRendererMixin"
+    "client.AbstractClientPlayerEntityMixin",
+    "client.HeldItemRendererMixin",
+    "client.PlayerEntityRendererMixin"
   ],
   "injectors": {
     "defaultRequire": 1
