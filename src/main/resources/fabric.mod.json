@@ -3,20 +3,28 @@
 	"id": "dungeons_reborn",
 	"version": "${version}",
 	"name": "Dungeons Reborn",
-	"description": "This is an example description! Tell everyone what your mod is about!",
+	"description": "Vanilla friendly mod that adds Minecraft Dungeons style content to the game",
 	"authors": [
-		"Me!"
+		"Qbaesz13 [lead-developer] (Discord: #stonksman01)",
+		"B525 [contributor] (Discord: #kb525)",
+		"istomriddle [contributor] (Discord: #ri_yung)"
 	],
 	"contact": {
-		"homepage": "https://fabricmc.net/",
-		"sources": "https://github.com/FabricMC/fabric-example-mod"
+		"homepage": "https://modrinth.com/mod/dungeonsreborn",
+		"sources": "https://github.com/StonksMan001/DungeonsReborn"
 	},
 	"license": "CC0-1.0",
 	"icon": "assets/dungeons_reborn/icon.png",
 	"environment": "*",
 	"entrypoints": {
 		"main": [
-			"net.stonksman.dungeons_reborn.DungeonsReborn"
+			"net.qbaesz13.dungeons_reborn.DungeonsReborn"
+		],
+		"client": [
+			"net.qbaesz13.dungeons_reborn.DungeonsRebornClient"
+		],
+		"fabric-datagen": [
+			"net.qbaesz13.dungeons_reborn.DungeonsRebornDataGenerator"
 		]
 	},
 	"mixins": [
