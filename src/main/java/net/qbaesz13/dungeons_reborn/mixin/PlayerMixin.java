@@ -32,21 +32,21 @@ public abstract class PlayerMixin extends LivingEntity {
         super(type, level);
     }
     @WrapOperation(method = "attack", at = @At(value = "INVOKE", target = "Lnet/minecraft/world/entity/player/Player;itemAttackInteraction(Lnet/minecraft/world/entity/Entity;Lnet/minecraft/world/item/ItemStack;Lnet/minecraft/world/damagesource/DamageSource;Z)V"))
-    private void accountForCooldownDependentItems0(Player instance, Entity entity, ItemStack attackingItemStack, DamageSource damageSource, boolean bl, Operation<Void> original, @Local(name = "magicBoost") float magicBoost) {
-        if (attackingItemStack.getItem() instanceof AttackCooldownDependent) ThreadLocalContainer.MAGIC_BOOST.set(magicBoost);
+    private void accountForCooldownDependentItems0(Player instance, Entity entity, ItemStack attackingItemStack, DamageSource damageSource, boolean bl, Operation<Void> original, @Local(name = "attackStrengthScale") float attackStrengthScale) {
+        if (attackingItemStack.getItem() instanceof AttackCooldownDependent) ThreadLocalContainer.ATTACK_STRENGT_SCALE.set(attackStrengthScale);
         original.call(instance, entity, attackingItemStack, damageSource, bl);
     }
     @WrapOperation(method = "itemAttackInteraction", at = @At(value = "INVOKE", target = "Lnet/minecraft/world/item/ItemStack;hurtEnemy(Lnet/minecraft/world/entity/LivingEntity;Lnet/minecraft/world/entity/LivingEntity;)Z"))
     private boolean accountForCooldownDependentItems1(ItemStack instance, LivingEntity livingTarget, LivingEntity attacker, Operation<Boolean> original) {
-        if (instance.getItem() instanceof AttackCooldownDependent item && ThreadLocalContainer.MAGIC_BOOST.get() == 1.0f) item.postChargedHit(instance, livingTarget, attacker);
+        if (instance.getItem() instanceof AttackCooldownDependent item && ThreadLocalContainer.ATTACK_STRENGT_SCALE.get() == 1.0f) item.postChargedHit(instance, livingTarget, attacker);
         return original.call(instance, livingTarget, attacker);
     }
     @Inject(method = "attack", at = @At(value = "INVOKE", target = "Lnet/minecraft/world/entity/player/Player;onAttack()V"))
-    private void accountForCooldownDependentItems2(Entity target, CallbackInfo ci, @Local(name = "attackingItemStack") ItemStack attackingItemStack, @Local(name = "magicBoost") float magicBoost) {
+    private void accountForCooldownDependentItems2(Entity target, CallbackInfo ci, @Local(name = "attackingItemStack") ItemStack attackingItemStack, @Local(name = "attackStrengthScale") float attackStrengthScale) {
         if (this.level() instanceof ServerLevel
                 && target instanceof LivingEntity livingEntity
                 && attackingItemStack.getItem() instanceof AttackCooldownDependent item
-                && magicBoost == 1.0) {
+                && attackStrengthScale == 1.0f) {
             item.postChargedAttack(attackingItemStack, livingEntity, this);
         }
     }

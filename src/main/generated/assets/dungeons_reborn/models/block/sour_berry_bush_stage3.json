@@ -1,6 +1,6 @@
 {
   "parent": "minecraft:block/cross",
   "textures": {
-    "cross": "minecraft:block/sweet_berry_bush_stage2"
+    "cross": "dungeons_reborn:block/sour_berry_bush_stage3"
   }
 }

@@ -14,11 +14,11 @@ import net.minecraft.client.renderer.block.dispatch.Variant;
 import net.minecraft.resources.Identifier;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 import net.qbaesz13.dungeons_reborn.registries.MCD_Blocks;
 import net.qbaesz13.dungeons_reborn.registries.MCD_Items;
 import net.qbaesz13.dungeons_reborn.registries.MCD_ModelTemplates;
+import org.jspecify.annotations.NonNull;
 
 public class MCD_ModelProvider extends FabricModelProvider {
     public MCD_ModelProvider(FabricPackOutput output) {
@@ -58,13 +58,13 @@ public class MCD_ModelProvider extends FabricModelProvider {
                                 .with(
                                         PropertyDispatch.initial(BlockStateProperties.AGE_3)
                                                 .generate(age -> BlockModelGenerators.plainVariant(
-                                                        bmg.createSuffixedVariant(Blocks.SWEET_BERRY_BUSH, "_stage" + age,
+                                                        bmg.createSuffixedVariant(berryBushBlock, "_stage" + age,
                                                         ModelTemplates.CROSS, TextureMapping::cross)))
                                 )
                 );
     }
     @Override
-    public void generateItemModels(ItemModelGenerators img) {
+    public void generateItemModels(@NonNull ItemModelGenerators img) {
         this.registerBow(img, MCD_Items.TWIN_BOW);
         this.registerCrossbow(img, MCD_Items.AUTO_CROSSBOW);
         this.registerCrossbow(img, MCD_Items.HEAVY_CROSSBOW);

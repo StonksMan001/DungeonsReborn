@@ -7,11 +7,5 @@ public class DungeonsRebornClient implements ClientModInitializer {
     @Override
     public void onInitializeClient() {
         MCD_ModelTemplates.register();
-
-        /* TODO?
-        ChunkSectionLayerMap.putBlock(MCD_Blocks.POP_FLOWER, BlockRenderLayer.CUTOUT);
-        ChunkSectionLayerMap.putBlock(MCD_Blocks.MIDNIGHT_SPROUTS, BlockRenderLayer.CUTOUT);
-        ChunkSectionLayerMap.putBlock(MCD_Blocks.SOUR_BERRY_BUSH, BlockRenderLayer.CUTOUT);
-        */
     }
 }

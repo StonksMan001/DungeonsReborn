@@ -2,6 +2,7 @@ package net.qbaesz13.dungeons_reborn.items.mcd_ranged;
 
 import net.minecraft.network.chat.Component;
 import net.minecraft.server.level.ServerLevel;
+import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.stats.Stats;
 import net.minecraft.world.entity.Entity;
@@ -20,6 +21,7 @@ import net.minecraft.world.item.enchantment.EnchantmentHelper;
 import net.minecraft.world.item.enchantment.Enchantments;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.phys.AABB;
+import net.qbaesz13.dungeons_reborn.DungeonsReborn;
 import net.qbaesz13.dungeons_reborn._included_libs.skycore.items.SC_BowItem;
 import net.qbaesz13.dungeons_reborn.components.McdRarity;
 import net.qbaesz13.dungeons_reborn.items.McdItem;
@@ -56,19 +58,22 @@ public class TwinBowItem extends SC_BowItem {
     }
     @Override @NullMarked
     public boolean releaseUsing(ItemStack itemStack, Level level, LivingEntity user, int remainingTime) {
-        if (level instanceof ServerLevel serverLevel && user instanceof Player playerEntity) {
-            ItemStack itemStack1 = playerEntity.getProjectile(itemStack);
-            if (!itemStack1.isEmpty()) {
-                int i = this.getUseDuration(itemStack, user) - remainingTime;
-                float f = getPowerForTime(i);
-                if (!(f < 0.1)) {
-                    List<ItemStack> list = draw(itemStack, itemStack1, playerEntity);
-                    if (!list.isEmpty()) {
+        if (!(user instanceof Player playerEntity)) {
+            return false;
+        } else {
+            ItemStack projectile = playerEntity.getProjectile(itemStack);
+            if (projectile.isEmpty()) {
+                return false;
+            } else {
+                int timeHeld = this.getUseDuration(itemStack, user) - remainingTime; // i
+                float pow = getPowerForTime(timeHeld); // f
+                if (pow < 0.1) {
+                    return false;
+                } else {
+                    List<ItemStack> firedProjectiles = draw(itemStack, projectile, playerEntity);
+                    if (level instanceof ServerLevel serverLevel && !firedProjectiles.isEmpty()) {
+                        ItemStack itemStack1 = playerEntity.getProjectile(itemStack);
                         boolean bowHasInfinity = EnchantmentHelper.getItemEnchantmentLevel(DungeonsHelpers.getEnchantmentRegistryEntry(level, Enchantments.INFINITY), itemStack) > 0;
-                        boolean critical = f == 1.0F;
-                        float speed = f * 3.0F;
-                        float divergence = 1.0F;
-                        int index = 0; // redundant
                         AABB searchBox = new AABB(playerEntity.blockPosition()).inflate(20);
                         boolean targetPlayers = Boolean.TRUE.equals(itemStack.get(MCD_DataComponents.TWIN_BOW_TARGET_PLAYER_ENTITIES_TOGGLE));
                         List<LivingEntity> targetEntities = serverLevel.getEntitiesOfClass(
@@ -76,21 +81,21 @@ public class TwinBowItem extends SC_BowItem {
                                 searchBox,
                                 entity -> DungeonsHelpers.isEntityEnemy(entity, playerEntity, targetPlayers)
                         );
-                        boolean bonus_shot = false;
+                        boolean bonusShot = false;
                         if (!targetEntities.isEmpty() && !playerEntity.isShiftKeyDown()) {
-                            bonus_shot = true;
+                            bonusShot = true;
                             LivingEntity targetEntity = targetEntities.getFirst();
                             // bonus projectile
-                            AbstractArrow abstractArrow0 = (AbstractArrow) super.createProjectile(serverLevel, playerEntity, itemStack, itemStack1, critical);
-                            this.shootProjectile(playerEntity, abstractArrow0, index, speed, divergence, playerEntity.getYRot(), null);
+                            AbstractArrow abstractArrow0 = (AbstractArrow) super.createProjectile(serverLevel, playerEntity, itemStack, itemStack1, pow == 1.0F);
+                            this.shootProjectile(playerEntity, abstractArrow0, 0, pow * 3.0F, 1.0F, playerEntity.getYRot(), null);
                             abstractArrow0.pickup = AbstractArrow.Pickup.DISALLOWED;
                             abstractArrow0.shoot(targetEntity.getX() - playerEntity.getX(), targetEntity.getEyeY() - playerEntity.getEyeY(), targetEntity.getZ() - playerEntity.getZ(), 1.5F, 0);
                             level.addFreshEntity(abstractArrow0);
                         }
                         // main projectile
-                        AbstractArrow abstractArrow1 = (AbstractArrow) super.createProjectile(serverLevel, playerEntity, itemStack, itemStack1, critical);
-                        this.shootProjectile(playerEntity, abstractArrow1, index, speed, divergence, 0.0f, null);
-                        if (bonus_shot || (bowHasInfinity && abstractArrow1 instanceof Arrow)) {
+                        AbstractArrow abstractArrow1 = (AbstractArrow) super.createProjectile(serverLevel, playerEntity, itemStack, itemStack1, pow == 1.0F);
+                        this.shootProjectile(playerEntity, abstractArrow1, 0, pow * 3.0F, 1.0F, 0.0f, null);
+                        if (bonusShot || (bowHasInfinity && abstractArrow1 instanceof Arrow)) {
                             abstractArrow1.pickup = AbstractArrow.Pickup.DISALLOWED;
                         } else if (playerEntity.isCreative()) {
                             abstractArrow1.pickup = AbstractArrow.Pickup.CREATIVE_ONLY;
@@ -100,13 +105,21 @@ public class TwinBowItem extends SC_BowItem {
                         level.addFreshEntity(abstractArrow1);
                         itemStack.hurtAndBreak(this.getDurabilityUse(itemStack1), playerEntity, playerEntity.getUsedItemHand().asEquipmentSlot());
                     }
-                    level.playSound(null, playerEntity.getX(), playerEntity.getY(), playerEntity.getZ(), MCD_Sounds.TWIN_BOW_SHOOT, SoundSource.PLAYERS, 1.0F, 1.0F / (level.getRandom().nextFloat() * 0.4F + 1.2F) + f * 0.5F);
+                    level.playSound(
+                            null,
+                            playerEntity.getX(),
+                            playerEntity.getY(),
+                            playerEntity.getZ(),
+                            MCD_Sounds.TWIN_BOW_SHOOT,
+                            SoundSource.PLAYERS,
+                            1.0F,
+                            1.0F / (level.getRandom().nextFloat() * 0.4F + 1.2F) + pow * 0.5F
+                    );
                     playerEntity.awardStat(Stats.ITEM_USED.get(this));
                     return true;
                 }
             }
         }
-        return false;
     }
     @Override @NullMarked
     public void appendHoverText(ItemStack itemStack, TooltipContext context, TooltipDisplay display, Consumer<Component> builder, TooltipFlag tooltipFlag) {

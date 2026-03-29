@@ -123,8 +123,8 @@ public interface DungeonsHelpers {
         return team1 == team2 && team1 != null;
     }
 
-    static Holder<Enchantment> getEnchantmentRegistryEntry(Level level, ResourceKey<Enchantment> enchantmentKey) {
-        return level.registryAccess().getOrThrow(Registries.ENCHANTMENT).value().getOrThrow(enchantmentKey);//TODO
+    static Holder<Enchantment> getEnchantmentRegistryEntry(Level world, ResourceKey<Enchantment> enchantment) {
+        return world.registryAccess().lookupOrThrow(Registries.ENCHANTMENT).get(enchantment).orElseThrow();
     }
     static void setRareOrCommonVariant(ItemStack itemStack) {
         if (Objects.isNull(itemStack.get(MCD_DataComponents.MCD_RARITY))) {
