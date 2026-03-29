@@ -23,7 +23,7 @@ import net.minecraft.world.World;
 import net.qbaesz13.dungeons_reborn._included_libs.skycore.SkyCoreBlockEntityAPI;
 import net.qbaesz13.dungeons_reborn.block_entities.PopFlowerBlockEntity;
 import net.qbaesz13.dungeons_reborn.registries.MCD_BlockEntityTypes;
-import org.jetbrains.annotations.Nullable;
+import org.jspecify.annotations.Nullable;
 
 public class PopFlowerBlock extends PlantBlock implements BlockEntityProvider {
     public static final MapCodec<PopFlowerBlock> CODEC = createCodec(PopFlowerBlock::new);

@@ -15,8 +15,6 @@ import net.minecraft.component.ComponentType;
 import net.minecraft.enchantment.Enchantment;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityType;
-import net.minecraft.entity.ai.brain.sensor.Sensor;
-import net.minecraft.entity.ai.brain.sensor.SensorType;
 import net.minecraft.item.*;
 import net.minecraft.registry.*;
 import net.minecraft.registry.entry.RegistryEntry;
@@ -41,7 +39,6 @@ import net.qbaesz13.dungeons_reborn._included_libs.skycore.items.SC_BowItem;
 import net.qbaesz13.dungeons_reborn._included_libs.skycore.items.SC_CrossbowItem;
 
 import java.util.function.Function;
-import java.util.function.Supplier;
 import java.util.function.ToIntFunction;
 import java.util.function.UnaryOperator;
 
@@ -65,9 +62,6 @@ public class SkyCore {
         public static RegistryKey<JukeboxSong> ofJukeBlockSongRegistry(String name) {
             return RegistryKey.of(RegistryKeys.JUKEBOX_SONG, DungeonsReborn.identifierOfDungeonsReborn(name));
         }
-        public static RegistryKey<DimensionType> ofDimensionTypeRegistry(Identifier id) {
-            return RegistryKey.of(RegistryKeys.DIMENSION_TYPE, id);
-        }
         public static RegistryKey<DimensionType> ofDimensionTypeRegistry(String name) {
             return RegistryKey.of(RegistryKeys.DIMENSION_TYPE, DungeonsReborn.identifierOfDungeonsReborn(name));
         }
@@ -76,9 +70,6 @@ public class SkyCore {
         }
         public static RegistryKey<ConfiguredFeature<?, ?>> ofConfiguredFeatureRegistry(String name) {
             return RegistryKey.of(RegistryKeys.CONFIGURED_FEATURE, DungeonsReborn.identifierOfDungeonsReborn(name));
-        }
-        public static <U extends Sensor<?>> SensorType<U> registerSensorType(String name, Supplier<U> factory) {
-            return Registry.register(Registries.SENSOR_TYPE, DungeonsReborn.identifierOfDungeonsReborn(name), new SensorType<>(factory));
         }
         public static void registerJukeBlockSong(Registerable<JukeboxSong> registry, RegistryKey<JukeboxSong> key, RegistryEntry.Reference<SoundEvent> soundEvent, int lengthInSeconds, int comparatorOutput) {
             registry.register(key, new JukeboxSong(soundEvent, Text.translatable(Util.createTranslationKey("jukebox_song", key.getValue())), (float)lengthInSeconds, comparatorOutput));
@@ -201,15 +192,15 @@ public class SkyCore {
             );
         }
         private static <T> GameRule<T> registerGameRule(
-                String name,
-                GameRuleCategory category,
-                GameRuleType type,
-                ArgumentType<T> argumentType,
-                Codec<T> codec,
-                T defaultValue,
-                FeatureSet requiredFeatures,
-                GameRules.Acceptor<T> acceptor,
-                ToIntFunction<T> commandResultSupplier
+                final String name,
+                final GameRuleCategory category,
+                final GameRuleType type,
+                final ArgumentType<T> argumentType,
+                final Codec<T> codec,
+                final T defaultValue,
+                final FeatureSet requiredFeatures,
+                final GameRules.Acceptor<T> acceptor,
+                final ToIntFunction<T> commandResultSupplier
         ) {
             return Registry.register(
                     Registries.GAME_RULE, "dr__" + name, new GameRule<>(category, type, argumentType, acceptor, codec, commandResultSupplier, defaultValue, requiredFeatures)

@@ -12,7 +12,7 @@ import org.spongepowered.asm.mixin.injection.At;
 @Mixin(PlayerEntityRenderer.class)
 public abstract class PlayerEntityRendererMixin {
     @WrapOperation(method = "getArmPose(Lnet/minecraft/entity/PlayerLikeEntity;Lnet/minecraft/item/ItemStack;Lnet/minecraft/util/Hand;)Lnet/minecraft/client/render/entity/model/BipedEntityModel$ArmPose;", at = @At(value = "INVOKE", target = "Lnet/minecraft/item/ItemStack;isOf(Lnet/minecraft/item/Item;)Z"))
-    private static boolean iItemTagCheck(ItemStack instance, Item item, Operation<Boolean> original) {
+    private static boolean itemTagCheck(ItemStack instance, Item item, Operation<Boolean> original) {
         return SkyCore.wrapRangedWeaponHardcodedCallsIfPresent(instance, item, original);
     }
 }

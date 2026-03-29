@@ -32,7 +32,7 @@ public abstract class PlayerEntityMixin extends LivingEntity {
         super(entityType, world);
     }
     @WrapOperation(method = "attack", at = @At(value = "INVOKE", target = "Lnet/minecraft/entity/player/PlayerEntity;onTargetDamaged(Lnet/minecraft/entity/Entity;Lnet/minecraft/item/ItemStack;Lnet/minecraft/entity/damage/DamageSource;Z)V"))
-    private void accountForCooldownDependentItems0(PlayerEntity instance, Entity target, ItemStack stack, DamageSource damageSource, boolean runEnchantmentEffects, Operation<Void> original, @Local(ordinal = 1) float h) {
+    private void accountForCooldownDependentItems0(PlayerEntity instance, Entity target, ItemStack stack, DamageSource damageSource, boolean runEnchantmentEffects, Operation<Void> original, @Local(name = "h") float h) {
         if (stack.getItem() instanceof AttackCooldownDependent) ThreadLocalContainer.H.set(h);
         original.call(instance, target, stack, damageSource, runEnchantmentEffects);
     }
@@ -42,8 +42,8 @@ public abstract class PlayerEntityMixin extends LivingEntity {
         return original.call(instance, target, user);
     }
     @Inject(method = "attack", at = @At(value = "INVOKE", target = "Lnet/minecraft/entity/player/PlayerEntity;beforePlayerAttack()V"))
-    private void accountForCooldownDependentItems2(Entity target, CallbackInfo ci, @Local ItemStack itemStack, @Local(ordinal = 1) float h) {
-        if (this.getEntityWorld() instanceof ServerWorld serverWorld
+    private void accountForCooldownDependentItems2(Entity target, CallbackInfo ci, @Local(name = "itemStack") ItemStack itemStack, @Local(name = "h") float h) {
+        if (this.getEntityWorld() instanceof ServerWorld
                 && target instanceof LivingEntity livingEntity
                 && itemStack.getItem() instanceof AttackCooldownDependent item
                 && h == 1.0) {

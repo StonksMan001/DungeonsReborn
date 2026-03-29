@@ -12,8 +12,9 @@ import net.minecraft.util.Pair;
 import net.qbaesz13.dungeons_reborn.components.McdRarity;
 import net.qbaesz13.dungeons_reborn.items.mcd_meele.templates.MaceBaseItem;
 import net.qbaesz13.dungeons_reborn.util.DungeonsHelpers;
-import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
+import org.jspecify.annotations.NonNull;
+import org.jspecify.annotations.NullUnmarked;
+import org.jspecify.annotations.Nullable;
 
 import java.util.function.Consumer;
 
@@ -34,14 +35,14 @@ public class SteelMaceItem extends MaceBaseItem {
         DungeonsHelpers.setRareOrCommonVariant(stack);
         super.inventoryTick(stack, world, entity, slot);
     }
-    @Override
-    public @Nullable Pair<@NotNull Double, @Nullable Double> getAttackDamagePair(@Nullable McdRarity mcdRarity) {
+    @Override @NullUnmarked
+    public Pair<@NonNull Double, Double> getAttackDamagePair(McdRarity mcdRarity) {
         if (mcdRarity == McdRarity.COMMON) return new Pair<>(7d, 11d);
         if (mcdRarity == McdRarity.RARE) return new Pair<>(8d, 12d);
         return null;
     }
-    @Override
-    public @Nullable Pair<@NotNull Double, @Nullable Double> getAttackSpeedPair(@Nullable McdRarity mcdRarity) {
+    @Override @NullUnmarked
+    public Pair<@NonNull Double, Double> getAttackSpeedPair(McdRarity mcdRarity) {
         if (mcdRarity == McdRarity.COMMON || mcdRarity == McdRarity.RARE) return new Pair<>(1.6d, 0.6d);
         return null;
     }

@@ -15,8 +15,8 @@ import net.qbaesz13.dungeons_reborn.components.McdRarity;
 import net.qbaesz13.dungeons_reborn.items.mcd_meele.templates.ClaymoreBaseItem;
 import net.qbaesz13.dungeons_reborn.registries.MCD_GameRules;
 import net.qbaesz13.dungeons_reborn.util.DungeonsHelpers;
-import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
+import org.jspecify.annotations.NonNull;
+import org.jspecify.annotations.NullUnmarked;
 
 import java.util.function.Consumer;
 
@@ -47,8 +47,8 @@ public class HeartstealerItem extends ClaymoreBaseItem {
         }
         super.postDamageEntity(stack, target, attacker);
     }
-    @Override
-    public @Nullable Pair<@NotNull Double, @Nullable Double> getAttackDamagePair(@Nullable McdRarity mcdRarity) {
+    @Override @NullUnmarked
+    public Pair<@NonNull Double, Double> getAttackDamagePair(McdRarity mcdRarity) {
         return new Pair<>(10d, null);
     }
 }

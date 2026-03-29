@@ -15,8 +15,9 @@ import net.qbaesz13.dungeons_reborn.components.McdRarity;
 import net.qbaesz13.dungeons_reborn.items.mcd_meele.templates.ClaymoreBaseItem;
 import net.qbaesz13.dungeons_reborn.registries.MCD_DataComponentTypes;
 import net.qbaesz13.dungeons_reborn.util.DungeonsHelpers;
-import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
+import org.jspecify.annotations.NonNull;
+import org.jspecify.annotations.NullUnmarked;
+import org.jspecify.annotations.Nullable;
 
 import java.util.function.Consumer;
 
@@ -25,9 +26,9 @@ public class ClaymoreItem extends ClaymoreBaseItem {
         super(toolMaterial, baseAttackDamage, attackSpeed, settings);
     }
     @Override
-    public void postHit(ItemStack stack, LivingEntity target, LivingEntity attacker) {
+    public void postDamageEntity(ItemStack stack, LivingEntity target, LivingEntity attacker) {
         if (stack.get(MCD_DataComponentTypes.MCD_RARITY) == McdRarity.RARE) DungeonsHelpers.modifyAttackDamage(stack, super.baseAttackDamage + 5d);
-        super.postHit(stack, target, attacker);
+        super.postDamageEntity(stack, target, attacker);
     }
     @Override
     public void appendTooltip(ItemStack stack, Item.TooltipContext context, TooltipDisplayComponent displayComponent, Consumer<Text> textConsumer, TooltipType type) {
@@ -42,8 +43,8 @@ public class ClaymoreItem extends ClaymoreBaseItem {
         DungeonsHelpers.setRareOrCommonVariant(stack);
         super.inventoryTick(stack, world, entity, slot);
     }
-    @Override
-    public @Nullable Pair<@NotNull Double, @Nullable Double> getAttackDamagePair(@Nullable McdRarity mcdRarity) {
+    @Override @NullUnmarked
+    public Pair<@NonNull Double, Double> getAttackDamagePair(McdRarity mcdRarity) {
         if (mcdRarity == McdRarity.COMMON) return new Pair<>(9d, null);
         if (mcdRarity == McdRarity.RARE) return new Pair<>(10d, null);
         return null;

@@ -1,6 +1,3 @@
-/*
- * Decompiled with CFR 0.2.0 (FabricMC d28b102d).
- */
 package net.qbaesz13.dungeons_reborn.items.mcd_ranged;
 
 import net.minecraft.item.ItemStack;

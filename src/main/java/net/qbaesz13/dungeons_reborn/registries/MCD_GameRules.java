@@ -6,7 +6,7 @@ import net.minecraft.world.rule.GameRuleCategory;
 import net.qbaesz13.dungeons_reborn.DungeonsReborn;
 import net.qbaesz13.dungeons_reborn._included_libs.skycore.SkyCore;
 import net.qbaesz13.dungeons_reborn._included_libs.skycore.SkyCoreRegistryHelper;
-import org.jetbrains.annotations.Nullable;
+import org.jspecify.annotations.Nullable;
 
 import java.lang.invoke.MethodHandles;
 import java.util.*;

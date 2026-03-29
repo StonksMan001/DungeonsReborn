@@ -57,23 +57,23 @@ public class MCD_ModelProvider extends FabricModelProvider {
                 );
     }
     @Override
-    public void generateItemModels(@NotNull ItemModelGenerator itemModelGenerator) {
-        this.registerBow(itemModelGenerator, MCD_Items.TWIN_BOW);
-        this.registerCrossbow(itemModelGenerator, MCD_Items.AUTO_CROSSBOW);
-        this.registerCrossbow(itemModelGenerator, MCD_Items.HEAVY_CROSSBOW);
+    public void generateItemModels(@NotNull ItemModelGenerator img) {
+        this.registerBow(img, MCD_Items.TWIN_BOW);
+        this.registerCrossbow(img, MCD_Items.AUTO_CROSSBOW);
+        this.registerCrossbow(img, MCD_Items.HEAVY_CROSSBOW);
 
-        itemModelGenerator.register(MCD_Items.ANCIENT_GOLD_INGOT, Models.GENERATED);
-        itemModelGenerator.register(MCD_Items.SOUR_BERRIES, Models.GENERATED);
-        itemModelGenerator.register(MCD_Items.ARTIFACT_DEATH_CAP_MUSHROOM, Models.GENERATED);
-        itemModelGenerator.register(MCD_Items.ARTIFACT_IRON_HIDE_AMULET, Models.GENERATED);
+        img.register(MCD_Items.ANCIENT_GOLD_INGOT, Models.GENERATED);
+        img.register(MCD_Items.SOUR_BERRIES, Models.GENERATED);
+        img.register(MCD_Items.ARTIFACT_DEATH_CAP_MUSHROOM, Models.GENERATED);
+        img.register(MCD_Items.ARTIFACT_IRON_HIDE_AMULET, Models.GENERATED);
 
-        itemModelGenerator.register(MCD_Items.ROUGH_DIAMOND_SWORD, Models.HANDHELD);
-        itemModelGenerator.register(MCD_Items.ROUGH_DIAMOND_PICKAXE, Models.HANDHELD);
-        itemModelGenerator.register(MCD_Items.STEEL_MACE, Models.HANDHELD);
-        itemModelGenerator.register(MCD_Items.SUNS_GRACE, Models.HANDHELD);
-        itemModelGenerator.register(MCD_Items.CLAYMORE, MCD_Models.HANDHELD_CLAYMORE);
-        itemModelGenerator.register(MCD_Items.HEARTSTEALER, MCD_Models.HANDHELD_CLAYMORE);
-        itemModelGenerator.register(MCD_Items.BROADSWORD, MCD_Models.HANDHELD_CLAYMORE);
+        img.register(MCD_Items.ROUGH_DIAMOND_SWORD, Models.HANDHELD);
+        img.register(MCD_Items.ROUGH_DIAMOND_PICKAXE, Models.HANDHELD);
+        img.register(MCD_Items.STEEL_MACE, Models.HANDHELD);
+        img.register(MCD_Items.SUNS_GRACE, Models.HANDHELD);
+        img.register(MCD_Items.CLAYMORE, MCD_Models.HANDHELD_CLAYMORE);
+        img.register(MCD_Items.HEARTSTEALER, MCD_Models.HANDHELD_CLAYMORE);
+        img.register(MCD_Items.BROADSWORD, MCD_Models.HANDHELD_CLAYMORE);
     }
     private void registerBow(ItemModelGenerator itemModelGenerator, Item bow) {
         itemModelGenerator.upload(bow, Models.BOW);

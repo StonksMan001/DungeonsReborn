@@ -8,8 +8,9 @@ import net.minecraft.item.tooltip.TooltipType;
 import net.minecraft.server.world.ServerWorld;
 import net.minecraft.text.Text;
 import net.qbaesz13.dungeons_reborn._included_libs.skycore.items.SC_CrossbowItem;
+import net.qbaesz13.dungeons_reborn.items.McdItem;
 import net.qbaesz13.dungeons_reborn.util.DungeonsHelpers;
-import org.jetbrains.annotations.Nullable;
+import org.jspecify.annotations.Nullable;
 
 import java.util.function.Consumer;
 
@@ -29,5 +30,9 @@ public class HeavyCrossbowItem extends SC_CrossbowItem {
     public void inventoryTick(ItemStack stack, ServerWorld world, Entity entity, @Nullable EquipmentSlot slot) {
         DungeonsHelpers.setRareOrCommonVariant(stack);
         super.inventoryTick(stack, world, entity, slot);
+    }
+    @Override
+    public int getItemBarColor(ItemStack stack) {
+        return McdItem.getMcdItemBarColor();
     }
 }

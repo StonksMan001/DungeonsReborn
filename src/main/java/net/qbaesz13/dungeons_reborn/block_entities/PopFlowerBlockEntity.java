@@ -14,7 +14,6 @@ public class PopFlowerBlockEntity extends BlockEntity {
     public PopFlowerBlockEntity(BlockPos pos, BlockState state) {
         super(MCD_BlockEntityTypes.POP_FLOWER_BLOCK_ENTITY, pos, state);
     }
-
     public static void serverTick(World world, BlockPos pos, BlockState state, PopFlowerBlockEntity blockEntity) {
         if (world instanceof ServerWorld serverWorld) {
             var ref = new Object() {boolean hide = false;};

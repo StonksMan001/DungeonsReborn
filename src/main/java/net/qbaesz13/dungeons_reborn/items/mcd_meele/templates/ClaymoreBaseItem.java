@@ -16,7 +16,9 @@ import net.qbaesz13.dungeons_reborn.util.AttackCooldownDependent;
 import net.qbaesz13.dungeons_reborn.util.ChainAttackWeapon;
 import net.qbaesz13.dungeons_reborn.registries.MCD_DataComponentTypes;
 import net.qbaesz13.dungeons_reborn.util.DungeonsHelpers;
-import org.jetbrains.annotations.Nullable;
+import org.jspecify.annotations.NonNull;
+import org.jspecify.annotations.NullUnmarked;
+import org.jspecify.annotations.Nullable;
 
 public abstract class ClaymoreBaseItem extends SkyCoreToolAPI.SwordItem implements ChainAttackWeapon, AttackCooldownDependent {
     protected float baseAttackDamage;
@@ -47,8 +49,8 @@ public abstract class ClaymoreBaseItem extends SkyCoreToolAPI.SwordItem implemen
         if (current_chain_step == 1) return McdItem.getMcdChargedItemBarColor();
         else return McdItem.getMcdItemBarColor();
     }
-    @Override
-    public @Nullable Pair<Double, Double> getAttackKnockbackPair(@Nullable McdRarity mcdRarity) {
+    @Override @NullUnmarked
+    public Pair<@NonNull Double, Double> getAttackKnockbackPair(McdRarity mcdRarity) {
         return new Pair<>(4d, 7d);
     }
 }

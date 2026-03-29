@@ -4,11 +4,11 @@
   "compatibilityLevel": "JAVA_21",
   "mixins": [
     "AttributeModifiersComponent$Display$DefaultMixin",
-    "CrossbowItemAccessor",
+    "accessors.CrossbowItemAccessor",
     "CrossBowItemMixin",
     "GrindStoneScreenHandlerMixin",
     "ItemStackMixin",
-    "PersistentProjectileEntityAccessor",
+    "accessors.PersistentProjectileEntityAccessor",
     "PlayerEntityMixin",
     "ProjectileEntityMixin",
     "RangedWeaponItemMixin"

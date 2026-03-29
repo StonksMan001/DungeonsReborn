@@ -14,7 +14,7 @@ import net.minecraft.world.World;
 import net.qbaesz13.dungeons_reborn._included_libs.skycore.items.SC_CrossbowItem;
 import net.qbaesz13.dungeons_reborn.components.McdRarity;
 import net.qbaesz13.dungeons_reborn.items.McdItem;
-import net.qbaesz13.dungeons_reborn.mixin.CrossbowItemAccessor;
+import net.qbaesz13.dungeons_reborn.mixin.accessors.CrossbowItemAccessor;
 import net.qbaesz13.dungeons_reborn.registries.MCD_DataComponentTypes;
 import net.qbaesz13.dungeons_reborn.util.DungeonsHelpers;
 
@@ -27,7 +27,6 @@ public class AutoCrossbowItem extends SC_CrossbowItem {
     public AutoCrossbowItem(Settings settings) {
         super(settings);
     }
-    
     @Override
     public ActionResult use(World world, PlayerEntity user, Hand hand) {
         ItemStack itemStack = user.getStackInHand(hand);
@@ -51,7 +50,6 @@ public class AutoCrossbowItem extends SC_CrossbowItem {
             return ActionResult.FAIL;
         }
     }
-
     @Override
     public void appendTooltip(ItemStack stack, Item.TooltipContext context, TooltipDisplayComponent displayComponent, Consumer<Text> textConsumer, TooltipType type) {
         DungeonsHelpers.Tooltip.appendDungeonsHeader(textConsumer);
@@ -60,10 +58,8 @@ public class AutoCrossbowItem extends SC_CrossbowItem {
         DungeonsHelpers.Tooltip.appendAbility(textConsumer, Text.translatable("ability.dungeons_reborn.accelerate"), false);
         super.appendTooltip(stack, context, displayComponent, textConsumer, type);
     }
-
     @Override
     public int getItemBarColor(ItemStack stack) {
         return McdItem.getMcdItemBarColor();
     }
-
 }

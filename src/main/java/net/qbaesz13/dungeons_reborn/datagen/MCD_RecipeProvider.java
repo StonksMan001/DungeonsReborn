@@ -10,6 +10,7 @@ import net.minecraft.recipe.book.RecipeCategory;
 import net.minecraft.registry.RegistryWrapper;
 import net.qbaesz13.dungeons_reborn.registries.MCD_Blocks;
 import net.qbaesz13.dungeons_reborn.registries.MCD_Items;
+import org.jspecify.annotations.NullMarked;
 
 import java.util.concurrent.CompletableFuture;
 
@@ -17,7 +18,7 @@ public class MCD_RecipeProvider extends FabricRecipeProvider {
     public MCD_RecipeProvider(FabricDataOutput output, CompletableFuture<RegistryWrapper.WrapperLookup> registriesFuture) {
         super(output, registriesFuture);
     }
-    @Override
+    @Override @NullMarked
     protected RecipeGenerator getRecipeGenerator(RegistryWrapper.WrapperLookup wrapperLookup, RecipeExporter recipeExporter) {
         return new RecipeGenerator(wrapperLookup, recipeExporter) {
             @Override

@@ -2,17 +2,20 @@ package net.qbaesz13.dungeons_reborn.util;
 
 import net.minecraft.util.Pair;
 import net.qbaesz13.dungeons_reborn.components.McdRarity;
-import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
+import org.jspecify.annotations.NonNull;
+import org.jspecify.annotations.NullUnmarked;
 
 public interface ChainAttackWeapon {
-    default @Nullable Pair<@NotNull Double, @Nullable Double> getAttackDamagePair(@Nullable McdRarity mcdRarity) {
+    @NullUnmarked
+    default Pair<@NonNull Double, Double> getAttackDamagePair(McdRarity mcdRarity) {
         return null;
     }
-    default @Nullable Pair<@NotNull Double, @Nullable Double> getAttackSpeedPair(@Nullable McdRarity mcdRarity) {
+    @NullUnmarked
+    default Pair<@NonNull Double, Double> getAttackSpeedPair(McdRarity mcdRarity) {
         return null;
     }
-    default @Nullable Pair<@NotNull Double, @Nullable Double> getAttackKnockbackPair(@Nullable McdRarity mcdRarity) {
+    @NullUnmarked
+    default Pair<@NonNull Double, Double> getAttackKnockbackPair(McdRarity mcdRarity) {
         return null;
     }
 }

@@ -1,4 +1,4 @@
-package net.qbaesz13.dungeons_reborn.mixin;
+package net.qbaesz13.dungeons_reborn.mixin.accessors;
 
 import net.minecraft.entity.projectile.PersistentProjectileEntity;
 import org.spongepowered.asm.mixin.Mixin;

@@ -22,8 +22,9 @@ import net.qbaesz13.dungeons_reborn.items.mcd_meele.templates.MaceBaseItem;
 import net.qbaesz13.dungeons_reborn.registries.MCD_DataComponentTypes;
 import net.qbaesz13.dungeons_reborn.registries.MCD_GameRules;
 import net.qbaesz13.dungeons_reborn.util.DungeonsHelpers;
-import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
+import org.jspecify.annotations.NonNull;
+import org.jspecify.annotations.NullUnmarked;
+import org.jspecify.annotations.Nullable;
 
 import java.util.function.Consumer;
 import java.util.Random;
@@ -88,12 +89,12 @@ public class SunsGraceItem extends MaceBaseItem {
         DungeonsHelpers.setRareOrCommonVariant(stack);
         super.inventoryTick(stack, world, entity, slot);
     }
-    @Override
-    public @Nullable Pair<@NotNull Double, @Nullable Double> getAttackDamagePair(@Nullable McdRarity mcdRarity) {
+    @Override @NullUnmarked
+    public Pair<@NonNull Double, Double> getAttackDamagePair(McdRarity mcdRarity) {
         return new Pair<>(8d, 12d);
     }
-    @Override
-    public @Nullable Pair<@NotNull Double, @Nullable Double> getAttackSpeedPair(@Nullable McdRarity mcdRarity) {
+    @Override @NullUnmarked
+    public Pair<@NonNull Double, Double> getAttackSpeedPair(McdRarity mcdRarity) {
         return new Pair<>(1.6d, 0.6d);
     }
 }

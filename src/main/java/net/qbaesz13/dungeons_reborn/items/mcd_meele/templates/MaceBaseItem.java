@@ -21,8 +21,9 @@ import net.qbaesz13.dungeons_reborn.util.AttackCooldownDependent;
 import net.qbaesz13.dungeons_reborn.util.ChainAttackWeapon;
 import net.qbaesz13.dungeons_reborn.registries.MCD_DataComponentTypes;
 import net.qbaesz13.dungeons_reborn.util.DungeonsHelpers;
-import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
+import org.jspecify.annotations.NonNull;
+import org.jspecify.annotations.NullUnmarked;
+import org.jspecify.annotations.Nullable;
 
 public abstract class MaceBaseItem extends SkyCoreToolAPI.SwordItem implements ChainAttackWeapon, AttackCooldownDependent {
     public static final float DEFAULT_DISABLE_BLOCKING_TIME = 5.0f;
@@ -71,8 +72,8 @@ public abstract class MaceBaseItem extends SkyCoreToolAPI.SwordItem implements C
         DungeonsHelpers.makeUnrepairable(stack);
         super.inventoryTick(stack, world, entity, slot);
     }
-    @Override
-    public abstract @Nullable Pair<@NotNull Double, @Nullable Double> getAttackDamagePair(@Nullable McdRarity mcdRarity);
-    @Override
-    public abstract @Nullable Pair<@NotNull Double, @Nullable Double> getAttackSpeedPair(@Nullable McdRarity mcdRarity);
+    @Override @NullUnmarked
+    public abstract Pair<@NonNull Double, Double> getAttackDamagePair(McdRarity mcdRarity);
+    @Override @NullUnmarked
+    public abstract Pair<@NonNull Double, Double> getAttackSpeedPair(McdRarity mcdRarity);
 }

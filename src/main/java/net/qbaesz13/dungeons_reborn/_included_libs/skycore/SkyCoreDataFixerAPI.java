@@ -1,6 +1,7 @@
 package net.qbaesz13.dungeons_reborn._included_libs.skycore;
 
 import java.util.HashMap;
+
 public class SkyCoreDataFixerAPI {
     public static final HashMap<String, String[]> BLOCKS_WITH_ALIAS = new HashMap<>();
     public static final HashMap<String, String[]> ITEM_WITH_ALIAS = new HashMap<>();

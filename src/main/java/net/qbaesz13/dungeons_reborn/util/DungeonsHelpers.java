@@ -63,7 +63,7 @@ public interface DungeonsHelpers {
                     default -> textConsumer.accept(text.append(Text.translatable("mcdRarity.extended.dungeons_reborn.custom")));
                 }
             } else {
-                textConsumer.accept(text.append(Text.translatable("tooltip.dungeons_reborn.rarity.unknown")));
+                textConsumer.accept(text.append(Text.translatable("mcdRarity.dungeons_reborn.unknown")));
             }
         }
         static void appendBuiltInEnchantment(Consumer<Text> textConsumer, MutableText enchantmentText) {
@@ -86,15 +86,15 @@ public interface DungeonsHelpers {
                                     Text.translatable("options.off").formatted(Formatting.RED))));
         }
     }
-    static void makeUnrepairable(ItemStack stack) {
-        if (Objects.nonNull(stack.get(DataComponentTypes.REPAIRABLE))) stack.set(DataComponentTypes.REPAIRABLE, null);
+    static void makeUnrepairable(ItemStack itemStack) {
+        if (Objects.nonNull(itemStack.get(DataComponentTypes.REPAIRABLE))) itemStack.set(DataComponentTypes.REPAIRABLE, null);
     }
-    static void enchantStackWithPrimitiveness(ItemStack stack, RegistryWrapper.WrapperLookup provider) {
-        addEnchantmentToStack(stack, provider, MCD_Enchantments.PRIMITIVENESS_CURSE, 1);
+    static void enchantStackWithPrimitiveness(ItemStack itemStack, RegistryWrapper.WrapperLookup wrapperLookup) {
+        addEnchantmentToStack(itemStack, wrapperLookup, MCD_Enchantments.PRIMITIVENESS_CURSE, 1);
     }
-    static void addEnchantmentToStack(ItemStack itemStack, RegistryWrapper.WrapperLookup wrapper, RegistryKey<Enchantment> enchantment, int level) {
-        if (wrapper == null) return;
-        enchantInWorld(itemStack, enchantment, level, wrapper.getOptional(RegistryKeys.ENCHANTMENT).orElse(null));
+    static void addEnchantmentToStack(ItemStack itemStack, RegistryWrapper.WrapperLookup wrapperLookup, RegistryKey<Enchantment> enchantment, int level) {
+        if (wrapperLookup == null) return;
+        enchantInWorld(itemStack, enchantment, level, wrapperLookup.getOptional(RegistryKeys.ENCHANTMENT).orElse(null));
     }
     private static void enchantInWorld(ItemStack stack, RegistryKey<Enchantment> enchantment, int level, RegistryWrapper.Impl<Enchantment> lookup ) {
         if (lookup == null) return;

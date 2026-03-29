@@ -11,8 +11,8 @@ import net.minecraft.util.Pair;
 import net.qbaesz13.dungeons_reborn.mixin_utils.ThreadLocalContainer;
 import net.qbaesz13.dungeons_reborn.registries.MCD_DataComponentTypes;
 import net.qbaesz13.dungeons_reborn.util.ChainAttackWeapon;
-import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
+import org.jspecify.annotations.NonNull;
+import org.jspecify.annotations.Nullable;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Unique;
 import org.spongepowered.asm.mixin.injection.At;
@@ -47,7 +47,7 @@ public abstract class AttributeModifiersComponent$Display$DefaultMixin {
         return original.call(instance, e);
     }
     @Unique
-    private String getChainAttackWeaponParameters(Operation<String> original, DecimalFormat instance, @Nullable Pair<@NotNull Double, @Nullable Double> pair) {
+    private String getChainAttackWeaponParameters(Operation<String> original, DecimalFormat instance, @Nullable Pair<@NonNull Double, @Nullable Double> pair) {
         if (Objects.isNull(pair)) return null;
         String base = original.call(instance, pair.getLeft());
         String critical = Objects.nonNull(pair.getRight()) ? original.call(instance, pair.getRight()) : null;

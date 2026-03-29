@@ -5,6 +5,7 @@ import net.fabricmc.fabric.api.datagen.v1.provider.FabricBlockLootTableProvider;
 import net.minecraft.block.Block;
 import net.minecraft.block.Blocks;
 import net.minecraft.block.SweetBerryBushBlock;
+import net.minecraft.data.loottable.vanilla.VanillaBlockLootTableGenerator;
 import net.minecraft.enchantment.Enchantment;
 import net.minecraft.enchantment.Enchantments;
 import net.minecraft.item.Item;
@@ -42,6 +43,9 @@ public class MCD_LootTableProvider extends FabricBlockLootTableProvider {
         addDrop(MCD_Blocks.POP_FLOWER);
         addBerryBushDrops(MCD_Blocks.SOUR_BERRY_BUSH, MCD_Items.SOUR_BERRIES);
     }
+    /**
+     * Based on {@link VanillaBlockLootTableGenerator#generate}
+     */
     private void addBerryBushDrops(Block berryBush, Item drop) {
         RegistryWrapper.Impl<Enchantment> impl = this.registries.getOrThrow(RegistryKeys.ENCHANTMENT);
         this.addDrop(

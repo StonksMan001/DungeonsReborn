@@ -6,7 +6,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.text.Text;
 import net.qbaesz13.dungeons_reborn.mixin_utils.ThreadLocalContainer;
 import net.qbaesz13.dungeons_reborn.util.ChainAttackWeapon;
-import org.jetbrains.annotations.Nullable;
+import org.jspecify.annotations.Nullable;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
@@ -18,14 +18,14 @@ import java.util.function.Consumer;
 @Mixin(ItemStack.class)
 public abstract class ItemStackMixin {
     @Inject(method = "appendAttributeModifiersTooltip", at = @At(value = "INVOKE", target = "Lnet/minecraft/item/ItemStack;applyAttributeModifier(Lnet/minecraft/component/type/AttributeModifierSlot;Lorg/apache/commons/lang3/function/TriConsumer;)V", shift = At.Shift.BEFORE))
-    private void captureItemStack(Consumer<Text> textConsumer, TooltipDisplayComponent displayComponent, @Nullable PlayerEntity player, CallbackInfo ci) {
+    private void captureItemStack(Consumer<Text> textConsumer, TooltipDisplayComponent displayComponent, @Nullable PlayerEntity playerEntity, CallbackInfo ci) {
         ItemStack thisStack = (ItemStack)(Object)this;
         if (thisStack.getItem() instanceof ChainAttackWeapon) {
             ThreadLocalContainer.STACK.set(thisStack);
         }
     }
     @Inject(method = "appendAttributeModifiersTooltip", at = @At(value = "INVOKE", target = "Lnet/minecraft/item/ItemStack;applyAttributeModifier(Lnet/minecraft/component/type/AttributeModifierSlot;Lorg/apache/commons/lang3/function/TriConsumer;)V", shift = At.Shift.AFTER))
-    private void releaseItemStack(Consumer<Text> textConsumer, TooltipDisplayComponent displayComponent, @Nullable PlayerEntity player, CallbackInfo ci) {
+    private void releaseItemStack(Consumer<Text> textConsumer, TooltipDisplayComponent displayComponent, @Nullable PlayerEntity playerEntity, CallbackInfo ci) {
         if (Objects.nonNull(ThreadLocalContainer.STACK.get())) ThreadLocalContainer.STACK.remove();
     }
 }
