@@ -1,0 +1,66 @@
+{
+  "artifact_iron_hide_amulet_used": {
+    "sounds": [
+      {
+        "name": "dungeons_reborn:iron_hide_amulet/use/iron_hide_amulet_use1",
+        "stream": true
+      },
+      {
+        "name": "dungeons_reborn:iron_hide_amulet/use/iron_hide_amulet_use2",
+        "stream": true
+      },
+      {
+        "name": "dungeons_reborn:iron_hide_amulet/use/iron_hide_amulet_use3",
+        "stream": true
+      }
+    ]
+  },
+  "twin_bow_shoot": {
+    "sounds": [
+      {
+        "name": "dungeons_reborn:twin_bow/shoot/twin_bow_shoot1",
+        "stream": true
+      },
+      {
+        "name": "dungeons_reborn:twin_bow/shoot/twin_bow_shoot2",
+        "stream": true
+      },
+      {
+        "name": "dungeons_reborn:twin_bow/shoot/twin_bow_shoot3",
+        "stream": true
+      }
+    ]
+  },
+  "death_cap_mushroom_use": {
+    "sounds": [
+      {
+        "name": "dungeons_reborn:death_cap_mushroom/use/death_cap_mushroom_use1",
+        "stream": true
+      },
+      {
+        "name": "dungeons_reborn:death_cap_mushroom/use/death_cap_mushroom_use2",
+        "stream": true
+      },
+      {
+        "name": "dungeons_reborn:death_cap_mushroom/use/death_cap_mushroom_use3",
+        "stream": true
+      }
+    ]
+  },
+  "ancient_gold_pick_up": {
+    "sounds": [
+      {
+        "name": "dungeons_reborn:ancient_gold/pick_up/ancient_gold_pick_up1",
+        "stream": true
+      },
+      {
+        "name": "dungeons_reborn:ancient_gold/pick_up/ancient_gold_pick_up2",
+        "stream": true
+      },
+      {
+        "name": "dungeons_reborn:ancient_gold/pick_up/ancient_gold_pick_up3",
+        "stream": true
+      }
+    ]
+  }
+}

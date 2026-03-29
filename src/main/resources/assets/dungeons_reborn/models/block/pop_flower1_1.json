@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:block/crop",
+  "textures": {
+    "crop": "dungeons_reborn:block/pop_flower_1"
+  }
+}

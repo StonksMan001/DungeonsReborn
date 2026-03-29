@@ -1,0 +1,12 @@
+{
+  "variants": {
+    "": [
+      {
+        "model": "dungeons_reborn:block/mossy_oak_planks1"
+      },
+      {
+        "model": "dungeons_reborn:block/mossy_oak_planks2"
+      }
+    ]
+  }
+}

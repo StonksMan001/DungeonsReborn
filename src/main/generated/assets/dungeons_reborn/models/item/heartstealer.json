@@ -1,0 +1,6 @@
+{
+  "parent": "dungeons_reborn:item/presets/handheld_claymore",
+  "textures": {
+    "layer0": "dungeons_reborn:item/heartstealer"
+  }
+}

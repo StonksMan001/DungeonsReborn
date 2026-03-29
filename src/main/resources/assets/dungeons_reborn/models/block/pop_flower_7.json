@@ -1,0 +1,7 @@
+{
+  "parent": "minecraft:block/cross_emissive",
+  "textures": {
+    "cross": "dungeons_reborn:block/pop_flower_7",
+    "cross_emissive": "dungeons_reborn:block/pop_flower_7_e"
+  }
+}

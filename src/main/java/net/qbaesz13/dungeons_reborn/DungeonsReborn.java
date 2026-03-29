@@ -23,10 +23,11 @@ public class DungeonsReborn implements ModInitializer {
 		MCD_Blocks.register();
 		MCD_Commands.register();
 		MCD_CompostableItems.register();
+		MCD_ConfiguredFeatures.register();
+		MCD_CreativeModeTabs.register();
 		MCD_DataComponents.register();
-		MCD_GameRules.register();
 		MCD_Enchantments.register();
-		MCD_ItemGroups.register();
+		MCD_GameRules.register();
 		MCD_Items.register();
 		MCD_ItemTags.register();
 		MCD_LootTableModifiers.register();

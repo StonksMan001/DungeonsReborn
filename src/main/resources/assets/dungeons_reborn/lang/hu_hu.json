@@ -1,0 +1,84 @@
+{
+  "block.dungeons_reborn.midnight_mossy_cobblestone": "Éjféli mohás zúzottkő",
+  "item.dungeons_reborn.ancient_gold_ingot": "Ősi aranyrúd",
+  "block.dungeons_reborn.ancient_gold_block": "Ősi aranyblokk",
+  "block.dungeons_reborn.pop_flower": "Popvirág",
+  "block.dungeons_reborn.highland_moss_block": "Hegyvidéki mohablokk",
+  "block.dungeons_reborn.highland_moss_carpet": "Hegyvidéki mohaszőnyeg",
+  "block.dungeons_reborn.sour_berry_bush": "Savanyúbogyóbokor",
+  "item.dungeons_reborn.sour_berries": "Savanyú bogyók",
+  "block.dungeons_reborn.midnight_moss_block": "Éjféli mohablokk",
+  "block.dungeons_reborn.midnight_moss_carpet": "Éjféli mohaszőnyeg",
+  "block.dungeons_reborn.midnight_sprouts": "Éjféli csírák",
+  "block.dungeons_reborn.mossy_oak_planks": "Mohás tölgydeszka",
+  "block.dungeons_reborn.mossy_spruce_planks": "Mohás fenyődeszka",
+
+  "tooltip.dungeons_reborn.minecraft_dungeons_header": "Minecraft Dungeons leírás:",
+
+  "item.dungeons_reborn.artifact_iron_hide_amulet": "Vasba foglalt amulett",
+  "tooltip.dungeons_reborn.artifact.iron_hide_amulet": "A Vasba foglalt amulett egy ősrégi\ntárgy. A benne lévő repedésekből\na homok időnként kipereg.",
+
+  "item.dungeons_reborn.artifact_death_cap_mushroom": "Gyilkos galóca",
+  "tooltip.dungeons_reborn.artifact.death_cap_mushroom": "A vakmerő harcosok mindig a csata előtt fogyasztották, a\nGyilkos galóca képes őrületbe kergetni azt aki elfogyasztja.",
+
+  "item.dungeons_reborn.twin_bow": "Iker íj",
+  "tooltip.dungeons_reborn.twin_bow": "Az Iker íj a hős biztos társa, akire számíthat\nha túlerővel szemben egyedül találja magát.",
+
+  "item.dungeons_reborn.auto_crossbow": "Automatizált számszeríj",
+  "tooltip.dungeons_reborn.auto_crossbow": "Az Arch-Illager elmondása szerint ennek az\nerőteljes számszeríjnak az elképzelése egy látomáson\nkeresztül jutott el hozzá.",
+
+  "item.dungeons_reborn.heavy_crossbow": "Nehéz számszeríj",
+  "tooltip.dungeons_reborn.heavy_crossbow": "A súlyozott számszeríj nagy sebzést okozó\nveszély, amely távolról is valós fenyegetést jelent.",
+
+  "item.dungeons_reborn.rough_diamond_sword": "Csiszolatlan gyémántkard",
+  "tooltip.dungeons_reborn.rough_diamond_sword": "A Csiszolatlan gyémántkard egy igazi hős\nés egy elszánt kalandor méltó jelképe.",
+
+  "item.dungeons_reborn.rough_diamond_pickaxe": "Csiszolatlan gyémántcsákány",
+  "tooltip.dungeons_reborn.rough_diamond_pickaxe": "A gyémánt az egyik legkeményebb anyag,\nkíváló választás egy csákány alapanyagaként.",
+
+  "item.dungeons_reborn.steel_mace": "Acél buzogány",
+  "tooltip.dungeons_reborn.steel_mace": "Az Acél buzogány a háború egyik legbrutálisabb eszköze.\nAmivel alulmarad gyorsaságban, azt visszahozza ütőképességben.",
+
+  "item.dungeons_reborn.suns_grace": "Nap kegyelme",
+  "tooltip.dungeons_reborn.suns_grace": "Ez a titkos gyógyító rúnákkal vésett buzogány\nerőteljes gyógyító erőkkel rendelkezik.",
+
+  "item.dungeons_reborn.claymore": "Klémor",
+  "tooltip.dungeons_reborn.claymore": "Egy hatalmas kard, ami hihetetlenül nehéznek tűnik,\nmégis könnyedén megfér egy igaz harcos kezében.",
+
+  "item.dungeons_reborn.heartstealer": "Szívlopó",
+  "tooltip.dungeons_reborn.heartstealer": "Az Arch-Illagerek egyik legkiválóbb tábornokának\najándékozták, amikor meghódították a Tintahal-partot\n- ezt a rúnakardot sötét boszorkánysággal itatták át.",
+
+  "item.dungeons_reborn.broadsword": "Pallos",
+  "tooltip.dungeons_reborn.broadsword": "Csak azok képesek megemelni ezt a hatalmas pengét\nakik egy bajnok és egy hős szívével rendelkeznek.",
+
+  "tooltip.dungeons_reborn.rarity": "Gyakoriság",
+  "mcdRarity.dungeons_reborn.common": "§r[§7ɢʏᴀᴋᴏʀɪ§r]",
+  "mcdRarity.dungeons_reborn.rare": "§r[§aʀɪᴛᴋᴀ§r]",
+  "mcdRarity.dungeons_reborn.unique": "§r[§6ᴋüʟöɴʟᴇɢᴇѕ§r]",
+  "mcdRarity.dungeons_reborn.unknown": "§r[§7???§r]",
+  "mcdRarity.extended.dungeons_reborn.custom": "§r[§5ᴇɢʏᴇᴅɪ§r]",
+  "mcdRarity.extended.dungeons_reborn.gilded": "§r[§eᴀʀᴀɴʏᴏᴢᴏᴛᴛ§r]",
+  "mcdRarity.extended.dungeons_reborn.gifted": "§r[§aᴀᴊáɴᴅéᴋ§r]",
+
+  "tooltip.dungeons_reborn.special_resource": "Egy különleges nyersanyag",
+
+  "enchantment.dungeons_reborn.primitiveness_curse": "Primitivitás átka",
+
+  "ability.dungeons_reborn.bonus_shot": "Bónusz lövés",
+  "ability.dungeons_reborn.accelerate": "Gyorsulás",
+  "ability.dungeons_reborn.prospector": "Átkutatás",
+  "ability.dungeons_reborn.leeching": "Pióca",
+  "ability.dungeons_reborn.radiance": "Sugárzás",
+
+  "ability.dungeons_reborn.built_in": "Beépített",
+  "ability.dungeons_reborn.powerful_combo": "Erőteljes kombó",
+  "ability.dungeons_reborn.powerful_pushback": "Erőteljes hátralökés",
+  "ability.dungeons_reborn.heavy_crossbow": "Jelentős tűzerő hosszú töltési idő ellenében",
+  "ability.dungeons_reborn.artifact.iron_hide_amulet": "Jelentősen megnöveli a játékos védelmét egy rövid ideig",
+  "ability.dungeons_reborn.artifact.death_cap_mushroom": "Jelentősen megnöveli a sebzést és a gyorsaságot",
+
+  "toggle.dungeons_reborn.teammate_only": "Csak csapattársaknak",
+  "toggle.dungeons_reborn.target_players": "Célozzon játékosokat",
+
+  "command.dungeons_reborn.resetgamerules": "%s Dungeons Reborn játékszabály visszaállítva az eredeti értékére"
+}

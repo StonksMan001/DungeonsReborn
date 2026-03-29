@@ -3,11 +3,24 @@
 	"package": "net.qbaesz13.dungeons_reborn.mixin",
 	"compatibilityLevel": "JAVA_25",
 	"mixins": [
-
+		"ItemAttributeModifiers$Display$DefaultMixin",
+		"accessors.CrossbowItemAccessor",
+		"CrossBowItemMixin",
+		"GrindstoneMenuMixin",
+		"ItemStackMixin",
+		"accessors.AbstractArrowAccessor",
+		"PlayerMixin",
+		"ProjectileMixin",
+		"ProjectileWeaponItemMixin"
 	],
 	"client": [
-
+		"client.AbstractClientPlayerMixin",
+		"client.ItemInHandRendererMixin",
+		"client.AvatarRendererMixin"
 	],
+	"mixinextras": {
+		"minVersion": "0.5.0"
+	},
 	"injectors": {
 		"defaultRequire": 1
 	},

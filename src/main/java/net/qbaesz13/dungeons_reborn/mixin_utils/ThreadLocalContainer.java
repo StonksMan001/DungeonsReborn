@@ -1,0 +1,8 @@
+package net.qbaesz13.dungeons_reborn.mixin_utils;
+
+import net.minecraft.world.item.ItemStack;
+
+public class ThreadLocalContainer {
+    public static final ThreadLocal<ItemStack> STACK = new ThreadLocal<>();
+    public static final ThreadLocal<Float> MAGIC_BOOST = new ThreadLocal<>();
+}

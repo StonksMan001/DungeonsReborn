@@ -1,0 +1,84 @@
+{
+  "block.dungeons_reborn.midnight_mossy_cobblestone": "Midnight Mossy Cobblestone",
+  "item.dungeons_reborn.ancient_gold_ingot": "Ancient Gold Ingot",
+  "block.dungeons_reborn.ancient_gold_block": "Ancient Gold Block",
+  "block.dungeons_reborn.pop_flower": "Pop Flower",
+  "block.dungeons_reborn.highland_moss_block": "Highland Moss Block",
+  "block.dungeons_reborn.highland_moss_carpet": "Highland Moss Carpet",
+  "block.dungeons_reborn.sour_berry_bush": "Sour Berry Bush",
+  "item.dungeons_reborn.sour_berries": "Sour Berries",
+  "block.dungeons_reborn.midnight_moss_block": "Midnight Moss Block",
+  "block.dungeons_reborn.midnight_moss_carpet": "Midnight Moss Carpet",
+  "block.dungeons_reborn.midnight_sprouts": "Midnight Sprouts",
+  "block.dungeons_reborn.mossy_oak_planks": "Mossy Oak Planks",
+  "block.dungeons_reborn.mossy_spruce_planks": "Mossy Spruce Planks",
+
+  "tooltip.dungeons_reborn.minecraft_dungeons_header": "Minecraft Dungeons description:",
+
+  "item.dungeons_reborn.artifact_iron_hide_amulet": "Iron Hide Amulet",
+  "tooltip.dungeons_reborn.artifact.iron_hide_amulet": "The Iron Hide Amulet is both ancient and\ntimeless. Sand mysteriously and endlessly\nslips through the cracks in the iron.",
+
+  "item.dungeons_reborn.artifact_death_cap_mushroom": "Death Cap Mushroom",
+  "tooltip.dungeons_reborn.artifact.death_cap_mushroom": "Eaten by daring warriors before battle, the\nDeath Cap Mushroom drives fighters into a frenzy.",
+
+  "item.dungeons_reborn.twin_bow": "Twin Bow",
+  "tooltip.dungeons_reborn.twin_bow": "The Twin Bow is the champion of the hero\nwho finds themselves outnumbered and alone.",
+
+  "item.dungeons_reborn.auto_crossbow": "Auto Crossbow",
+  "tooltip.dungeons_reborn.auto_crossbow": "The Arch-Illager said the design for this\npowerful crossbow came to him in a vision.",
+
+  "item.dungeons_reborn.heavy_crossbow": "Heavy Crossbow",
+  "tooltip.dungeons_reborn.heavy_crossbow": "The weighted crossbow is a damage-dealing\nmenace and a real threat from a ranged distance.",
+
+  "item.dungeons_reborn.rough_diamond_sword": "Rough Diamond Sword",
+  "tooltip.dungeons_reborn.rough_diamond_sword": "The Rough Diamond Sword is the true mark\nof a hero and an accomplished adventurer.",
+
+  "item.dungeons_reborn.rough_diamond_pickaxe": "Rough Diamond Pickaxe",
+  "tooltip.dungeons_reborn.rough_diamond_pickaxe": "Diamond is one of the most durable materials,\nmaking it an excellent choice for a pickaxe.",
+
+  "item.dungeons_reborn.steel_mace": "Steel Mace",
+  "tooltip.dungeons_reborn.steel_mace": "The Steel Mace is a brutal tool of war and what\nit lacks in finesse; it makes up for in power.",
+
+  "item.dungeons_reborn.suns_grace": "Sun's Grace",
+  "tooltip.dungeons_reborn.suns_grace": "This mace, engraved with secret healing\nrunes, grants powerful restorative powers.",
+
+  "item.dungeons_reborn.claymore": "Claymore",
+  "tooltip.dungeons_reborn.claymore": "A massive sword that seems impossibly heavy\nyet rests easily in a just warrior's hands",
+
+  "item.dungeons_reborn.heartstealer": "Heartstealer",
+  "tooltip.dungeons_reborn.heartstealer": "Gifted to one of the Arch-Illager's most distinguished\ngenerals upon their conquest of the Squid Coast\n- this runeblade is infused with dark witchcraft.",
+
+  "item.dungeons_reborn.broadsword": "Broadsword",
+  "tooltip.dungeons_reborn.broadsword": "Only those with the strength of a champion and\nthe heart of a hero can carry this massive blade.",
+
+  "tooltip.dungeons_reborn.rarity": "Rarity",
+  "mcdRarity.dungeons_reborn.common": "§r[§7ᴄᴏᴍᴍᴏɴ§r]",
+  "mcdRarity.dungeons_reborn.rare": "§r[§aʀᴀʀᴇ§r]",
+  "mcdRarity.dungeons_reborn.unique": "§r[§6ᴜɴɪǫᴜᴇ§r]",
+  "mcdRarity.dungeons_reborn.unknown": "§r[§7???§r]",
+  "mcdRarity.extended.dungeons_reborn.custom": "§r[§5ᴄᴜѕᴛᴏᴍ§r]",
+  "mcdRarity.extended.dungeons_reborn.gilded": "§r[§eɢɪʟᴅᴇᴅ§r]",
+  "mcdRarity.extended.dungeons_reborn.gifted": "§r[§aɢɪꜰᴛᴇᴅ§r]",
+
+  "tooltip.dungeons_reborn.special_resource": "A special resource",
+
+  "enchantment.dungeons_reborn.primitiveness_curse": "Primitiveness Curse",
+
+  "ability.dungeons_reborn.bonus_shot": "Bonus Shot",
+  "ability.dungeons_reborn.accelerate": "Accelerate",
+  "ability.dungeons_reborn.prospector": "Prospector",
+  "ability.dungeons_reborn.leeching": "Leeching",
+  "ability.dungeons_reborn.radiance": "Radiance",
+
+  "ability.dungeons_reborn.built_in": "Built in",
+  "ability.dungeons_reborn.powerful_combo": "Powerful combo",
+  "ability.dungeons_reborn.powerful_pushback": "Powerful pushback",
+  "ability.dungeons_reborn.heavy_crossbow": "Great damage at the cost of reload speed",
+  "ability.dungeons_reborn.artifact.iron_hide_amulet": "Provides a major boost to defense for a short time",
+  "ability.dungeons_reborn.artifact.death_cap_mushroom": "Greatly increases attack damage and movement speed",
+
+  "toggle.dungeons_reborn.target_players": "Target players",
+  "toggle.dungeons_reborn.teammate_only": "Teammate only",
+
+  "command.dungeons_reborn.resetgamerules": "Reset %s Dungeons Reborn gamerules to their default values"
+}

@@ -147,7 +147,7 @@ public class SkyCore {
         public static <T extends AbstractContainerMenu> MenuType<T> registerScreenHandler(String name, MenuType<T> type) {
             return Registry.register(BuiltInRegistries.MENU, DungeonsReborn.identifierFromNamespaceDungeonsReborn(name), type);
         }
-        public static CreativeModeTab registerItemGroup(String name, CreativeModeTab creativeModeTab) {
+        public static CreativeModeTab registerCreativeModeTab(String name, CreativeModeTab creativeModeTab) {
             return Registry.register(BuiltInRegistries.CREATIVE_MODE_TAB, DungeonsReborn.identifierFromNamespaceDungeonsReborn(name), creativeModeTab);
         }
         public static <T> DataComponentType<T> registerComponentType(String name, UnaryOperator<DataComponentType.Builder<T>> componentTypeBuilderOperator) {
