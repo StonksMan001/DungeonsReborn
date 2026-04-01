@@ -12,9 +12,9 @@ public class MCD_DataFixers {
      */
     private static void init() {
         /* <Section#1> */
-        SkyCoreDataFixerAPI.registerBlockAndItemNameFix("dungeons_reborn:midnight_mossy_cobblestone", "skyblock:mcd__mossier_cobblestone");
-        SkyCoreDataFixerAPI.registerBlockAndItemNameFix("dungeons_reborn:mossy_oak_planks", "skyblock:mcd__mossier_oak_planks");
-        SkyCoreDataFixerAPI.registerBlockAndItemNameFix("dungeons_reborn:mossy_spruce_planks", "skyblock:mcd__mossier_spruce_planks");
+        SkyCoreDataFixerAPI.registerBlockAndItemNameFix("dungeons_reborn:midnight_mossy_cobblestone", "skyblock:mcd__mossier_cobblestone", "skyblock:mossier_cobblestone");
+        SkyCoreDataFixerAPI.registerBlockAndItemNameFix("dungeons_reborn:mossy_oak_planks", "skyblock:mcd__mossier_oak_planks", "skyblock:mossier_oak_planks");
+        SkyCoreDataFixerAPI.registerBlockAndItemNameFix("dungeons_reborn:mossy_spruce_planks", "skyblock:mcd__mossier_spruce_planks", "skyblock:mossier_spruce_planks");
         SkyCoreDataFixerAPI.registerBlockAndItemNameFix("dungeons_reborn:highland_moss_block", "skyblock:mcd__dried_moss_block");
         SkyCoreDataFixerAPI.registerBlockAndItemNameFix("dungeons_reborn:highland_moss_carpet", "skyblock:mcd__dried_moss_carpet");
         SkyCoreDataFixerAPI.registerBlockAndItemNameFix("dungeons_reborn:midnight_moss_block", "skyblock:mcd__midnight_moss_block");
@@ -22,10 +22,10 @@ public class MCD_DataFixers {
         SkyCoreDataFixerAPI.registerBlockAndItemNameFix("dungeons_reborn:midnight_sprouts", "skyblock:mcd__midnight_sprouts");
         SkyCoreDataFixerAPI.registerBlockAndItemNameFix("dungeons_reborn:pop_flower", "skyblock:mcd__pop_flower");
         SkyCoreDataFixerAPI.registerBlockAndItemNameFix("dungeons_reborn:ancient_gold_block", "skyblock:mcd__ancient_gold_block");
-        SkyCoreDataFixerAPI.registerItemNameFix("dungeons_reborn:twin_bow", "skyblock:mcd__twin_bow");
+        SkyCoreDataFixerAPI.registerItemNameFix("dungeons_reborn:twin_bow", "skyblock:mcd__twin_bow", "skyblock:twin_bow");
         SkyCoreDataFixerAPI.registerItemNameFix("dungeons_reborn:rough_diamond_sword", "skyblock:mcd__rough_diamond_sword");
         SkyCoreDataFixerAPI.registerItemNameFix("dungeons_reborn:steel_mace", "skyblock:mcd__steel_mace");
-        SkyCoreDataFixerAPI.registerItemNameFix("dungeons_reborn:auto_crossbow", "skyblock:mcd__auto_crossbow");
+        SkyCoreDataFixerAPI.registerItemNameFix("dungeons_reborn:auto_crossbow", "skyblock:mcd__auto_crossbow", "skyblock:auto_crossbow");
         SkyCoreDataFixerAPI.registerItemNameFix("dungeons_reborn:artifact_iron_hide_amulet", "skyblock:mcd__artifact_iron_hide_amulet");
         SkyCoreDataFixerAPI.registerItemNameFix("dungeons_reborn:artifact_death_cap_mushroom", "skyblock:mcd__artifact_death_cap_mushroom");
         SkyCoreDataFixerAPI.registerItemNameFix("dungeons_reborn:ancient_gold_ingot", "skyblock:mcd__ancient_gold_ingot");
@@ -37,7 +37,6 @@ public class MCD_DataFixers {
         SkyCoreDataFixerAPI.registerDataComponentTypeNameFix("dungeons_reborn:attack_chain_step", "skyblock:mcd__steel_mace_attack_chain");
         SkyCoreDataFixerAPI.registerBlockEntityTypeNameFix("dungeons_reborn:pop_flower_block_entity", "skyblock:mcd__pop_flower_blockentity");
         /* </Section#1> */
-        SkyCoreDataFixerAPI.registerItemNameFix("dungeons_reborn:ancient_gold_ingot", "dungeons_reborn:ancient_gold_ingot1");
 
         SkyCoreDataFixerAPI.registerBlockAndItemNameFix("dungeons_reborn:highland_moss_block", "dungeons_reborn:dried_moss_block");
         SkyCoreDataFixerAPI.registerBlockAndItemNameFix("dungeons_reborn:highland_moss_carpet", "dungeons_reborn:dried_moss_carpet");
