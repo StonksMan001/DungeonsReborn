@@ -1,0 +1,21 @@
+package net.qbaesz13.dungeons_reborn;
+
+import net.fabricmc.api.ClientModInitializer;
+import net.fabricmc.fabric.api.blockrenderlayer.v1.BlockRenderLayerMap;
+import net.minecraft.client.render.RenderLayer;
+import net.qbaesz13.dungeons_reborn.registries.MCD_Blocks;
+import net.qbaesz13.dungeons_reborn.registries.MCD_ModelPredicateProviders;
+import net.qbaesz13.dungeons_reborn.registries.MCD_Models;
+
+public class DungeonsRebornClient implements ClientModInitializer {
+    @Override
+    public void onInitializeClient() {
+        MCD_Models.register();
+
+        BlockRenderLayerMap.INSTANCE.putBlock(MCD_Blocks.POP_FLOWER, RenderLayer.getCutout());
+        BlockRenderLayerMap.INSTANCE.putBlock(MCD_Blocks.MIDNIGHT_SPROUTS, RenderLayer.getCutout());
+        BlockRenderLayerMap.INSTANCE.putBlock(MCD_Blocks.SOUR_BERRY_BUSH, RenderLayer.getCutout());
+
+        MCD_ModelPredicateProviders.registerModels();
+    }
+}

@@ -2,10 +2,12 @@
 	"schemaVersion": 1,
 	"id": "dungeons_reborn",
 	"version": "${version}",
-	"name": "DungeonsReborn",
+	"name": "Dungeons Reborn",
 	"description": "Vanilla friendly mod that adds Minecraft Dungeons style content to the game",
 	"authors": [
-		"StonksMan (Discord: #stonksman01)"
+		"Qbaesz13 [lead-developer] (Discord: #stonksman01)",
+		"B525 [contributor] (Discord: #kb525)",
+		"istomriddle [contributor] (Discord: #ri_yung)"
 	],
 	"contact": {
 		"homepage": "https://modrinth.com/mod/dungeonsreborn",
@@ -16,13 +18,13 @@
 	"environment": "*",
 	"entrypoints": {
 		"main": [
-			"net.stonksman01.dungeons_reborn.DungeonsReborn"
-		],
-		"fabric-datagen": [
-			"net.stonksman01.dungeons_reborn.DungeonsRebornDataGenerator"
+			"net.qbaesz13.dungeons_reborn.DungeonsReborn"
 		],
 		"client": [
-			"net.stonksman01.dungeons_reborn.DungeonsRebornClient"
+			"net.qbaesz13.dungeons_reborn.DungeonsRebornClient"
+		],
+		"fabric-datagen": [
+			"net.qbaesz13.dungeons_reborn.DungeonsRebornDataGenerator"
 		]
 	},
 	"mixins": [

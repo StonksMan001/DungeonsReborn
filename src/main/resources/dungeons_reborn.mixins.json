@@ -1,9 +1,9 @@
 {
   "required": true,
-  "package": "net.stonksman01.dungeons_reborn.mixin",
+  "package": "net.qbaesz13.dungeons_reborn.mixin",
   "compatibilityLevel": "JAVA_21",
   "mixins": [
-    "CrossbowItemAccessors",
+    "accessors.CrossbowItemAccessors",
     "CrossBowItemMixin",
     "GrindStoneScreenHandlerMixin",
     "ItemStackMixin",
@@ -12,15 +12,15 @@
     "ProjectileEntityMixin",
     "RangedWeaponItemMixin"
   ],
+  "client": [
+    "client.AbstractClientPlayerEntityMixin",
+    "client.HeldItemRendererMixin",
+    "client.PlayerEntityRendererMixin"
+  ],
   "injectors": {
     "defaultRequire": 1
   },
   "overwrites": {
     "requireAnnotations": true
-  },
-  "client": [
-    "AbstractClientPlayerEntityMixin",
-    "HeldItemRendererMixin",
-    "PlayerEntityRendererMixin"
-  ]
+  }
 }
