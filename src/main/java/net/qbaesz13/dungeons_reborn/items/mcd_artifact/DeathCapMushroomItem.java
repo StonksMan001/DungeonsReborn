@@ -32,7 +32,7 @@ public class DeathCapMushroomItem extends McdArtifactItem {
     public TypedActionResult<ItemStack> use(World world, PlayerEntity user, Hand hand) {
         ItemStack stack = user.getStackInHand(hand);
         McdRarity mcdRarity = stack.get(MCD_DataComponentTypes.MCD_RARITY);
-        if (world instanceof ServerWorld serverWorld && Objects.nonNull(mcdRarity)) {
+        if (world instanceof ServerWorld serverWorld && mcdRarity != null) {
             int duration = MCD_GameRules.ARTIFACT_DEATH_CAP_MUSHROOM_COMMON_DURATION.getValue(serverWorld);
             int amplifier = MCD_GameRules.ARTIFACT_DEATH_CAP_MUSHROOM_COMMON_AMPLIFIER.getValue(serverWorld);
             int cooldown = MCD_GameRules.ARTIFACT_DEATH_CAP_MUSHROOM_COMMON_COOLDOWN.getValue(serverWorld);

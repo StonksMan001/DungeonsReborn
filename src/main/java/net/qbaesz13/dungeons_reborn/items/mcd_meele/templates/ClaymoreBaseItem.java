@@ -41,7 +41,7 @@ public abstract class ClaymoreBaseItem extends SkyCoreToolAPI.SwordItem implemen
     @Override
     public void inventoryTick(ItemStack stack, World world, Entity entity, int slot, boolean selected) {
         DungeonsHelpers.setAttackKnockbackModifierIfNotPresent(stack);
-        if (Objects.isNull(stack.get(DataComponentTypes.ATTRIBUTE_MODIFIERS))) DungeonsHelpers.modifyAttackKnockback(stack, 0.0);
+        if (stack.get(DataComponentTypes.ATTRIBUTE_MODIFIERS) == null) DungeonsHelpers.modifyAttackKnockback(stack, 0.0);
         super.inventoryTick(stack, world, entity, slot, selected);
     }
     @Override

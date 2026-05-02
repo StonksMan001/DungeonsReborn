@@ -23,7 +23,7 @@ public abstract class CrossBowItemMixin {
         }
         if (stack.getItem() instanceof HeavyCrossbowItem) {
             McdRarity rarity = stack.get(MCD_DataComponentTypes.MCD_RARITY);
-            float coefficient = Objects.isNull(rarity) || rarity == McdRarity.COMMON ? 2.25f : 2.0f;
+            float coefficient = rarity == null || rarity == McdRarity.COMMON ? 2.25f : 2.0f;
             return original.call(value * coefficient);
         }
         return original.call(value);

@@ -22,9 +22,11 @@ import net.minecraft.text.MutableText;
 import net.minecraft.text.Style;
 import net.minecraft.text.Text;
 import net.minecraft.util.Formatting;
+import net.minecraft.util.Identifier;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Box;
 import net.minecraft.world.World;
+import net.qbaesz13.dungeons_reborn.DungeonsReborn;
 import net.qbaesz13.dungeons_reborn.components.McdRarity;
 import net.qbaesz13.dungeons_reborn.registries.MCD_DataComponentTypes;
 import net.qbaesz13.dungeons_reborn.registries.MCD_Enchantments;
@@ -73,7 +75,7 @@ public interface DungeonsHelpers {
             tooltip.add(abilityText.setStyle(style));
         }
         static void appendDescription(List<Text> tooltip, MutableText descriptionText) {
-            if (Objects.isNull(descriptionText.getString())) return;
+            if (descriptionText.getString() == null) return;
             for (String string : descriptionText.getString().split("\n")) {
                 tooltip.add(Text.literal(string).setStyle(Style.EMPTY.withItalic(true).withFormatting(Formatting.GRAY)));
             }
@@ -120,7 +122,7 @@ public interface DungeonsHelpers {
         return world.getRegistryManager().get(RegistryKeys.ENCHANTMENT).getEntry(enchantment).orElseThrow();
     }
     static void setRareOrCommonVariant(ItemStack stack) {
-        if (Objects.isNull(stack.get(MCD_DataComponentTypes.MCD_RARITY))) {
+        if (stack.get(MCD_DataComponentTypes.MCD_RARITY) == null) {
             Random random = new Random();
             if (random.nextInt(5) == 1) stack.set(MCD_DataComponentTypes.MCD_RARITY, McdRarity.RARE);
             else stack.set(MCD_DataComponentTypes.MCD_RARITY, McdRarity.COMMON);
@@ -131,8 +133,8 @@ public interface DungeonsHelpers {
     }
     static void setAttackKnockbackModifierIfNotPresent(ItemStack itemStack) {
         var modifiersComponent = itemStack.get(DataComponentTypes.ATTRIBUTE_MODIFIERS);
-        var modifiers = Objects.nonNull(modifiersComponent) ? modifiersComponent.modifiers() : null;
-        if (Objects.nonNull(modifiers) && modifiers.stream().noneMatch(entry -> entry.matches(EntityAttributes.GENERIC_ATTACK_KNOCKBACK, entry.modifier().id()))) {
+        var modifiers = modifiersComponent != null ? modifiersComponent.modifiers() : null;
+        if (modifiers != null && modifiers.stream().noneMatch(entry -> entry.matches(EntityAttributes.GENERIC_ATTACK_KNOCKBACK, entry.modifier().id()))) {
             modifyAttackKnockback(itemStack, EntityAttributes.GENERIC_ATTACK_KNOCKBACK.value().getDefaultValue());
         }
     }
@@ -140,7 +142,7 @@ public interface DungeonsHelpers {
         stack.set(DataComponentTypes.ATTRIBUTE_MODIFIERS, stack.getOrDefault(DataComponentTypes.ATTRIBUTE_MODIFIERS, AttributeModifiersComponent.DEFAULT)
                 .with(
                         EntityAttributes.GENERIC_ATTACK_KNOCKBACK,
-                        new EntityAttributeModifier(Item.BASE_ATTACK_SPEED_MODIFIER_ID, knockback, EntityAttributeModifier.Operation.ADD_VALUE),
+                        new EntityAttributeModifier(DungeonsReborn.identifierOfDungeonsReborn("base_attack_knockback"), knockback, EntityAttributeModifier.Operation.ADD_VALUE),
                         AttributeModifierSlot.MAINHAND
                 ));
     }

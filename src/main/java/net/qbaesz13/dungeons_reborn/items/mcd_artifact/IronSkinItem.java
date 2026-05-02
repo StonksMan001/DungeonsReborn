@@ -54,7 +54,7 @@ public class IronSkinItem extends McdArtifactItem {
         ItemStack stack = user.getStackInHand(hand);
         McdRarity mcdRarity = stack.get(MCD_DataComponentTypes.MCD_RARITY);
         Boolean teammateOnlyToggle = stack.get(MCD_DataComponentTypes.TEAMMATE_ONLY_TOGGLE);
-        if (world instanceof ServerWorld serverWorld && Objects.nonNull(mcdRarity) && Objects.nonNull(teammateOnlyToggle)) {
+        if (world instanceof ServerWorld serverWorld && mcdRarity != null && teammateOnlyToggle != null) {
             int range = MCD_GameRules.ARTIFACT_IRON_HIDE_AMULET_COMMON_RANGE.getValue(serverWorld);
             int cooldown = MCD_GameRules.ARTIFACT_IRON_HIDE_AMULET_COMMON_COOLDOWN.getValue(serverWorld);
             var ref = new Object() {

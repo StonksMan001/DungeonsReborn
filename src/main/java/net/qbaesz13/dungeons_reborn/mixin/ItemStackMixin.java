@@ -32,15 +32,15 @@ public abstract class ItemStackMixin implements ComponentHolder {
             switch (attributeString) {
                 case "attribute.name.generic.attack_damage" -> {
                     String string = getChainAttackWeaponParameters(original, instance, chainAttackWeapon.getAttackDamagePair(this.get(MCD_DataComponentTypes.MCD_RARITY)));
-                    if (Objects.nonNull(string)) return string;
+                    if (string != null) return string;
                 }
                 case "attribute.name.generic.attack_speed" -> {
                     String string = getChainAttackWeaponParameters(original, instance, chainAttackWeapon.getAttackSpeedPair(this.get(MCD_DataComponentTypes.MCD_RARITY)));
-                    if (Objects.nonNull(string)) return string;
+                    if (string != null) return string;
                 }
                 case "attribute.name.generic.attack_knockback" -> {
                     String string = getChainAttackWeaponParameters(original, instance, chainAttackWeapon.getAttackKnockbackPair(this.get(MCD_DataComponentTypes.MCD_RARITY)));
-                    if (Objects.nonNull(string)) return string;
+                    if (string != null) return string;
                 }
                 default -> {}
             }
@@ -49,11 +49,11 @@ public abstract class ItemStackMixin implements ComponentHolder {
     }
     @Unique
     private String getChainAttackWeaponParameters(Operation<String> original, DecimalFormat instance, @Nullable Pair<@NotNull Double, @Nullable Double> pair) {
-        if (Objects.isNull(pair)) return null;
+        if (pair == null) return null;
         String base = original.call(instance, pair.getLeft());
-        String critical = Objects.nonNull(pair.getRight()) ? original.call(instance, pair.getRight()) : null;
-        String diff = Objects.nonNull(pair.getRight()) ? original.call(instance, pair.getRight() - pair.getLeft()) : null;
-        if (Objects.nonNull(diff) && diff.charAt(0) != '-') diff = "+" + diff;
-        return Objects.nonNull(critical) ? String.format("[%s/%s/%s] (%s)", base, base, critical, diff) : base;
+        String critical = pair.getRight() != null ? original.call(instance, pair.getRight()) : null;
+        String diff = pair.getRight() != null ? original.call(instance, pair.getRight() - pair.getLeft()) : null;
+        if (diff != null && diff.charAt(0) != '-') diff = "+" + diff;
+        return critical != null ? String.format("[%s/%s/%s] (%s)", base, base, critical, diff) : base;
     }
 }

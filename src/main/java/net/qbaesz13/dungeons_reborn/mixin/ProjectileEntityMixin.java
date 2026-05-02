@@ -18,7 +18,7 @@ public abstract class ProjectileEntityMixin {
     public void discardIfWeaponIsTwinBow(Entity deflector, boolean fromAttack, CallbackInfo ci) {
         if ((Object)this instanceof PersistentProjectileEntity persistentProjectileEntity) {
             ItemStack weaponStack = persistentProjectileEntity.getWeaponStack();
-            if (Objects.nonNull(weaponStack) && weaponStack.getItem() instanceof TwinBowItem) {
+            if (weaponStack != null && weaponStack.getItem() instanceof TwinBowItem) {
                 persistentProjectileEntity.discard();
             }
         }
