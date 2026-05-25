@@ -55,6 +55,7 @@ public class SkyCore {
         return original.call(instance, item);
     }
     public static class RegistryPresets {
+        /* <ResourceKey creation helper methods> */
         public static ResourceKey<Enchantment> createEnchantmentResourceKey(String name) {
             return ResourceKey.create(Registries.ENCHANTMENT, DungeonsReborn.identifierFromNamespaceDungeonsReborn(name));
         }
@@ -73,6 +74,67 @@ public class SkyCore {
         public static ResourceKey<ConfiguredFeature<?, ?>> createConfiguredFeatureResourceKey(String name) {
             return ResourceKey.create(Registries.CONFIGURED_FEATURE, DungeonsReborn.identifierFromNamespaceDungeonsReborn(name));
         }
+        public static ResourceKey<PoiType> createPoiTypeResourceKey(String name) {
+            return ResourceKey.create(Registries.POINT_OF_INTEREST_TYPE, DungeonsReborn.identifierFromNamespaceDungeonsReborn(name));
+        }
+        /* </ResourceKey creation helper methods> */
+
+        /* <Core registry helper methods> */
+        private static Item registerItem(String name, ResourceKey<Item> key, Function<Item.Properties, Item> function, Item.Properties properties) {
+            Item item = function.apply(properties.setId(key));
+            var registry = BuiltInRegistries.ITEM;
+            Identifier parentId = DungeonsReborn.identifierFromNamespaceDungeonsReborn(name);
+            if (SkyCoreDataFixerAPI.ITEM_WITH_ALIAS.containsKey(parentId.toString())) {
+                for (String alias : SkyCoreDataFixerAPI.ITEM_WITH_ALIAS.get(parentId.toString())) {
+                    registry.addAlias(Identifier.parse(alias), parentId);
+                }
+            }
+            return Registry.register(registry, key, item);
+        }
+        public static Block registerBlock(String name, ResourceKey<Block> key, Function<BlockBehaviour.Properties, Block> function, BlockBehaviour.Properties properties) {
+            Block block = function.apply(properties.setId(key));
+            var registry = BuiltInRegistries.BLOCK;
+            Identifier parentId = DungeonsReborn.identifierFromNamespaceDungeonsReborn(name);
+            if (SkyCoreDataFixerAPI.BLOCKS_WITH_ALIAS.containsKey(parentId.toString())) {
+                for (String alias : SkyCoreDataFixerAPI.BLOCKS_WITH_ALIAS.get(parentId.toString())) {
+                    registry.addAlias(Identifier.parse(alias), parentId);
+                }
+            }
+            return Registry.register(registry, key, block);
+        }
+        public static <T> DataComponentType<T> registerComponentType(String name, UnaryOperator<DataComponentType.Builder<T>> componentTypeBuilderOperator) {
+            var registry = BuiltInRegistries.DATA_COMPONENT_TYPE;
+            Identifier parentId = DungeonsReborn.identifierFromNamespaceDungeonsReborn(name);
+            if (SkyCoreDataFixerAPI.DATA_COMPONENT_TYPES_WITH_ALIAS.containsKey(parentId.toString())) {
+                for (String alias : SkyCoreDataFixerAPI.DATA_COMPONENT_TYPES_WITH_ALIAS.get(parentId.toString())) {
+                    registry.addAlias(Identifier.parse(alias), parentId);
+                }
+            }
+            return Registry.register(registry, DungeonsReborn.identifierFromNamespaceDungeonsReborn(name),
+                    componentTypeBuilderOperator.apply(DataComponentType.builder()).build());
+        }
+        public static <T extends BlockEntity> BlockEntityType<T> registerBlockEntityType(String name, BlockEntityType<T> type) {
+            var registry = BuiltInRegistries.BLOCK_ENTITY_TYPE;
+            Identifier parentId = DungeonsReborn.identifierFromNamespaceDungeonsReborn(name);
+            if (SkyCoreDataFixerAPI.BLOCK_ENTITY_TYPES_WITH_ALIAS.containsKey(parentId.toString())) {
+                for (String alias : SkyCoreDataFixerAPI.BLOCK_ENTITY_TYPES_WITH_ALIAS.get(parentId.toString())) {
+                    registry.addAlias(Identifier.parse(alias), parentId);
+                }
+            }
+            return Registry.register(registry, DungeonsReborn.identifierFromNamespaceDungeonsReborn(name), type);
+        }
+        /* </Core registry helper methods> */
+
+        /* <Tag creation helper methods> */
+        public static TagKey<Block> createBlockTag(String name) {
+            return TagKey.create(Registries.BLOCK, DungeonsReborn.identifierFromNamespaceDungeonsReborn(name));
+        }
+        public static TagKey<Item> createItemTag(String name) {
+            return TagKey.create(Registries.ITEM, DungeonsReborn.identifierFromNamespaceDungeonsReborn(name));
+        }
+        /* </Tag creation helper methods> */
+
+        /* <Common registry helper methods> */
         public static void registerJukeBlockSong(BootstrapContext<JukeboxSong> registry, ResourceKey<JukeboxSong> key, Holder.Reference<SoundEvent> soundEvent, int lengthInSeconds, int comparatorOutput) {
             registry.register(key, new JukeboxSong(soundEvent, Component.translatable(Util.makeDescriptionId("jukebox_song", key.identifier())), (float)lengthInSeconds, comparatorOutput));
         }
@@ -87,30 +149,8 @@ public class SkyCore {
         public static Item registerItem(String name, Function<Item.Properties, Item> function, Item.Properties properties) {
             return registerItem(name, ResourceKey.create(Registries.ITEM, DungeonsReborn.identifierFromNamespaceDungeonsReborn(name)), function, properties);
         }
-        private static Item registerItem(String name, ResourceKey<Item> key, Function<Item.Properties, Item> function, Item.Properties properties) {
-            Item item = function.apply(properties.setId(key));
-            var registry = BuiltInRegistries.ITEM;
-            Identifier parentId = DungeonsReborn.identifierFromNamespaceDungeonsReborn(name);
-            if (SkyCoreDataFixerAPI.ITEM_WITH_ALIAS.containsKey(parentId.toString())) {
-                for (String alias : SkyCoreDataFixerAPI.ITEM_WITH_ALIAS.get(parentId.toString())) {
-                    registry.addAlias(Identifier.parse(alias), parentId);
-                }
-            }
-            return Registry.register(registry, key, item);
-        }
         public static Block registerBlock(String name, Function<BlockBehaviour.Properties, Block> function, BlockBehaviour.Properties properties) {
             return registerBlock(name, ResourceKey.create(Registries.BLOCK, DungeonsReborn.identifierFromNamespaceDungeonsReborn(name)), function, properties);
-        }
-        public static Block registerBlock(String name, ResourceKey<Block> key, Function<BlockBehaviour.Properties, Block> function, BlockBehaviour.Properties properties) {
-            Block block = function.apply(properties.setId(key));
-            var registry = BuiltInRegistries.BLOCK;
-            Identifier parentId = DungeonsReborn.identifierFromNamespaceDungeonsReborn(name);
-            if (SkyCoreDataFixerAPI.BLOCKS_WITH_ALIAS.containsKey(parentId.toString())) {
-                for (String alias : SkyCoreDataFixerAPI.BLOCKS_WITH_ALIAS.get(parentId.toString())) {
-                    registry.addAlias(Identifier.parse(alias), parentId);
-                }
-            }
-            return Registry.register(registry, key, block);
         }
         public static Block registerBlockAndItem(String name, Function<BlockBehaviour.Properties, Block> function, BlockBehaviour.Properties properties) {
             Block block = registerBlock(name, function, properties);
@@ -135,30 +175,17 @@ public class SkyCore {
             return PoiTypes.register(DungeonsReborn.identifierFromNamespaceDungeonsReborn(name), ticket_count, search_distance, blocks);
         }
         */
-        public static ResourceKey<PoiType> poiResourceKey(String name) {
-            return ResourceKey.create(Registries.POINT_OF_INTEREST_TYPE, DungeonsReborn.identifierFromNamespaceDungeonsReborn(name));
-        }
         public static <T extends Entity> EntityType<T> registerEntityType(String name, EntityType<T> type) {
             return Registry.register(BuiltInRegistries.ENTITY_TYPE, DungeonsReborn.identifierFromNamespaceDungeonsReborn(name), type);
         }
-        public static <T extends BlockEntity> BlockEntityType<T> registerBlockEntityType(String name, BlockEntityType<T> type) {
-            return Registry.register(BuiltInRegistries.BLOCK_ENTITY_TYPE, DungeonsReborn.identifierFromNamespaceDungeonsReborn(name), type);
-        }
-        public static <T extends AbstractContainerMenu> MenuType<T> registerScreenHandler(String name, MenuType<T> type) {
+        public static <T extends AbstractContainerMenu> MenuType<T> registerMenuType(String name, MenuType<T> type) {
             return Registry.register(BuiltInRegistries.MENU, DungeonsReborn.identifierFromNamespaceDungeonsReborn(name), type);
         }
         public static CreativeModeTab registerCreativeModeTab(String name, CreativeModeTab creativeModeTab) {
             return Registry.register(BuiltInRegistries.CREATIVE_MODE_TAB, DungeonsReborn.identifierFromNamespaceDungeonsReborn(name), creativeModeTab);
         }
-        public static <T> DataComponentType<T> registerComponentType(String name, UnaryOperator<DataComponentType.Builder<T>> componentTypeBuilderOperator) {
-            return Registry.register(BuiltInRegistries.DATA_COMPONENT_TYPE, DungeonsReborn.identifierFromNamespaceDungeonsReborn(name),
-                    componentTypeBuilderOperator.apply(DataComponentType.builder()).build());
-        }
-        public static TagKey<Block> createBlockTag(String name) {
-            return TagKey.create(Registries.BLOCK, DungeonsReborn.identifierFromNamespaceDungeonsReborn(name));
-        }
-        public static TagKey<Item> createItemTag(String name) {
-            return TagKey.create(Registries.ITEM, DungeonsReborn.identifierFromNamespaceDungeonsReborn(name));
+        public static <FC extends FeatureConfiguration, F extends Feature<FC>> void registerConfiguredFeature(BootstrapContext<ConfiguredFeature<?, ?>> context, ResourceKey<ConfiguredFeature<?, ?>> key, F feature, FC configuration) {
+            context.register(key, new ConfiguredFeature<>(feature, configuration));
         }
         public static GameRule<Boolean> registerBooleanGameRule(String name, GameRuleCategory category, boolean defaultValue) {
             return registerGameRule(
@@ -173,13 +200,15 @@ public class SkyCore {
                     value -> value ? 1 : 0
             );
         }
+        /* </Common registry helper methods> */
+
+        /* <GameRule creation helper methods> */
         public static GameRule<Integer> registerCappedIntRule(String name, GameRuleCategory category, int defaultValue, int minValue, int maxValue) {
             return registerIntRule(name, category, defaultValue, minValue, maxValue, FeatureFlagSet.of());
         }
         public static GameRule<Integer> registerIntRule(String name, GameRuleCategory category, int defaultValue, int minValue, int maxValue) {
             return registerIntRule(name, category, defaultValue, minValue, maxValue, FeatureFlagSet.of());
         }
-
         public static GameRule<Integer> registerIntRule(
                 String name, GameRuleCategory category, int defaultValue, int minValue, int maxValue, FeatureFlagSet requiredFeatures
         ) {
@@ -210,8 +239,6 @@ public class SkyCore {
                     BuiltInRegistries.GAME_RULE, "dr__" + id, new GameRule<>(category, typeHint, argumentType, visitorCaller, codec, commandResultFunction, defaultValue, requiredFeatures)
             );
         }
-        public static <FC extends FeatureConfiguration, F extends Feature<FC>> void registerConfiguredFeature(BootstrapContext<ConfiguredFeature<?, ?>> context, ResourceKey<ConfiguredFeature<?, ?>> key, F feature, FC configuration) {
-            context.register(key, new ConfiguredFeature<>(feature, configuration));
-        }
+        /* </GameRule creation helper methods> */
     }
 }

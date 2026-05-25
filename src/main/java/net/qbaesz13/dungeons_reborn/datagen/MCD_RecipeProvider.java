@@ -27,8 +27,8 @@ public class MCD_RecipeProvider extends FabricRecipeProvider {
                 nineBlockStorageRecipes(RecipeCategory.MISC, MCD_Items.ANCIENT_GOLD_INGOT, RecipeCategory.BUILDING_BLOCKS, MCD_Blocks.ANCIENT_GOLD_BLOCK);
                 carpet(MCD_Blocks.HIGHLAND_MOSS_CARPET, MCD_Blocks.HIGHLAND_MOSS_BLOCK);
                 carpet(MCD_Blocks.MIDNIGHT_MOSS_CARPET, MCD_Blocks.MIDNIGHT_MOSS_BLOCK);
-                offerMossyVariantRecipes(this, output, MCD_Blocks.MOSSIER_OAK_PLANKS, Blocks.OAK_PLANKS);
-                offerMossyVariantRecipes(this, output, MCD_Blocks.MOSSIER_SPRUCE_PLANKS, Blocks.SPRUCE_PLANKS);
+                offerMossyVariantRecipes(this, output, MCD_Blocks.MOSSY_OAK_PLANKS, Blocks.OAK_PLANKS);
+                offerMossyVariantRecipes(this, output, MCD_Blocks.MOSSY_SPRUCE_PLANKS, Blocks.SPRUCE_PLANKS);
                 shapeless(RecipeCategory.BUILDING_BLOCKS, MCD_Blocks.MIDNIGHT_MOSSY_COBBLESTONE)
                         .requires(Blocks.COBBLESTONE)
                         .requires(MCD_Blocks.MIDNIGHT_MOSS_BLOCK)

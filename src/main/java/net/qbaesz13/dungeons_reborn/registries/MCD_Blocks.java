@@ -17,12 +17,12 @@ public class MCD_Blocks {
                     .ofFullCopy(Blocks.COBBLESTONE)
                     .strength(2.0F, 6.0F)
                     .mapColor(MapColor.COLOR_CYAN));
-    public static final Block MOSSIER_OAK_PLANKS = SkyCore.RegistryPresets.registerBlockAndItem("mossy_oak_planks",
+    public static final Block MOSSY_OAK_PLANKS = SkyCore.RegistryPresets.registerBlockAndItem("mossy_oak_planks",
             Block::new, BlockBehaviour.Properties
                     .ofFullCopy(Blocks.OAK_PLANKS)
                     .strength(2.0f, 3.0f)
                     .mapColor(MapColor.WOOD));
-    public static final Block MOSSIER_SPRUCE_PLANKS = SkyCore.RegistryPresets.registerBlockAndItem("mossy_spruce_planks",
+    public static final Block MOSSY_SPRUCE_PLANKS = SkyCore.RegistryPresets.registerBlockAndItem("mossy_spruce_planks",
             Block::new, BlockBehaviour.Properties
                     .ofFullCopy(Blocks.SPRUCE_PLANKS)
                     .strength(2.0f, 3.0f)

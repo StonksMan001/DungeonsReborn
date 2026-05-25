@@ -27,14 +27,14 @@ public class MCD_ModelProvider extends FabricModelProvider {
     @Override
     public void generateBlockStateModels(BlockModelGenerators bmg) {
         bmg.createTrivialCube(MCD_Blocks.MIDNIGHT_MOSSY_COBBLESTONE);
-        bmg.createTrivialCube(MCD_Blocks.MOSSIER_SPRUCE_PLANKS);
+        bmg.createTrivialCube(MCD_Blocks.MOSSY_SPRUCE_PLANKS);
         this.registerRotatedWoolAndCarpet(bmg, MCD_Blocks.HIGHLAND_MOSS_BLOCK, MCD_Blocks.HIGHLAND_MOSS_CARPET);
         this.registerRotatedWoolAndCarpet(bmg, MCD_Blocks.MIDNIGHT_MOSS_BLOCK, MCD_Blocks.MIDNIGHT_MOSS_CARPET);
         bmg.createCrossBlockWithDefaultItem(MCD_Blocks.MIDNIGHT_SPROUTS, BlockModelGenerators.PlantType.NOT_TINTED);
         bmg.createTrivialCube(MCD_Blocks.ANCIENT_GOLD_BLOCK);
         this.registerBerryBushBlock(bmg, MCD_Blocks.SOUR_BERRY_BUSH);
 
-        registerBlockWith2Variants(bmg, MCD_Blocks.MOSSIER_OAK_PLANKS);
+        registerBlockWith2Variants(bmg, MCD_Blocks.MOSSY_OAK_PLANKS);
         bmg.registerSimpleFlatItemModel(MCD_Blocks.POP_FLOWER,"_0");
     }
     private void registerRotatedWoolAndCarpet(BlockModelGenerators bmg, Block wool, Block carpet) {

@@ -36,8 +36,8 @@ public class MCD_CreativeModeTabs {
                 output.accept(MCD_Blocks.MIDNIGHT_MOSS_CARPET);
                 output.accept(MCD_Blocks.MIDNIGHT_SPROUTS);
                 output.accept(MCD_Blocks.POP_FLOWER);
-                output.accept(MCD_Blocks.MOSSIER_OAK_PLANKS);
-                output.accept(MCD_Blocks.MOSSIER_SPRUCE_PLANKS);
+                output.accept(MCD_Blocks.MOSSY_OAK_PLANKS);
+                output.accept(MCD_Blocks.MOSSY_SPRUCE_PLANKS);
                 output.accept(MCD_Items.ANCIENT_GOLD_INGOT);
                 output.accept(MCD_Blocks.ANCIENT_GOLD_BLOCK);
             }).build());

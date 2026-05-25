@@ -47,6 +47,9 @@ public class MCD_ConfiguredFeatures {
                 .add(MCD_Blocks.SOUR_BERRY_BUSH.defaultBlockState().setValue(SourBerryBushBlock.AGE, 2), 2)
                 .add(MCD_Blocks.SOUR_BERRY_BUSH.defaultBlockState().setValue(SourBerryBushBlock.AGE, 3), 1).build());
     }
+    /**
+     * Based on {@link net.minecraft.data.worldgen.features.VegetationFeatures#bootstrap}
+     */
     private static void registerMossFeatures(BootstrapContext<ConfiguredFeature<?, ?>> ctx, ResourceKey<ConfiguredFeature<?, ?>> vegetation,
                                              ResourceKey<ConfiguredFeature<?, ?>> bonemeal_patch, Block base, WeightedList<BlockState> states) {
         FeatureUtils.register(

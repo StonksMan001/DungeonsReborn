@@ -27,7 +27,6 @@ import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.ComposterBlock;
 import net.minecraft.world.phys.AABB;
 import net.minecraft.world.scores.PlayerTeam;
-import net.minecraft.world.scores.Team;
 import net.qbaesz13.dungeons_reborn.components.McdRarity;
 import net.qbaesz13.dungeons_reborn.registries.MCD_DataComponents;
 import net.qbaesz13.dungeons_reborn.registries.MCD_Enchantments;
@@ -136,15 +135,21 @@ public interface DungeonsHelpers {
     static float getCompostingValue(ItemLike item) {
         return ComposterBlock.COMPOSTABLES.getFloat(item.asItem());
     }
+    static void setAttackKnockbackModifierIfNotPresent(ItemStack itemStack) {
+        var modifiersComponent = itemStack.get(DataComponents.ATTRIBUTE_MODIFIERS);
+        var modifiers = Objects.nonNull(modifiersComponent) ? modifiersComponent.modifiers() : null;
+        if (Objects.nonNull(modifiers) && modifiers.stream().noneMatch(entry -> entry.matches(Attributes.ATTACK_KNOCKBACK, entry.modifier().id()))) {
+            modifyAttackKnockback(itemStack, Attributes.ATTACK_KNOCKBACK.value().getDefaultValue());
+        }
+    }
     static void modifyAttackKnockback(ItemStack itemStack, double attackKnockback) {
         itemStack.set(DataComponents.ATTRIBUTE_MODIFIERS, itemStack.getOrDefault(DataComponents.ATTRIBUTE_MODIFIERS, ItemAttributeModifiers.EMPTY)
                 .withModifierAdded(
                         Attributes.ATTACK_KNOCKBACK,
-                        new AttributeModifier(Item.BASE_ATTACK_SPEED_ID, attackKnockback, AttributeModifier.Operation.ADD_VALUE),
+                        new AttributeModifier(Item.BASE_ATTACK_SPEED_ID, attackKnockback, AttributeModifier.Operation.ADD_VALUE), //TODO
                         EquipmentSlotGroup.MAINHAND
                 ));
     }
-
     static void modifyAttackDamage(ItemStack stack, double attackDamage) {
         stack.set(DataComponents.ATTRIBUTE_MODIFIERS, stack.getOrDefault(DataComponents.ATTRIBUTE_MODIFIERS, ItemAttributeModifiers.EMPTY)
                 .withModifierAdded(

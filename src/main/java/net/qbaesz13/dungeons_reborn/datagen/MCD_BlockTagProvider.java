@@ -16,8 +16,8 @@ public class MCD_BlockTagProvider extends FabricTagsProvider.BlockTagsProvider {
     @Override
     protected void addTags(HolderLookup.@NonNull Provider provider) {
         valueLookupBuilder(BlockTags.MINEABLE_WITH_AXE)
-                .add(MCD_Blocks.MOSSIER_OAK_PLANKS)
-                .add(MCD_Blocks.MOSSIER_SPRUCE_PLANKS);
+                .add(MCD_Blocks.MOSSY_OAK_PLANKS)
+                .add(MCD_Blocks.MOSSY_SPRUCE_PLANKS);
         valueLookupBuilder(BlockTags.MINEABLE_WITH_HOE)
                 .add(MCD_Blocks.MIDNIGHT_MOSS_BLOCK)
                 .add(MCD_Blocks.MIDNIGHT_MOSS_CARPET)

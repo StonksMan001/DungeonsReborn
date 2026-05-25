@@ -22,6 +22,4 @@ public class MCD_RegistryDataGenerator extends FabricDynamicRegistryProvider {
     public @NonNull String getName() {
         return this.getClass().getName();
     }
-
-
 }

@@ -41,6 +41,7 @@ public abstract class ClaymoreBaseItem extends SkyCoreToolAPI.SwordItem implemen
     }
     @Override @NullMarked
     public void inventoryTick(ItemStack itemStack, ServerLevel level, Entity owner, @Nullable EquipmentSlot slot) {
+        DungeonsHelpers.setAttackKnockbackModifierIfNotPresent(itemStack);
         DungeonsHelpers.makeUnrepairable(itemStack);
         super.inventoryTick(itemStack, level, owner, slot);
     }

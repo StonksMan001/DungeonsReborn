@@ -37,7 +37,6 @@ public class BroadswordItem extends ClaymoreBaseItem implements GrindStoneExperi
     @Override @NullMarked
     public void inventoryTick(ItemStack itemStack, ServerLevel level, Entity owner, @Nullable EquipmentSlot slot) {
         DungeonsHelpers.addEnchantmentToStack(itemStack, level.registryAccess(), Enchantments.SHARPNESS, 5);
-
         super.inventoryTick(itemStack, level, owner, slot);
     }
     @Override @NullUnmarked

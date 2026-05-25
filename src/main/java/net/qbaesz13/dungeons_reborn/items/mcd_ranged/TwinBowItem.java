@@ -39,7 +39,6 @@ public class TwinBowItem extends SC_BowItem {
     public TwinBowItem(Properties properties) {
         super(properties);
     }
-
     @Override @NullMarked
     public boolean overrideOtherStackedOnMe(ItemStack self, ItemStack other, Slot slot, ClickAction clickAction, Player player, SlotAccess carriedItem) {
         if (clickAction == ClickAction.SECONDARY && MCD_DataComponents.TWIN_BOW_TARGET_PLAYER_ENTITIES_TOGGLE != null) {

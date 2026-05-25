@@ -37,8 +37,8 @@ public class MCD_LootTableProvider extends FabricBlockLootSubProvider {
         dropSelf(MCD_Blocks.MIDNIGHT_MOSS_CARPET);
         dropSelf(MCD_Blocks.MIDNIGHT_SPROUTS);
         dropSelf(MCD_Blocks.MIDNIGHT_MOSSY_COBBLESTONE);
-        add(MCD_Blocks.MOSSIER_OAK_PLANKS, block -> createSilkTouchDispatchTable(block, applyExplosionDecay(block, LootItem.lootTableItem(Items.OAK_PLANKS))));
-        add(MCD_Blocks.MOSSIER_SPRUCE_PLANKS, block -> createSilkTouchDispatchTable(block, applyExplosionDecay(block, LootItem.lootTableItem(Items.SPRUCE_PLANKS))));
+        add(MCD_Blocks.MOSSY_OAK_PLANKS, block -> createSilkTouchDispatchTable(block, applyExplosionDecay(block, LootItem.lootTableItem(Items.OAK_PLANKS))));
+        add(MCD_Blocks.MOSSY_SPRUCE_PLANKS, block -> createSilkTouchDispatchTable(block, applyExplosionDecay(block, LootItem.lootTableItem(Items.SPRUCE_PLANKS))));
         dropSelf(MCD_Blocks.POP_FLOWER);
         addBerryBushDrops(MCD_Blocks.SOUR_BERRY_BUSH, MCD_Items.SOUR_BERRIES);
     }
