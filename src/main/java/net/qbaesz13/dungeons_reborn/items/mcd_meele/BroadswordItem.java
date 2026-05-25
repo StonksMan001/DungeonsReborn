@@ -15,9 +15,8 @@ import net.qbaesz13.dungeons_reborn.components.McdRarity;
 import net.qbaesz13.dungeons_reborn.items.mcd_meele.templates.ClaymoreBaseItem;
 import net.qbaesz13.dungeons_reborn.util.DungeonsHelpers;
 import net.qbaesz13.dungeons_reborn.util.GrindStoneExperienceNotDropping;
-import org.jspecify.annotations.NonNull;
-import org.jspecify.annotations.NullUnmarked;
-import org.jspecify.annotations.Nullable;
+import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 
 import java.util.function.Consumer;
 
@@ -39,8 +38,8 @@ public class BroadswordItem extends ClaymoreBaseItem implements GrindStoneExperi
         DungeonsHelpers.addEnchantmentToStack(stack, world.getRegistryManager(), Enchantments.SHARPNESS, 5);
         super.inventoryTick(stack, world, entity, slot);
     }
-    @Override @NullUnmarked
-    public Pair<@NonNull Double, Double> getAttackDamagePair(McdRarity mcdRarity) {
+    @Override
+    public Pair<@NotNull Double, Double> getAttackDamagePair(McdRarity mcdRarity) {
         return new Pair<>(10d, null);
     }
 }

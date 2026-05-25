@@ -21,7 +21,7 @@ public class PopFlowerBlockEntity extends BlockEntity {
                 ref.hide = true;
                 return null;
             });
-            if (ref.hide || serverWorld.isDay() || serverWorld.getGameRules().getValue(MCD_GameRules.POP_FLOWERS_ALWAYS_HIDE)) {
+            if (ref.hide || serverWorld.isDay() || serverWorld.getGameRules().getBoolean(MCD_GameRules.POP_FLOWERS_ALWAYS_HIDE)) {
                 PopFlowerBlock.decrease(serverWorld, pos);
             } else PopFlowerBlock.increase(serverWorld, pos);
         }

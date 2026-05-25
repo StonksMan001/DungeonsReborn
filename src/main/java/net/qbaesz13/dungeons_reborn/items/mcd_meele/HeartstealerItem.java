@@ -15,8 +15,7 @@ import net.qbaesz13.dungeons_reborn.components.McdRarity;
 import net.qbaesz13.dungeons_reborn.items.mcd_meele.templates.ClaymoreBaseItem;
 import net.qbaesz13.dungeons_reborn.registries.MCD_GameRules;
 import net.qbaesz13.dungeons_reborn.util.DungeonsHelpers;
-import org.jspecify.annotations.NonNull;
-import org.jspecify.annotations.NullUnmarked;
+import org.jetbrains.annotations.NotNull;
 
 import java.util.function.Consumer;
 
@@ -36,7 +35,7 @@ public class HeartstealerItem extends ClaymoreBaseItem {
     @Override
     public void postDamageEntity(ItemStack stack, LivingEntity target, LivingEntity attacker) {
         if (attacker.getEntityWorld() instanceof ServerWorld serverWorld && target.isDead() && (target instanceof MobEntity || target instanceof PlayerEntity)) {
-            float healAmount = target.getMaxHealth() * ((float)serverWorld.getGameRules().getValue(MCD_GameRules.LEECHING_HP_STEAL_PERCENTAGE) / 100);
+            float healAmount = target.getMaxHealth() * ((float)MCD_GameRules.LEECHING_HP_STEAL_PERCENTAGE.getValue(serverWorld) / 100);
             if (healAmount > 0) attacker.heal(healAmount);
             if (healAmount < 0) attacker.damage(serverWorld, serverWorld.getDamageSources().magic(), -healAmount);
             serverWorld.spawnParticles(DustParticleEffect.DEFAULT,
@@ -47,8 +46,8 @@ public class HeartstealerItem extends ClaymoreBaseItem {
         }
         super.postDamageEntity(stack, target, attacker);
     }
-    @Override @NullUnmarked
-    public Pair<@NonNull Double, Double> getAttackDamagePair(McdRarity mcdRarity) {
+    @Override
+    public Pair<@NotNull Double, Double> getAttackDamagePair(McdRarity mcdRarity) {
         return new Pair<>(10d, null);
     }
 }

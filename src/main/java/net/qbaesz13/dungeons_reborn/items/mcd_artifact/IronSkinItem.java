@@ -24,7 +24,7 @@ import net.qbaesz13.dungeons_reborn.components.McdRarity;
 import net.qbaesz13.dungeons_reborn.items.McdArtifactItem;
 import net.qbaesz13.dungeons_reborn.registries.MCD_DataComponentTypes;
 import net.qbaesz13.dungeons_reborn.registries.MCD_Sounds;
-import org.jspecify.annotations.Nullable;
+import org.jetbrains.annotations.Nullable;
 
 import java.util.Objects;
 import java.util.function.Consumer;
@@ -56,17 +56,17 @@ public class IronSkinItem extends McdArtifactItem {
         McdRarity mcdRarity = stack.get(MCD_DataComponentTypes.MCD_RARITY);
         Boolean teammateOnlyToggle = stack.get(MCD_DataComponentTypes.TEAMMATE_ONLY_TOGGLE);
         if (world instanceof ServerWorld serverWorld && Objects.nonNull(mcdRarity) && Objects.nonNull(teammateOnlyToggle)) {
-            int range = serverWorld.getGameRules().getValue(MCD_GameRules.ARTIFACT_IRON_HIDE_AMULET_COMMON_RANGE);
-            int cooldown = serverWorld.getGameRules().getValue(MCD_GameRules.ARTIFACT_IRON_HIDE_AMULET_COMMON_COOLDOWN);
+            int range = MCD_GameRules.ARTIFACT_IRON_HIDE_AMULET_COMMON_RANGE.getValue(serverWorld);
+            int cooldown = MCD_GameRules.ARTIFACT_IRON_HIDE_AMULET_COMMON_COOLDOWN.getValue(serverWorld);
             var ref = new Object() {
-                int amplifier = serverWorld.getGameRules().getValue(MCD_GameRules.ARTIFACT_IRON_HIDE_AMULET_COMMON_AMPLIFIER);
-                int duration = serverWorld.getGameRules().getValue(MCD_GameRules.ARTIFACT_IRON_HIDE_AMULET_COMMON_DURATION);
+                int amplifier = MCD_GameRules.ARTIFACT_IRON_HIDE_AMULET_COMMON_AMPLIFIER.getValue(serverWorld);
+                int duration = MCD_GameRules.ARTIFACT_IRON_HIDE_AMULET_COMMON_DURATION.getValue(serverWorld);
             };
             if (mcdRarity == McdRarity.RARE) {
-                range = serverWorld.getGameRules().getValue(MCD_GameRules.ARTIFACT_IRON_HIDE_AMULET_RARE_RANGE);
-                cooldown = serverWorld.getGameRules().getValue(MCD_GameRules.ARTIFACT_IRON_HIDE_AMULET_RARE_COOLDOWN);
-                ref.amplifier = serverWorld.getGameRules().getValue(MCD_GameRules.ARTIFACT_IRON_HIDE_AMULET_RARE_AMPLIFIER);
-                ref.duration = serverWorld.getGameRules().getValue( MCD_GameRules.ARTIFACT_IRON_HIDE_AMULET_RARE_DURATION);
+                range = MCD_GameRules.ARTIFACT_IRON_HIDE_AMULET_RARE_RANGE.getValue(serverWorld);
+                cooldown = MCD_GameRules.ARTIFACT_IRON_HIDE_AMULET_RARE_COOLDOWN.getValue(serverWorld);
+                ref.amplifier = MCD_GameRules.ARTIFACT_IRON_HIDE_AMULET_RARE_AMPLIFIER.getValue(serverWorld);
+                ref.duration = MCD_GameRules.ARTIFACT_IRON_HIDE_AMULET_RARE_DURATION.getValue(serverWorld);
             }
             boolean teammateOnly = Boolean.TRUE.equals(teammateOnlyToggle);
             if (cooldown != 0) user.getItemCooldownManager().set(stack, cooldown);

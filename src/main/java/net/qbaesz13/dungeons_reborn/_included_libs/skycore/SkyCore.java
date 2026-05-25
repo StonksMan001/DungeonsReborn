@@ -5,6 +5,8 @@ import com.mojang.brigadier.arguments.ArgumentType;
 import com.mojang.brigadier.arguments.BoolArgumentType;
 import com.mojang.brigadier.arguments.IntegerArgumentType;
 import com.mojang.serialization.Codec;
+import net.fabricmc.fabric.api.gamerule.v1.GameRuleFactory;
+import net.fabricmc.fabric.api.gamerule.v1.GameRuleRegistry;
 import net.fabricmc.fabric.api.object.builder.v1.world.poi.PointOfInterestHelper;
 import net.minecraft.block.AbstractBlock;
 import net.minecraft.block.Block;
@@ -26,6 +28,7 @@ import net.minecraft.sound.SoundEvent;
 import net.minecraft.text.Text;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.Util;
+import net.minecraft.world.GameRules;
 import net.minecraft.world.World;
 import net.minecraft.world.biome.Biome;
 import net.minecraft.world.dimension.DimensionType;
@@ -33,10 +36,11 @@ import net.minecraft.world.gen.feature.ConfiguredFeature;
 import net.minecraft.world.gen.feature.Feature;
 import net.minecraft.world.gen.feature.FeatureConfig;
 import net.minecraft.world.poi.PointOfInterestType;
-import net.minecraft.world.rule.*;
 import net.qbaesz13.dungeons_reborn.DungeonsReborn;
+import net.qbaesz13.dungeons_reborn._included_libs.skycore.gamerules.CappedIntRule;
 import net.qbaesz13.dungeons_reborn._included_libs.skycore.items.SC_BowItem;
 import net.qbaesz13.dungeons_reborn._included_libs.skycore.items.SC_CrossbowItem;
+import org.jetbrains.annotations.Nullable;
 
 import java.util.function.Function;
 import java.util.function.ToIntFunction;
@@ -156,58 +160,16 @@ public class SkyCore {
         public static TagKey<Item> createItemTag(String name) {
             return TagKey.of(RegistryKeys.ITEM, DungeonsReborn.identifierOfDungeonsReborn(name));
         }
-        public static GameRule<Boolean> registerBooleanGameRule(String name, GameRuleCategory category, boolean defaultValue) {
-            return registerGameRule(
-                    name,
-                    category,
-                    GameRuleType.BOOL,
-                    BoolArgumentType.bool(),
-                    Codec.BOOL,
-                    defaultValue,
-                    FeatureSet.empty(),
-                    GameRuleVisitor::visitBoolean,
-                    value -> value ? 1 : 0
-            );
-        }
-        public static GameRule<Integer> registerCappedIntRule(String name, GameRuleCategory category, int defaultValue, int minValue, int maxValue) {
-            return registerIntRule(name, category, defaultValue, minValue, maxValue, FeatureSet.empty());
-        }
-        public static GameRule<Integer> registerIntRule(String name, GameRuleCategory category, int defaultValue, int minValue, int maxValue) {
-            return registerIntRule(name, category, defaultValue, minValue, maxValue, FeatureSet.empty());
-        }
-
-        public static GameRule<Integer> registerIntRule(
-                String name, GameRuleCategory category, int defaultValue, int minValue, int maxValue, FeatureSet requiredFeatures
-        ) {
-            return registerGameRule(
-                    name,
-                    category,
-                    GameRuleType.INT,
-                    IntegerArgumentType.integer(minValue, maxValue),
-                    Codec.intRange(minValue, maxValue),
-                    defaultValue,
-                    requiredFeatures,
-                    GameRuleVisitor::visitInt,
-                    value -> value
-            );
-        }
-        private static <T> GameRule<T> registerGameRule(
-                final String name,
-                final GameRuleCategory category,
-                final GameRuleType type,
-                final ArgumentType<T> argumentType,
-                final Codec<T> codec,
-                final T defaultValue,
-                final FeatureSet requiredFeatures,
-                final GameRules.Acceptor<T> acceptor,
-                final ToIntFunction<T> commandResultSupplier
-        ) {
-            return Registry.register(
-                    Registries.GAME_RULE, "dr__" + name, new GameRule<>(category, type, argumentType, acceptor, codec, commandResultSupplier, defaultValue, requiredFeatures)
-            );
-        }
         public static <FC extends FeatureConfig, F extends Feature<FC>> void registerConfiguredFeature(Registerable<ConfiguredFeature<?, ?>> context, RegistryKey<ConfiguredFeature<?, ?>> key, F feature, FC configuration) {
             context.register(key, new ConfiguredFeature<>(feature, configuration));
+        }
+        public static <T extends GameRules.Rule<T>> GameRules.Key<T> registerGameRule(String id, GameRules.Category category, GameRules.Type<T> rule) {
+            return GameRuleRegistry.register("dr_" + id, category, rule);
+        }
+    }
+    public static class CustomRegistries {
+        public static CappedIntRule registerCappedIntRule(String id, GameRules.Category category, int defaultValue, @Nullable Integer min, @Nullable Integer max) {
+            return new CappedIntRule(BuiltinRegistries.registerGameRule(id, category, GameRuleFactory.createIntRule(defaultValue)), min, max);
         }
     }
 }

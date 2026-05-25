@@ -22,9 +22,8 @@ import net.qbaesz13.dungeons_reborn.items.mcd_meele.templates.MaceBaseItem;
 import net.qbaesz13.dungeons_reborn.registries.MCD_DataComponentTypes;
 import net.qbaesz13.dungeons_reborn.registries.MCD_GameRules;
 import net.qbaesz13.dungeons_reborn.util.DungeonsHelpers;
-import org.jspecify.annotations.NonNull;
-import org.jspecify.annotations.NullUnmarked;
-import org.jspecify.annotations.Nullable;
+import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 
 import java.util.function.Consumer;
 import java.util.Random;
@@ -48,15 +47,15 @@ public class SunsGraceItem extends MaceBaseItem {
     public void postChargedAttack(ItemStack stack, LivingEntity target, LivingEntity attacker) {
         Random random = new Random();
         if ((target instanceof MobEntity || target instanceof PlayerEntity) && attacker.getEntityWorld() instanceof ServerWorld serverWorld) {
-            double probability = serverWorld.getGameRules().getValue(MCD_GameRules.RADIANCE_TRIGGER_PROBABILITY) / 100.0;
+            double probability = MCD_GameRules.RADIANCE_TRIGGER_PROBABILITY.getValue(serverWorld) / 100.0;
             if (random.nextDouble() < probability) {
                 BlockPos center = target.getBlockPos();
-                int radius = serverWorld.getGameRules().getValue(MCD_GameRules.RADIANCE_RANGE);
+                int radius = MCD_GameRules.RADIANCE_RANGE.getValue(serverWorld);
                 Boolean teammateOnlyToggle = stack.get(MCD_DataComponentTypes.TEAMMATE_ONLY_TOGGLE);
                 boolean teammateOnly = Boolean.TRUE.equals(teammateOnlyToggle);
                 DungeonsHelpers.executeForPlayersWithinDistance(serverWorld, center, radius, (playerEntity) -> {
                     if (!teammateOnly || DungeonsHelpers.areAllies(attacker, playerEntity)) {
-                        int healAmount = serverWorld.getGameRules().getValue(MCD_GameRules.RADIANCE_HEAL);
+                        int healAmount = MCD_GameRules.RADIANCE_HEAL.getValue(serverWorld);
                         if (healAmount > 0) playerEntity.heal(healAmount);
                         if (healAmount < 0) playerEntity.damage(serverWorld, serverWorld.getDamageSources().magic(), -healAmount);
                     }
@@ -89,12 +88,12 @@ public class SunsGraceItem extends MaceBaseItem {
         DungeonsHelpers.setRareOrCommonVariant(stack);
         super.inventoryTick(stack, world, entity, slot);
     }
-    @Override @NullUnmarked
-    public Pair<@NonNull Double, Double> getAttackDamagePair(McdRarity mcdRarity) {
+    @Override
+    public Pair<@NotNull Double, Double> getAttackDamagePair(McdRarity mcdRarity) {
         return new Pair<>(8d, 12d);
     }
-    @Override @NullUnmarked
-    public Pair<@NonNull Double, Double> getAttackSpeedPair(McdRarity mcdRarity) {
+    @Override
+    public Pair<@NotNull Double, Double> getAttackSpeedPair(McdRarity mcdRarity) {
         return new Pair<>(1.6d, 0.6d);
     }
 }

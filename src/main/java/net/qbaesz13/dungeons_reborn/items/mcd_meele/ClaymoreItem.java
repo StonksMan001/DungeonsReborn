@@ -15,9 +15,8 @@ import net.qbaesz13.dungeons_reborn.components.McdRarity;
 import net.qbaesz13.dungeons_reborn.items.mcd_meele.templates.ClaymoreBaseItem;
 import net.qbaesz13.dungeons_reborn.registries.MCD_DataComponentTypes;
 import net.qbaesz13.dungeons_reborn.util.DungeonsHelpers;
-import org.jspecify.annotations.NonNull;
-import org.jspecify.annotations.NullUnmarked;
-import org.jspecify.annotations.Nullable;
+import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 
 import java.util.function.Consumer;
 
@@ -43,8 +42,8 @@ public class ClaymoreItem extends ClaymoreBaseItem {
         DungeonsHelpers.setRareOrCommonVariant(stack);
         super.inventoryTick(stack, world, entity, slot);
     }
-    @Override @NullUnmarked
-    public Pair<@NonNull Double, Double> getAttackDamagePair(McdRarity mcdRarity) {
+    @Override
+    public Pair<@NotNull Double, Double> getAttackDamagePair(McdRarity mcdRarity) {
         if (mcdRarity == McdRarity.COMMON) return new Pair<>(9d, null);
         if (mcdRarity == McdRarity.RARE) return new Pair<>(10d, null);
         return null;

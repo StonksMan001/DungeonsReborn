@@ -25,6 +25,7 @@ import net.minecraft.util.Formatting;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Box;
 import net.minecraft.world.World;
+import net.qbaesz13.dungeons_reborn.DungeonsReborn;
 import net.qbaesz13.dungeons_reborn.components.McdRarity;
 import net.qbaesz13.dungeons_reborn.registries.MCD_DataComponentTypes;
 import net.qbaesz13.dungeons_reborn.registries.MCD_Enchantments;
@@ -133,11 +134,18 @@ public interface DungeonsHelpers {
     static float getCompostingValue(ItemConvertible item) {
         return ComposterBlock.ITEM_TO_LEVEL_INCREASE_CHANCE.getFloat(item.asItem());
     }
+    static void setAttackKnockbackModifierIfNotPresent(ItemStack itemStack) {
+        var modifiersComponent = itemStack.get(DataComponentTypes.ATTRIBUTE_MODIFIERS);
+        var modifiers = modifiersComponent != null ? modifiersComponent.modifiers() : null;
+        if (modifiers != null && modifiers.stream().noneMatch(entry -> entry.matches(EntityAttributes.ATTACK_KNOCKBACK, entry.modifier().id()))) {
+            modifyAttackKnockback(itemStack, EntityAttributes.ATTACK_KNOCKBACK.value().getDefaultValue());
+        }
+    }
     static void modifyAttackKnockback(ItemStack stack, double knockback) {
         stack.set(DataComponentTypes.ATTRIBUTE_MODIFIERS, stack.getOrDefault(DataComponentTypes.ATTRIBUTE_MODIFIERS, AttributeModifiersComponent.DEFAULT)
                 .with(
                         EntityAttributes.ATTACK_KNOCKBACK,
-                        new EntityAttributeModifier(Item.BASE_ATTACK_SPEED_MODIFIER_ID, knockback, EntityAttributeModifier.Operation.ADD_VALUE),
+                        new EntityAttributeModifier(DungeonsReborn.identifierOfDungeonsReborn("base_attack_knockback"), knockback, EntityAttributeModifier.Operation.ADD_VALUE),
                         AttributeModifierSlot.MAINHAND
                 ));
     }

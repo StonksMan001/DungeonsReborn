@@ -4,5 +4,4 @@ import net.minecraft.item.ItemStack;
 
 public class ThreadLocalContainer {
     public static final ThreadLocal<ItemStack> STACK = new ThreadLocal<>();
-    public static final ThreadLocal<Float> G = new ThreadLocal<>();
 }

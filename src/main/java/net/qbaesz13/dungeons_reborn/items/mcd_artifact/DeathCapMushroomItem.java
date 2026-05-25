@@ -20,7 +20,7 @@ import net.qbaesz13.dungeons_reborn.components.McdRarity;
 import net.qbaesz13.dungeons_reborn.items.McdArtifactItem;
 import net.qbaesz13.dungeons_reborn.registries.MCD_DataComponentTypes;
 import net.qbaesz13.dungeons_reborn.registries.MCD_Sounds;
-import org.jspecify.annotations.Nullable;
+import org.jetbrains.annotations.Nullable;
 
 import java.util.Objects;
 import java.util.function.Consumer;
@@ -35,13 +35,13 @@ public class DeathCapMushroomItem extends McdArtifactItem {
         ItemStack stack = user.getStackInHand(hand);
         McdRarity mcdRarity = stack.get(MCD_DataComponentTypes.MCD_RARITY);
         if (world instanceof ServerWorld serverWorld && Objects.nonNull(mcdRarity)) {
-            int duration = serverWorld.getGameRules().getValue(MCD_GameRules.ARTIFACT_DEATH_CAP_MUSHROOM_COMMON_DURATION);
-            int amplifier = serverWorld.getGameRules().getValue(MCD_GameRules.ARTIFACT_DEATH_CAP_MUSHROOM_COMMON_AMPLIFIER);
-            int cooldown = serverWorld.getGameRules().getValue(MCD_GameRules.ARTIFACT_DEATH_CAP_MUSHROOM_COMMON_COOLDOWN);
+            int duration = MCD_GameRules.ARTIFACT_DEATH_CAP_MUSHROOM_COMMON_DURATION.getValue(serverWorld);
+            int amplifier = MCD_GameRules.ARTIFACT_DEATH_CAP_MUSHROOM_COMMON_AMPLIFIER.getValue(serverWorld);
+            int cooldown = MCD_GameRules.ARTIFACT_DEATH_CAP_MUSHROOM_COMMON_COOLDOWN.getValue(serverWorld);
             if (mcdRarity == McdRarity.RARE) {
-                duration = serverWorld.getGameRules().getValue(MCD_GameRules.ARTIFACT_DEATH_CAP_MUSHROOM_RARE_DURATION);
-                amplifier = serverWorld.getGameRules().getValue(MCD_GameRules.ARTIFACT_DEATH_CAP_MUSHROOM_RARE_AMPLIFIER);
-                cooldown = serverWorld.getGameRules().getValue(MCD_GameRules.ARTIFACT_DEATH_CAP_MUSHROOM_RARE_COOLDOWN);
+                duration = MCD_GameRules.ARTIFACT_DEATH_CAP_MUSHROOM_RARE_DURATION.getValue(serverWorld);
+                amplifier = MCD_GameRules.ARTIFACT_DEATH_CAP_MUSHROOM_RARE_AMPLIFIER.getValue(serverWorld);
+                cooldown = MCD_GameRules.ARTIFACT_DEATH_CAP_MUSHROOM_RARE_COOLDOWN.getValue(serverWorld);
             }
             if (cooldown != 0) user.getItemCooldownManager().set(stack, cooldown);
             user.addStatusEffect(new StatusEffectInstance(StatusEffects.STRENGTH, duration, amplifier, false, true, true));

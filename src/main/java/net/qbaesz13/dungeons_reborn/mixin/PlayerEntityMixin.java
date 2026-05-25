@@ -31,22 +31,17 @@ public abstract class PlayerEntityMixin extends LivingEntity {
     protected PlayerEntityMixin(EntityType<? extends LivingEntity> entityType, World world) {
         super(entityType, world);
     }
-    @WrapOperation(method = "attack", at = @At(value = "INVOKE", target = "Lnet/minecraft/entity/player/PlayerEntity;onTargetDamaged(Lnet/minecraft/entity/Entity;Lnet/minecraft/item/ItemStack;Lnet/minecraft/entity/damage/DamageSource;Z)V"))
-    private void accountForCooldownDependentItems0(PlayerEntity instance, Entity target, ItemStack stack, DamageSource damageSource, boolean runEnchantmentEffects, Operation<Void> original, @Local(name = "g") float g) {
-        if (stack.getItem() instanceof AttackCooldownDependent) ThreadLocalContainer.G.set(g);
-        original.call(instance, target, stack, damageSource, runEnchantmentEffects);
-    }
-    @WrapOperation(method = "onTargetDamaged", at = @At(value = "INVOKE", target = "Lnet/minecraft/item/ItemStack;postHit(Lnet/minecraft/entity/LivingEntity;Lnet/minecraft/entity/LivingEntity;)Z"))
-    private boolean accountForCooldownDependentItems1(ItemStack instance, LivingEntity target, LivingEntity user, Operation<Boolean> original) {
-        if (instance.getItem() instanceof AttackCooldownDependent item && ThreadLocalContainer.G.get() == 1.0f) item.postChargedHit(instance, target, user);
+    @WrapOperation(method = "attack", at = @At(value = "INVOKE", target = "Lnet/minecraft/item/ItemStack;postHit(Lnet/minecraft/entity/LivingEntity;Lnet/minecraft/entity/LivingEntity;)Z"))
+    private boolean accountForCooldownDependentItems0(ItemStack instance, LivingEntity target, LivingEntity user, Operation<Boolean> original, @Local(ordinal = 2) float h) {
+        if (instance.getItem() instanceof AttackCooldownDependent item && h == 1.0) item.postChargedHit(instance, target, user);
         return original.call(instance, target, user);
     }
-    @Inject(method = "attack", at = @At(value = "INVOKE", target = "Lnet/minecraft/entity/player/PlayerEntity;beforePlayerAttack()V"))
-    private void accountForCooldownDependentItems2(Entity target, CallbackInfo ci, @Local(name = "itemStack") ItemStack itemStack, @Local(name = "g") float g) {
+    @Inject(method = "attack", at = @At(value = "INVOKE", target = "Lnet/minecraft/entity/player/PlayerEntity;resetLastAttackedTicks()V"))
+    private void accountForCooldownDependentItems1(Entity target, CallbackInfo ci, @Local(ordinal = 0) ItemStack itemStack, @Local(ordinal = 2) float h) {
         if (this.getEntityWorld() instanceof ServerWorld
                 && target instanceof LivingEntity livingEntity
                 && itemStack.getItem() instanceof AttackCooldownDependent item
-                && g == 1.0f) {
+                && h == 1.0) {
             item.postChargedAttack(itemStack, livingEntity, this);
         }
     }

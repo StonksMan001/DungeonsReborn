@@ -10,7 +10,7 @@ import net.minecraft.text.Text;
 import net.qbaesz13.dungeons_reborn._included_libs.skycore.items.SC_CrossbowItem;
 import net.qbaesz13.dungeons_reborn.items.McdItem;
 import net.qbaesz13.dungeons_reborn.util.DungeonsHelpers;
-import org.jspecify.annotations.Nullable;
+import org.jetbrains.annotations.Nullable;
 
 import java.util.function.Consumer;
 

@@ -20,7 +20,7 @@ import net.qbaesz13.dungeons_reborn.components.McdRarity;
 import net.qbaesz13.dungeons_reborn.items.McdItem;
 import net.qbaesz13.dungeons_reborn.registries.MCD_GameRules;
 import net.qbaesz13.dungeons_reborn.util.DungeonsHelpers;
-import org.jspecify.annotations.Nullable;
+import org.jetbrains.annotations.Nullable;
 
 import java.util.Random;
 import java.util.function.Consumer;
@@ -44,7 +44,7 @@ public class RoughDiamondPickaxeItem extends SkyCoreToolAPI.PickaxeItem {
             int range = (int) Math.round(6.0 * (20.0 / Math.max(1, (int) target.getMaxHealth())));
             int range_capped = MathHelper.clamp(range, 3, 120); // capped range to avoid extreme values
             double probability = (double) 1 / (range_capped - 1);
-            double h = serverWorld.getGameRules().getValue(MCD_GameRules.PROSPECTOR_MINIMUM_TRIGGER_PROBABILITY) / 100.0;
+            double h = MCD_GameRules.PROSPECTOR_MINIMUM_TRIGGER_PROBABILITY.getValue(serverWorld) / 100.0;
             double modifiedProbability = probability * (1.0 - h) + h;
             if (modifiedProbability >= 1 || random.nextDouble() < modifiedProbability) { // algorithm for hp-based Prospector trigger probability
                 serverWorld.spawnEntity(new ItemEntity(serverWorld, target.getX(), target.getY(), target.getZ(), new ItemStack(Items.EMERALD, random.nextInt(5) + 1)));
