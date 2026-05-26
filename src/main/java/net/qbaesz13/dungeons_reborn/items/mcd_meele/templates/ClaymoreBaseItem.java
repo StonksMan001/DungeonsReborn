@@ -1,5 +1,6 @@
 package net.qbaesz13.dungeons_reborn.items.mcd_meele.templates;
 
+import net.minecraft.component.DataComponentTypes;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EquipmentSlot;
 import net.minecraft.entity.LivingEntity;
@@ -40,6 +41,8 @@ public abstract class ClaymoreBaseItem extends SkyCoreToolAPI.SwordItem implemen
     }
     @Override
     public void inventoryTick(ItemStack stack, ServerWorld world, Entity entity, @Nullable EquipmentSlot slot) {
+        DungeonsHelpers.setAttackKnockbackModifierIfNotPresent(stack);
+        if (stack.get(DataComponentTypes.ATTRIBUTE_MODIFIERS) == null) DungeonsHelpers.modifyAttackKnockback(stack, 0.0);
         DungeonsHelpers.makeUnrepairable(stack);
         super.inventoryTick(stack, world, entity, slot);
     }

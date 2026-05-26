@@ -32,7 +32,7 @@ public abstract class PlayerEntityMixin extends LivingEntity {
         super(entityType, world);
     }
     @WrapOperation(method = "attack", at = @At(value = "INVOKE", target = "Lnet/minecraft/entity/player/PlayerEntity;onTargetDamaged(Lnet/minecraft/entity/Entity;Lnet/minecraft/item/ItemStack;Lnet/minecraft/entity/damage/DamageSource;Z)V"))
-    private void accountForCooldownDependentItems0(PlayerEntity instance, Entity target, ItemStack stack, DamageSource damageSource, boolean runEnchantmentEffects, Operation<Void> original, @Local(name = "g") float g) {
+    private void accountForCooldownDependentItems0(PlayerEntity instance, Entity target, ItemStack stack, DamageSource damageSource, boolean runEnchantmentEffects, Operation<Void> original, @Local(ordinal = 1) float g) {
         if (stack.getItem() instanceof AttackCooldownDependent) ThreadLocalContainer.G.set(g);
         original.call(instance, target, stack, damageSource, runEnchantmentEffects);
     }
@@ -42,7 +42,7 @@ public abstract class PlayerEntityMixin extends LivingEntity {
         return original.call(instance, target, user);
     }
     @Inject(method = "attack", at = @At(value = "INVOKE", target = "Lnet/minecraft/entity/player/PlayerEntity;beforePlayerAttack()V"))
-    private void accountForCooldownDependentItems2(Entity target, CallbackInfo ci, @Local(name = "itemStack") ItemStack itemStack, @Local(name = "g") float g) {
+    private void accountForCooldownDependentItems2(Entity target, CallbackInfo ci, @Local(ordinal = 0) ItemStack itemStack, @Local(ordinal = 1) float g) {
         if (this.getEntityWorld() instanceof ServerWorld
                 && target instanceof LivingEntity livingEntity
                 && itemStack.getItem() instanceof AttackCooldownDependent item
@@ -50,12 +50,10 @@ public abstract class PlayerEntityMixin extends LivingEntity {
             item.postChargedAttack(itemStack, livingEntity, this);
         }
     }
-
     @WrapOperation(method = "takeShieldHit", at = @At(value = "INVOKE", target = "Lnet/minecraft/entity/LivingEntity;getWeaponDisableBlockingForSeconds()F"))
     private float disableShieldOnCriticalMaceHit0(LivingEntity instance, Operation<Float> original) {
         return isAttackCharged(instance) ? MaceBaseItem.DEFAULT_DISABLE_BLOCKING_TIME : original.call(instance);
     }
-
     @Definition(id = "f", local = @Local(type = float.class))
     @Expression("f > 0.0")
     @ModifyExpressionValue(method = "takeShieldHit", at = @At("MIXINEXTRAS:EXPRESSION"))
