@@ -12,8 +12,6 @@ import net.qbaesz13.dungeons_reborn.registries.MCD_DataComponents;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
 
-import java.util.Objects;
-
 @Mixin(CrossbowItem.class)
 public abstract class CrossBowItemMixin {
     @WrapOperation(method = "getChargeDuration", at = @At(value = "INVOKE", target = "Lnet/minecraft/util/Mth;floor(F)I"))
@@ -23,7 +21,7 @@ public abstract class CrossBowItemMixin {
         }
         if (itemStack.getItem() instanceof HeavyCrossbowItem) {
             McdRarity rarity = itemStack.get(MCD_DataComponents.MCD_RARITY);
-            float coefficient = Objects.isNull(rarity) || rarity == McdRarity.COMMON ? 2.25f : 2.0f;
+            float coefficient = rarity == null || rarity == McdRarity.COMMON ? 2.25f : 2.0f;
             return original.call(value * coefficient);
         }
         return original.call(value);

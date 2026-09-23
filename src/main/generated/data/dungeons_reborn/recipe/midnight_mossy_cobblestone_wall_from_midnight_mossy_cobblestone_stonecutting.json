@@ -1,0 +1,7 @@
+{
+  "type": "minecraft:stonecutting",
+  "ingredient": "dungeons_reborn:midnight_mossy_cobblestone",
+  "result": {
+    "id": "dungeons_reborn:midnight_mossy_cobblestone_wall"
+  }
+}

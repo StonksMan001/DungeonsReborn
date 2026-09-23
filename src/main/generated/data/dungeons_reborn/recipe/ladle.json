@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "key": {
+    "X": "minecraft:wooden_shovel",
+    "Y": "minecraft:leather",
+    "Z": "minecraft:stick"
+  },
+  "pattern": [
+    "  X",
+    " Y ",
+    "Z  "
+  ],
+  "result": {
+    "id": "dungeons_reborn:ladle"
+  }
+}

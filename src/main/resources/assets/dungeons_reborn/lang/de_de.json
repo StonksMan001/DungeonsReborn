@@ -1,17 +1,53 @@
 {
-  "block.dungeons_reborn.midnight_mossy_cobblestone": "Mitternachts-Bemooster Bruchstein",
   "item.dungeons_reborn.ancient_gold_ingot": "Antiker Goldbarren",
   "block.dungeons_reborn.ancient_gold_block": "Antiker Goldblock",
-  "block.dungeons_reborn.pop_flower": "Pop-Blume",
-  "block.dungeons_reborn.highland_moss_block": "Hochland-Moosblock",
-  "block.dungeons_reborn.highland_moss_carpet": "Hochland-Moosteppich",
-  "block.dungeons_reborn.sour_berry_bush": "Saure-Beerenstrauch",
-  "item.dungeons_reborn.sour_berries": "Saurebeeren",
+  "item.dungeons_reborn.raw_ancient_gold": "Rohantikgold",
+  "block.dungeons_reborn.raw_ancient_gold_block": "Rohantikgoldblock",
+  "block.dungeons_reborn.mossy_oak_planks": "Bemooster Eichenbretter",
+  "block.dungeons_reborn.mossy_spruce_planks": "Bemooster Fichtenbretter",
+
+  "block.dungeons_reborn.midnight_mossy_cobblestone": "Mitternachts-Bemooster Bruchstein",
+  "block.dungeons_reborn.midnight_mossy_cobblestone_stairs": "Mitternachts-Bemooste Bruchsteintreppe",
+  "block.dungeons_reborn.midnight_mossy_cobblestone_slab": "Mitternachts-Bemooste Bruchsteinstufe",
+  "block.dungeons_reborn.midnight_mossy_cobblestone_wall": "Mitternachts-Bemooste Bruchsteinmauer",
+
   "block.dungeons_reborn.midnight_moss_block": "Mitternachts-Moosblock",
   "block.dungeons_reborn.midnight_moss_carpet": "Mitternachts-Moosteppich",
   "block.dungeons_reborn.midnight_sprouts": "Mitternachts-Sprossen",
-  "block.dungeons_reborn.mossy_oak_planks": "Bemooster Eichenbretter",
-  "block.dungeons_reborn.mossy_spruce_planks": "Bemooster Fichtenbretter",
+  "block.dungeons_reborn.pop_flower": "Pop-Blume",
+
+  "block.dungeons_reborn.highland_moss_block": "Hochland-Moosblock",
+  "block.dungeons_reborn.highland_moss_carpet": "Hochland-Moosteppich",
+  "block.dungeons_reborn.tall_highland_grass": "Hohes Hochlandgras",
+  "block.dungeons_reborn.medium_highland_grass": "Mittleres Hochlandgras",
+  "block.dungeons_reborn.short_highland_grass": "Niedriges Hochlandgras",
+  "block.dungeons_reborn.sour_berry_bush": "Saure-Beerenstrauch",
+  "item.dungeons_reborn.sour_berries": "Saurebeeren",
+
+  "block.dungeons_reborn.palm_trunk": "Palmenstamm",
+  "block.dungeons_reborn.palm_beam": "Palmenbalken",
+  "block.dungeons_reborn.palm_wood": "Palmenholz",
+  "block.dungeons_reborn.stripped_palm_trunk": "Entrindeter Palmenstamm",
+  "block.dungeons_reborn.stripped_palm_beam": "Entrindeter Palmenbalken",
+  "block.dungeons_reborn.stripped_palm_wood": "Entrindetes Palmenholz",
+  "block.dungeons_reborn.palm_planks": "Palmenholzbretter",
+  "block.dungeons_reborn.palm_stairs": "Palmenholztreppe",
+  "block.dungeons_reborn.palm_slab": "Palmenholzstufe",
+  "block.dungeons_reborn.palm_fence": "Palmenholzzaun",
+  "block.dungeons_reborn.palm_fence_gate": "Palmenholzzauntor",
+  "block.dungeons_reborn.palm_door": "Palmenholztür",
+  "block.dungeons_reborn.palm_trapdoor": "Palmenholzfalltür",
+  "block.dungeons_reborn.palm_pressure_plate": "Palmenholzdruckplatte",
+  "block.dungeons_reborn.palm_button": "Palmenholzknopf",
+  "block.dungeons_reborn.palm_sign": "Palmenholzschild",
+  "block.dungeons_reborn.palm_hanging_sign": "Palmenholzhängeschild",
+  "item.dungeons_reborn.palm_boat": "Palmenholzboot",
+  "item.dungeons_reborn.palm_chest_boat": "Palmenholztruhenboot",
+  "entity.dungeons_reborn.palm_chest_boat": "Palmenholztruhenboot",
+  "item.dungeons_reborn.palm_leaves": "Palmenblätter",
+  "item.dungeons_reborn.palm_sapling": "Palmensetzling",
+
+  "item.dungeons_reborn.ladle": "Schöpfkelle",
 
   "tooltip.dungeons_reborn.minecraft_dungeons_header": "Minecraft Dungeons Beschreibung:",
 
@@ -24,6 +60,12 @@
   "item.dungeons_reborn.twin_bow": "Zwillingsbogen",
   "tooltip.dungeons_reborn.twin_bow": "Der Zwillingsbogen ist die bevorzugte Waffe\nvon Helden, die sich gerne mal allein einer\nÜberzahl von Gegnern stellen.",
 
+  "item.dungeons_reborn.shortbow": "Kurzbogen",
+  "tooltip.dungeons_reborn.shortbow": "Der Kurzbogen ist die bevorzugte Waffe von Dieben\nund Vagabunden, da er schnell einsatzbereit und\nauf kurze Distanz tödlich ist.",
+
+  "item.dungeons_reborn.longbow": "Langbogen",
+  "tooltip.dungeons_reborn.longbow": "Obwohl der Langbogen speziell für die Jagd entwickelt wurde,\nkann er auch im Kampf eine nützliche Waffe sein.",
+
   "item.dungeons_reborn.auto_crossbow": "Automatikarmbrust",
   "tooltip.dungeons_reborn.auto_crossbow": "Der Erz-Illager behauptete, das Design für diese\nmächtige Armbrust erschien ihm in einer Vision.",
 
@@ -35,6 +77,9 @@
 
   "item.dungeons_reborn.rough_diamond_pickaxe": "Rohdiamantspitzhacke",
   "tooltip.dungeons_reborn.rough_diamond_pickaxe": "Diamant zählen zu den robustesten Materialien\nder Welt. Logischerweise sind sie daher eine gute\nWahl für den Bau von Spitzhacken.",
+
+  "item.dungeons_reborn.cutlass": "Entersäbel",
+  "tooltip.dungeons_reborn.cutlass": "Diese gebogene Klinge wird von den Kriegern\nder Tintenfischküste geführt. Sie erfordert\neine ruhige Hand im Kampf.",
 
   "item.dungeons_reborn.steel_mace": "Stahlstreitkolben",
   "tooltip.dungeons_reborn.steel_mace": "Der Stahlstreitkolben ist ein brutales Kriegsgerät,\ndem es an jeglicher Finesse fehlt. Umso besser\neignet er sich daher zur Ausübung roher Gewalt.",

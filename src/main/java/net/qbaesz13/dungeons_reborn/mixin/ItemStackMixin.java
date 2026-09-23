@@ -12,7 +12,6 @@ import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
-import java.util.Objects;
 import java.util.function.Consumer;
 
 @Mixin(ItemStack.class)
@@ -26,6 +25,6 @@ public abstract class ItemStackMixin {
     }
     @Inject(method = "addAttributeTooltips", at = @At(value = "INVOKE", target = "Lnet/minecraft/world/item/ItemStack;forEachModifier(Lnet/minecraft/world/entity/EquipmentSlotGroup;Lorg/apache/commons/lang3/function/TriConsumer;)V", shift = At.Shift.AFTER))
     private void releaseItemStack(Consumer<Component> builder, TooltipDisplay tooltipDisplay, @Nullable Player playerEntity, CallbackInfo ci) {
-        if (Objects.nonNull(ThreadLocalContainer.STACK.get())) ThreadLocalContainer.STACK.remove();
+        if (ThreadLocalContainer.STACK.get() != null) ThreadLocalContainer.STACK.remove();
     }
 }

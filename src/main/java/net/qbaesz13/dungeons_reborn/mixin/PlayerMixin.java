@@ -24,8 +24,6 @@ import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
-import java.util.Objects;
-
 @Mixin(Player.class)
 public abstract class PlayerMixin extends LivingEntity {
     protected PlayerMixin(EntityType<? extends LivingEntity> type, Level level) {
@@ -66,7 +64,7 @@ public abstract class PlayerMixin extends LivingEntity {
     private boolean isAttackCharged(LivingEntity attacker) {
         ItemStack itemStack = attacker.getWeaponItem();
         return this.level() instanceof ServerLevel
-                && Objects.nonNull(itemStack)
+                && itemStack != null
                 && itemStack.getItem() instanceof MaceBaseItem
                 && itemStack.getOrDefault(MCD_DataComponents.ATTACK_CHAIN_STEP, 0) == 2;
     }

@@ -1,0 +1,16 @@
+{
+  "variants": {
+    "axis=x": {
+      "model": "dungeons_reborn:block/palm_trunk_horizontal",
+      "x": 90,
+      "y": 90
+    },
+    "axis=y": {
+      "model": "dungeons_reborn:block/palm_trunk"
+    },
+    "axis=z": {
+      "model": "dungeons_reborn:block/palm_trunk_horizontal",
+      "x": 90
+    }
+  }
+}

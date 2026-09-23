@@ -10,7 +10,6 @@ import org.jspecify.annotations.Nullable;
 
 import java.lang.invoke.MethodHandles;
 import java.util.ArrayList;
-import java.util.Objects;
 
 public class MCD_GameRules {
     public static final ArrayList<GameRule<?>> DR_GAMERULES = new ArrayList<>();
@@ -36,14 +35,14 @@ public class MCD_GameRules {
     public static final GameRule<Integer> RADIANCE_HEAL = registerCappedIntRule("radianceHeal", GameRuleCategory.MISC, 4, null, null);
     public static final GameRule<Integer> RADIANCE_RANGE = registerCappedIntRule("radianceRange", GameRuleCategory.MISC, 5, 0, 100);
     public static final GameRule<Integer> RADIANCE_TRIGGER_PROBABILITY = registerCappedIntRule("radianceTriggerProbability", GameRuleCategory.MISC, 25, 0, 100);
-    public static final GameRule<Integer> PROSPECTOR_MINIMUM_TRIGGER_PROBABILITY = registerCappedIntRule("prospectorMinimumTriggerProbability", GameRuleCategory.MISC, 0, 0, 100);
-
     public static final GameRule<Integer> LEECHING_HP_STEAL_PERCENTAGE = registerCappedIntRule("leechingHpStealPercentage", GameRuleCategory.MISC, 20, null, null);
+
+    public static final GameRule<Integer> PROSPECTOR_MINIMUM_TRIGGER_PROBABILITY = registerCappedIntRule("prospectorMinimumTriggerProbability", GameRuleCategory.MISC, 0, 0, 100);
 
     private static GameRule<Integer> registerCappedIntRule(String id, GameRuleCategory category, int defaultValue, @Nullable Integer min, @Nullable Integer max) {
         id = CaseFormat.LOWER_CAMEL.to(CaseFormat.LOWER_UNDERSCORE, id);
         GameRule<Integer> cappedIntRule = SkyCore.RegistryPresets.registerCappedIntRule(id, category, defaultValue,
-                Objects.nonNull(min) ? min : Integer.MIN_VALUE, Objects.nonNull(max) ? max : Integer.MAX_VALUE);
+                min != null ? min : Integer.MIN_VALUE, max != null ? max : Integer.MAX_VALUE);
         DR_GAMERULES.add(cappedIntRule);
         return cappedIntRule;
     }

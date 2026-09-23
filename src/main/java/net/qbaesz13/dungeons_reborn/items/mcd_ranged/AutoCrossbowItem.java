@@ -13,7 +13,7 @@ import net.minecraft.world.level.Level;
 import net.qbaesz13.dungeons_reborn._included_libs.skycore.items.SC_CrossbowItem;
 import net.qbaesz13.dungeons_reborn.components.McdRarity;
 import net.qbaesz13.dungeons_reborn.items.McdItem;
-import net.qbaesz13.dungeons_reborn.mixin.accessors.CrossbowItemAccessor;
+import net.qbaesz13.dungeons_reborn.mixin.accessors.CrossbowItemAccessors;
 import net.qbaesz13.dungeons_reborn.registries.MCD_DataComponents;
 import net.qbaesz13.dungeons_reborn.util.DungeonsHelpers;
 import org.jspecify.annotations.NonNull;
@@ -38,13 +38,13 @@ public class AutoCrossbowItem extends SC_CrossbowItem {
 
         ChargedProjectiles chargedProjectilesComponent = itemStack.get(DataComponents.CHARGED_PROJECTILES);
         if (chargedProjectilesComponent != null && !chargedProjectilesComponent.isEmpty()) {
-            this.performShooting(level, user, hand, itemStack, CrossbowItemAccessor.getShootingPower(chargedProjectilesComponent), 1.0F, null);
+            this.performShooting(level, user, hand, itemStack, CrossbowItemAccessors.getShootingPower(chargedProjectilesComponent), 1.0F, null);
             itemStack.set(MCD_DataComponents.ACCELERATE_LAST_SHOT_TIME, currentTime);
             itemStack.set(MCD_DataComponents.ACCELERATE_RELOAD_BONUS, Math.max(MIN_RELOAD_TIME, itemStack.getOrDefault(MCD_DataComponents.ACCELERATE_RELOAD_BONUS, 1.0f) - RELOAD_DECREASE_PERCENT));
             return InteractionResult.CONSUME;
         } else if (!user.getProjectile(itemStack).isEmpty()) {
-            ((CrossbowItemAccessor) this).setStartSoundPlayed(false);
-            ((CrossbowItemAccessor) this).setMidLoadSoundPlayed(false);
+            ((CrossbowItemAccessors) this).setStartSoundPlayed(false);
+            ((CrossbowItemAccessors) this).setMidLoadSoundPlayed(false);
             user.startUsingItem(hand);
             return InteractionResult.CONSUME;
         } else {

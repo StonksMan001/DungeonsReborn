@@ -23,7 +23,6 @@ import net.qbaesz13.dungeons_reborn.util.DungeonsHelpers;
 import org.jspecify.annotations.NullMarked;
 import org.jspecify.annotations.Nullable;
 
-import java.util.Objects;
 import java.util.function.Consumer;
 
 public class DeathCapMushroomItem extends McdArtifactItem {
@@ -34,7 +33,7 @@ public class DeathCapMushroomItem extends McdArtifactItem {
     public InteractionResult use(Level level, Player user, InteractionHand hand) {
         ItemStack itemStack = user.getItemInHand(hand);
         McdRarity mcdRarity = itemStack.get(MCD_DataComponents.MCD_RARITY);
-        if (level instanceof ServerLevel serverLevel && Objects.nonNull(mcdRarity)) {
+        if (level instanceof ServerLevel serverLevel && mcdRarity != null) {
             int duration = serverLevel.getGameRules().get(MCD_GameRules.ARTIFACT_DEATH_CAP_MUSHROOM_COMMON_DURATION);
             int amplifier = serverLevel.getGameRules().get(MCD_GameRules.ARTIFACT_DEATH_CAP_MUSHROOM_COMMON_AMPLIFIER);
             int cooldown = serverLevel.getGameRules().get(MCD_GameRules.ARTIFACT_DEATH_CAP_MUSHROOM_COMMON_COOLDOWN);

@@ -23,6 +23,8 @@ public class MCD_ItemTags {
     public static final TagKey<Item> HAS_DURABILITY_PICKAXES = SkyCore.RegistryPresets.createItemTag("has_durability/pickaxes");
     public static final TagKey<Item> HAS_DURABILITY_SHOVELS = SkyCore.RegistryPresets.createItemTag("has_durability/shovels");
     public static final TagKey<Item> HAS_DURABILITY_SWORDS = SkyCore.RegistryPresets.createItemTag("has_durability/swords");
+
+    public static final TagKey<Item> PALM_LOGS = SkyCore.RegistryPresets.createItemTag("palm_logs");
     public static void register() {
         SkyCoreRegistryHelper.register(MethodHandles.lookup().lookupClass(), DungeonsReborn.LOGGER);
     }

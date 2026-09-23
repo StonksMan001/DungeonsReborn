@@ -9,15 +9,13 @@ import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
-import java.util.Objects;
-
 @Mixin(Projectile.class)
 public abstract class ProjectileMixin {
     @Inject(method = "onDeflection", at = @At(value = "HEAD"))
     public void discardIfWeaponIsTwinBow(boolean bl, CallbackInfo ci) {
         if ((Object)this instanceof AbstractArrow abstractArrow) {
             ItemStack weaponStack = abstractArrow.getWeaponItem();
-            if (Objects.nonNull(weaponStack) && weaponStack.getItem() instanceof TwinBowItem) {
+            if (weaponStack != null && weaponStack.getItem() instanceof TwinBowItem) {
                 abstractArrow.discard();
             }
         }

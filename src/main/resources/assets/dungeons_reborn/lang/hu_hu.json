@@ -1,17 +1,53 @@
 {
-  "block.dungeons_reborn.midnight_mossy_cobblestone": "Éjféli mohás zúzottkő",
   "item.dungeons_reborn.ancient_gold_ingot": "Ősi aranyrúd",
   "block.dungeons_reborn.ancient_gold_block": "Ősi aranyblokk",
-  "block.dungeons_reborn.pop_flower": "Popvirág",
-  "block.dungeons_reborn.highland_moss_block": "Hegyvidéki mohablokk",
-  "block.dungeons_reborn.highland_moss_carpet": "Hegyvidéki mohaszőnyeg",
-  "block.dungeons_reborn.sour_berry_bush": "Savanyúbogyóbokor",
-  "item.dungeons_reborn.sour_berries": "Savanyú bogyók",
+  "item.dungeons_reborn.raw_ancient_gold": "Nyers ősi arany",
+  "block.dungeons_reborn.raw_ancient_gold_block": "Nyers ősi aranyblokk",
+  "block.dungeons_reborn.mossy_oak_planks": "Mohás tölgydeszka",
+  "block.dungeons_reborn.mossy_spruce_planks": "Mohás fenyődeszka",
+
+  "block.dungeons_reborn.midnight_mossy_cobblestone": "Éjféli mohás zúzottkő",
+  "block.dungeons_reborn.midnight_mossy_cobblestone_stairs": "Éjféli mohás zúzottkőlépcső",
+  "block.dungeons_reborn.midnight_mossy_cobblestone_slab": "Éjféli mohás zúzottkő lap",
+  "block.dungeons_reborn.midnight_mossy_cobblestone_wall": "Éjféli mohás zúzottkő-fal",
+
   "block.dungeons_reborn.midnight_moss_block": "Éjféli mohablokk",
   "block.dungeons_reborn.midnight_moss_carpet": "Éjféli mohaszőnyeg",
   "block.dungeons_reborn.midnight_sprouts": "Éjféli csírák",
-  "block.dungeons_reborn.mossy_oak_planks": "Mohás tölgydeszka",
-  "block.dungeons_reborn.mossy_spruce_planks": "Mohás fenyődeszka",
+  "block.dungeons_reborn.pop_flower": "Popvirág",
+
+  "block.dungeons_reborn.highland_moss_block": "Hegyvidéki mohablokk",
+  "block.dungeons_reborn.highland_moss_carpet": "Hegyvidéki mohaszőnyeg",
+  "block.dungeons_reborn.tall_highland_grass": "Magas hegyvidéki fű",
+  "block.dungeons_reborn.medium_highland_grass": "Közepes hegyvidéki fű",
+  "block.dungeons_reborn.short_highland_grass": "Alacsony hegyvidéki fű",
+  "block.dungeons_reborn.sour_berry_bush": "Savanyúbogyóbokor",
+  "item.dungeons_reborn.sour_berries": "Savanyú bogyók",
+
+  "block.dungeons_reborn.palm_trunk": "Pálmafa törzs",
+  "block.dungeons_reborn.palm_beam": "Pálmafa gerenda",
+  "block.dungeons_reborn.palm_wood": "Pálmafablokk",
+  "block.dungeons_reborn.stripped_palm_trunk": "Kérgezett pálmafa törzs",
+  "block.dungeons_reborn.stripped_palm_beam": "Kérgezett pálmafa gerenda",
+  "block.dungeons_reborn.stripped_palm_wood": "Kérgezett pálmafablokk",
+  "block.dungeons_reborn.palm_planks": "Pálmafa deszka",
+  "block.dungeons_reborn.palm_stairs": "Pálmafa lépcső",
+  "block.dungeons_reborn.palm_slab": "Pálmafa lap",
+  "block.dungeons_reborn.palm_fence": "Pálmafa kerítés",
+  "block.dungeons_reborn.palm_fence_gate": "Pálmafa kerítéskapu",
+  "block.dungeons_reborn.palm_door": "Pálmafa ajtó",
+  "block.dungeons_reborn.palm_trapdoor": "Pálmafa csapóajtó",
+  "block.dungeons_reborn.palm_pressure_plate": "Pálmafa nyomólap",
+  "block.dungeons_reborn.palm_button": "Pálmafa gomb",
+  "block.dungeons_reborn.palm_sign": "Pálmafa tábla",
+  "block.dungeons_reborn.palm_hanging_sign": "Pálmafa függőtábla",
+  "item.dungeons_reborn.palm_boat": "Pálmafa csónak",
+  "item.dungeons_reborn.palm_chest_boat": "Pálmafa csónak ládával",
+  "entity.dungeons_reborn.palm_chest_boat": "Pálmafa csónak ládával",
+  "item.dungeons_reborn.palm_leaves": "Pálmalevelek",
+  "item.dungeons_reborn.palm_sapling": "Pálmacsemete",
+
+  "item.dungeons_reborn.ladle": "Merőkanál",
 
   "tooltip.dungeons_reborn.minecraft_dungeons_header": "Minecraft Dungeons leírás:",
 
@@ -24,6 +60,12 @@
   "item.dungeons_reborn.twin_bow": "Iker íj",
   "tooltip.dungeons_reborn.twin_bow": "Az Iker íj a hős biztos társa, akire számíthat\nha túlerővel szemben egyedül találja magát.",
 
+  "item.dungeons_reborn.shortbow": "Zsebíj",
+  "tooltip.dungeons_reborn.shortbow": "Tolvajok és banditák kedvelt fegyvere, a Zsebíj fürge,\nrövid és közelharcban halálos fegyvernek bizonyul.",
+
+  "item.dungeons_reborn.longbow": "Hosszúíj",
+  "tooltip.dungeons_reborn.longbow": "A Hosszúíj, amely harc helyett inkább vadászatra\nlett kitalálva, lőpárbajban is megállja helyét.",
+
   "item.dungeons_reborn.auto_crossbow": "Automatizált számszeríj",
   "tooltip.dungeons_reborn.auto_crossbow": "Az Arch-Illager elmondása szerint ennek az\nerőteljes számszeríjnak az elképzelése egy látomáson\nkeresztül jutott el hozzá.",
 
@@ -35,6 +77,9 @@
 
   "item.dungeons_reborn.rough_diamond_pickaxe": "Csiszolatlan gyémántcsákány",
   "tooltip.dungeons_reborn.rough_diamond_pickaxe": "A gyémánt az egyik legkeményebb anyag,\nkíváló választás egy csákány alapanyagaként.",
+
+  "item.dungeons_reborn.cutlass": "Szablya",
+  "tooltip.dungeons_reborn.cutlass": "Ennek az ívelt pengének, amelyet a Tintahal-part harcosai\nhasználtak, biztos kézre van szüksége csatában.",
 
   "item.dungeons_reborn.steel_mace": "Acél buzogány",
   "tooltip.dungeons_reborn.steel_mace": "Az Acél buzogány a háború egyik legbrutálisabb eszköze.\nAmivel alulmarad gyorsaságban, azt visszahozza ütőképességben.",

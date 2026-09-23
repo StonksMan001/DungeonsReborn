@@ -4,6 +4,6 @@ import org.slf4j.Logger;
 
 public class SkyCoreRegistryHelper {
     public static void register(Class<?> clazz, Logger logger) {
-        logger.info("Registering {}", clazz.getSimpleName());
+        logger.info("Registering {}", clazz.getName().substring(clazz.getName().lastIndexOf(".") + 1).replace("$", "."));
     }
 }

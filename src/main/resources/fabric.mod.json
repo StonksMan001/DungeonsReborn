@@ -5,13 +5,16 @@
 	"name": "Dungeons Reborn",
 	"description": "Vanilla friendly mod that adds Minecraft Dungeons style content to the game",
 	"authors": [
-		"Qbaesz13 [lead-developer] (Discord: #stonksman01)",
-		"B525 [contributor] (Discord: #kb525)",
-		"istomriddle [contributor] (Discord: #ri_yung)"
+		{"name": "Qbaesz13 [lead-developer] (Discord: #stonksman01)"}
+	],
+	"contributors": [
+		"B525 [tester] (Discord: #kb525)",
+		"istomriddle [translator] (Discord: #ri_yung)"
 	],
 	"contact": {
 		"homepage": "https://modrinth.com/mod/dungeonsreborn",
-		"sources": "https://github.com/StonksMan001/DungeonsReborn"
+		"sources": "https://github.com/StonksMan001/DungeonsReborn",
+		"issues" : "https://discord.gg/9fhWbKZ2Q4"
 	},
 	"license": "CC0-1.0",
 	"icon": "assets/dungeons_reborn/icon.png",
@@ -32,8 +35,20 @@
 	],
 	"depends": {
 		"fabricloader": ">=0.18.5",
-		"minecraft": "~26.1",
+		"minecraft": "26.1",
 		"java": ">=25",
 		"fabric-api": "*"
+	},
+	"suggests": {
+		"modmenu": "*"
+	},
+	"custom": {
+		"modmenu": {
+			"links": {
+				"modmenu.discord": "https://discord.gg/E68h7WRKRT",
+				"modmenu.modrinth": "https://modrinth.com/mod/dungeonsreborn"
+			},
+			"update_checker": true
+		}
 	}
 }

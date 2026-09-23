@@ -1,55 +1,100 @@
 {
-  "block.dungeons_reborn.midnight_mossy_cobblestone": "Замшелый полночный булыжник",
   "item.dungeons_reborn.ancient_gold_ingot": "Древний золотой слиток",
   "block.dungeons_reborn.ancient_gold_block": "Древний золотой блок",
-  "block.dungeons_reborn.pop_flower": "Хлопкоцвет",
-  "block.dungeons_reborn.highland_moss_block": "Горный мох",
-  "block.dungeons_reborn.highland_moss_carpet": "Ковёр из горного мха",
-  "block.dungeons_reborn.sour_berry_bush": "Куст кислых ягод",
-  "item.dungeons_reborn.sour_berries": "Кислые ягоды",
-  "block.dungeons_reborn.midnight_moss_block": "Полночный мох",
-  "block.dungeons_reborn.midnight_moss_carpet": "Ковёр из полночного мха",
-  "block.dungeons_reborn.midnight_sprouts": "Полночные проростки",
+  "item.dungeons_reborn.raw_ancient_gold": "Сырое древнее золото",
+  "block.dungeons_reborn.raw_ancient_gold_block": "Блок сырого древнего золота",
   "block.dungeons_reborn.mossy_oak_planks": "Замшелые дубовые доски",
   "block.dungeons_reborn.mossy_spruce_planks": "Замшелые еловые доски",
 
+  "block.dungeons_reborn.midnight_mossy_cobblestone": "Замшелый полночный булыжник",
+  "block.dungeons_reborn.midnight_mossy_cobblestone_stairs": "Замшелые полночные булыжные ступеньки",
+  "block.dungeons_reborn.midnight_mossy_cobblestone_slab": "Замшелая полночная булыжная плита",
+  "block.dungeons_reborn.midnight_mossy_cobblestone_wall": "Замшелая полночная булыжная ограда",
+
+  "block.dungeons_reborn.midnight_moss_block": "Полночный мох",
+  "block.dungeons_reborn.midnight_moss_carpet": "Ковёр из полночного мха",
+  "block.dungeons_reborn.midnight_sprouts": "Полночные проростки",
+  "block.dungeons_reborn.pop_flower": "Хлопкоцвет",
+
+  "block.dungeons_reborn.highland_moss_block": "Горный мох",
+  "block.dungeons_reborn.highland_moss_carpet": "Ковёр из горного мха",
+  "block.dungeons_reborn.tall_highland_grass": "Высокая горная трава",
+  "block.dungeons_reborn.medium_highland_grass": "Средняя горная трава",
+  "block.dungeons_reborn.short_highland_grass": "Низкая горная трава",
+  "block.dungeons_reborn.sour_berry_bush": "Куст кислых ягод",
+  "item.dungeons_reborn.sour_berries": "Кислые ягоды",
+
+  "block.dungeons_reborn.palm_trunk": "Пальмовое бревно",
+  "block.dungeons_reborn.palm_beam": "Пальмовая балка",
+  "block.dungeons_reborn.palm_wood": "Пальма",
+  "block.dungeons_reborn.stripped_palm_trunk": "Обтёсанное пальмовое бревно",
+  "block.dungeons_reborn.stripped_palm_beam": "Обтесанная пальмовая балка",
+  "block.dungeons_reborn.stripped_palm_wood": "Обтесанная пальмовая древесина",
+  "block.dungeons_reborn.palm_planks": "Пальмовые доски",
+  "block.dungeons_reborn.palm_stairs": "Пальмовые ступеньки",
+  "block.dungeons_reborn.palm_slab": "Пальмовая плита",
+  "block.dungeons_reborn.palm_fence": "Пальмовый забор",
+  "block.dungeons_reborn.palm_fence_gate": "Пальмовая калитка",
+  "block.dungeons_reborn.palm_door": "Пальмовая дверь",
+  "block.dungeons_reborn.palm_trapdoor": "Пальмовый люк",
+  "block.dungeons_reborn.palm_pressure_plate": "Пальмовая нажимная плита",
+  "block.dungeons_reborn.palm_button": "Пальмовая кнопка",
+  "block.dungeons_reborn.palm_sign": "Пальмовая табличка",
+  "block.dungeons_reborn.palm_hanging_sign": "Пальмовая подвесная табличка",
+  "item.dungeons_reborn.palm_boat": "Пальмовая лодка",
+  "item.dungeons_reborn.palm_chest_boat": "Грузовая пальмовая лодка",
+  "entity.dungeons_reborn.palm_chest_boat": "Грузовая пальмовая лодка",
+  "item.dungeons_reborn.palm_leaves": "Пальмовые листья",
+  "item.dungeons_reborn.palm_sapling": "Саженец пальмы",
+
+  "item.dungeons_reborn.ladle": "Половник",
+
   "tooltip.dungeons_reborn.minecraft_dungeons_header": "Описание из Minecraft Dungeons:",
 
-  "item.dungeons_reborn.artifact_iron_hide_amulet": "Амулет железной кожи",
-  "tooltip.dungeons_reborn.artifact.iron_hide_amulet": "Амулет железной кожи — вещь одновременно древняя и\nвневременная. Песок таинственным образом и бесконечно\nпросачивается сквозь трещины в железе.",
+  "item.dungeons_reborn.artifact_iron_hide_amulet": "Амулет железной крепости",
+  "tooltip.dungeons_reborn.artifact.iron_hide_amulet": "Амулет железной крепости — древний и одновременно\nнеподвластный времени. Через трещины в железе\nбесконечно и таинственно сыпется песок.",
 
-  "item.dungeons_reborn.artifact_death_cap_mushroom": "Гриб-веселяк",
-  "tooltip.dungeons_reborn.artifact.death_cap_mushroom": "Отважные воины едят гриб-веселяк перед битвой,\nчтобы впасть в ярость.",
+  "item.dungeons_reborn.artifact_death_cap_mushroom": "Бледная поганка",
+  "tooltip.dungeons_reborn.artifact.death_cap_mushroom": "Отважные воины едят бледные поганки\nперед битвой, впадая в безумие.",
 
   "item.dungeons_reborn.twin_bow": "Двойной лук",
-  "tooltip.dungeons_reborn.twin_bow": "Двойной лук — лучший выбор для героя,\nоказавшегося в одиночестве против превосходящих сил врага.",
+  "tooltip.dungeons_reborn.twin_bow": "Двойной лук — идеальный выбор героя,\nоставшегося наедине с кучей врагов.",
+
+  "item.dungeons_reborn.shortbow": "Короткий луч",
+  "tooltip.dungeons_reborn.shortbow": "Воры и бродяги предпочитают короткий\nлук за его удачную конструкцию и\nсмертоносность на близких дистанциях.",
+
+  "item.dungeons_reborn.longbow": "Большой луч",
+  "tooltip.dungeons_reborn.longbow": "Большой лук создавался, скорее, для\nохоты, но не подведет и в бою.",
 
   "item.dungeons_reborn.auto_crossbow": "Автоматический арбалет",
-  "tooltip.dungeons_reborn.auto_crossbow": "Архизлодеянин рассказывал, что дизайн этого\nмощного арбалета явился ему в видении.",
+  "tooltip.dungeons_reborn.auto_crossbow": "Архизлодеянин говорит, что концепция этого\nмощного арбалета пришла к нему в видении.",
 
-  "item.dungeons_reborn.heavy_crossbow": "Тяжёлый арбалет",
-  "tooltip.dungeons_reborn.heavy_crossbow": "Утяжелённый арбалет — настоящая угроза,\nнаносящая огромный урон на расстоянии.",
+  "item.dungeons_reborn.heavy_crossbow": "Тяжелый арбалет",
+  "tooltip.dungeons_reborn.heavy_crossbow": "Тяжелый арбалет — это реальная\nугроза с дальней дистанции.",
 
   "item.dungeons_reborn.rough_diamond_sword": "Грубый алмазный меч",
-  "tooltip.dungeons_reborn.rough_diamond_sword": "Грубый алмазный меч — истинный знак\nгероя и опытного искателя приключений.",
+  "tooltip.dungeons_reborn.rough_diamond_sword": "Грубый алмазный меч — истинный символ\nгероя и успешного искателя приключений.",
 
   "item.dungeons_reborn.rough_diamond_pickaxe": "Грубая алмазная кирка",
-  "tooltip.dungeons_reborn.rough_diamond_pickaxe": "Алмаз — один из самых прочных материалов,\nчто делает его отличным выбором для кирки.",
+  "tooltip.dungeons_reborn.rough_diamond_pickaxe": "Алмаз — один из прочнейших материалов,\nон отлично подходит для кирки.",
+
+  "item.dungeons_reborn.cutlass": "Мачете",
+  "tooltip.dungeons_reborn.cutlass": "Это изогнутое лезвие воинов с Побережья\nкальмаров требует крепкой руки в битве.",
 
   "item.dungeons_reborn.steel_mace": "Стальная булава",
-  "tooltip.dungeons_reborn.steel_mace": "Стальная булава — жестокое орудие войны. То,\nчего ей не хватает в изяществе, она восполняет мощью.",
+  "tooltip.dungeons_reborn.steel_mace": "Стальная булава олицетворяет жестокое орудие войны.\nНедостаток изящества в ней компенсируется силой.",
 
   "item.dungeons_reborn.suns_grace": "Солнечная благодать",
-  "tooltip.dungeons_reborn.suns_grace": "Эта булава с выгравированными на ней тайными исцеляющими\nрунами наделяет владельца могучей силой восстановления.",
+  "tooltip.dungeons_reborn.suns_grace": "Этот жезл, инкрустированный таинственными рунами\nисцеления, дарит невероятные возможности восстановления.",
 
   "item.dungeons_reborn.claymore": "Клеймор",
-  "tooltip.dungeons_reborn.claymore": "Массивный меч, который кажется невероятно тяжёлым,\nно легко лежит в руках праведного воина.",
+  "tooltip.dungeons_reborn.claymore": "Массивный, кажущийся неподъемным,\nмеч легко танцует в руках воина.",
 
-  "item.dungeons_reborn.heartstealer": "Кража сердца",
-  "tooltip.dungeons_reborn.heartstealer": "Этот рунный клинок, пропитанный тёмным колдовством,\nбыл подарен одному из выдающихся генералов Архизлодеянина\nпосле завоевания Побережья кальмаров.",
+  "item.dungeons_reborn.heartstealer": "Сердцеед",
+  "tooltip.dungeons_reborn.heartstealer": "Подарок одному из выдающихся генералов Архизлодеянина\nпосле завоевания им Побережья кальмаров. Этот рунный\nклинок наполнен темным колдовством.",
 
   "item.dungeons_reborn.broadsword": "Палаш",
-  "tooltip.dungeons_reborn.broadsword": "Только те, кто обладает силой чемпиона и\nсердцем героя, могут нести этот массивный клинок.",
+  "tooltip.dungeons_reborn.broadsword": "лько самые сильные и смелые смогут\nсправиться с этим огромным клинком.",
 
   "tooltip.dungeons_reborn.rarity": "Редкость",
   "mcdRarity.dungeons_reborn.common": "§r[§7ОБЫЧНОЕ§r]",
@@ -64,11 +109,11 @@
 
   "enchantment.dungeons_reborn.primitiveness_curse": "Проклятие примитивности",
 
-  "ability.dungeons_reborn.bonus_shot": "Дополнительный выстрел",
+  "ability.dungeons_reborn.bonus_shot": "Бонусный выстрел",
   "ability.dungeons_reborn.accelerate": "Ускорение",
-  "ability.dungeons_reborn.prospector": "Старатель",
+  "ability.dungeons_reborn.prospector": "Мэыскатель",
   "ability.dungeons_reborn.leeching": "Вампиризм",
-  "ability.dungeons_reborn.radiance": "Сияние",
+  "ability.dungeons_reborn.radiance": "Лучезарность",
 
   "ability.dungeons_reborn.built_in": "Встроено",
   "ability.dungeons_reborn.powerful_combo": "Мощное комбо",

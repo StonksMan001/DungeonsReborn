@@ -1,0 +1,37 @@
+{
+  "type": "minecraft:simple_block",
+  "config": {
+    "to_place": {
+      "type": "minecraft:weighted_state_provider",
+      "entries": [
+        {
+          "data": {
+            "Name": "dungeons_reborn:sour_berry_bush",
+            "Properties": {
+              "age": "0"
+            }
+          },
+          "weight": 6
+        },
+        {
+          "data": {
+            "Name": "dungeons_reborn:highland_moss_carpet"
+          },
+          "weight": 25
+        },
+        {
+          "data": {
+            "Name": "dungeons_reborn:medium_highland_grass"
+          },
+          "weight": 50
+        },
+        {
+          "data": {
+            "Name": "dungeons_reborn:short_highland_grass"
+          },
+          "weight": 15
+        }
+      ]
+    }
+  }
+}

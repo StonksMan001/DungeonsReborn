@@ -10,7 +10,7 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.ProjectileWeaponItem;
 import net.minecraft.world.level.Level;
 import net.qbaesz13.dungeons_reborn.items.mcd_ranged.HeavyCrossbowItem;
-import net.qbaesz13.dungeons_reborn.mixin.accessors.AbstractArrowAccessor;
+import net.qbaesz13.dungeons_reborn.mixin.accessors.AbstractArrowAccessors;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
 
@@ -21,7 +21,7 @@ public abstract class ProjectileWeaponItemMixin {
         Projectile projectile1 = original.call(instance, level, shooter, weapon, projectile, isCrit);
         if (((Item)(Object)this) instanceof HeavyCrossbowItem) {
             if (projectile1 instanceof AbstractArrow abstractArrow) {
-                abstractArrow.setBaseDamage(((AbstractArrowAccessor)abstractArrow).getBaseDamage() * 1.75);
+                abstractArrow.setBaseDamage(((AbstractArrowAccessors)abstractArrow).getBaseDamage() * 1.75);
                 return abstractArrow;
             }
         }

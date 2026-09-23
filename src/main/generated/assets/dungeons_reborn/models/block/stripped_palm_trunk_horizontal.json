@@ -1,0 +1,7 @@
+{
+  "parent": "dungeons_reborn:block/presets/trunk_horizontal",
+  "textures": {
+    "end": "dungeons_reborn:block/stripped_palm_trunk_top",
+    "side": "dungeons_reborn:block/stripped_palm_trunk"
+  }
+}

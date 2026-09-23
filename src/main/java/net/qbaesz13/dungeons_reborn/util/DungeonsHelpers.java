@@ -24,15 +24,18 @@ import net.minecraft.world.item.component.ItemAttributeModifiers;
 import net.minecraft.world.item.enchantment.Enchantment;
 import net.minecraft.world.level.ItemLike;
 import net.minecraft.world.level.Level;
+import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.ComposterBlock;
 import net.minecraft.world.phys.AABB;
 import net.minecraft.world.scores.PlayerTeam;
+import net.qbaesz13.dungeons_reborn.DungeonsReborn;
 import net.qbaesz13.dungeons_reborn.components.McdRarity;
+import net.qbaesz13.dungeons_reborn.mixin.accessors.FireBlockAccessors;
 import net.qbaesz13.dungeons_reborn.registries.MCD_DataComponents;
 import net.qbaesz13.dungeons_reborn.registries.MCD_Enchantments;
 
 import java.util.List;
-import java.util.Objects;
 import java.util.Random;
 import java.util.function.Consumer;
 import java.util.function.Function;
@@ -76,7 +79,7 @@ public interface DungeonsHelpers {
             builder.accept(abilityText.setStyle(style));
         }
         static void appendDescription(Consumer<Component> builder, MutableComponent descriptionText) {
-            if (Objects.isNull(descriptionText.getString())) return;
+            if (descriptionText.getString() == null) return;
             for (String string : descriptionText.getString().split("\n")) {
                 builder.accept(Component.literal(string).setStyle(Style.EMPTY.withItalic(true).applyFormats(ChatFormatting.GRAY)));
             }
@@ -89,7 +92,7 @@ public interface DungeonsHelpers {
         }
     }
     static void makeUnrepairable(ItemStack itemStack) {
-        if (Objects.nonNull(itemStack.get(DataComponents.REPAIRABLE))) itemStack.set(DataComponents.REPAIRABLE, null);
+        if (itemStack.get(DataComponents.REPAIRABLE) != null) itemStack.set(DataComponents.REPAIRABLE, null);
     }
     static void enchantStackWithPrimitiveness(ItemStack stack, HolderLookup.Provider provider) {
         addEnchantmentToStack(stack, provider, MCD_Enchantments.PRIMITIVENESS_CURSE, 1);
@@ -126,7 +129,7 @@ public interface DungeonsHelpers {
         return world.registryAccess().lookupOrThrow(Registries.ENCHANTMENT).get(enchantment).orElseThrow();
     }
     static void setRareOrCommonVariant(ItemStack itemStack) {
-        if (Objects.isNull(itemStack.get(MCD_DataComponents.MCD_RARITY))) {
+        if (itemStack.get(MCD_DataComponents.MCD_RARITY) == null) {
             Random random = new Random();
             if (random.nextInt(5) == 1) itemStack.set(MCD_DataComponents.MCD_RARITY, McdRarity.RARE);
             else itemStack.set(MCD_DataComponents.MCD_RARITY, McdRarity.COMMON);
@@ -135,10 +138,16 @@ public interface DungeonsHelpers {
     static float getCompostingValue(ItemLike item) {
         return ComposterBlock.COMPOSTABLES.getFloat(item.asItem());
     }
+    static int getIgniteChance(Block block) {
+        return ((FireBlockAccessors) Blocks.FIRE).getIgniteOdds().getInt(block);
+    }
+    static int getBurnChance(Block block) {
+        return ((FireBlockAccessors) Blocks.FIRE).getBurnOdds().getInt(block);
+    }
     static void setAttackKnockbackModifierIfNotPresent(ItemStack itemStack) {
         var modifiersComponent = itemStack.get(DataComponents.ATTRIBUTE_MODIFIERS);
-        var modifiers = Objects.nonNull(modifiersComponent) ? modifiersComponent.modifiers() : null;
-        if (Objects.nonNull(modifiers) && modifiers.stream().noneMatch(entry -> entry.matches(Attributes.ATTACK_KNOCKBACK, entry.modifier().id()))) {
+        var modifiers = modifiersComponent != null ? modifiersComponent.modifiers() : null;
+        if (modifiers != null && modifiers.stream().noneMatch(entry -> entry.matches(Attributes.ATTACK_KNOCKBACK, entry.modifier().id()))) {
             modifyAttackKnockback(itemStack, Attributes.ATTACK_KNOCKBACK.value().getDefaultValue());
         }
     }
@@ -146,7 +155,7 @@ public interface DungeonsHelpers {
         itemStack.set(DataComponents.ATTRIBUTE_MODIFIERS, itemStack.getOrDefault(DataComponents.ATTRIBUTE_MODIFIERS, ItemAttributeModifiers.EMPTY)
                 .withModifierAdded(
                         Attributes.ATTACK_KNOCKBACK,
-                        new AttributeModifier(Item.BASE_ATTACK_SPEED_ID, attackKnockback, AttributeModifier.Operation.ADD_VALUE), //TODO
+                        new AttributeModifier(DungeonsReborn.identifierOfDungeonsReborn("base_attack_knockback"), attackKnockback, AttributeModifier.Operation.ADD_VALUE),
                         EquipmentSlotGroup.MAINHAND
                 ));
     }

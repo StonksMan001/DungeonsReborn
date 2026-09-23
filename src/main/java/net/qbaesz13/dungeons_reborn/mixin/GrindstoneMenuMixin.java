@@ -8,7 +8,7 @@ import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
 @Mixin(targets = "net/minecraft/world/inventory/GrindstoneMenu$4")
-public class GrindstoneMenuMixin {
+public abstract class GrindstoneMenuMixin {
     @Inject(method = "getExperienceFromItem", at = @At(value = "RETURN", shift = At.Shift.BEFORE), cancellable = true)
     private void fn(ItemStack itemStack, CallbackInfoReturnable<Integer> cir) {
         if (itemStack.getItem() instanceof GrindStoneExperienceNotDropping) cir.setReturnValue(0);

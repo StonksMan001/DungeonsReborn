@@ -1,0 +1,11 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "redstone",
+  "group": "wooden_button",
+  "ingredients": [
+    "dungeons_reborn:palm_planks"
+  ],
+  "result": {
+    "id": "dungeons_reborn:palm_button"
+  }
+}

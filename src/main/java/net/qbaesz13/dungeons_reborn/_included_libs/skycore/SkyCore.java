@@ -36,6 +36,7 @@ import net.minecraft.world.level.gamerules.*;
 import net.minecraft.world.level.levelgen.feature.ConfiguredFeature;
 import net.minecraft.world.level.levelgen.feature.Feature;
 import net.minecraft.world.level.levelgen.feature.configurations.FeatureConfiguration;
+import net.minecraft.world.level.levelgen.placement.PlacedFeature;
 import net.qbaesz13.dungeons_reborn.DungeonsReborn;
 import net.qbaesz13.dungeons_reborn._included_libs.skycore.items.SC_BowItem;
 import net.qbaesz13.dungeons_reborn._included_libs.skycore.items.SC_CrossbowItem;
@@ -57,25 +58,28 @@ public class SkyCore {
     public static class RegistryPresets {
         /* <ResourceKey creation helper methods> */
         public static ResourceKey<Enchantment> createEnchantmentResourceKey(String name) {
-            return ResourceKey.create(Registries.ENCHANTMENT, DungeonsReborn.identifierFromNamespaceDungeonsReborn(name));
+            return ResourceKey.create(Registries.ENCHANTMENT, DungeonsReborn.identifierOfDungeonsReborn(name));
         }
         public static ResourceKey<Level> createLevelResourceKey(String name) {
-            return ResourceKey.create(Registries.DIMENSION, DungeonsReborn.identifierFromNamespaceDungeonsReborn(name + ".json"));
+            return ResourceKey.create(Registries.DIMENSION, DungeonsReborn.identifierOfDungeonsReborn(name + ".json"));
         }
         public static ResourceKey<JukeboxSong> createJukeBlockSongResourceKey(String name) {
-            return ResourceKey.create(Registries.JUKEBOX_SONG, DungeonsReborn.identifierFromNamespaceDungeonsReborn(name));
+            return ResourceKey.create(Registries.JUKEBOX_SONG, DungeonsReborn.identifierOfDungeonsReborn(name));
         }
         public static ResourceKey<DimensionType> createDimensionTypeResourceKey(String name) {
-            return ResourceKey.create(Registries.DIMENSION_TYPE, DungeonsReborn.identifierFromNamespaceDungeonsReborn(name));
+            return ResourceKey.create(Registries.DIMENSION_TYPE, DungeonsReborn.identifierOfDungeonsReborn(name));
         }
         public static ResourceKey<Biome> createBiomeResourceKey(String name) {
-            return ResourceKey.create(Registries.BIOME, DungeonsReborn.identifierFromNamespaceDungeonsReborn(name));
+            return ResourceKey.create(Registries.BIOME, DungeonsReborn.identifierOfDungeonsReborn(name));
         }
         public static ResourceKey<ConfiguredFeature<?, ?>> createConfiguredFeatureResourceKey(String name) {
-            return ResourceKey.create(Registries.CONFIGURED_FEATURE, DungeonsReborn.identifierFromNamespaceDungeonsReborn(name));
+            return ResourceKey.create(Registries.CONFIGURED_FEATURE, DungeonsReborn.identifierOfDungeonsReborn(name));
+        }
+        public static ResourceKey<PlacedFeature> createPlacedFeatureResourceKey(String name) {
+            return ResourceKey.create(Registries.PLACED_FEATURE, DungeonsReborn.identifierOfDungeonsReborn(name));
         }
         public static ResourceKey<PoiType> createPoiTypeResourceKey(String name) {
-            return ResourceKey.create(Registries.POINT_OF_INTEREST_TYPE, DungeonsReborn.identifierFromNamespaceDungeonsReborn(name));
+            return ResourceKey.create(Registries.POINT_OF_INTEREST_TYPE, DungeonsReborn.identifierOfDungeonsReborn(name));
         }
         /* </ResourceKey creation helper methods> */
 
@@ -83,7 +87,7 @@ public class SkyCore {
         private static Item registerItem(String name, ResourceKey<Item> key, Function<Item.Properties, Item> function, Item.Properties properties) {
             Item item = function.apply(properties.setId(key));
             var registry = BuiltInRegistries.ITEM;
-            Identifier parentId = DungeonsReborn.identifierFromNamespaceDungeonsReborn(name);
+            Identifier parentId = DungeonsReborn.identifierOfDungeonsReborn(name);
             if (SkyCoreDataFixerAPI.ITEM_WITH_ALIAS.containsKey(parentId.toString())) {
                 for (String alias : SkyCoreDataFixerAPI.ITEM_WITH_ALIAS.get(parentId.toString())) {
                     registry.addAlias(Identifier.parse(alias), parentId);
@@ -94,7 +98,7 @@ public class SkyCore {
         public static Block registerBlock(String name, ResourceKey<Block> key, Function<BlockBehaviour.Properties, Block> function, BlockBehaviour.Properties properties) {
             Block block = function.apply(properties.setId(key));
             var registry = BuiltInRegistries.BLOCK;
-            Identifier parentId = DungeonsReborn.identifierFromNamespaceDungeonsReborn(name);
+            Identifier parentId = DungeonsReborn.identifierOfDungeonsReborn(name);
             if (SkyCoreDataFixerAPI.BLOCKS_WITH_ALIAS.containsKey(parentId.toString())) {
                 for (String alias : SkyCoreDataFixerAPI.BLOCKS_WITH_ALIAS.get(parentId.toString())) {
                     registry.addAlias(Identifier.parse(alias), parentId);
@@ -104,33 +108,33 @@ public class SkyCore {
         }
         public static <T> DataComponentType<T> registerComponentType(String name, UnaryOperator<DataComponentType.Builder<T>> componentTypeBuilderOperator) {
             var registry = BuiltInRegistries.DATA_COMPONENT_TYPE;
-            Identifier parentId = DungeonsReborn.identifierFromNamespaceDungeonsReborn(name);
+            Identifier parentId = DungeonsReborn.identifierOfDungeonsReborn(name);
             if (SkyCoreDataFixerAPI.DATA_COMPONENT_TYPES_WITH_ALIAS.containsKey(parentId.toString())) {
                 for (String alias : SkyCoreDataFixerAPI.DATA_COMPONENT_TYPES_WITH_ALIAS.get(parentId.toString())) {
                     registry.addAlias(Identifier.parse(alias), parentId);
                 }
             }
-            return Registry.register(registry, DungeonsReborn.identifierFromNamespaceDungeonsReborn(name),
+            return Registry.register(registry, DungeonsReborn.identifierOfDungeonsReborn(name),
                     componentTypeBuilderOperator.apply(DataComponentType.builder()).build());
         }
         public static <T extends BlockEntity> BlockEntityType<T> registerBlockEntityType(String name, BlockEntityType<T> type) {
             var registry = BuiltInRegistries.BLOCK_ENTITY_TYPE;
-            Identifier parentId = DungeonsReborn.identifierFromNamespaceDungeonsReborn(name);
+            Identifier parentId = DungeonsReborn.identifierOfDungeonsReborn(name);
             if (SkyCoreDataFixerAPI.BLOCK_ENTITY_TYPES_WITH_ALIAS.containsKey(parentId.toString())) {
                 for (String alias : SkyCoreDataFixerAPI.BLOCK_ENTITY_TYPES_WITH_ALIAS.get(parentId.toString())) {
                     registry.addAlias(Identifier.parse(alias), parentId);
                 }
             }
-            return Registry.register(registry, DungeonsReborn.identifierFromNamespaceDungeonsReborn(name), type);
+            return Registry.register(registry, DungeonsReborn.identifierOfDungeonsReborn(name), type);
         }
         /* </Core registry helper methods> */
 
         /* <Tag creation helper methods> */
         public static TagKey<Block> createBlockTag(String name) {
-            return TagKey.create(Registries.BLOCK, DungeonsReborn.identifierFromNamespaceDungeonsReborn(name));
+            return TagKey.create(Registries.BLOCK, DungeonsReborn.identifierOfDungeonsReborn(name));
         }
         public static TagKey<Item> createItemTag(String name) {
-            return TagKey.create(Registries.ITEM, DungeonsReborn.identifierFromNamespaceDungeonsReborn(name));
+            return TagKey.create(Registries.ITEM, DungeonsReborn.identifierOfDungeonsReborn(name));
         }
         /* </Tag creation helper methods> */
 
@@ -141,16 +145,16 @@ public class SkyCore {
         public static Item registerItemThatHasBlock(String name, Block block, Item.Properties properties) {
             return registerItem(name, settings_ -> new BlockItem(block, settings_), properties
                     .useItemDescriptionPrefix()
-                    .setId(ResourceKey.create(Registries.ITEM, DungeonsReborn.identifierFromNamespaceDungeonsReborn(name))));
+                    .setId(ResourceKey.create(Registries.ITEM, DungeonsReborn.identifierOfDungeonsReborn(name))));
         }
         public static Item registerItem(String name, Function<Item.Properties, Item> function) {
-            return registerItem(name, ResourceKey.create(Registries.ITEM, DungeonsReborn.identifierFromNamespaceDungeonsReborn(name)), function, new Item.Properties());
+            return registerItem(name, ResourceKey.create(Registries.ITEM, DungeonsReborn.identifierOfDungeonsReborn(name)), function, new Item.Properties());
         }
         public static Item registerItem(String name, Function<Item.Properties, Item> function, Item.Properties properties) {
-            return registerItem(name, ResourceKey.create(Registries.ITEM, DungeonsReborn.identifierFromNamespaceDungeonsReborn(name)), function, properties);
+            return registerItem(name, ResourceKey.create(Registries.ITEM, DungeonsReborn.identifierOfDungeonsReborn(name)), function, properties);
         }
         public static Block registerBlock(String name, Function<BlockBehaviour.Properties, Block> function, BlockBehaviour.Properties properties) {
-            return registerBlock(name, ResourceKey.create(Registries.BLOCK, DungeonsReborn.identifierFromNamespaceDungeonsReborn(name)), function, properties);
+            return registerBlock(name, ResourceKey.create(Registries.BLOCK, DungeonsReborn.identifierOfDungeonsReborn(name)), function, properties);
         }
         public static Block registerBlockAndItem(String name, Function<BlockBehaviour.Properties, Block> function, BlockBehaviour.Properties properties) {
             Block block = registerBlock(name, function, properties);
@@ -160,14 +164,14 @@ public class SkyCore {
         public static Item registerBlockItem(String name, Block block, Item.Properties properties) {
             return registerItem(name, properties_ -> new BlockItem(block, properties_), properties
                     .useBlockDescriptionPrefix()
-                    .setId(ResourceKey.create(Registries.ITEM, DungeonsReborn.identifierFromNamespaceDungeonsReborn(name))));
+                    .setId(ResourceKey.create(Registries.ITEM, DungeonsReborn.identifierOfDungeonsReborn(name))));
         }
         public static SoundEvent registerSoundEvent(String name) {
-            Identifier identifier = DungeonsReborn.identifierFromNamespaceDungeonsReborn(name);
+            Identifier identifier = DungeonsReborn.identifierOfDungeonsReborn(name);
             return Registry.register(BuiltInRegistries.SOUND_EVENT, identifier, SoundEvent.createVariableRangeEvent(identifier));
         }
         public static Holder.Reference<SoundEvent> registerSoundEventReference(String name) {
-            Identifier identifier = DungeonsReborn.identifierFromNamespaceDungeonsReborn(name);
+            Identifier identifier = DungeonsReborn.identifierOfDungeonsReborn(name);
             return Registry.registerForHolder(BuiltInRegistries.SOUND_EVENT, identifier, SoundEvent.createVariableRangeEvent(identifier));
         }
         /*
@@ -176,13 +180,13 @@ public class SkyCore {
         }
         */
         public static <T extends Entity> EntityType<T> registerEntityType(String name, EntityType<T> type) {
-            return Registry.register(BuiltInRegistries.ENTITY_TYPE, DungeonsReborn.identifierFromNamespaceDungeonsReborn(name), type);
+            return Registry.register(BuiltInRegistries.ENTITY_TYPE, DungeonsReborn.identifierOfDungeonsReborn(name), type);
         }
         public static <T extends AbstractContainerMenu> MenuType<T> registerMenuType(String name, MenuType<T> type) {
-            return Registry.register(BuiltInRegistries.MENU, DungeonsReborn.identifierFromNamespaceDungeonsReborn(name), type);
+            return Registry.register(BuiltInRegistries.MENU, DungeonsReborn.identifierOfDungeonsReborn(name), type);
         }
         public static CreativeModeTab registerCreativeModeTab(String name, CreativeModeTab creativeModeTab) {
-            return Registry.register(BuiltInRegistries.CREATIVE_MODE_TAB, DungeonsReborn.identifierFromNamespaceDungeonsReborn(name), creativeModeTab);
+            return Registry.register(BuiltInRegistries.CREATIVE_MODE_TAB, DungeonsReborn.identifierOfDungeonsReborn(name), creativeModeTab);
         }
         public static <FC extends FeatureConfiguration, F extends Feature<FC>> void registerConfiguredFeature(BootstrapContext<ConfiguredFeature<?, ?>> context, ResourceKey<ConfiguredFeature<?, ?>> key, F feature, FC configuration) {
             context.register(key, new ConfiguredFeature<>(feature, configuration));

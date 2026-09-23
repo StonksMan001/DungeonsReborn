@@ -1,5 +1,6 @@
 package net.qbaesz13.dungeons_reborn.items.mcd_meele.templates;
 
+import net.minecraft.core.component.DataComponents;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
@@ -7,8 +8,10 @@ import net.minecraft.util.Tuple;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.ToolMaterial;
+import net.minecraft.world.item.component.ItemAttributeModifiers;
 import net.qbaesz13.dungeons_reborn._included_libs.skycore.SkyCoreToolAPI;
 import net.qbaesz13.dungeons_reborn.components.McdRarity;
 import net.qbaesz13.dungeons_reborn.items.McdItem;
@@ -41,9 +44,27 @@ public abstract class ClaymoreBaseItem extends SkyCoreToolAPI.SwordItem implemen
     }
     @Override @NullMarked
     public void inventoryTick(ItemStack itemStack, ServerLevel level, Entity owner, @Nullable EquipmentSlot slot) {
-        DungeonsHelpers.setAttackKnockbackModifierIfNotPresent(itemStack);
         DungeonsHelpers.makeUnrepairable(itemStack);
         super.inventoryTick(itemStack, level, owner, slot);
+        if (!(level instanceof ServerLevel)) return;
+
+        ItemAttributeModifiers modifiersComponent = itemStack.get(DataComponents.ATTRIBUTE_MODIFIERS);
+        if (modifiersComponent == null) {
+            DungeonsHelpers.modifyAttackKnockback(itemStack, 0.0);
+            return;
+        }
+
+        boolean hasKnockback = false;
+        for (var entry : modifiersComponent.modifiers()) {
+            if (entry.attribute() == Attributes.ATTACK_KNOCKBACK) {
+                hasKnockback = true;
+                if (entry.modifier().is(BASE_ATTACK_SPEED_ID)) { //DATAFIX: Previously assigned attribute modifiers having incorrect id-s
+                    itemStack.set(DataComponents.ATTRIBUTE_MODIFIERS, this.components().get(DataComponents.ATTRIBUTE_MODIFIERS));
+                    return;
+                }
+            }
+        }
+        if (!hasKnockback) DungeonsHelpers.modifyAttackKnockback(itemStack, Attributes.ATTACK_KNOCKBACK.value().getDefaultValue());
     }
     @Override
     public int getBarColor(@NonNull ItemStack stack) {

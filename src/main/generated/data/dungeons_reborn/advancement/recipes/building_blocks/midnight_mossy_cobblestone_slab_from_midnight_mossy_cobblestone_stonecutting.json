@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_midnight_mossy_cobblestone": {
+      "conditions": {
+        "items": [
+          {
+            "items": "dungeons_reborn:midnight_mossy_cobblestone"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "dungeons_reborn:midnight_mossy_cobblestone_slab_from_midnight_mossy_cobblestone_stonecutting"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_midnight_mossy_cobblestone"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "dungeons_reborn:midnight_mossy_cobblestone_slab_from_midnight_mossy_cobblestone_stonecutting"
+    ]
+  }
+}

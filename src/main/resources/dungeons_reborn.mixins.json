@@ -1,30 +1,32 @@
 {
-	"required": true,
-	"package": "net.qbaesz13.dungeons_reborn.mixin",
-	"compatibilityLevel": "JAVA_25",
-	"mixins": [
-		"ItemAttributeModifiers$Display$DefaultMixin",
-		"accessors.CrossbowItemAccessor",
-		"CrossBowItemMixin",
-		"GrindstoneMenuMixin",
-		"ItemStackMixin",
-		"accessors.AbstractArrowAccessor",
-		"PlayerMixin",
-		"ProjectileMixin",
-		"ProjectileWeaponItemMixin"
-	],
-	"client": [
-		"client.AbstractClientPlayerMixin",
-		"client.ItemInHandRendererMixin",
-		"client.AvatarRendererMixin"
-	],
-	"mixinextras": {
-		"minVersion": "0.5.0"
-	},
-	"injectors": {
-		"defaultRequire": 1
-	},
-	"overwrites": {
-		"requireAnnotations": true
+  "required": true,
+  "package": "net.qbaesz13.dungeons_reborn.mixin",
+  "compatibilityLevel": "JAVA_25",
+  "mixins": [
+    "BowItemMixin",
+    "CrossBowItemMixin",
+    "GrindstoneMenuMixin",
+    "ItemAttributeModifiers$Display$DefaultMixin",
+    "ItemStackMixin",
+    "PlayerMixin",
+    "ProjectileMixin",
+    "ProjectileWeaponItemMixin",
+    "accessors.AbstractArrowAccessors",
+    "accessors.CrossbowItemAccessors",
+    "accessors.FireBlockAccessors"
+  ],
+  "client": [
+    "client.AbstractClientPlayerMixin",
+    "client.AvatarRendererMixin",
+    "client.ItemInHandRendererMixin"
+  ],
+  "mixinextras": {
+    "minVersion": "0.5.0"
+  },
+  "injectors": {
+    "defaultRequire": 1
+  },
+  "overwrites": {
+    "requireAnnotations": true
 	}
 }

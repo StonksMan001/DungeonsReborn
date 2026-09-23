@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/slab_top",
+  "textures": {
+    "bottom": "dungeons_reborn:block/palm_planks",
+    "side": "dungeons_reborn:block/palm_planks",
+    "top": "dungeons_reborn:block/palm_planks"
+  }
+}

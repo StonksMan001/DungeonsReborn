@@ -27,7 +27,6 @@ import net.qbaesz13.dungeons_reborn.util.DungeonsHelpers;
 import org.jspecify.annotations.NullMarked;
 import org.jspecify.annotations.Nullable;
 
-import java.util.Objects;
 import java.util.function.Consumer;
 
 public class IronSkinItem extends McdArtifactItem {
@@ -37,7 +36,7 @@ public class IronSkinItem extends McdArtifactItem {
 
     @Override @NullMarked
     public boolean overrideOtherStackedOnMe(ItemStack self, ItemStack other, Slot slot, ClickAction clickAction, Player player, SlotAccess carriedItem) {
-        if (clickAction == ClickAction.SECONDARY && Objects.nonNull(MCD_DataComponents.TEAMMATE_ONLY_TOGGLE)) {
+        if (clickAction == ClickAction.SECONDARY && MCD_DataComponents.TEAMMATE_ONLY_TOGGLE != null) {
             self.set(MCD_DataComponents.TEAMMATE_ONLY_TOGGLE, Boolean.FALSE.equals(self.get(MCD_DataComponents.TEAMMATE_ONLY_TOGGLE)));
             return true;
         } else {
@@ -50,14 +49,14 @@ public class IronSkinItem extends McdArtifactItem {
             itemStack.set(MCD_DataComponents.TEAMMATE_ONLY_TOGGLE, false);
         }
         DungeonsHelpers.setRareOrCommonVariant(itemStack);
-        super.inventoryTick(Objects.requireNonNull(itemStack), level, owner, slot);
+        super.inventoryTick(itemStack, level, owner, slot);
     }
     @Override @NullMarked
     public InteractionResult use(Level level, Player user, InteractionHand hand) {
         ItemStack stack = user.getItemInHand(hand);
         McdRarity mcdRarity = stack.get(MCD_DataComponents.MCD_RARITY);
         Boolean teammateOnlyToggle = stack.get(MCD_DataComponents.TEAMMATE_ONLY_TOGGLE);
-        if (level instanceof ServerLevel serverLevel && Objects.nonNull(mcdRarity) && Objects.nonNull(teammateOnlyToggle)) {
+        if (level instanceof ServerLevel serverLevel && mcdRarity != null && teammateOnlyToggle != null) {
             int range = serverLevel.getGameRules().get(MCD_GameRules.ARTIFACT_IRON_HIDE_AMULET_COMMON_RANGE);
             int cooldown = serverLevel.getGameRules().get(MCD_GameRules.ARTIFACT_IRON_HIDE_AMULET_COMMON_COOLDOWN);
             var ref = new Object() {

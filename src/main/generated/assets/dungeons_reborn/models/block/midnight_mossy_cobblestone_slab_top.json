@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/slab_top",
+  "textures": {
+    "bottom": "dungeons_reborn:block/midnight_mossy_cobblestone",
+    "side": "dungeons_reborn:block/midnight_mossy_cobblestone",
+    "top": "dungeons_reborn:block/midnight_mossy_cobblestone"
+  }
+}

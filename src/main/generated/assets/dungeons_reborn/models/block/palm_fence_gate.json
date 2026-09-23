@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:block/template_fence_gate",
+  "textures": {
+    "texture": "dungeons_reborn:block/palm_planks"
+  }
+}

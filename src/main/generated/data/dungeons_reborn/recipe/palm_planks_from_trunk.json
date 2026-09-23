@@ -1,0 +1,13 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "building",
+  "ingredients": [
+    [
+      "dungeons_reborn:palm_trunk",
+      "dungeons_reborn:stripped_palm_trunk"
+    ]
+  ],
+  "result": {
+    "id": "dungeons_reborn:palm_planks"
+  }
+}

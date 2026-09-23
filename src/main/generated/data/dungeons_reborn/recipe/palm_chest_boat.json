@@ -1,0 +1,12 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "group": "chest_boat",
+  "ingredients": [
+    "minecraft:chest",
+    "dungeons_reborn:palm_boat"
+  ],
+  "result": {
+    "id": "dungeons_reborn:palm_chest_boat"
+  }
+}

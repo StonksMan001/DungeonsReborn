@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "key": {
+    "#": "minecraft:stick",
+    "X": "minecraft:string",
+    "Y": "minecraft:flint"
+  },
+  "pattern": [
+    "Y##",
+    "# X",
+    "#X "
+  ],
+  "result": {
+    "id": "dungeons_reborn:longbow"
+  }
+}
