@@ -1,10 +1,13 @@
 package net.qbaesz13.dungeons_reborn.items.mcd_meele.templates;
 
 import net.minecraft.component.DataComponentTypes;
+import net.minecraft.component.type.AttributeModifiersComponent;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.LivingEntity;
+import net.minecraft.entity.attribute.EntityAttributes;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.ToolMaterial;
+import net.minecraft.server.world.ServerWorld;
 import net.minecraft.sound.SoundCategory;
 import net.minecraft.sound.SoundEvents;
 import net.minecraft.util.Pair;
@@ -12,13 +15,11 @@ import net.minecraft.world.World;
 import net.qbaesz13.dungeons_reborn._included_libs.skycore.SkyCoreToolAPI;
 import net.qbaesz13.dungeons_reborn.components.McdRarity;
 import net.qbaesz13.dungeons_reborn.items.McdItem;
+import net.qbaesz13.dungeons_reborn.registries.MCD_DataComponentTypes;
 import net.qbaesz13.dungeons_reborn.util.AttackCooldownDependent;
 import net.qbaesz13.dungeons_reborn.util.ChainAttackWeapon;
-import net.qbaesz13.dungeons_reborn.registries.MCD_DataComponentTypes;
 import net.qbaesz13.dungeons_reborn.util.DungeonsHelpers;
 import org.jetbrains.annotations.Nullable;
-
-import java.util.Objects;
 
 public abstract class ClaymoreBaseItem extends SkyCoreToolAPI.SwordItem implements ChainAttackWeapon, AttackCooldownDependent {
     protected float baseAttackDamage;
@@ -40,9 +41,26 @@ public abstract class ClaymoreBaseItem extends SkyCoreToolAPI.SwordItem implemen
     }
     @Override
     public void inventoryTick(ItemStack stack, World world, Entity entity, int slot, boolean selected) {
-        DungeonsHelpers.setAttackKnockbackModifierIfNotPresent(stack);
-        if (stack.get(DataComponentTypes.ATTRIBUTE_MODIFIERS) == null) DungeonsHelpers.modifyAttackKnockback(stack, 0.0);
         super.inventoryTick(stack, world, entity, slot, selected);
+        if (!(world instanceof ServerWorld)) return;
+
+        AttributeModifiersComponent modifiersComponent = stack.get(DataComponentTypes.ATTRIBUTE_MODIFIERS);
+        if (modifiersComponent == null) {
+            DungeonsHelpers.modifyAttackKnockback(stack, 0.0);
+            return;
+        }
+
+        boolean hasKnockback = false;
+        for (var entry : modifiersComponent.modifiers()) {
+            if (entry.attribute() == EntityAttributes.GENERIC_ATTACK_KNOCKBACK) {
+                hasKnockback = true;
+                if (entry.modifier().idMatches(BASE_ATTACK_SPEED_MODIFIER_ID)) { //DATAFIX: Previously assigned attribute modifiers having incorrect id-s
+                    stack.set(DataComponentTypes.ATTRIBUTE_MODIFIERS, this.getComponents().get(DataComponentTypes.ATTRIBUTE_MODIFIERS));
+                    return;
+                }
+            }
+        }
+        if (!hasKnockback) DungeonsHelpers.modifyAttackKnockback(stack, EntityAttributes.GENERIC_ATTACK_KNOCKBACK.value().getDefaultValue());
     }
     @Override
     public int getItemBarColor(ItemStack stack) {

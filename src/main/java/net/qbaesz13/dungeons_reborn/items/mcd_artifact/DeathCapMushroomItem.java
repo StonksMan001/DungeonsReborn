@@ -13,15 +13,14 @@ import net.minecraft.text.Text;
 import net.minecraft.util.Hand;
 import net.minecraft.util.TypedActionResult;
 import net.minecraft.world.World;
-import net.qbaesz13.dungeons_reborn.registries.MCD_GameRules;
-import net.qbaesz13.dungeons_reborn.util.DungeonsHelpers;
 import net.qbaesz13.dungeons_reborn.components.McdRarity;
 import net.qbaesz13.dungeons_reborn.items.McdArtifactItem;
 import net.qbaesz13.dungeons_reborn.registries.MCD_DataComponentTypes;
+import net.qbaesz13.dungeons_reborn.registries.MCD_GameRules;
 import net.qbaesz13.dungeons_reborn.registries.MCD_Sounds;
+import net.qbaesz13.dungeons_reborn.util.DungeonsHelpers;
 
 import java.util.List;
-import java.util.Objects;
 
 public class DeathCapMushroomItem extends McdArtifactItem {
     public DeathCapMushroomItem(Settings settings) {

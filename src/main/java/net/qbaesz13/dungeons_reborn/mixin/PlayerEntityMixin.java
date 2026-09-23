@@ -22,12 +22,12 @@ public abstract class PlayerEntityMixin extends LivingEntity {
         super(entityType, world);
     }
     @WrapOperation(method = "attack", at = @At(value = "INVOKE", target = "Lnet/minecraft/item/ItemStack;postHit(Lnet/minecraft/entity/LivingEntity;Lnet/minecraft/entity/player/PlayerEntity;)Z"))
-    private boolean accountForCooldownDependentItems0(ItemStack instance, LivingEntity target, PlayerEntity player, Operation<Boolean> original, @Local(name = "h") float h) {
+    private boolean accountForCooldownDependentItems0(ItemStack instance, LivingEntity target, PlayerEntity player, Operation<Boolean> original, @Local(ordinal = 2) float h) {
         if (instance.getItem() instanceof AttackCooldownDependent item && h == 1.0) item.postChargedHit(instance, target, player);
         return original.call(instance, target, player);
     }
     @Inject(method = "attack", at = @At(value = "INVOKE", target = "Lnet/minecraft/entity/player/PlayerEntity;resetLastAttackedTicks()V"))
-    private void accountForCooldownDependentItems1(Entity target, CallbackInfo ci, @Local(name = "itemStack") ItemStack itemStack, @Local(name = "h") float h) {
+    private void accountForCooldownDependentItems1(Entity target, CallbackInfo ci, @Local(ordinal = 0) ItemStack itemStack, @Local(ordinal = 2) float h) {
         if (this.getWorld() instanceof ServerWorld
                 && target instanceof LivingEntity livingEntity
                 && itemStack.getItem() instanceof AttackCooldownDependent item

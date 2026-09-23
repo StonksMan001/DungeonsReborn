@@ -12,19 +12,19 @@
         },
         {
           "data": {
-            "Name": "dungeons_reborn:midnight_sprouts"
-          },
-          "weight": 50
-        },
-        {
-          "data": {
             "Name": "dungeons_reborn:pop_flower",
             "Properties": {
               "cut": "false",
               "stage": "0"
             }
           },
-          "weight": 10
+          "weight": 54
+        },
+        {
+          "data": {
+            "Name": "dungeons_reborn:midnight_sprouts"
+          },
+          "weight": 17
         }
       ]
     }

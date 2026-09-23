@@ -1,15 +1,17 @@
 package net.qbaesz13.dungeons_reborn.datagen;
 
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
-import net.fabricmc.fabric.api.datagen.v1.provider.FabricTagProvider;
 import net.minecraft.registry.RegistryWrapper;
 import net.minecraft.registry.tag.ItemTags;
+import net.qbaesz13.dungeons_reborn._included_libs.skycore.SkyCoreDataGenAPI;
+import net.qbaesz13.dungeons_reborn.registries.MCD_BlockFamilies;
+import net.qbaesz13.dungeons_reborn.registries.MCD_Blocks;
 import net.qbaesz13.dungeons_reborn.registries.MCD_ItemTags;
 import net.qbaesz13.dungeons_reborn.registries.MCD_Items;
 
 import java.util.concurrent.CompletableFuture;
 
-public class MCD_ItemTagProvider extends FabricTagProvider.ItemTagProvider {
+public class MCD_ItemTagProvider extends SkyCoreDataGenAPI.SC_ItemTagProvider {
     public MCD_ItemTagProvider(FabricDataOutput output, CompletableFuture<RegistryWrapper.WrapperLookup> completableFuture) {
         super(output, completableFuture);
     }
@@ -34,7 +36,9 @@ public class MCD_ItemTagProvider extends FabricTagProvider.ItemTagProvider {
         getOrCreateTagBuilder(MCD_ItemTags.HAS_DURABILITY_PICKAXES)
                 .add(MCD_Items.ROUGH_DIAMOND_PICKAXE);
         getOrCreateTagBuilder(MCD_ItemTags.HAS_DURABILITY_BOWS)
-                .add(MCD_Items.TWIN_BOW);
+                .add(MCD_Items.TWIN_BOW)
+                .add(MCD_Items.SHORTBOW)
+                .add(MCD_Items.LONGBOW);
         getOrCreateTagBuilder(MCD_ItemTags.HAS_DURABILITY_CROSSBOWS)
                 .add(MCD_Items.AUTO_CROSSBOW)
                 .add(MCD_Items.HEAVY_CROSSBOW);
@@ -45,9 +49,21 @@ public class MCD_ItemTagProvider extends FabricTagProvider.ItemTagProvider {
                 .add(MCD_Items.ROUGH_DIAMOND_SWORD)
                 .add(MCD_Items.STEEL_MACE)
                 .add(MCD_Items.SUNS_GRACE)
+                .add(MCD_Items.CUTLASS)
                 .add(MCD_Items.CLAYMORE)
                 .add(MCD_Items.HEARTSTEALER)
                 .add(MCD_Items.BROADSWORD);
+
+        createStoneSetTags(MCD_BlockFamilies.MIDNIGHT_MOSSY_COBBLESTONE);
+        createWoodSetTags(
+                MCD_ItemTags.PALM_LOGS,
+                MCD_Blocks.PALM_BEAM,
+                MCD_Blocks.PALM_WOOD,
+                MCD_Blocks.STRIPPED_PALM_BEAM,
+                MCD_Blocks.STRIPPED_PALM_WOOD,
+                MCD_Blocks.PALM_SAPLING,
+                MCD_BlockFamilies.PALM
+        );
 
         getOrCreateTagBuilder(ItemTags.FOX_FOOD).add(MCD_Items.SOUR_BERRIES);
     }

@@ -1,6 +1,9 @@
 {
   "values": [
+    "dungeons_reborn:ancient_gold_block",
+    "dungeons_reborn:raw_ancient_gold_block",
+    "dungeons_reborn:midnight_mossy_cobblestone_slab",
     "dungeons_reborn:midnight_mossy_cobblestone",
-    "dungeons_reborn:ancient_gold_block"
+    "dungeons_reborn:midnight_mossy_cobblestone_stairs"
   ]
 }

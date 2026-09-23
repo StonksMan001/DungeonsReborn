@@ -1,0 +1,9 @@
+{
+  "type": "minecraft:random_patch",
+  "config": {
+    "feature": "dungeons_reborn:palm_placed",
+    "tries": 58,
+    "xz_spread": 16,
+    "y_spread": 4
+  }
+}

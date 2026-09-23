@@ -17,26 +17,32 @@ import java.lang.invoke.MethodHandles;
 public class MCD_LootTableModifiers {
     private static void init() {
         LootTableEvents.MODIFY.register(((registryKey, builder, lootTableSource, wrapperLookup) -> {
-            modifyChestLootTable(registryKey, builder, LootTables.WOODLAND_MANSION_CHEST, MCD_Items.AUTO_CROSSBOW, 1, 0.1f);
-            modifyChestLootTable(registryKey, builder, LootTables.WOODLAND_MANSION_CHEST, MCD_Items.BROADSWORD, 1, 0.1f);
-            modifyChestLootTable(registryKey, builder, LootTables.WOODLAND_MANSION_CHEST, MCD_Items.CLAYMORE, 1, 0.5f);
-            modifyChestLootTable(registryKey, builder, LootTables.WOODLAND_MANSION_CHEST, MCD_Items.HEARTSTEALER, 1, 0.1f);
-            modifyChestLootTable(registryKey, builder, LootTables.WOODLAND_MANSION_CHEST, MCD_Blocks.MIDNIGHT_MOSS_BLOCK, 1, 1.0f);
-            modifyChestLootTable(registryKey, builder, LootTables.WOODLAND_MANSION_CHEST, MCD_Items.SUNS_GRACE, 1, 0.03f);
-            modifyChestLootTable(registryKey, builder, LootTables.JUNGLE_TEMPLE_CHEST, MCD_Items.TWIN_BOW, 1, 0.2f);
-            modifyChestLootTable(registryKey, builder, LootTables.DESERT_PYRAMID_CHEST, MCD_Items.SUNS_GRACE, 1, 0.05f);
-            modifyChestLootTable(registryKey, builder, LootTables.SIMPLE_DUNGEON_CHEST, MCD_Items.ROUGH_DIAMOND_SWORD, 1, 0.05f);
-            modifyChestLootTable(registryKey, builder, LootTables.SIMPLE_DUNGEON_CHEST, MCD_Items.ROUGH_DIAMOND_PICKAXE, 1, 0.05f);
-            modifyChestLootTable(registryKey, builder, LootTables.SIMPLE_DUNGEON_CHEST, MCD_Items.ARTIFACT_DEATH_CAP_MUSHROOM, 1, 0.1f);
-            modifyChestLootTable(registryKey, builder, LootTables.ABANDONED_MINESHAFT_CHEST, MCD_Items.ROUGH_DIAMOND_SWORD, 1, 0.025f);
-            modifyChestLootTable(registryKey, builder, LootTables.ABANDONED_MINESHAFT_CHEST, MCD_Items.ROUGH_DIAMOND_PICKAXE, 1, 0.025f);
-            modifyChestLootTable(registryKey, builder, LootTables.ABANDONED_MINESHAFT_CHEST, MCD_Items.ARTIFACT_DEATH_CAP_MUSHROOM, 1, 0.075f);
-            modifyChestLootTable(registryKey, builder, LootTables.PILLAGER_OUTPOST_CHEST, MCD_Items.STEEL_MACE, 1, 0.75f);
-            modifyChestLootTable(registryKey, builder, LootTables.PILLAGER_OUTPOST_CHEST, MCD_Items.HEAVY_CROSSBOW, 1, 0.75f);
-            modifyChestLootTable(registryKey, builder, LootTables.PILLAGER_OUTPOST_CHEST, MCD_Items.ARTIFACT_IRON_HIDE_AMULET, 1, 1.0f);
-            modifyChestLootTable(registryKey, builder, LootTables.WOODLAND_MANSION_CHEST, MCD_Items.ARTIFACT_IRON_HIDE_AMULET, 1, 0.5f);
-            modifyChestLootTable(registryKey, builder, LootTables.WOODLAND_MANSION_CHEST, MCD_Items.ARTIFACT_DEATH_CAP_MUSHROOM, 1, 0.1f);
+            modifyChestLootTable(registryKey, builder, LootTables.WOODLAND_MANSION_CHEST, MCD_Items.AUTO_CROSSBOW, 0.1f);
+            modifyChestLootTable(registryKey, builder, LootTables.WOODLAND_MANSION_CHEST, MCD_Items.BROADSWORD, 0.1f);
+            modifyChestLootTable(registryKey, builder, LootTables.WOODLAND_MANSION_CHEST, MCD_Items.CLAYMORE, 0.5f);
+            modifyChestLootTable(registryKey, builder, LootTables.WOODLAND_MANSION_CHEST, MCD_Items.HEARTSTEALER, 0.1f);
+            modifyChestLootTable(registryKey, builder, LootTables.WOODLAND_MANSION_CHEST, MCD_Blocks.MIDNIGHT_MOSS_BLOCK, 1.0f);
+            modifyChestLootTable(registryKey, builder, LootTables.WOODLAND_MANSION_CHEST, MCD_Items.SUNS_GRACE, 0.03f);
+            modifyChestLootTable(registryKey, builder, LootTables.JUNGLE_TEMPLE_CHEST, MCD_Items.TWIN_BOW, 0.2f);
+            modifyChestLootTable(registryKey, builder, LootTables.DESERT_PYRAMID_CHEST, MCD_Items.SUNS_GRACE, 0.05f);
+            modifyChestLootTable(registryKey, builder, LootTables.SIMPLE_DUNGEON_CHEST, MCD_Items.ROUGH_DIAMOND_SWORD, 0.05f);
+            modifyChestLootTable(registryKey, builder, LootTables.SIMPLE_DUNGEON_CHEST, MCD_Items.ROUGH_DIAMOND_PICKAXE, 0.05f);
+            modifyChestLootTable(registryKey, builder, LootTables.SIMPLE_DUNGEON_CHEST, MCD_Items.ARTIFACT_DEATH_CAP_MUSHROOM, 0.1f);
+            modifyChestLootTable(registryKey, builder, LootTables.ABANDONED_MINESHAFT_CHEST, MCD_Items.ROUGH_DIAMOND_SWORD, 0.025f);
+            modifyChestLootTable(registryKey, builder, LootTables.ABANDONED_MINESHAFT_CHEST, MCD_Items.ROUGH_DIAMOND_PICKAXE, 0.025f);
+            modifyChestLootTable(registryKey, builder, LootTables.ABANDONED_MINESHAFT_CHEST, MCD_Items.ARTIFACT_DEATH_CAP_MUSHROOM, 0.075f);
+            modifyChestLootTable(registryKey, builder, LootTables.PILLAGER_OUTPOST_CHEST, MCD_Items.STEEL_MACE, 0.75f);
+            modifyChestLootTable(registryKey, builder, LootTables.PILLAGER_OUTPOST_CHEST, MCD_Items.HEAVY_CROSSBOW, 0.75f);
+            modifyChestLootTable(registryKey, builder, LootTables.PILLAGER_OUTPOST_CHEST, MCD_Items.ARTIFACT_IRON_HIDE_AMULET, 1.0f);
+            modifyChestLootTable(registryKey, builder, LootTables.WOODLAND_MANSION_CHEST, MCD_Items.ARTIFACT_IRON_HIDE_AMULET, 0.5f);
+            modifyChestLootTable(registryKey, builder, LootTables.WOODLAND_MANSION_CHEST, MCD_Items.ARTIFACT_DEATH_CAP_MUSHROOM, 0.1f);
+            modifyChestLootTable(registryKey, builder, LootTables.NETHER_BRIDGE_CHEST, MCD_Items.CUTLASS, 0.75f);
+            modifyChestLootTable(registryKey, builder, LootTables.DESERT_PYRAMID_CHEST, MCD_Items.CUTLASS, 0.5f);
+            modifyChestLootTable(registryKey, builder, LootTables.SHIPWRECK_SUPPLY_CHEST, MCD_Items.CUTLASS, 0.5f);
         }));
+    }
+    public static void modifyChestLootTable(RegistryKey<LootTable> resourceKey, LootTable.Builder builder, RegistryKey<LootTable> chestLootTable, ItemConvertible insertedItem, float chance) {
+        modifyChestLootTable(resourceKey, builder, chestLootTable, insertedItem, 1, chance);
     }
     public static void modifyChestLootTable(RegistryKey<LootTable> registryKey, LootTable.Builder builder, RegistryKey<LootTable> chestLootTable, ItemConvertible insertedItem, int rolls, float chance) {
         if (chestLootTable.equals(registryKey)) {

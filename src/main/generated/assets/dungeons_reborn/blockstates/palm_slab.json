@@ -1,0 +1,13 @@
+{
+  "variants": {
+    "type=bottom": {
+      "model": "dungeons_reborn:block/palm_slab"
+    },
+    "type=double": {
+      "model": "dungeons_reborn:block/palm_planks"
+    },
+    "type=top": {
+      "model": "dungeons_reborn:block/palm_slab_top"
+    }
+  }
+}

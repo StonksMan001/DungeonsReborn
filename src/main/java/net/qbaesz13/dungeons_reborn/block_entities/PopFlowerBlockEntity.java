@@ -2,19 +2,20 @@ package net.qbaesz13.dungeons_reborn.block_entities;
 
 import net.minecraft.block.BlockState;
 import net.minecraft.block.entity.BlockEntity;
+import net.minecraft.server.world.ServerWorld;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 import net.qbaesz13.dungeons_reborn.blocks.PopFlowerBlock;
-import net.qbaesz13.dungeons_reborn.registries.MCD_BlockEntities;
+import net.qbaesz13.dungeons_reborn.registries.MCD_BlockEntityTypes;
 import net.qbaesz13.dungeons_reborn.registries.MCD_GameRules;
 import net.qbaesz13.dungeons_reborn.util.DungeonsHelpers;
 
 public class PopFlowerBlockEntity extends BlockEntity {
     public PopFlowerBlockEntity(BlockPos pos, BlockState state) {
-        super(MCD_BlockEntities.POP_FLOWER_BLOCK_ENTITY, pos, state);
+        super(MCD_BlockEntityTypes.POP_FLOWER_BLOCK_ENTITY, pos, state);
     }
     public static void serverTick(World world, BlockPos pos, BlockState state, PopFlowerBlockEntity blockEntity) {
-        if (!world.isClient) {
+        if (world instanceof ServerWorld) {
             var ref = new Object() {boolean hide = false;};
             DungeonsHelpers.executeForPlayersWithinDistance(world, pos, PopFlowerBlock.HIDE_DISTANCE, (playerEntity) -> {
                 ref.hide = true;

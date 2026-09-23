@@ -5,7 +5,8 @@ import net.fabricmc.fabric.api.datagen.v1.FabricDataGenerator;
 import net.minecraft.registry.RegistryBuilder;
 import net.minecraft.registry.RegistryKeys;
 import net.qbaesz13.dungeons_reborn.datagen.*;
-import net.qbaesz13.dungeons_reborn.registries.MCD_ConfiguredFeatures;
+import net.qbaesz13.dungeons_reborn.registries.world.MCD_ConfiguredFeatures;
+import net.qbaesz13.dungeons_reborn.registries.world.MCD_PlacedFeatures;
 
 public class DungeonsRebornDataGenerator implements DataGeneratorEntrypoint {
 	@Override
@@ -21,5 +22,6 @@ public class DungeonsRebornDataGenerator implements DataGeneratorEntrypoint {
 	@Override
 	public void buildRegistry(RegistryBuilder registryBuilder) {
 		registryBuilder.addRegistry(RegistryKeys.CONFIGURED_FEATURE, MCD_ConfiguredFeatures::bootstrap);
+		registryBuilder.addRegistry(RegistryKeys.PLACED_FEATURE, MCD_PlacedFeatures::bootstrap);
 	}
 }

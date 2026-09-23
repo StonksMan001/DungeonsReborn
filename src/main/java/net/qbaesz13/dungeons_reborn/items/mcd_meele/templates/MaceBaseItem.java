@@ -14,9 +14,9 @@ import net.minecraft.util.Pair;
 import net.qbaesz13.dungeons_reborn._included_libs.skycore.SkyCoreToolAPI;
 import net.qbaesz13.dungeons_reborn.components.McdRarity;
 import net.qbaesz13.dungeons_reborn.items.McdItem;
+import net.qbaesz13.dungeons_reborn.registries.MCD_DataComponentTypes;
 import net.qbaesz13.dungeons_reborn.util.AttackCooldownDependent;
 import net.qbaesz13.dungeons_reborn.util.ChainAttackWeapon;
-import net.qbaesz13.dungeons_reborn.registries.MCD_DataComponentTypes;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 

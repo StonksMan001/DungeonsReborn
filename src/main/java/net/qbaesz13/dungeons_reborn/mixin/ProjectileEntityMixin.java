@@ -10,8 +10,6 @@ import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
-import java.util.Objects;
-
 @Mixin(ProjectileEntity.class)
 public abstract class ProjectileEntityMixin {
     @Inject(method = "onDeflected", at = @At(value = "HEAD"))

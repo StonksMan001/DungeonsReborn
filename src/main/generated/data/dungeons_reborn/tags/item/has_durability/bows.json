@@ -1,5 +1,7 @@
 {
   "values": [
-    "dungeons_reborn:twin_bow"
+    "dungeons_reborn:twin_bow",
+    "dungeons_reborn:shortbow",
+    "dungeons_reborn:longbow"
   ]
 }

@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:block/wall_inventory",
+  "textures": {
+    "wall": "dungeons_reborn:block/midnight_mossy_cobblestone"
+  }
+}

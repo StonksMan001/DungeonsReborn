@@ -29,6 +29,7 @@ import net.minecraft.world.dimension.DimensionType;
 import net.minecraft.world.gen.feature.ConfiguredFeature;
 import net.minecraft.world.gen.feature.Feature;
 import net.minecraft.world.gen.feature.FeatureConfig;
+import net.minecraft.world.gen.feature.PlacedFeature;
 import net.minecraft.world.poi.PointOfInterestType;
 import net.qbaesz13.dungeons_reborn.DungeonsReborn;
 import net.qbaesz13.dungeons_reborn._included_libs.skycore.gamerules.CappedIntRule;
@@ -67,6 +68,9 @@ public class SkyCore {
         }
         public static RegistryKey<ConfiguredFeature<?, ?>> ofConfiguredFeatureRegistry(String name) {
             return RegistryKey.of(RegistryKeys.CONFIGURED_FEATURE, DungeonsReborn.identifierOfDungeonsReborn(name));
+        }
+        public static RegistryKey<PlacedFeature> ofPlacedFeatureRegistry(String name) {
+            return RegistryKey.of(RegistryKeys.PLACED_FEATURE, DungeonsReborn.identifierOfDungeonsReborn(name));
         }
         public static RegistryKey<PointOfInterestType> ofPoiTypeRegistryKey(String name) {
             return RegistryKey.of(RegistryKeys.POINT_OF_INTEREST_TYPE, DungeonsReborn.identifierOfDungeonsReborn(name));

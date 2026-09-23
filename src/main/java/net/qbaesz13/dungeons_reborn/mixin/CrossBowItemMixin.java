@@ -12,8 +12,6 @@ import net.qbaesz13.dungeons_reborn.registries.MCD_DataComponentTypes;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
 
-import java.util.Objects;
-
 @Mixin(CrossbowItem.class)
 public abstract class CrossBowItemMixin {
     @WrapOperation(method = "getPullTime", at = @At(value = "INVOKE", target = "Lnet/minecraft/util/math/MathHelper;floor(F)I"))

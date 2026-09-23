@@ -9,8 +9,8 @@ import net.minecraft.text.Text;
 import net.minecraft.world.World;
 import net.qbaesz13.dungeons_reborn._included_libs.skycore.SkyCoreToolAPI;
 import net.qbaesz13.dungeons_reborn.components.McdRarity;
-import net.qbaesz13.dungeons_reborn.util.DungeonsHelpers;
 import net.qbaesz13.dungeons_reborn.items.McdItem;
+import net.qbaesz13.dungeons_reborn.util.DungeonsHelpers;
 import net.qbaesz13.dungeons_reborn.util.GrindStoneExperienceNotDropping;
 
 import java.util.List;

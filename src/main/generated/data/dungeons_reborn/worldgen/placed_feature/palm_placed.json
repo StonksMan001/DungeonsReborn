@@ -1,0 +1,37 @@
+{
+  "feature": "dungeons_reborn:palm",
+  "placement": [
+    {
+      "type": "minecraft:block_predicate_filter",
+      "predicate": {
+        "type": "minecraft:would_survive",
+        "state": {
+          "Name": "dungeons_reborn:palm_sapling",
+          "Properties": {
+            "stage": "0"
+          }
+        }
+      }
+    },
+    {
+      "type": "minecraft:block_predicate_filter",
+      "predicate": {
+        "type": "minecraft:not",
+        "predicate": {
+          "type": "minecraft:would_survive",
+          "offset": [
+            0,
+            1,
+            0
+          ],
+          "state": {
+            "Name": "dungeons_reborn:palm_sapling",
+            "Properties": {
+              "stage": "0"
+            }
+          }
+        }
+      }
+    }
+  ]
+}

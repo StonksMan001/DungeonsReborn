@@ -1,0 +1,13 @@
+{
+  "type": "minecraft:blasting",
+  "category": "misc",
+  "cookingtime": 100,
+  "experience": 1.0,
+  "group": "ancient_gold_ingot",
+  "ingredient": {
+    "item": "dungeons_reborn:raw_ancient_gold"
+  },
+  "result": {
+    "id": "dungeons_reborn:ancient_gold_ingot"
+  }
+}

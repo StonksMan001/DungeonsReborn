@@ -1,16 +1,23 @@
 package net.qbaesz13.dungeons_reborn.mixin;
 
+import com.llamalad7.mixinextras.expression.Definition;
+import com.llamalad7.mixinextras.expression.Expression;
+import com.llamalad7.mixinextras.injector.ModifyExpressionValue;
 import com.llamalad7.mixinextras.injector.wrapoperation.Operation;
 import com.llamalad7.mixinextras.injector.wrapoperation.WrapOperation;
 import com.llamalad7.mixinextras.sugar.Local;
 import net.minecraft.component.ComponentHolder;
 import net.minecraft.entity.attribute.EntityAttribute;
+import net.minecraft.entity.attribute.EntityAttributeModifier;
+import net.minecraft.entity.attribute.EntityAttributes;
+import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.registry.entry.RegistryEntry;
 import net.minecraft.util.Pair;
-import net.qbaesz13.dungeons_reborn.util.ChainAttackWeapon;
+import net.qbaesz13.dungeons_reborn.DungeonsReborn;
 import net.qbaesz13.dungeons_reborn.registries.MCD_DataComponentTypes;
+import net.qbaesz13.dungeons_reborn.util.ChainAttackWeapon;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import org.spongepowered.asm.mixin.Mixin;
@@ -19,7 +26,6 @@ import org.spongepowered.asm.mixin.Unique;
 import org.spongepowered.asm.mixin.injection.At;
 
 import java.text.DecimalFormat;
-import java.util.Objects;
 
 @Mixin(ItemStack.class)
 public abstract class ItemStackMixin implements ComponentHolder {
@@ -46,6 +52,20 @@ public abstract class ItemStackMixin implements ComponentHolder {
             }
         }
         return original.call(instance, e);
+    }
+    @WrapOperation(method = "appendAttributeModifierTooltip", at = @At(value = "INVOKE", target = "Lnet/minecraft/entity/attribute/EntityAttributeModifier;value()D"))
+    private double acceptOtherModifierIds0(EntityAttributeModifier instance, Operation<Double> original, @Local(argsOnly = true) PlayerEntity player, @Local(argsOnly = true) EntityAttributeModifier modifier) {
+        double d = original.call(instance);
+        if (player != null && modifier.idMatches(DungeonsReborn.identifierOfDungeonsReborn("base_attack_knockback"))) {
+            d += player.getAttributeBaseValue(EntityAttributes.GENERIC_ATTACK_KNOCKBACK);
+        }
+        return d;
+    }
+    @Definition(id = "bl", local = @Local(type = boolean.class))
+    @Expression("bl")
+    @ModifyExpressionValue(method = "appendAttributeModifierTooltip", at = @At(value = "MIXINEXTRAS:EXPRESSION"))
+    private boolean acceptOtherModifierIds1(boolean original, @Local(argsOnly = true) PlayerEntity player, @Local(argsOnly = true) EntityAttributeModifier modifier) {
+        return original || (player != null && modifier.idMatches(DungeonsReborn.identifierOfDungeonsReborn("base_attack_knockback")));
     }
     @Unique
     private String getChainAttackWeaponParameters(Operation<String> original, DecimalFormat instance, @Nullable Pair<@NotNull Double, @Nullable Double> pair) {

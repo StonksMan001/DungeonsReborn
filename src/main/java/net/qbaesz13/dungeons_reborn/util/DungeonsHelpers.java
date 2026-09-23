@@ -1,5 +1,7 @@
 package net.qbaesz13.dungeons_reborn.util;
 
+import net.minecraft.block.Block;
+import net.minecraft.block.Blocks;
 import net.minecraft.block.ComposterBlock;
 import net.minecraft.component.ComponentType;
 import net.minecraft.component.DataComponentTypes;
@@ -12,7 +14,9 @@ import net.minecraft.entity.attribute.EntityAttributes;
 import net.minecraft.entity.mob.HostileEntity;
 import net.minecraft.entity.mob.Monster;
 import net.minecraft.entity.player.PlayerEntity;
-import net.minecraft.item.*;
+import net.minecraft.item.Item;
+import net.minecraft.item.ItemConvertible;
+import net.minecraft.item.ItemStack;
 import net.minecraft.registry.RegistryKey;
 import net.minecraft.registry.RegistryKeys;
 import net.minecraft.registry.RegistryWrapper;
@@ -22,17 +26,16 @@ import net.minecraft.text.MutableText;
 import net.minecraft.text.Style;
 import net.minecraft.text.Text;
 import net.minecraft.util.Formatting;
-import net.minecraft.util.Identifier;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Box;
 import net.minecraft.world.World;
 import net.qbaesz13.dungeons_reborn.DungeonsReborn;
 import net.qbaesz13.dungeons_reborn.components.McdRarity;
+import net.qbaesz13.dungeons_reborn.mixin.accessors.FireBlockAccessors;
 import net.qbaesz13.dungeons_reborn.registries.MCD_DataComponentTypes;
 import net.qbaesz13.dungeons_reborn.registries.MCD_Enchantments;
 
 import java.util.List;
-import java.util.Objects;
 import java.util.Random;
 import java.util.function.Function;
 
@@ -130,6 +133,12 @@ public interface DungeonsHelpers {
     }
     static float getCompostingValue(ItemConvertible item) {
         return ComposterBlock.ITEM_TO_LEVEL_INCREASE_CHANCE.getFloat(item.asItem());
+    }
+    static int getBurnChance(Block block) {
+        return ((FireBlockAccessors) Blocks.FIRE).getBurnChances().getInt(block);
+    }
+    static int getSpreadChance(Block block) {
+        return ((FireBlockAccessors) Blocks.FIRE).getSpreadChances().getInt(block);
     }
     static void setAttackKnockbackModifierIfNotPresent(ItemStack itemStack) {
         var modifiersComponent = itemStack.get(DataComponentTypes.ATTRIBUTE_MODIFIERS);

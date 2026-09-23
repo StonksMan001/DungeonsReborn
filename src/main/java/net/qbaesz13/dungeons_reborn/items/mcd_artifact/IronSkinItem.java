@@ -17,15 +17,14 @@ import net.minecraft.util.ClickType;
 import net.minecraft.util.Hand;
 import net.minecraft.util.TypedActionResult;
 import net.minecraft.world.World;
-import net.qbaesz13.dungeons_reborn.registries.MCD_GameRules;
-import net.qbaesz13.dungeons_reborn.util.DungeonsHelpers;
 import net.qbaesz13.dungeons_reborn.components.McdRarity;
 import net.qbaesz13.dungeons_reborn.items.McdArtifactItem;
 import net.qbaesz13.dungeons_reborn.registries.MCD_DataComponentTypes;
+import net.qbaesz13.dungeons_reborn.registries.MCD_GameRules;
 import net.qbaesz13.dungeons_reborn.registries.MCD_Sounds;
+import net.qbaesz13.dungeons_reborn.util.DungeonsHelpers;
 
 import java.util.List;
-import java.util.Objects;
 
 public class IronSkinItem extends McdArtifactItem {
     public IronSkinItem(Settings settings) {
