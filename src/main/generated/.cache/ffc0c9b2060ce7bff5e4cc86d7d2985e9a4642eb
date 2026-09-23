@@ -1,4 +1,4 @@
-// 1.21.1	2026-09-23T16:56:24.0081883	Dungeons Reborn/Block Loot Tables
+// 1.21.1	2026-09-23T18:15:13.7207424	Dungeons Reborn/Block Loot Tables
 04b2c1f6fb91e31087b7f269aea71e9edb880a69 data\dungeons_reborn\loot_table\blocks\palm_leaves.json
 f4cd6d71b8792ae26a3c6bf830b688ed9057b7b7 data\dungeons_reborn\loot_table\blocks\palm_sapling.json
 68a3f366560097629745946e1a17d816e492a899 data\dungeons_reborn\loot_table\blocks\highland_moss_block.json
@@ -8,9 +8,9 @@ a64e1ebbb9732c7c358b0cf363373d523bb38959 data\dungeons_reborn\loot_table\blocks\
 d17e694bc5c545f2c360f624919cbfd41302e1af data\dungeons_reborn\loot_table\blocks\palm_wood.json
 268515ccab271a732299abfa8b0b91a82b7244bd data\dungeons_reborn\loot_table\blocks\sour_berry_bush.json
 8c7bda1004148a2bd265428dea47d2445b045f33 data\dungeons_reborn\loot_table\blocks\palm_pressure_plate.json
-6edef101115b0dca6769f7ac825903395876fee1 data\dungeons_reborn\loot_table\blocks\pop_flower.json
-066ae929279bbb71a663137e12ce4c4501a66fa3 data\dungeons_reborn\loot_table\blocks\palm_trapdoor.json
 64eb351330fbc6902fd7bb1abdce489b4fc88229 data\dungeons_reborn\loot_table\blocks\midnight_sprouts.json
+066ae929279bbb71a663137e12ce4c4501a66fa3 data\dungeons_reborn\loot_table\blocks\palm_trapdoor.json
+6edef101115b0dca6769f7ac825903395876fee1 data\dungeons_reborn\loot_table\blocks\pop_flower.json
 3be412256a9a0719ee3ccdf28583860a759d58a1 data\dungeons_reborn\loot_table\blocks\midnight_mossy_cobblestone_stairs.json
 4d6b165d8379760354525ba15c51144b7d34336c data\dungeons_reborn\loot_table\blocks\mossy_oak_planks.json
 a6ccfff3b933827f14f47930c431817ec78a6e8e data\dungeons_reborn\loot_table\blocks\stripped_palm_wood.json

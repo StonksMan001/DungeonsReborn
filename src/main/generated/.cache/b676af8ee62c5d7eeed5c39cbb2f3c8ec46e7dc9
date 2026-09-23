@@ -1,4 +1,4 @@
-// 1.21.1	2026-09-23T16:56:23.9952202	Dungeons Reborn/Recipes
+// 1.21.1	2026-09-23T18:15:13.7177517	Dungeons Reborn/Recipes
 9881ea32238d7944f76b94ef336472c63cdde1e9 data\dungeons_reborn\advancement\recipes\combat\shortbow.json
 aae63fe4c95957759db1b951e5e55649eb763258 data\dungeons_reborn\advancement\recipes\redstone\palm_pressure_plate.json
 9e9b84eecf1ce1e7eb9369bd4734fe63c05cced3 data\dungeons_reborn\advancement\recipes\building_blocks\midnight_mossy_cobblestone_stairs.json
@@ -41,8 +41,8 @@ e6a97e03a57c1f037b1e19ba136a6c27c73eef62 data\dungeons_reborn\recipe\palm_sign.j
 d6c875d41c05a85ceb1b4a7b51cedb253dffd616 data\dungeons_reborn\recipe\midnight_mossy_cobblestone_wall.json
 643b85d72dc55698924589f4886cc1b013005715 data\dungeons_reborn\advancement\recipes\building_blocks\midnight_mossy_cobblestone_slab.json
 d2c037db883ea7db548e3115f27e61f82047e744 data\dungeons_reborn\recipe\palm_planks_from_trunk.json
-19b5646a044b0ec96726d6ee43b0bcb8f1eaf341 data\dungeons_reborn\advancement\recipes\decorations\palm_fence.json
 1594851ec914237edd227ed0ddfba55fffb6b7f8 data\dungeons_reborn\recipe\palm_door.json
+19b5646a044b0ec96726d6ee43b0bcb8f1eaf341 data\dungeons_reborn\advancement\recipes\decorations\palm_fence.json
 885f5176268766365713c67800898c8629832629 data\dungeons_reborn\recipe\mossy_spruce_planks_from_moss_block.json
 29596f0038041e075ae3134c094329d627631b15 data\dungeons_reborn\recipe\stripped_palm_beam.json
 656759225799db3bfc74c75d3b62a6a549bc36a6 data\dungeons_reborn\advancement\recipes\redstone\palm_button.json
