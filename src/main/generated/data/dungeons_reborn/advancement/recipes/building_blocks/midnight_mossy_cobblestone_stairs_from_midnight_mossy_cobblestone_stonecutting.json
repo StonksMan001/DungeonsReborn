@@ -13,7 +13,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "dungeons_reborn:midnight_mossy_cobblestone_stairs_from_midnight_mossy_cobblestone_stonecutting"
+        "recipes": "dungeons_reborn:midnight_mossy_cobblestone_stairs_from_midnight_mossy_cobblestone_stonecutting"
       },
       "trigger": "minecraft:recipe_unlocked"
     }

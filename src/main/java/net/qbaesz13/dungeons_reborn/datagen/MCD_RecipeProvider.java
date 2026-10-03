@@ -2,15 +2,17 @@ package net.qbaesz13.dungeons_reborn.datagen;
 
 import com.google.common.collect.ImmutableList;
 import net.fabricmc.fabric.api.datagen.v1.FabricPackOutput;
+import net.minecraft.advancements.Advancement;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.data.recipes.RecipeCategory;
-import net.minecraft.data.recipes.RecipeOutput;
 import net.minecraft.data.recipes.RecipeProvider;
+import net.minecraft.data.worldgen.BootstrapContext;
 import net.minecraft.world.flag.FeatureFlagSet;
 import net.minecraft.world.flag.FeatureFlags;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.crafting.CookingBookCategory;
 import net.minecraft.world.item.crafting.Ingredient;
+import net.minecraft.world.item.crafting.Recipe;
 import net.minecraft.world.level.block.Blocks;
 import net.qbaesz13.dungeons_reborn._included_libs.skycore.SkyCoreDataGenAPI;
 import net.qbaesz13.dungeons_reborn.registries.MCD_BlockFamilies;
@@ -18,7 +20,6 @@ import net.qbaesz13.dungeons_reborn.registries.MCD_Blocks;
 import net.qbaesz13.dungeons_reborn.registries.MCD_ItemTags;
 import net.qbaesz13.dungeons_reborn.registries.MCD_Items;
 import org.jspecify.annotations.NonNull;
-import org.jspecify.annotations.NullMarked;
 
 import java.util.concurrent.CompletableFuture;
 
@@ -26,9 +27,10 @@ public class MCD_RecipeProvider extends SkyCoreDataGenAPI.SC_RecipeProvider {
     public MCD_RecipeProvider(FabricPackOutput output, CompletableFuture<HolderLookup.Provider> registriesFuture) {
         super(output, registriesFuture);
     }
-    @Override @NullMarked
-    protected RecipeProvider createRecipeProvider(HolderLookup.Provider registries, RecipeOutput output) {
-        return new RecipeProvider(registries, output) {
+
+    @Override
+    protected RecipeProvider createRecipeProvider(HolderLookup.Provider registries, BootstrapContext<Recipe<?>> recipes, BootstrapContext<Advancement> advancements) {
+        return new RecipeProvider(recipes, advancements) {
             @Override
             public void buildRecipes() {
                 nineBlockStorageRecipes(RecipeCategory.MISC, MCD_Items.ANCIENT_GOLD_INGOT, RecipeCategory.BUILDING_BLOCKS, MCD_Blocks.ANCIENT_GOLD_BLOCK);

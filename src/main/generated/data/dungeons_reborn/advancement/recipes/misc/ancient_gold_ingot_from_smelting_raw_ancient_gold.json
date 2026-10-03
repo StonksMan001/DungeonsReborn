@@ -13,7 +13,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "dungeons_reborn:ancient_gold_ingot_from_smelting_raw_ancient_gold"
+        "recipes": "dungeons_reborn:ancient_gold_ingot_from_smelting_raw_ancient_gold"
       },
       "trigger": "minecraft:recipe_unlocked"
     }

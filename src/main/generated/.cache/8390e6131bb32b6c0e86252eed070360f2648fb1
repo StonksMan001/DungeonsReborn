@@ -1,4 +1,4 @@
-// 26.2	-999999999-01-01T00:00:00	Dungeons Reborn/Tags for minecraft:block
+// 26.3	-999999999-01-01T00:00:00	Dungeons Reborn/Tags for minecraft:block
 ff66319e1ef8df4a04fba91c5ab3ef84ea2cbc7e data/dungeons_reborn/tags/block/palm_logs.json
 a48657067718cbac4f015ea789406aac3bc7d087 data/minecraft/tags/block/ceiling_hanging_signs.json
 341731956438bc68b5d23081e1db7e360fe956f7 data/minecraft/tags/block/dirt.json
@@ -8,7 +8,7 @@ a48657067718cbac4f015ea789406aac3bc7d087 data/minecraft/tags/block/ceiling_hangi
 3f3f4126effb374e12f85accfcb6de8520249e0a data/minecraft/tags/block/logs_that_burn.json
 b7f399c30ad0e734eb7a13800c58d5265fc94a33 data/minecraft/tags/block/mineable/axe.json
 6dbdaa45678c331c8bf1ae87dadb180d05c1c2a0 data/minecraft/tags/block/mineable/hoe.json
-6563e84178e211f4f79c7a47c7249a7b9d1c269f data/minecraft/tags/block/mineable/pickaxe.json
+c8bdf0148bd5c0468d5907591bfb1a281d77942d data/minecraft/tags/block/mineable/pickaxe.json
 35133e95f1c8fdd7a1c21afcc231fc0bffefb9a8 data/minecraft/tags/block/mineable/shovel.json
 a34edd8a26dabc1e3adf37a6aa28150ae1febcc4 data/minecraft/tags/block/needs_diamond_tool.json
 2eb32c580043571eaf48f1ff58f9151fe7e6b744 data/minecraft/tags/block/overworld_natural_logs.json

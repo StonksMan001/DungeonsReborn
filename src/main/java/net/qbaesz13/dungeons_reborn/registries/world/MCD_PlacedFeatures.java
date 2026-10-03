@@ -9,7 +9,8 @@ import net.minecraft.data.worldgen.placement.PlacementUtils;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.levelgen.blockpredicates.BlockPredicate;
-import net.minecraft.world.level.levelgen.feature.ConfiguredFeature;
+import net.minecraft.world.level.levelgen.blockpredicates.WouldSurvivePredicate;
+import net.minecraft.world.level.levelgen.feature.Feature;
 import net.minecraft.world.level.levelgen.placement.*;
 import net.qbaesz13.dungeons_reborn.DungeonsReborn;
 import net.qbaesz13.dungeons_reborn._included_libs.skycore.SkyCore;
@@ -30,7 +31,7 @@ public class MCD_PlacedFeatures {
     public static final ResourceKey<PlacedFeature> HIGHLAND_MOSS_PATCH_RARE = SkyCore.RegistryPresets.createPlacedFeatureResourceKey("highland_moss_patch_rare");
 
     public static void bootstrap(BootstrapContext<PlacedFeature> ctx) {
-        HolderGetter<ConfiguredFeature<?, ?>> configuredFeatureHolderGetter = ctx.lookup(Registries.CONFIGURED_FEATURE);
+        HolderGetter<Feature> configuredFeatureHolderGetter = ctx.lookup(Registries.FEATURE);
 
         PlacementUtils.register(ctx, PALM_COMMON, configuredFeatureHolderGetter.getOrThrow(MCD_ConfiguredFeatures.PALM),
                 RarityFilter.onAverageOnceEvery(4),
@@ -38,9 +39,9 @@ public class MCD_PlacedFeatures {
                 PlacementUtils.HEIGHTMAP,
                 BiomeFilter.biome(),
                 CountPlacement.of(58),
-                RandomOffsetPlacement.ofTriangle(16, 4),
-                BlockPredicateFilter.forPredicate(BlockPredicate.wouldSurvive(MCD_Blocks.PALM_SAPLING.defaultBlockState(), BlockPos.ZERO)),
-                BlockPredicateFilter.forPredicate(BlockPredicate.not(BlockPredicate.wouldSurvive(MCD_Blocks.PALM_SAPLING.defaultBlockState(), BlockPos.ZERO.above())))
+                OffsetPlacement.ofTriangle(16, 4),
+                BlockPredicateFilter.forPredicate(new WouldSurvivePredicate(BlockPos.ZERO, MCD_Blocks.PALM_SAPLING.defaultBlockState())),
+                BlockPredicateFilter.forPredicate(BlockPredicate.not(new WouldSurvivePredicate(BlockPos.ZERO.above(), MCD_Blocks.PALM_SAPLING.defaultBlockState())))
         );
         PlacementUtils.register(ctx, PALM_UNCOMMON, configuredFeatureHolderGetter.getOrThrow(MCD_ConfiguredFeatures.PALM),
                 RarityFilter.onAverageOnceEvery(37),
@@ -48,9 +49,9 @@ public class MCD_PlacedFeatures {
                 PlacementUtils.HEIGHTMAP,
                 BiomeFilter.biome(),
                 CountPlacement.of(25),
-                RandomOffsetPlacement.ofTriangle(12, 4),
-                BlockPredicateFilter.forPredicate(BlockPredicate.wouldSurvive(MCD_Blocks.PALM_SAPLING.defaultBlockState(), BlockPos.ZERO)),
-                BlockPredicateFilter.forPredicate(BlockPredicate.not(BlockPredicate.wouldSurvive(MCD_Blocks.PALM_SAPLING.defaultBlockState(), BlockPos.ZERO.above())))
+                OffsetPlacement.ofTriangle(12, 4),
+                BlockPredicateFilter.forPredicate(new WouldSurvivePredicate(BlockPos.ZERO, MCD_Blocks.PALM_SAPLING.defaultBlockState())),
+                BlockPredicateFilter.forPredicate(BlockPredicate.not(new WouldSurvivePredicate(BlockPos.ZERO.above(), MCD_Blocks.PALM_SAPLING.defaultBlockState())))
         );
         PlacementUtils.register(ctx, PALM_RARE, configuredFeatureHolderGetter.getOrThrow(MCD_ConfiguredFeatures.PALM),
                 RarityFilter.onAverageOnceEvery(59),
@@ -58,9 +59,9 @@ public class MCD_PlacedFeatures {
                 PlacementUtils.HEIGHTMAP,
                 BiomeFilter.biome(),
                 CountPlacement.of(25),
-                RandomOffsetPlacement.ofTriangle(12, 4),
-                BlockPredicateFilter.forPredicate(BlockPredicate.wouldSurvive(MCD_Blocks.PALM_SAPLING.defaultBlockState(), BlockPos.ZERO)),
-                BlockPredicateFilter.forPredicate(BlockPredicate.not(BlockPredicate.wouldSurvive(MCD_Blocks.PALM_SAPLING.defaultBlockState(), BlockPos.ZERO.above())))
+                OffsetPlacement.ofTriangle(12, 4),
+                BlockPredicateFilter.forPredicate(new WouldSurvivePredicate(BlockPos.ZERO, MCD_Blocks.PALM_SAPLING.defaultBlockState())),
+                BlockPredicateFilter.forPredicate(BlockPredicate.not(new WouldSurvivePredicate(BlockPos.ZERO.above(), MCD_Blocks.PALM_SAPLING.defaultBlockState())))
         );
         PlacementUtils.register(ctx, SOUR_BERRY_BUSH_PATCH_COMMON, configuredFeatureHolderGetter.getOrThrow(MCD_ConfiguredFeatures.SOUR_BERRY_BUSH),
                 RarityFilter.onAverageOnceEvery(32),
@@ -68,9 +69,9 @@ public class MCD_PlacedFeatures {
                 PlacementUtils.HEIGHTMAP_WORLD_SURFACE,
                 BiomeFilter.biome(),
                 CountPlacement.of(96),
-                RandomOffsetPlacement.ofTriangle(7, 3),
+                OffsetPlacement.ofTriangle(7, 3),
                 BlockPredicateFilter.forPredicate(
-                        BlockPredicate.allOf(BlockPredicate.ONLY_IN_AIR_PREDICATE, BlockPredicate.matchesBlocks(Direction.DOWN.getUnitVec3i(), Blocks.GRASS_BLOCK))
+                        BlockPredicate.allOf(BlockPredicate.ONLY_IN_AIR_PREDICATE, BlockPredicate.matchesBlocks(Direction.DOWN, Blocks.GRASS_BLOCK))
                 )
         );
         PlacementUtils.register(ctx, SOUR_BERRY_BUSH_PATCH_RARE, configuredFeatureHolderGetter.getOrThrow(MCD_ConfiguredFeatures.SOUR_BERRY_BUSH),
@@ -79,9 +80,9 @@ public class MCD_PlacedFeatures {
                 PlacementUtils.HEIGHTMAP_WORLD_SURFACE,
                 BiomeFilter.biome(),
                 CountPlacement.of(96),
-                RandomOffsetPlacement.ofTriangle(7, 3),
+                OffsetPlacement.ofTriangle(7, 3),
                 BlockPredicateFilter.forPredicate(
-                        BlockPredicate.allOf(BlockPredicate.ONLY_IN_AIR_PREDICATE, BlockPredicate.matchesBlocks(Direction.DOWN.getUnitVec3i(), Blocks.GRASS_BLOCK))
+                        BlockPredicate.allOf(BlockPredicate.ONLY_IN_AIR_PREDICATE, BlockPredicate.matchesBlocks(Direction.DOWN, Blocks.GRASS_BLOCK))
                 )
         );
         PlacementUtils.register(ctx, POP_FLOWER_PATCH_COMMON, configuredFeatureHolderGetter.getOrThrow(MCD_ConfiguredFeatures.POP_FLOWER_PATCH),
@@ -90,9 +91,9 @@ public class MCD_PlacedFeatures {
                 PlacementUtils.HEIGHTMAP_WORLD_SURFACE,
                 BiomeFilter.biome(),
                 CountPlacement.of(96),
-                RandomOffsetPlacement.ofTriangle(7, 3),
+                OffsetPlacement.ofTriangle(7, 3),
                 BlockPredicateFilter.forPredicate(
-                        BlockPredicate.allOf(BlockPredicate.ONLY_IN_AIR_PREDICATE, BlockPredicate.matchesBlocks(Direction.DOWN.getUnitVec3i(), Blocks.MYCELIUM))
+                        BlockPredicate.allOf(BlockPredicate.ONLY_IN_AIR_PREDICATE, BlockPredicate.matchesBlocks(Direction.DOWN, Blocks.MYCELIUM))
                 )
         );
         PlacementUtils.register(ctx, MIDNIGHT_MOSS_PATCH_COMMON, configuredFeatureHolderGetter.getOrThrow(MCD_ConfiguredFeatures.MIDNIGHT_MOSS_PATCH_BONEMEAL),

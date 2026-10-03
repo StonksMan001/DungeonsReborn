@@ -13,7 +13,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "dungeons_reborn:palm_button"
+        "recipes": "dungeons_reborn:palm_button"
       },
       "trigger": "minecraft:recipe_unlocked"
     }

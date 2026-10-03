@@ -18,6 +18,17 @@ repositories {
 	// for more information about repositories.
 	mavenCentral()
 	maven { url 'https://jitpack.io' }
+	exclusiveContent {
+		forRepository {
+			maven {
+				name = "Modrinth"
+				url = "https://api.modrinth.com/maven"
+			}
+		}
+		filter {
+			includeGroup "maven.modrinth"
+		}
+	}
 }
 
 fabricApi {
@@ -25,18 +36,21 @@ fabricApi {
 		client = true
 	}
 }
-
+// To change the versions see the gradle.properties file
 dependencies {
-	// To change the versions see the gradle.properties file
+	// Minecraft
 	minecraft "com.mojang:minecraft:${project.minecraft_version}"
-	
+	// Fabric Loader
 	implementation "net.fabricmc:fabric-loader:${project.loader_version}"
-
-	// Fabric API. This is technically optional, but you probably want it anyway.
+	// Fabric API (This is technically optional, but you probably want it anyway)
 	implementation "net.fabricmc.fabric-api:fabric-api:${project.fabric_api_version}"
 
-	implementation "com.github.TerraformersMC.Terraform:terraform-wood-api-v1:${project.terraform_wood_api_version}"
-	include "com.github.TerraformersMC.Terraform:terraform-wood-api-v1:${project.terraform_wood_api_version}"
+	// Required Dependencies
+	//implementation "com.github.TerraformersMC.Terraform:terraform-wood-api-v1:${project.terraform_wood_api_version}"
+	//include "com.github.TerraformersMC.Terraform:terraform-wood-api-v1:${project.terraform_wood_api_version}"
+
+	// Optional Dependencies
+	runtimeOnly "maven.modrinth:mOgUt4GM:kyy7dbrZ" // ModMenu
 }
 
 processResources {
@@ -59,6 +73,10 @@ java {
 
 	sourceCompatibility = JavaVersion.VERSION_25
 	targetCompatibility = JavaVersion.VERSION_25
+
+	toolchain {
+		languageVersion = JavaLanguageVersion.of(25)
+	}
 }
 
 jar {

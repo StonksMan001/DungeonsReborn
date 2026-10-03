@@ -20,17 +20,23 @@
       "count": 58
     },
     {
-      "type": "minecraft:random_offset",
-      "xz_spread": {
+      "type": "minecraft:offset",
+      "x": {
         "type": "minecraft:trapezoid",
         "max": 16,
         "min": -16,
         "plateau": 0
       },
-      "y_spread": {
+      "y": {
         "type": "minecraft:trapezoid",
         "max": 4,
         "min": -4,
+        "plateau": 0
+      },
+      "z": {
+        "type": "minecraft:trapezoid",
+        "max": 16,
+        "min": -16,
         "plateau": 0
       }
     },
@@ -38,12 +44,7 @@
       "type": "minecraft:block_predicate_filter",
       "predicate": {
         "type": "minecraft:would_survive",
-        "state": {
-          "Name": "dungeons_reborn:palm_sapling",
-          "Properties": {
-            "stage": "0"
-          }
-        }
+        "state": "dungeons_reborn:palm_sapling"
       }
     },
     {
@@ -57,12 +58,7 @@
             1,
             0
           ],
-          "state": {
-            "Name": "dungeons_reborn:palm_sapling",
-            "Properties": {
-              "stage": "0"
-            }
-          }
+          "state": "dungeons_reborn:palm_sapling"
         }
       }
     }

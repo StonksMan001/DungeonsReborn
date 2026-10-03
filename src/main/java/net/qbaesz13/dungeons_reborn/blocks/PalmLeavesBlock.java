@@ -1,19 +1,17 @@
 package net.qbaesz13.dungeons_reborn.blocks;
 
-import com.mojang.serialization.MapCodec;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.tags.BlockTags;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.item.context.BlockPlaceContext;
 import net.minecraft.world.level.BlockGetter;
-import net.minecraft.world.level.Level;
 import net.minecraft.world.level.LevelReader;
 import net.minecraft.world.level.ScheduledTickAccess;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
-import net.minecraft.world.level.block.LeavesBlock;
 import net.minecraft.world.level.block.RotatedPillarBlock;
+import net.minecraft.world.level.block.TintedParticleLeavesBlock;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.VoxelShape;
@@ -21,8 +19,7 @@ import net.qbaesz13.dungeons_reborn.registries.MCD_Items;
 import org.jspecify.annotations.NonNull;
 import org.jspecify.annotations.NullMarked;
 
-public class PalmLeavesBlock extends LeavesBlock {
-    public static final MapCodec<PalmLeavesBlock> CODEC = simpleCodec(PalmLeavesBlock::new);
+public class PalmLeavesBlock extends TintedParticleLeavesBlock {
     public PalmLeavesBlock(Properties properties) {
         super(0f, properties);
     }
@@ -46,10 +43,4 @@ public class PalmLeavesBlock extends LeavesBlock {
         BlockState blockState = level.getBlockState(pos.below());
         return blockState.is(BlockTags.LOGS) && blockState.getValue(RotatedPillarBlock.AXIS) == Direction.Axis.Y;
     }
-    @Override
-    public @NonNull MapCodec<? extends LeavesBlock> codec() {
-        return CODEC;
-    }
-    @Override @NullMarked
-    protected void spawnFallingLeavesParticle(Level level, BlockPos pos, RandomSource random) {}
 }

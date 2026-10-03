@@ -1,0 +1,20 @@
+{
+  "type": "minecraft:simple_block",
+  "to_place": {
+    "type": "minecraft:weighted",
+    "entries": [
+      {
+        "data": "dungeons_reborn:midnight_moss_carpet",
+        "weight": 25
+      },
+      {
+        "data": "dungeons_reborn:pop_flower",
+        "weight": 54
+      },
+      {
+        "data": "dungeons_reborn:midnight_sprouts",
+        "weight": 17
+      }
+    ]
+  }
+}

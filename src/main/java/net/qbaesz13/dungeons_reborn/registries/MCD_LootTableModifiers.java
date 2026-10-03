@@ -8,7 +8,7 @@ import net.minecraft.world.level.storage.loot.LootPool;
 import net.minecraft.world.level.storage.loot.LootTable;
 import net.minecraft.world.level.storage.loot.entries.LootItem;
 import net.minecraft.world.level.storage.loot.predicates.LootItemRandomChanceCondition;
-import net.minecraft.world.level.storage.loot.providers.number.ConstantValue;
+import net.minecraft.world.level.storage.loot.providers.number.ints.ContextIntProviders;
 import net.qbaesz13.dungeons_reborn.DungeonsReborn;
 import net.qbaesz13.dungeons_reborn._included_libs.skycore.SkyCoreRegistryHelper;
 
@@ -47,7 +47,7 @@ public class MCD_LootTableModifiers {
     public static void modifyChestLootTable(ResourceKey<LootTable> resourceKey, LootTable.Builder builder, ResourceKey<LootTable> chestLootTable, ItemLike insertedItem, int rolls, float chance) {
         if (chestLootTable.equals(resourceKey)) {
             LootPool.Builder poolBuilder = LootPool.lootPool()
-                    .setRolls(ConstantValue.exactly(rolls))
+                    .setRolls(ContextIntProviders.exactly(rolls))
                     .when(LootItemRandomChanceCondition.randomChance(chance))
                     .add(LootItem.lootTableItem(insertedItem));
             builder.pool(poolBuilder.build());

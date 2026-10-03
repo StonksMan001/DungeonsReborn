@@ -1,6 +1,5 @@
 package net.qbaesz13.dungeons_reborn.blocks;
 
-import com.mojang.serialization.MapCodec;
 import net.minecraft.core.BlockPos;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
@@ -32,7 +31,6 @@ import org.jspecify.annotations.NullMarked;
 import org.jspecify.annotations.Nullable;
 
 public class PopFlowerBlock extends VegetationBlock implements EntityBlock {
-    public static final MapCodec<PopFlowerBlock> CODEC = simpleCodec(PopFlowerBlock::new);
     protected static final VoxelShape SHAPE = Block.box(2.0, 0.0, 2.0, 14.0, 13.0, 14.0);
     public static final IntegerProperty STAGE = IntegerProperty.create("stage", 0, 7);
     public static final BooleanProperty CUT = BooleanProperty.create("cut");
@@ -73,10 +71,6 @@ public class PopFlowerBlock extends VegetationBlock implements EntityBlock {
     @Override
     protected void createBlockStateDefinition(StateDefinition.@NonNull Builder<Block, BlockState> builder) {
         builder.add(STAGE, CUT);
-    }
-    @Override
-    protected @NonNull MapCodec<? extends VegetationBlock> codec() {
-        return CODEC;
     }
     @Override @NullMarked
     public @Nullable BlockEntity newBlockEntity(BlockPos worldPosition, BlockState blockState) {

@@ -1,0 +1,24 @@
+{
+  "type": "minecraft:simple_block",
+  "to_place": {
+    "type": "minecraft:weighted",
+    "entries": [
+      {
+        "data": "dungeons_reborn:sour_berry_bush",
+        "weight": 6
+      },
+      {
+        "data": "dungeons_reborn:highland_moss_carpet",
+        "weight": 25
+      },
+      {
+        "data": "dungeons_reborn:medium_highland_grass",
+        "weight": 50
+      },
+      {
+        "data": "dungeons_reborn:short_highland_grass",
+        "weight": 15
+      }
+    ]
+  }
+}

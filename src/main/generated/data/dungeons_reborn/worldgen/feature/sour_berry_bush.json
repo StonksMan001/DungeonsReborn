@@ -1,0 +1,9 @@
+{
+  "type": "minecraft:simple_block",
+  "to_place": {
+    "id": "dungeons_reborn:sour_berry_bush",
+    "properties": {
+      "age": "3"
+    }
+  }
+}

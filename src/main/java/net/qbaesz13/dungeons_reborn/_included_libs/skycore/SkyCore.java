@@ -33,9 +33,7 @@ import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.dimension.DimensionType;
 import net.minecraft.world.level.gamerules.*;
-import net.minecraft.world.level.levelgen.feature.ConfiguredFeature;
 import net.minecraft.world.level.levelgen.feature.Feature;
-import net.minecraft.world.level.levelgen.feature.configurations.FeatureConfiguration;
 import net.minecraft.world.level.levelgen.placement.PlacedFeature;
 import net.qbaesz13.dungeons_reborn.DungeonsReborn;
 import net.qbaesz13.dungeons_reborn._included_libs.skycore.items.SC_BowItem;
@@ -85,8 +83,8 @@ public class SkyCore {
         public static ResourceKey<Biome> createBiomeResourceKey(String name) {
             return ResourceKey.create(Registries.BIOME, DungeonsReborn.identifierOfDungeonsReborn(name));
         }
-        public static ResourceKey<ConfiguredFeature<?, ?>> createConfiguredFeatureResourceKey(String name) {
-            return ResourceKey.create(Registries.CONFIGURED_FEATURE, DungeonsReborn.identifierOfDungeonsReborn(name));
+        public static ResourceKey<Feature> createConfiguredFeatureResourceKey(String name) {
+            return ResourceKey.create(Registries.FEATURE, DungeonsReborn.identifierOfDungeonsReborn(name));
         }
         public static ResourceKey<PlacedFeature> createPlacedFeatureResourceKey(String name) {
             return ResourceKey.create(Registries.PLACED_FEATURE, DungeonsReborn.identifierOfDungeonsReborn(name));
@@ -201,9 +199,11 @@ public class SkyCore {
         public static CreativeModeTab registerCreativeModeTab(String name, CreativeModeTab creativeModeTab) {
             return Registry.register(BuiltInRegistries.CREATIVE_MODE_TAB, DungeonsReborn.identifierOfDungeonsReborn(name), creativeModeTab);
         }
+        /*
         public static <FC extends FeatureConfiguration, F extends Feature<FC>> void registerConfiguredFeature(BootstrapContext<ConfiguredFeature<?, ?>> context, ResourceKey<ConfiguredFeature<?, ?>> key, F feature, FC configuration) {
             context.register(key, new ConfiguredFeature<>(feature, configuration));
         }
+        */
         public static GameRule<Boolean> registerBooleanGameRule(String name, GameRuleCategory category, boolean defaultValue) {
             return registerGameRule(
                     name,

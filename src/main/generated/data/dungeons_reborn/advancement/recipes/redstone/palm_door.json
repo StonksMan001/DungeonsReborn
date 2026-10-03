@@ -13,7 +13,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "dungeons_reborn:palm_door"
+        "recipes": "dungeons_reborn:palm_door"
       },
       "trigger": "minecraft:recipe_unlocked"
     }

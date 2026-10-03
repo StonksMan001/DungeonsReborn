@@ -13,7 +13,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "dungeons_reborn:palm_slab"
+        "recipes": "dungeons_reborn:palm_slab"
       },
       "trigger": "minecraft:recipe_unlocked"
     }

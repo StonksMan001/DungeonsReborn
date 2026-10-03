@@ -33,7 +33,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "dungeons_reborn:midnight_mossy_cobblestone"
+        "recipes": "dungeons_reborn:midnight_mossy_cobblestone"
       },
       "trigger": "minecraft:recipe_unlocked"
     }

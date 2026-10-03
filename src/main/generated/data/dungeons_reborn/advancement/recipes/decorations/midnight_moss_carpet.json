@@ -13,7 +13,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "dungeons_reborn:midnight_moss_carpet"
+        "recipes": "dungeons_reborn:midnight_moss_carpet"
       },
       "trigger": "minecraft:recipe_unlocked"
     }

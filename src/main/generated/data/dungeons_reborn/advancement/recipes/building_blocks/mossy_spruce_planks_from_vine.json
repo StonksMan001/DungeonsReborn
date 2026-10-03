@@ -3,7 +3,7 @@
   "criteria": {
     "has_the_recipe": {
       "conditions": {
-        "recipe": "dungeons_reborn:mossy_spruce_planks_from_vine"
+        "recipes": "dungeons_reborn:mossy_spruce_planks_from_vine"
       },
       "trigger": "minecraft:recipe_unlocked"
     },

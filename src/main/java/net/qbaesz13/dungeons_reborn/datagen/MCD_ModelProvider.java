@@ -10,8 +10,6 @@ import net.minecraft.client.data.models.model.TextureMapping;
 import net.minecraft.client.renderer.item.ItemModel;
 import net.minecraft.client.renderer.item.properties.numeric.UseDuration;
 import net.minecraft.world.item.Item;
-import net.minecraft.world.level.block.CeilingHangingSignBlock;
-import net.minecraft.world.level.block.WallHangingSignBlock;
 import net.qbaesz13.dungeons_reborn._included_libs.skycore.SkyCoreDataGenAPI;
 import net.qbaesz13.dungeons_reborn._included_libs.skycore.items.SC_BowItem;
 import net.qbaesz13.dungeons_reborn.registries.MCD_BlockFamilies;

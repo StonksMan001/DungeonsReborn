@@ -1,9 +1,11 @@
 package net.qbaesz13.dungeons_reborn.registries;
 
-import com.terraformersmc.terraform.sign.api.block.TerraformSignBlockHelper;
+import net.fabricmc.fabric.api.object.builder.v1.block.type.BlockSetTypeBuilder;
+import net.fabricmc.fabric.api.object.builder.v1.block.type.WoodTypeBuilder;
 import net.minecraft.core.BlockPos;
 import net.minecraft.tags.BlockTags;
 import net.minecraft.util.RandomSource;
+import net.minecraft.util.random.WeightedList;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.*;
@@ -19,6 +21,7 @@ import net.qbaesz13.dungeons_reborn.DungeonsReborn;
 import net.qbaesz13.dungeons_reborn._included_libs.skycore.SkyCore;
 import net.qbaesz13.dungeons_reborn._included_libs.skycore.SkyCoreRegistryHelper;
 import net.qbaesz13.dungeons_reborn._included_libs.skycore.blocks.SC_ShortPlantBlock;
+import net.qbaesz13.dungeons_reborn._included_libs.terraform_wood_api.TerraformCpySignBlockHelper;
 import net.qbaesz13.dungeons_reborn.blocks.PalmLeavesBlock;
 import net.qbaesz13.dungeons_reborn.blocks.PalmTrunkBlock;
 import net.qbaesz13.dungeons_reborn.blocks.PopFlowerBlock;
@@ -27,7 +30,6 @@ import net.qbaesz13.dungeons_reborn.registries.world.MCD_ConfiguredFeatures;
 import org.jspecify.annotations.NullMarked;
 
 import java.lang.invoke.MethodHandles;
-import java.util.Optional;
 import java.util.stream.IntStream;
 
 public class MCD_Blocks {
@@ -167,21 +169,23 @@ public class MCD_Blocks {
     public static final Block PALM_BUTTON = SkyCore.RegistryPresets.registerBlockAndItem("palm_button",
             properties -> new ButtonBlock(BlockSetType.JUNGLE, 30, properties), BlockBehaviour.Properties
                     .ofFullCopy(Blocks.JUNGLE_BUTTON));
-    private static final WoodType PALM_WOOD_TYPE = TerraformSignBlockHelper.registerDefaultWoodType(DungeonsReborn.identifierOfDungeonsReborn("palm"));
-    public static final Block PALM_SIGN = TerraformSignBlockHelper.registerSignBlock(DungeonsReborn.identifierOfDungeonsReborn("palm_sign"),
+    private static final WoodType PALM_WOOD_TYPE = WoodTypeBuilder.copyOf(WoodType.JUNGLE)
+            .register(DungeonsReborn.identifierOfDungeonsReborn("palm"), BlockSetTypeBuilder.copyOf(BlockSetType.JUNGLE)
+                    .register(DungeonsReborn.identifierOfDungeonsReborn("palm")));
+    public static final Block PALM_SIGN = TerraformCpySignBlockHelper.registerSignBlock("palm_sign",
             properties -> new StandingSignBlock(MCD_Blocks.PALM_WOOD_TYPE, properties), BlockBehaviour.Properties
                     .ofFullCopy(Blocks.JUNGLE_SIGN)
                     .mapColor(MapColor.TERRACOTTA_ORANGE));
-    public static final Block PALM_WALL_SIGN = TerraformSignBlockHelper.registerSignBlock(DungeonsReborn.identifierOfDungeonsReborn("palm_wall_sign"),
+    public static final Block PALM_WALL_SIGN = TerraformCpySignBlockHelper.registerSignBlock("palm_wall_sign",
             properties -> new WallSignBlock(MCD_Blocks.PALM_WOOD_TYPE, properties), BlockBehaviour.Properties
                     .ofFullCopy(Blocks.JUNGLE_WALL_SIGN)
                     .mapColor(MapColor.TERRACOTTA_ORANGE)
                     .overrideLootTable(MCD_Blocks.PALM_SIGN.getLootTable()));
-    public static final Block PALM_HANGING_SIGN = TerraformSignBlockHelper.registerSignBlock(DungeonsReborn.identifierOfDungeonsReborn("palm_hanging_sign"),
+    public static final Block PALM_HANGING_SIGN = TerraformCpySignBlockHelper.registerSignBlock("palm_hanging_sign",
             properties -> new CeilingHangingSignBlock(MCD_Blocks.PALM_WOOD_TYPE, properties), BlockBehaviour.Properties
                     .ofFullCopy(Blocks.JUNGLE_HANGING_SIGN)
                     .mapColor(MapColor.TERRACOTTA_ORANGE));
-    public static final Block PALM_WALL_HANGING_SIGN = TerraformSignBlockHelper.registerSignBlock(DungeonsReborn.identifierOfDungeonsReborn("palm_wall_hanging_sign"),
+    public static final Block PALM_WALL_HANGING_SIGN = TerraformCpySignBlockHelper.registerSignBlock("palm_wall_hanging_sign",
             properties -> new WallHangingSignBlock(MCD_Blocks.PALM_WOOD_TYPE, properties), BlockBehaviour.Properties
                     .ofFullCopy(Blocks.JUNGLE_WALL_HANGING_SIGN)
                     .mapColor(MapColor.TERRACOTTA_ORANGE)
@@ -196,17 +200,18 @@ public class MCD_Blocks {
     public static final Block PALM_SAPLING = SkyCore.RegistryPresets.registerBlock("palm_sapling",
             properties -> new SaplingBlock(new TreeGrower(
                     "palm",
-                    Optional.empty(),
-                    Optional.of(MCD_ConfiguredFeatures.PALM),
-                    Optional.empty()
+                    WeightedList.of(MCD_ConfiguredFeatures.PALM),
+                    WeightedList.of(),
+                    WeightedList.of(),
+                    MCD_ConfiguredFeatures.PALM
             ), properties) {
                 @Override @NullMarked
                 protected boolean mayPlaceOn(BlockState state, BlockGetter level, BlockPos pos) {
                     return level.getBlockState(pos).is(BlockTags.SAND) || super.mayPlaceOn(state, level, pos);
                 }
                 @Override @NullMarked
-                public boolean isBonemealSuccess(Level level, RandomSource random, BlockPos pos, BlockState state) {
-                    return super.isBonemealSuccess(level, random, pos, state) && IntStream.rangeClosed(1, 4).allMatch(i -> level.getBlockState(pos.above(i)).isAir());
+                public boolean isBonemealSuccess(Level level, RandomSource random, BlockPos pos, BlockState state, BonemealSource source) {
+                    return super.isBonemealSuccess(level, random, pos, state, source) && IntStream.rangeClosed(1, 4).allMatch(i -> level.getBlockState(pos.above(i)).isAir());
                 }
             }, BlockBehaviour.Properties
                     .ofFullCopy(Blocks.JUNGLE_SAPLING)

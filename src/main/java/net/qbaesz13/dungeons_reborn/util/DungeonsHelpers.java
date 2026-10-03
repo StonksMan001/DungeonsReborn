@@ -22,11 +22,9 @@ import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.component.ItemAttributeModifiers;
 import net.minecraft.world.item.enchantment.Enchantment;
-import net.minecraft.world.level.ItemLike;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
-import net.minecraft.world.level.block.ComposterBlock;
 import net.minecraft.world.phys.AABB;
 import net.minecraft.world.scores.PlayerTeam;
 import net.qbaesz13.dungeons_reborn.DungeonsReborn;
@@ -134,9 +132,6 @@ public interface DungeonsHelpers {
             if (random.nextInt(5) == 1) itemStack.set(MCD_DataComponents.MCD_RARITY, McdRarity.RARE);
             else itemStack.set(MCD_DataComponents.MCD_RARITY, McdRarity.COMMON);
         }
-    }
-    static float getCompostingValue(ItemLike item) {
-        return ComposterBlock.COMPOSTABLES.getFloat(item.asItem());
     }
     static int getIgniteChance(Block block) {
         return ((FireBlockAccessors) Blocks.FIRE).getIgniteOdds().getInt(block);

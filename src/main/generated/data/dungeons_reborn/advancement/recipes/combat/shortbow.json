@@ -13,7 +13,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "dungeons_reborn:shortbow"
+        "recipes": "dungeons_reborn:shortbow"
       },
       "trigger": "minecraft:recipe_unlocked"
     }

@@ -4,7 +4,6 @@ import net.minecraft.core.Direction;
 import net.minecraft.core.HolderGetter;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.data.worldgen.BootstrapContext;
-import net.minecraft.data.worldgen.features.FeatureUtils;
 import net.minecraft.data.worldgen.placement.PlacementUtils;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.tags.BlockTags;
@@ -18,11 +17,10 @@ import net.minecraft.world.level.block.LeavesBlock;
 import net.minecraft.world.level.block.SweetBerryBushBlock;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.levelgen.blockpredicates.BlockPredicate;
-import net.minecraft.world.level.levelgen.feature.ConfiguredFeature;
+import net.minecraft.world.level.levelgen.feature.BlockColumnFeature;
 import net.minecraft.world.level.levelgen.feature.Feature;
-import net.minecraft.world.level.levelgen.feature.configurations.BlockColumnConfiguration;
-import net.minecraft.world.level.levelgen.feature.configurations.SimpleBlockConfiguration;
-import net.minecraft.world.level.levelgen.feature.configurations.VegetationPatchConfiguration;
+import net.minecraft.world.level.levelgen.feature.SimpleBlockFeature;
+import net.minecraft.world.level.levelgen.feature.VegetationPatchFeature;
 import net.minecraft.world.level.levelgen.feature.stateproviders.BlockStateProvider;
 import net.minecraft.world.level.levelgen.feature.stateproviders.WeightedStateProvider;
 import net.minecraft.world.level.levelgen.placement.CaveSurface;
@@ -36,18 +34,18 @@ import java.lang.invoke.MethodHandles;
 import java.util.List;
 
 public class MCD_ConfiguredFeatures {
-    public static final ResourceKey<ConfiguredFeature<?, ?>> MIDNIGHT_MOSS_VEGETATION = SkyCore.RegistryPresets.createConfiguredFeatureResourceKey("midnight_moss_vegetation");
-    public static final ResourceKey<ConfiguredFeature<?, ?>> MIDNIGHT_MOSS_PATCH = SkyCore.RegistryPresets.createConfiguredFeatureResourceKey("midnight_moss_patch");
-    public static final ResourceKey<ConfiguredFeature<?, ?>> MIDNIGHT_MOSS_PATCH_BONEMEAL = SkyCore.RegistryPresets.createConfiguredFeatureResourceKey("midnight_moss_patch_bonemeal");
-    public static final ResourceKey<ConfiguredFeature<?, ?>> HIGHLAND_MOSS_VEGETATION = SkyCore.RegistryPresets.createConfiguredFeatureResourceKey("highland_moss_vegetation");
-    public static final ResourceKey<ConfiguredFeature<?, ?>> HIGHLAND_MOSS_PATCH = SkyCore.RegistryPresets.createConfiguredFeatureResourceKey("highland_moss_patch");
-    public static final ResourceKey<ConfiguredFeature<?, ?>> HIGHLAND_MOSS_PATCH_BONEMEAL = SkyCore.RegistryPresets.createConfiguredFeatureResourceKey("highland_moss_patch_bonemeal");
-    public static final ResourceKey<ConfiguredFeature<?, ?>> PALM = SkyCore.RegistryPresets.createConfiguredFeatureResourceKey("palm");
-    public static final ResourceKey<ConfiguredFeature<?, ?>> SOUR_BERRY_BUSH = SkyCore.RegistryPresets.createConfiguredFeatureResourceKey("sour_berry_bush");
-    public static final ResourceKey<ConfiguredFeature<?, ?>> POP_FLOWER_PATCH = SkyCore.RegistryPresets.createConfiguredFeatureResourceKey("pop_flower");
+    public static final ResourceKey<Feature> MIDNIGHT_MOSS_VEGETATION = SkyCore.RegistryPresets.createConfiguredFeatureResourceKey("midnight_moss_vegetation");
+    public static final ResourceKey<Feature> MIDNIGHT_MOSS_PATCH = SkyCore.RegistryPresets.createConfiguredFeatureResourceKey("midnight_moss_patch");
+    public static final ResourceKey<Feature> MIDNIGHT_MOSS_PATCH_BONEMEAL = SkyCore.RegistryPresets.createConfiguredFeatureResourceKey("midnight_moss_patch_bonemeal");
+    public static final ResourceKey<Feature> HIGHLAND_MOSS_VEGETATION = SkyCore.RegistryPresets.createConfiguredFeatureResourceKey("highland_moss_vegetation");
+    public static final ResourceKey<Feature> HIGHLAND_MOSS_PATCH = SkyCore.RegistryPresets.createConfiguredFeatureResourceKey("highland_moss_patch");
+    public static final ResourceKey<Feature> HIGHLAND_MOSS_PATCH_BONEMEAL = SkyCore.RegistryPresets.createConfiguredFeatureResourceKey("highland_moss_patch_bonemeal");
+    public static final ResourceKey<Feature> PALM = SkyCore.RegistryPresets.createConfiguredFeatureResourceKey("palm");
+    public static final ResourceKey<Feature> SOUR_BERRY_BUSH = SkyCore.RegistryPresets.createConfiguredFeatureResourceKey("sour_berry_bush");
+    public static final ResourceKey<Feature> POP_FLOWER_PATCH = SkyCore.RegistryPresets.createConfiguredFeatureResourceKey("pop_flower");
 
-    public static void bootstrap(BootstrapContext<ConfiguredFeature<?, ?>> ctx) {
-        HolderGetter<ConfiguredFeature<?, ?>> configuredFeatureHolderGetter = ctx.lookup(Registries.CONFIGURED_FEATURE);
+    public static void bootstrap(BootstrapContext<Feature> ctx) {
+        HolderGetter<Feature> configuredFeatureHolderGetter = ctx.lookup(Registries.FEATURE);
 
         registerMossFeatures(ctx, MIDNIGHT_MOSS_VEGETATION, MIDNIGHT_MOSS_PATCH, MIDNIGHT_MOSS_PATCH_BONEMEAL, MCD_Blocks.MIDNIGHT_MOSS_BLOCK,
                 WeightedList.<BlockState>builder()
@@ -60,9 +58,9 @@ public class MCD_ConfiguredFeatures {
                         .add(MCD_Blocks.HIGHLAND_MOSS_CARPET.defaultBlockState(), 25)
                         .add(MCD_Blocks.MEDIUM_HIGHLAND_GRASS.defaultBlockState(), 50)
                         .add(MCD_Blocks.SHORT_HIGHLAND_GRASS.defaultBlockState(), 15).build());
-        FeatureUtils.register(ctx, PALM, Feature.BLOCK_COLUMN, new BlockColumnConfiguration(
+        ctx.register(PALM, new BlockColumnFeature(
                         List.of(
-                                BlockColumnConfiguration.layer(
+                                BlockColumnFeature.layer(
                                         new WeightedListInt(
                                                 WeightedList.<IntProvider>builder()
                                                         .add(UniformInt.of(8, 10), 3)
@@ -70,11 +68,11 @@ public class MCD_ConfiguredFeatures {
                                                         .add(UniformInt.of(1, 3), 1)
                                                         .build()
                                         ),
-                                        BlockStateProvider.simple(MCD_Blocks.PALM_TRUNK)
+                                        BlockStateProvider.of(MCD_Blocks.PALM_TRUNK)
                                 ),
-                                BlockColumnConfiguration.layer(
+                                BlockColumnFeature.layer(
                                         ConstantInt.of(1),
-                                        BlockStateProvider.simple(MCD_Blocks.PALM_LEAVES.defaultBlockState()
+                                        BlockStateProvider.of(MCD_Blocks.PALM_LEAVES.defaultBlockState()
                                                 .setValue(LeavesBlock.PERSISTENT, false)
                                                 .setValue(LeavesBlock.DISTANCE, 1))
                                 )
@@ -84,58 +82,46 @@ public class MCD_ConfiguredFeatures {
                         true
                 )
         );
-        FeatureUtils.register(ctx, SOUR_BERRY_BUSH,
-                Feature.SIMPLE_BLOCK,
-                new SimpleBlockConfiguration(BlockStateProvider.simple(MCD_Blocks.SOUR_BERRY_BUSH.defaultBlockState().setValue(SweetBerryBushBlock.AGE, 3)))
-        );
-        FeatureUtils.register(ctx, POP_FLOWER_PATCH,
-                Feature.SIMPLE_BLOCK,
-                new SimpleBlockConfiguration(BlockStateProvider.simple(MCD_Blocks.POP_FLOWER))
-        );
+        ctx.register(SOUR_BERRY_BUSH, new SimpleBlockFeature(BlockStateProvider.of(MCD_Blocks.SOUR_BERRY_BUSH.defaultBlockState().setValue(SweetBerryBushBlock.AGE, 3))));
+        ctx.register(POP_FLOWER_PATCH, new SimpleBlockFeature(BlockStateProvider.of(MCD_Blocks.POP_FLOWER)));
     }
     /**
      * Based on {@link net.minecraft.data.worldgen.features.CaveFeatures#bootstrap}
      */
-    private static void registerMossFeatures(BootstrapContext<ConfiguredFeature<?, ?>> ctx, ResourceKey<ConfiguredFeature<?, ?>> vegetation,
-                                             ResourceKey<ConfiguredFeature<?, ?>> patch, ResourceKey<ConfiguredFeature<?, ?>> bonemeal_patch, Block base, WeightedList<BlockState> states) {
-        FeatureUtils.register(
-                ctx,
+    private static void registerMossFeatures(BootstrapContext<Feature> ctx, ResourceKey<Feature> vegetation, ResourceKey<Feature> patch,
+                                             ResourceKey<Feature> bonemeal_patch, Block base, WeightedList<BlockState> states) {
+        ctx.register(
                 vegetation,
-                Feature.SIMPLE_BLOCK,
-                new SimpleBlockConfiguration(new WeightedStateProvider(states))
+                new SimpleBlockFeature(new WeightedStateProvider(states))
         );
-        FeatureUtils.register(
-                ctx,
+        ctx.register(
                 patch,
-                Feature.VEGETATION_PATCH,
-                new VegetationPatchConfiguration(
+                new VegetationPatchFeature(
                         ctx.lookup(Registries.BLOCK).getOrThrow(BlockTags.MOSS_REPLACEABLE),
-                        BlockStateProvider.simple(base),
-                        PlacementUtils.inlinePlaced(ctx.lookup(Registries.CONFIGURED_FEATURE).getOrThrow(vegetation)),
+                        BlockStateProvider.holderOf(base),
+                        PlacementUtils.inlinePlaced(ctx.lookup(Registries.FEATURE).getOrThrow(vegetation)),
                         CaveSurface.FLOOR,
                         ConstantInt.of(1),
-                        0.0F,
+                        0.0f,
                         5,
-                        0.8F,
+                        0.8f,
                         UniformInt.of(4, 7),
-                        0.3F
+                        0.3f
                 )
         );
-        FeatureUtils.register(
-                ctx,
+        ctx.register(
                 bonemeal_patch,
-                Feature.VEGETATION_PATCH,
-                new VegetationPatchConfiguration(
+                new VegetationPatchFeature(
                         ctx.lookup(Registries.BLOCK).getOrThrow(BlockTags.MOSS_REPLACEABLE),
-                        BlockStateProvider.simple(base),
-                        PlacementUtils.inlinePlaced(ctx.lookup(Registries.CONFIGURED_FEATURE).getOrThrow(vegetation)),
+                        BlockStateProvider.holderOf(base),
+                        PlacementUtils.inlinePlaced(ctx.lookup(Registries.FEATURE).getOrThrow(vegetation)),
                         CaveSurface.FLOOR,
                         ConstantInt.of(1),
-                        0.0F,
+                        0.0f,
                         5,
-                        0.6F,
+                        0.6f,
                         UniformInt.of(1, 2),
-                        0.75F
+                        0.75f
                 )
         );
     }

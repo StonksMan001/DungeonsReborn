@@ -23,7 +23,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "dungeons_reborn:palm_planks_from_trunk"
+        "recipes": "dungeons_reborn:palm_planks_from_trunk"
       },
       "trigger": "minecraft:recipe_unlocked"
     }

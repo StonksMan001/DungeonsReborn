@@ -1,19 +1,15 @@
 package net.qbaesz13.dungeons_reborn.datagen;
 
 import net.fabricmc.fabric.api.datagen.v1.FabricPackOutput;
-import net.minecraft.core.HolderGetter;
 import net.minecraft.core.HolderLookup;
-import net.minecraft.core.registries.Registries;
 import net.minecraft.world.item.Items;
-import net.minecraft.world.item.enchantment.Enchantment;
 import net.minecraft.world.item.enchantment.Enchantments;
 import net.minecraft.world.level.storage.loot.LootPool;
 import net.minecraft.world.level.storage.loot.LootTable;
 import net.minecraft.world.level.storage.loot.entries.LootItem;
 import net.minecraft.world.level.storage.loot.functions.SetItemCountFunction;
 import net.minecraft.world.level.storage.loot.predicates.BonusLevelTableCondition;
-import net.minecraft.world.level.storage.loot.providers.number.ConstantValue;
-import net.minecraft.world.level.storage.loot.providers.number.UniformGenerator;
+import net.minecraft.world.level.storage.loot.providers.number.ints.ContextIntProviders;
 import net.qbaesz13.dungeons_reborn._included_libs.skycore.SkyCoreDataGenAPI;
 import net.qbaesz13.dungeons_reborn.registries.MCD_Blocks;
 import net.qbaesz13.dungeons_reborn.registries.MCD_Items;
@@ -26,8 +22,6 @@ public class MCD_LootTableProvider extends SkyCoreDataGenAPI.SC_BlockLootSubProv
     }
     @Override
     public void generate() {
-        HolderGetter<Enchantment> enchantmentHolderGetter = registries.lookupOrThrow(Registries.ENCHANTMENT);
-
         dropSelf(MCD_Blocks.ANCIENT_GOLD_BLOCK);
         dropSelf(MCD_Blocks.RAW_ANCIENT_GOLD_BLOCK);
 
@@ -70,25 +64,25 @@ public class MCD_LootTableProvider extends SkyCoreDataGenAPI.SC_BlockLootSubProv
 
         add(MCD_Blocks.PALM_LEAVES, LootTable.lootTable()
                 .pool(LootPool.lootPool()
-                        .setRolls(ConstantValue.exactly(1.0F))
+                        .setRolls(ContextIntProviders.exactly(1))
                         .when(hasShearsOrSilkTouch())
                         .add(LootItem.lootTableItem(MCD_Blocks.PALM_LEAVES)).build())
                 .pool(LootPool.lootPool()
-                        .setRolls(UniformGenerator.between(0.0F, 4.0F))
+                        .setRolls(ContextIntProviders.between(0, 4))
                         .when(doesNotHaveShearsOrSilkTouch())
                         .add(this.applyExplosionCondition(
                                 MCD_Blocks.PALM_LEAVES,
                                 LootItem.lootTableItem(MCD_Blocks.PALM_SAPLING)))
                         .when(BonusLevelTableCondition.bonusLevelFlatChance(
-                                enchantmentHolderGetter.getOrThrow(Enchantments.FORTUNE),
+                                this.enchantments.getOrThrow(Enchantments.FORTUNE),
                                 1.0F)).build())
                 .pool(
                         LootPool.lootPool()
-                                .setRolls(ConstantValue.exactly(1.0F))
+                                .setRolls(ContextIntProviders.exactly(1))
                                 .when(this.doesNotHaveShearsOrSilkTouch())
                                 .add(this.applyExplosionDecay(
-                                                MCD_Blocks.PALM_LEAVES, LootItem.lootTableItem(Items.STICK).apply(SetItemCountFunction.setCount(UniformGenerator.between(1.0F, 2.0F))))
-                                        .when(BonusLevelTableCondition.bonusLevelFlatChance(enchantmentHolderGetter.getOrThrow(Enchantments.FORTUNE), 0.02F, 0.022222223F, 0.025F, 0.033333335F, 0.1F))
+                                                MCD_Blocks.PALM_LEAVES, LootItem.lootTableItem(Items.STICK).apply(SetItemCountFunction.setCount(ContextIntProviders.between(1, 2))))
+                                        .when(BonusLevelTableCondition.bonusLevelFlatChance(this.enchantments.getOrThrow(Enchantments.FORTUNE), 0.02F, 0.022222223F, 0.025F, 0.033333335F, 0.1F))
                                 ).build()
                 ));
 

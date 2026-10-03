@@ -1,5 +1,6 @@
 {
   "type": "minecraft:smelting",
+  "cookingtime": 200,
   "experience": 1.0,
   "group": "ancient_gold_ingot",
   "ingredient": "dungeons_reborn:raw_ancient_gold",

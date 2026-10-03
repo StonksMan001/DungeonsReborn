@@ -15,7 +15,6 @@ import net.minecraft.client.data.models.model.TextureMapping;
 import net.minecraft.client.data.models.model.TexturedModel;
 import net.minecraft.client.renderer.block.dispatch.Variant;
 import net.minecraft.core.HolderLookup;
-import net.minecraft.core.registries.Registries;
 import net.minecraft.data.BlockFamily;
 import net.minecraft.data.loot.packs.VanillaBlockLoot;
 import net.minecraft.data.recipes.RecipeCategory;
@@ -23,20 +22,25 @@ import net.minecraft.data.recipes.RecipeOutput;
 import net.minecraft.data.recipes.RecipeProvider;
 import net.minecraft.resources.Identifier;
 import net.minecraft.resources.ResourceKey;
-import net.minecraft.tags.*;
+import net.minecraft.tags.BlockItemTags;
+import net.minecraft.tags.BlockTags;
+import net.minecraft.tags.ItemTags;
+import net.minecraft.tags.TagKey;
 import net.minecraft.world.item.Item;
-import net.minecraft.world.item.enchantment.Enchantment;
 import net.minecraft.world.item.enchantment.Enchantments;
 import net.minecraft.world.level.ItemLike;
-import net.minecraft.world.level.block.*;
+import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.Blocks;
+import net.minecraft.world.level.block.SaplingBlock;
+import net.minecraft.world.level.block.SweetBerryBushBlock;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 import net.minecraft.world.level.storage.loot.LootPool;
 import net.minecraft.world.level.storage.loot.LootTable;
 import net.minecraft.world.level.storage.loot.entries.LootItem;
 import net.minecraft.world.level.storage.loot.functions.ApplyBonusCount;
 import net.minecraft.world.level.storage.loot.functions.SetItemCountFunction;
-import net.minecraft.world.level.storage.loot.predicates.LootItemBlockStatePropertyCondition;
-import net.minecraft.world.level.storage.loot.providers.number.UniformGenerator;
+import net.minecraft.world.level.storage.loot.predicates.MatchBlock;
+import net.minecraft.world.level.storage.loot.providers.number.ints.ContextIntProviders;
 import net.qbaesz13.dungeons_reborn.registries.client.MCD_ModelTemplates;
 import org.jetbrains.annotations.Nullable;
 
@@ -138,7 +142,6 @@ public class SkyCoreDataGenAPI {
          * Based on {@link VanillaBlockLoot#generate}
          */
         protected void addBerryBushDrops(Block berryBush, Item drop) {
-            HolderLookup.RegistryLookup<Enchantment> enchantments = this.registries.lookupOrThrow(Registries.ENCHANTMENT);
             this.add(
                     berryBush,
                     block -> this.applyExplosionDecay(
@@ -147,25 +150,24 @@ public class SkyCoreDataGenAPI {
                                     .withPool(
                                             LootPool.lootPool()
                                                     .when(
-                                                            LootItemBlockStatePropertyCondition.hasBlockStateProperties(berryBush)
-                                                                    .setProperties(StatePropertiesPredicate.Builder.properties().hasProperty(SweetBerryBushBlock.AGE, 3))
+                                                            MatchBlock.blockMatches(this.blocks, berryBush, StatePropertiesPredicate.Builder.properties().hasProperty(SweetBerryBushBlock.AGE, 3))
                                                     )
                                                     .add(LootItem.lootTableItem(drop))
-                                                    .apply(SetItemCountFunction.setCount(UniformGenerator.between(2.0F, 3.0F)))
-                                                    .apply(ApplyBonusCount.addUniformBonusCount(enchantments.getOrThrow(Enchantments.FORTUNE)))
+                                                    .apply(SetItemCountFunction.setCount(ContextIntProviders.between(2, 3)))
+                                                    .apply(ApplyBonusCount.addUniformBonusCount(this.enchantments.getOrThrow(Enchantments.FORTUNE)))
                                     )
                                     .withPool(
                                             LootPool.lootPool()
                                                     .when(
-                                                            LootItemBlockStatePropertyCondition.hasBlockStateProperties(berryBush)
-                                                                    .setProperties(StatePropertiesPredicate.Builder.properties().hasProperty(SweetBerryBushBlock.AGE, 2))
+                                                            MatchBlock.blockMatches(this.blocks, berryBush, StatePropertiesPredicate.Builder.properties().hasProperty(SweetBerryBushBlock.AGE, 2))
                                                     )
                                                     .add(LootItem.lootTableItem(drop))
-                                                    .apply(SetItemCountFunction.setCount(UniformGenerator.between(1.0F, 2.0F)))
-                                                    .apply(ApplyBonusCount.addUniformBonusCount(enchantments.getOrThrow(Enchantments.FORTUNE)))
+                                                    .apply(SetItemCountFunction.setCount(ContextIntProviders.between(1, 2)))
+                                                    .apply(ApplyBonusCount.addUniformBonusCount(this.enchantments.getOrThrow(Enchantments.FORTUNE)))
                                     )
                     )
             );
+
         }
     }
     public abstract static class SC_ModelProvider extends FabricModelProvider {

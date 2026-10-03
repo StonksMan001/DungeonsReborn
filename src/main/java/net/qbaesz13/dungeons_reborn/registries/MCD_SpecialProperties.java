@@ -1,12 +1,16 @@
 package net.qbaesz13.dungeons_reborn.registries;
 
-import net.fabricmc.fabric.api.registry.CompostableRegistry;
+import net.fabricmc.fabric.api.item.v1.BlockTransformerHelper;
+import net.fabricmc.fabric.api.item.v1.DefaultItemComponentEvents;
 import net.fabricmc.fabric.api.registry.FlammableBlockRegistry;
-import net.fabricmc.fabric.api.registry.FuelValueEvents;
-import net.fabricmc.fabric.api.registry.StrippableBlockRegistry;
-import net.minecraft.world.item.Items;
+import net.minecraft.core.component.DataComponents;
+import net.minecraft.world.item.component.Compostable;
+import net.minecraft.world.item.component.CookingFuel;
+import net.minecraft.world.level.ItemLike;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
+import net.minecraft.world.level.storage.loot.providers.number.floats.ResolvableFloat;
+import net.minecraft.world.level.storage.loot.providers.number.ints.ResolvableInt;
 import net.qbaesz13.dungeons_reborn.DungeonsReborn;
 import net.qbaesz13.dungeons_reborn._included_libs.skycore.SkyCoreRegistryHelper;
 import net.qbaesz13.dungeons_reborn.util.DungeonsHelpers;
@@ -17,28 +21,62 @@ import net.qbaesz13.dungeons_reborn.util.DungeonsHelpers;
 public class MCD_SpecialProperties {
     public static class FuelItems {
         private static void init() {
-            FuelValueEvents.BUILD.register(((builder, ctx) -> {
-                builder.add(MCD_Blocks.PALM_TRUNK, ctx.baseSmeltTime() * 3 / 8);
-                builder.add(MCD_Blocks.STRIPPED_PALM_TRUNK, ctx.baseSmeltTime() * 3 / 8);
-            }));
+            DefaultItemComponentEvents.MODIFY.register(modifyContext -> {
+                register(modifyContext, MCD_Blocks.PALM_TRUNK, 75);
+                register(modifyContext, MCD_Blocks.STRIPPED_PALM_TRUNK, 75);
+
+                register(modifyContext, MCD_Blocks.PALM_BEAM, 300);
+                register(modifyContext, MCD_Blocks.PALM_WOOD, 300);
+                register(modifyContext, MCD_Blocks.STRIPPED_PALM_BEAM, 300);
+                register(modifyContext, MCD_Blocks.STRIPPED_PALM_WOOD, 300);
+                register(modifyContext, MCD_Blocks.PALM_PLANKS, 300);
+                register(modifyContext, MCD_Blocks.PALM_STAIRS, 300);
+                register(modifyContext, MCD_Blocks.PALM_SLAB, 150);
+                register(modifyContext, MCD_Blocks.PALM_FENCE, 150);
+                register(modifyContext, MCD_Blocks.PALM_FENCE_GATE, 150);
+                register(modifyContext, MCD_Blocks.PALM_DOOR, 200);
+                register(modifyContext, MCD_Blocks.PALM_TRAPDOOR, 300);
+                register(modifyContext, MCD_Blocks.PALM_PRESSURE_PLATE, 300);
+                register(modifyContext, MCD_Blocks.PALM_BUTTON, 100);
+                register(modifyContext, MCD_Blocks.PALM_SIGN, 200);
+                register(modifyContext, MCD_Blocks.PALM_HANGING_SIGN, 800);
+                register(modifyContext, MCD_Items.PALM_BOAT, 1200);
+                register(modifyContext, MCD_Items.PALM_CHEST_BOAT, 1200);
+
+                register(modifyContext, MCD_Items.PALM_SAPLING, 100);
+
+                register(modifyContext, MCD_Blocks.MOSSY_OAK_PLANKS, 300);
+                register(modifyContext, MCD_Blocks.MOSSY_SPRUCE_PLANKS, 300);
+            });
+        }
+        private static void register(DefaultItemComponentEvents.ModifyContext modifyContext, ItemLike itemLike, int value) {
+            modifyContext.modify(itemLike.asItem(), builder -> {
+                builder.set(DataComponents.COOKING_FUEL, new CookingFuel(new ResolvableInt.Constant(value), new ResolvableFloat.Constant(1)));
+            });
         }
     }
     public static class CompostableItems {
         private static void init() {
-            CompostableRegistry.INSTANCE.add(MCD_Blocks.MIDNIGHT_MOSS_BLOCK, DungeonsHelpers.getCompostingValue(Blocks.MOSS_BLOCK));
-            CompostableRegistry.INSTANCE.add(MCD_Blocks.MIDNIGHT_MOSS_CARPET, DungeonsHelpers.getCompostingValue(Blocks.MOSS_CARPET));
-            CompostableRegistry.INSTANCE.add(MCD_Blocks.MIDNIGHT_SPROUTS, DungeonsHelpers.getCompostingValue(Blocks.SHORT_GRASS));
-            CompostableRegistry.INSTANCE.add(MCD_Blocks.POP_FLOWER, DungeonsHelpers.getCompostingValue(Blocks.SHORT_GRASS));
+            DefaultItemComponentEvents.MODIFY.register(modifyContext -> {
+                register(modifyContext, MCD_Blocks.MIDNIGHT_MOSS_BLOCK, 65);
+                register(modifyContext, MCD_Blocks.MIDNIGHT_MOSS_CARPET, 30);
+                register(modifyContext, MCD_Blocks.MIDNIGHT_SPROUTS, 30);
+                register(modifyContext, MCD_Blocks.POP_FLOWER, 30);
 
-            CompostableRegistry.INSTANCE.add(MCD_Blocks.HIGHLAND_MOSS_BLOCK, DungeonsHelpers.getCompostingValue(Blocks.MOSS_BLOCK));
-            CompostableRegistry.INSTANCE.add(MCD_Blocks.HIGHLAND_MOSS_CARPET, DungeonsHelpers.getCompostingValue(Blocks.MOSS_CARPET));
-            CompostableRegistry.INSTANCE.add(MCD_Blocks.MEDIUM_HIGHLAND_GRASS, DungeonsHelpers.getCompostingValue(Blocks.SHORT_GRASS));
-            CompostableRegistry.INSTANCE.add(MCD_Blocks.SHORT_HIGHLAND_GRASS, DungeonsHelpers.getCompostingValue(Blocks.SHORT_GRASS));
-            CompostableRegistry.INSTANCE.add(MCD_Blocks.POP_FLOWER, DungeonsHelpers.getCompostingValue(Blocks.SHORT_GRASS));
-            CompostableRegistry.INSTANCE.add(MCD_Items.SOUR_BERRIES, DungeonsHelpers.getCompostingValue(Items.SWEET_BERRIES));
+                register(modifyContext, MCD_Blocks.HIGHLAND_MOSS_BLOCK, 65);
+                register(modifyContext, MCD_Blocks.HIGHLAND_MOSS_CARPET, 30);
+                register(modifyContext, MCD_Blocks.MEDIUM_HIGHLAND_GRASS, 30);
+                register(modifyContext, MCD_Blocks.SHORT_HIGHLAND_GRASS, 30);
+                register(modifyContext, MCD_Items.SOUR_BERRIES, 30);
 
-            CompostableRegistry.INSTANCE.add(MCD_Items.PALM_LEAVES, DungeonsHelpers.getCompostingValue(Items.JUNGLE_LEAVES));
-            CompostableRegistry.INSTANCE.add(MCD_Items.PALM_SAPLING, DungeonsHelpers.getCompostingValue(Items.JUNGLE_SAPLING));
+                register(modifyContext, MCD_Items.PALM_LEAVES, 30);
+                register(modifyContext, MCD_Items.PALM_SAPLING, 30);
+            });
+        }
+        private static void register(DefaultItemComponentEvents.ModifyContext modifyContext, ItemLike itemLike, int value) {
+            modifyContext.modify(itemLike.asItem(), builder -> {
+                builder.set(DataComponents.COMPOSTABLE, new Compostable(new ResolvableInt.Constant(value)));
+            });
         }
     }
     public static class FlammableBlocks {
@@ -77,9 +115,9 @@ public class MCD_SpecialProperties {
     }
     public static class StrippableBlocks {
         private static void init() {
-            StrippableBlockRegistry.register(MCD_Blocks.PALM_TRUNK, MCD_Blocks.STRIPPED_PALM_TRUNK);
-            StrippableBlockRegistry.register(MCD_Blocks.PALM_BEAM, MCD_Blocks.STRIPPED_PALM_BEAM);
-            StrippableBlockRegistry.register(MCD_Blocks.PALM_WOOD, MCD_Blocks.STRIPPED_PALM_WOOD);
+            BlockTransformerHelper.registerStripping(MCD_Blocks.PALM_TRUNK, MCD_Blocks.STRIPPED_PALM_TRUNK);
+            BlockTransformerHelper.registerStripping(MCD_Blocks.PALM_BEAM, MCD_Blocks.STRIPPED_PALM_BEAM);
+            BlockTransformerHelper.registerStripping(MCD_Blocks.PALM_WOOD, MCD_Blocks.STRIPPED_PALM_WOOD);
         }
     }
     public static void register() {

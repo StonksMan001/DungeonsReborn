@@ -1,0 +1,10 @@
+{
+  "type": "minecraft:simple_block",
+  "to_place": {
+    "id": "dungeons_reborn:pop_flower",
+    "properties": {
+      "cut": "false",
+      "stage": "0"
+    }
+  }
+}

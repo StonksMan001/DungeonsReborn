@@ -22,7 +22,7 @@ public class DungeonsRebornDataGenerator implements DataGeneratorEntrypoint {
 	}
 	@Override
 	public void buildRegistry(@NonNull RegistrySetBuilder registryBuilder) {
-		registryBuilder.add(Registries.CONFIGURED_FEATURE, MCD_ConfiguredFeatures::bootstrap);
+		registryBuilder.add(Registries.FEATURE, MCD_ConfiguredFeatures::bootstrap);
 		registryBuilder.add(Registries.PLACED_FEATURE, MCD_PlacedFeatures::bootstrap);
 	}
 }

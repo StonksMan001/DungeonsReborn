@@ -23,7 +23,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "dungeons_reborn:ladle"
+        "recipes": "dungeons_reborn:ladle"
       },
       "trigger": "minecraft:recipe_unlocked"
     },

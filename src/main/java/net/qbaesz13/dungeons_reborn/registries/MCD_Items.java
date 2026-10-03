@@ -1,6 +1,6 @@
 package net.qbaesz13.dungeons_reborn.registries;
 
-import com.terraformersmc.terraform.boat.api.item.TerraformBoatItemHelper;
+import net.minecraft.core.Direction;
 import net.minecraft.core.component.DataComponents;
 import net.minecraft.world.food.Foods;
 import net.minecraft.world.item.*;
@@ -8,6 +8,7 @@ import net.minecraft.world.item.component.ChargedProjectiles;
 import net.qbaesz13.dungeons_reborn.DungeonsReborn;
 import net.qbaesz13.dungeons_reborn._included_libs.skycore.SkyCore;
 import net.qbaesz13.dungeons_reborn._included_libs.skycore.SkyCoreRegistryHelper;
+import net.qbaesz13.dungeons_reborn._included_libs.terraform_wood_api.TerraformCpyBoatItemHelperImpl;
 import net.qbaesz13.dungeons_reborn.items.mcd_artifact.DeathCapMushroomItem;
 import net.qbaesz13.dungeons_reborn.items.mcd_artifact.IronSkinItem;
 import net.qbaesz13.dungeons_reborn.items.mcd_meele.*;
@@ -72,15 +73,15 @@ public class MCD_Items {
             MCD_Blocks.SOUR_BERRY_BUSH, new Item.Properties()
                     .food(Foods.SWEET_BERRIES));
     public static final Item PALM_SIGN = SkyCore.RegistryPresets.registerItem("palm_sign",
-            properties -> new SignItem(MCD_Blocks.PALM_SIGN, MCD_Blocks.PALM_WALL_SIGN, properties
+            properties -> new StandingAndWallBlockItem(MCD_Blocks.PALM_SIGN, MCD_Blocks.PALM_WALL_SIGN, Direction.DOWN, properties
                     .stacksTo(16)
                     .useBlockDescriptionPrefix()));
     public static final Item PALM_HANGING_SIGN = SkyCore.RegistryPresets.registerItem("palm_hanging_sign",
             properties -> new HangingSignItem(MCD_Blocks.PALM_HANGING_SIGN, MCD_Blocks.PALM_WALL_HANGING_SIGN, properties
                     .stacksTo(16)
                     .useBlockDescriptionPrefix()));
-    public static final Item PALM_BOAT = TerraformBoatItemHelper.registerBoatItem(DungeonsReborn.identifierOfDungeonsReborn("palm"), false);
-    public static final Item PALM_CHEST_BOAT = TerraformBoatItemHelper.registerBoatItem(DungeonsReborn.identifierOfDungeonsReborn("palm"), true);
+    public static final Item PALM_BOAT = TerraformCpyBoatItemHelperImpl.registerBoatItem(DungeonsReborn.identifierOfDungeonsReborn("palm"), new Item.Properties().stacksTo(1), false, false);
+    public static final Item PALM_CHEST_BOAT = TerraformCpyBoatItemHelperImpl.registerBoatItem(DungeonsReborn.identifierOfDungeonsReborn("palm"), new Item.Properties().stacksTo(1), true, false);
     public static final Item PALM_LEAVES = SkyCore.RegistryPresets.registerItemThatHasBlock("palm_leaves",
             MCD_Blocks.PALM_LEAVES, new Item.Properties());
     public static final Item PALM_SAPLING = SkyCore.RegistryPresets.registerItemThatHasBlock("palm_sapling",
