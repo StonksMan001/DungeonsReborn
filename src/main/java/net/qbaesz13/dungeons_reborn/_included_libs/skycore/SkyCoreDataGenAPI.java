@@ -5,7 +5,7 @@ import net.fabricmc.fabric.api.datagen.v1.FabricPackOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricBlockLootSubProvider;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricRecipeProvider;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricTagsProvider;
-import net.minecraft.advancements.criterion.StatePropertiesPredicate;
+import net.minecraft.advancements.predicates.StatePropertiesPredicate;
 import net.minecraft.client.data.models.BlockModelGenerators;
 import net.minecraft.client.data.models.MultiVariant;
 import net.minecraft.client.data.models.blockstates.MultiVariantGenerator;
@@ -22,9 +22,8 @@ import net.minecraft.data.recipes.RecipeCategory;
 import net.minecraft.data.recipes.RecipeOutput;
 import net.minecraft.data.recipes.RecipeProvider;
 import net.minecraft.resources.Identifier;
-import net.minecraft.tags.BlockTags;
-import net.minecraft.tags.ItemTags;
-import net.minecraft.tags.TagKey;
+import net.minecraft.resources.ResourceKey;
+import net.minecraft.tags.*;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.enchantment.Enchantment;
 import net.minecraft.world.item.enchantment.Enchantments;
@@ -41,6 +40,7 @@ import net.minecraft.world.level.storage.loot.providers.number.UniformGenerator;
 import net.qbaesz13.dungeons_reborn.registries.client.MCD_ModelTemplates;
 import org.jetbrains.annotations.Nullable;
 
+import java.util.List;
 import java.util.Set;
 import java.util.concurrent.CompletableFuture;
 
@@ -51,48 +51,47 @@ public class SkyCoreDataGenAPI {
         }
         protected void createStoneSetTags(BlockFamily stoneFamily) {
             addToTagIfPresent(BlockTags.MINEABLE_WITH_PICKAXE, Set.of(
-                    stoneFamily.getBaseBlock(),
-                    stoneFamily.get(BlockFamily.Variant.STAIRS),
-                    stoneFamily.get(BlockFamily.Variant.SLAB)
+                    SkyCore.getResourceKey(stoneFamily.getBaseBlock()),
+                    SkyCore.getResourceKey(stoneFamily.get(BlockFamily.Variant.STAIRS)),
+                    SkyCore.getResourceKey(stoneFamily.get(BlockFamily.Variant.SLAB))
             ));
-            addToTagIfPresent(BlockTags.STAIRS, stoneFamily.get(BlockFamily.Variant.STAIRS));
-            addToTagIfPresent(BlockTags.SLABS, stoneFamily.get(BlockFamily.Variant.SLAB));
-            addToTagIfPresent(BlockTags.WALLS, stoneFamily.get(BlockFamily.Variant.WALL));
+            addToTagIfPresent(BlockTags.STAIRS, SkyCore.getResourceKey(stoneFamily.get(BlockFamily.Variant.STAIRS)));
+            addToTagIfPresent(BlockTags.SLABS, SkyCore.getResourceKey(stoneFamily.get(BlockFamily.Variant.SLAB)));
+            addToTagIfPresent(BlockTags.WALLS, SkyCore.getResourceKey(stoneFamily.get(BlockFamily.Variant.WALL)));
         }
-        protected void createWoodSetTags(TagKey<Block> tagForLogs, Block log, Block wood, Block strippedLog, Block strippedWood,
-                                         CeilingHangingSignBlock ceilingHangingSign, WallHangingSignBlock wallHangingSign, SaplingBlock sapling,
+        protected void createWoodSetTags(TagKey<Block> tagForLogs, Block wood, Block strippedWood, SaplingBlock sapling,
                                          BlockFamily woodFamily, boolean isLogNatural) {
-            valueLookupBuilder(tagForLogs).add(log, wood, strippedLog, strippedWood);
-            valueLookupBuilder(BlockTags.LOGS_THAT_BURN).addTag(tagForLogs);
+            builder(tagForLogs).add(SkyCore.getResourceKeys(woodFamily.get(BlockFamily.Variant.LOG), wood, woodFamily.get(BlockFamily.Variant.STRIPPED_LOG), strippedWood));
+            builder(BlockItemTags.LOGS_THAT_BURN.block()).addTag(tagForLogs);
 
-            addToTagIfPresent(BlockTags.PLANKS, woodFamily.getBaseBlock());
-            addToTagIfPresent(BlockTags.WOODEN_STAIRS, woodFamily.get(BlockFamily.Variant.STAIRS));
-            addToTagIfPresent(BlockTags.WOODEN_SLABS, woodFamily.get(BlockFamily.Variant.SLAB));
-            addToTagIfPresent(BlockTags.WOODEN_FENCES, woodFamily.get(BlockFamily.Variant.FENCE));
-            addToTagIfPresent(BlockTags.FENCE_GATES, woodFamily.get(BlockFamily.Variant.FENCE_GATE));
-            addToTagIfPresent(BlockTags.WOODEN_DOORS, woodFamily.get(BlockFamily.Variant.DOOR));
-            addToTagIfPresent(BlockTags.WOODEN_TRAPDOORS, woodFamily.get(BlockFamily.Variant.TRAPDOOR));
-            addToTagIfPresent(BlockTags.WOODEN_PRESSURE_PLATES, woodFamily.get(BlockFamily.Variant.PRESSURE_PLATE));
-            addToTagIfPresent(BlockTags.WOODEN_BUTTONS, woodFamily.get(BlockFamily.Variant.BUTTON));
-            addToTagIfPresent(BlockTags.STANDING_SIGNS, woodFamily.get(BlockFamily.Variant.SIGN));
-            addToTagIfPresent(BlockTags.WALL_SIGNS, woodFamily.get(BlockFamily.Variant.WALL_SIGN));
-            addToTagIfPresent(BlockTags.CEILING_HANGING_SIGNS, ceilingHangingSign);
-            addToTagIfPresent(BlockTags.WALL_HANGING_SIGNS, wallHangingSign);
+            addToTagIfPresent(BlockTags.PLANKS, SkyCore.getResourceKey(woodFamily.getBaseBlock()));
+            addToTagIfPresent(BlockTags.WOODEN_STAIRS, SkyCore.getResourceKey(woodFamily.get(BlockFamily.Variant.STAIRS)));
+            addToTagIfPresent(BlockTags.WOODEN_SLABS, SkyCore.getResourceKey(woodFamily.get(BlockFamily.Variant.SLAB)));
+            addToTagIfPresent(BlockTags.WOODEN_FENCES, SkyCore.getResourceKey(woodFamily.get(BlockFamily.Variant.FENCE)));
+            addToTagIfPresent(BlockTags.FENCE_GATES, SkyCore.getResourceKey(woodFamily.get(BlockFamily.Variant.FENCE_GATE)));
+            addToTagIfPresent(BlockTags.WOODEN_DOORS, SkyCore.getResourceKey(woodFamily.get(BlockFamily.Variant.DOOR)));
+            addToTagIfPresent(BlockTags.WOODEN_TRAPDOORS, SkyCore.getResourceKey(woodFamily.get(BlockFamily.Variant.TRAPDOOR)));
+            addToTagIfPresent(BlockTags.WOODEN_PRESSURE_PLATES, SkyCore.getResourceKey(woodFamily.get(BlockFamily.Variant.PRESSURE_PLATE)));
+            addToTagIfPresent(BlockTags.WOODEN_BUTTONS, SkyCore.getResourceKey(woodFamily.get(BlockFamily.Variant.BUTTON)));
+            addToTagIfPresent(BlockTags.STANDING_SIGNS, SkyCore.getResourceKey(woodFamily.get(BlockFamily.Variant.SIGN)));
+            addToTagIfPresent(BlockTags.WALL_SIGNS, SkyCore.getResourceKey(woodFamily.get(BlockFamily.Variant.WALL_SIGN)));
+            addToTagIfPresent(BlockTags.CEILING_HANGING_SIGNS, SkyCore.getResourceKey(woodFamily.get(BlockFamily.Variant.HANGING_SIGN)));
+            addToTagIfPresent(BlockTags.WALL_HANGING_SIGNS, SkyCore.getResourceKey(woodFamily.get(BlockFamily.Variant.WALL_HANGING_SIGN)));
 
-            addToTagIfPresent(BlockTags.SAPLINGS, sapling);
+            addToTagIfPresent(BlockItemTags.SAPLINGS.block(), SkyCore.getResourceKey(sapling));
 
-            if (isLogNatural) valueLookupBuilder(BlockTags.OVERWORLD_NATURAL_LOGS).add(log);
+            if (isLogNatural) builder(BlockTags.OVERWORLD_NATURAL_LOGS).add(SkyCore.getResourceKey(woodFamily.get(BlockFamily.Variant.LOG)));
         }
         protected void createGrassTags(Block grass) {
-            valueLookupBuilder(BlockTags.MINEABLE_WITH_AXE).add(grass);
-            valueLookupBuilder(BlockTags.SWORD_EFFICIENT).add(grass);
-            valueLookupBuilder(BlockTags.REPLACEABLE_BY_TREES).add(grass);
+            builder(BlockTags.MINEABLE_WITH_AXE).add(SkyCore.getResourceKey(grass));
+            builder(BlockTags.SWORD_EFFICIENT).add(SkyCore.getResourceKey(grass));
+            builder(BlockTags.REPLACEABLE_BY_TREES).add(SkyCore.getResourceKey(grass));
         }
-        protected void addToTagIfPresent(TagKey<Block> tag, @Nullable Block block) {
-            if (block != null) valueLookupBuilder(tag).add(block);
+        protected void addToTagIfPresent(TagKey<Block> tag, @Nullable ResourceKey<Block> blockResourceKey) {
+            if (blockResourceKey != null) builder(tag).add(blockResourceKey);
         }
-        protected void addToTagIfPresent(TagKey<Block> tag, Set<@Nullable Block> blockList) {
-            for (Block block : blockList) addToTagIfPresent(tag, block);
+        protected void addToTagIfPresent(TagKey<Block> tag, Set<@Nullable ResourceKey<Block>> resourceKeySet) {
+            for (ResourceKey<Block> blockResourceKey : resourceKeySet) addToTagIfPresent(tag, blockResourceKey);
         }
     }
     public abstract static class SC_ItemTagsProvider extends FabricTagsProvider.ItemTagsProvider {
@@ -100,37 +99,35 @@ public class SkyCoreDataGenAPI {
             super(output, registryLookupFuture);
         }
         protected void createStoneSetTags(BlockFamily stoneFamily) {
-            addToTagIfPresent(ItemTags.STAIRS, stoneFamily.get(BlockFamily.Variant.STAIRS));
-            addToTagIfPresent(ItemTags.SLABS, stoneFamily.get(BlockFamily.Variant.SLAB));
-            addToTagIfPresent(ItemTags.WALLS, stoneFamily.get(BlockFamily.Variant.WALL));
+            addToTagIfPresent(BlockItemTags.STAIRS.item(), SkyCore.getResourceKey(stoneFamily.get(BlockFamily.Variant.STAIRS).asItem()));
+            addToTagIfPresent(BlockItemTags.SLABS.item(), SkyCore.getResourceKey(stoneFamily.get(BlockFamily.Variant.SLAB).asItem()));
+            addToTagIfPresent(ItemTags.WALLS, SkyCore.getResourceKey(stoneFamily.get(BlockFamily.Variant.WALL).asItem()));
         }
-        protected void createWoodSetTags(TagKey<Item> tagForLogs, ItemLike log, ItemLike wood, ItemLike strippedLog,
-                                         ItemLike strippedWood, ItemLike sapling, BlockFamily woodFamily) {
-            createWoodSetTags(tagForLogs, log.asItem(), wood.asItem(), strippedLog.asItem(), strippedWood.asItem(), sapling.asItem(), woodFamily);
+        protected void createWoodSetTags(TagKey<Item> tagForLogs, ItemLike wood, ItemLike strippedWood, ItemLike sapling, BlockFamily woodFamily) {
+            createWoodSetTags(tagForLogs, wood.asItem(), strippedWood.asItem(), sapling.asItem(), woodFamily);
         }
-        protected void createWoodSetTags(TagKey<Item> tagForLogs, Item log, Item wood, Item strippedLog, Item strippedWood, Item sapling,
-                                         BlockFamily woodFamily) {
-            valueLookupBuilder(tagForLogs).add(log, wood, strippedLog, strippedWood);
-            valueLookupBuilder(ItemTags.LOGS_THAT_BURN).addTag(tagForLogs);
+        protected void createWoodSetTags(TagKey<Item> tagForLogs, Item wood, Item strippedWood, Item sapling, BlockFamily woodFamily) {
+            builder(tagForLogs).add(SkyCore.getResourceKeys(woodFamily.get(BlockFamily.Variant.LOG).asItem(), wood, woodFamily.get(BlockFamily.Variant.STRIPPED_LOG).asItem(), strippedWood));
+            builder(ItemTags.LOGS_THAT_BURN).addTag(tagForLogs);
 
-            addToTagIfPresent(ItemTags.PLANKS, woodFamily.getBaseBlock());
-            addToTagIfPresent(ItemTags.WOODEN_STAIRS, woodFamily.get(BlockFamily.Variant.STAIRS));
-            addToTagIfPresent(ItemTags.WOODEN_SLABS, woodFamily.get(BlockFamily.Variant.SLAB));
-            addToTagIfPresent(ItemTags.WOODEN_FENCES, woodFamily.get(BlockFamily.Variant.FENCE));
-            addToTagIfPresent(ItemTags.FENCE_GATES, woodFamily.get(BlockFamily.Variant.FENCE_GATE));
-            addToTagIfPresent(ItemTags.WOODEN_DOORS, woodFamily.get(BlockFamily.Variant.DOOR));
-            addToTagIfPresent(ItemTags.WOODEN_TRAPDOORS, woodFamily.get(BlockFamily.Variant.TRAPDOOR));
-            addToTagIfPresent(ItemTags.WOODEN_PRESSURE_PLATES, woodFamily.get(BlockFamily.Variant.PRESSURE_PLATE));
-            addToTagIfPresent(ItemTags.WOODEN_BUTTONS, woodFamily.get(BlockFamily.Variant.BUTTON));
-            addToTagIfPresent(ItemTags.SIGNS, woodFamily.get(BlockFamily.Variant.SIGN));
+            addToTagIfPresent(ItemTags.PLANKS, SkyCore.getResourceKey(woodFamily.getBaseBlock().asItem()));
+            addToTagIfPresent(ItemTags.WOODEN_STAIRS, SkyCore.getResourceKey(woodFamily.get(BlockFamily.Variant.STAIRS).asItem()));
+            addToTagIfPresent(ItemTags.WOODEN_SLABS, SkyCore.getResourceKey(woodFamily.get(BlockFamily.Variant.SLAB).asItem()));
+            addToTagIfPresent(ItemTags.WOODEN_FENCES, SkyCore.getResourceKey(woodFamily.get(BlockFamily.Variant.FENCE).asItem()));
+            addToTagIfPresent(ItemTags.FENCE_GATES, SkyCore.getResourceKey(woodFamily.get(BlockFamily.Variant.FENCE_GATE).asItem()));
+            addToTagIfPresent(ItemTags.WOODEN_DOORS, SkyCore.getResourceKey(woodFamily.get(BlockFamily.Variant.DOOR).asItem()));
+            addToTagIfPresent(ItemTags.WOODEN_TRAPDOORS, SkyCore.getResourceKey(woodFamily.get(BlockFamily.Variant.TRAPDOOR).asItem()));
+            addToTagIfPresent(ItemTags.WOODEN_PRESSURE_PLATES, SkyCore.getResourceKey(woodFamily.get(BlockFamily.Variant.PRESSURE_PLATE).asItem()));
+            addToTagIfPresent(ItemTags.WOODEN_BUTTONS, SkyCore.getResourceKey(woodFamily.get(BlockFamily.Variant.BUTTON).asItem()));
+            addToTagIfPresent(ItemTags.SIGNS, SkyCore.getResourceKey(woodFamily.get(BlockFamily.Variant.SIGN).asItem()));
 
-            addToTagIfPresent(ItemTags.SAPLINGS, sapling);
+            addToTagIfPresent(ItemTags.SAPLINGS, SkyCore.getResourceKey(sapling));
         }
-        protected void addToTagIfPresent(TagKey<Item> tag, @Nullable ItemLike item) {
-            if (item != null) valueLookupBuilder(tag).add(item.asItem());
+        protected void addToTagIfPresent(TagKey<Item> tag, @Nullable ResourceKey<Item> itemResourceKeys) {
+            if (itemResourceKeys != null) builder(tag).add(itemResourceKeys);
         }
-        protected void addToTagIfPresent(TagKey<Item> tag, Set<@Nullable ItemLike> itemList) {
-            for (ItemLike item : itemList) addToTagIfPresent(tag, item);
+        protected void addToTagIfPresent(TagKey<Item> tag, Set<@Nullable ResourceKey<Item>> resourceKeySet) {
+            for (ResourceKey<Item> itemResourceKey : resourceKeySet) addToTagIfPresent(tag, itemResourceKey);
         }
     }
     public abstract static class SC_BlockLootSubProvider extends FabricBlockLootSubProvider {
@@ -176,7 +173,7 @@ public class SkyCoreDataGenAPI {
             super(output);
         }
         protected void registerRotatedWoolAndCarpet(BlockModelGenerators bmg, Block wool, Block carpet) {
-            bmg.createColoredBlockWithRandomRotations(TexturedModel.CUBE, wool);
+            bmg.createColoredBlockWithRandomRotations(TexturedModel.CUBE, List.of(wool));
             Variant variant = BlockModelGenerators.plainModel(TexturedModel.CARPET.get(wool).create(carpet, bmg.modelOutput));
             bmg.blockStateOutput.accept(MultiVariantGenerator.dispatch(carpet, BlockModelGenerators.createRotatedVariants(variant)));
         }
@@ -215,13 +212,11 @@ public class SkyCoreDataGenAPI {
             texturePool.slab(stoneFamily.get(BlockFamily.Variant.SLAB));
             texturePool.wall(stoneFamily.get(BlockFamily.Variant.WALL));
         }
-        protected void createWoodSetModels(BlockModelGenerators bmg, Block log, Block wood, Block strippedLog, Block strippedWood,
-                                           CeilingHangingSignBlock ceilingHangingSign, WallHangingSignBlock wallHangingSign, BlockFamily woodFamily) {
+        protected void createWoodSetModels(BlockModelGenerators bmg, Block log, Block wood, Block strippedLog, Block strippedWood, BlockFamily woodFamily) {
             bmg.woodProvider(log).log(log).wood(wood);
             bmg.woodProvider(strippedLog).log(strippedLog).wood(strippedWood);
             BlockModelGenerators.BlockFamilyProvider texturePool = bmg.family(woodFamily.getBaseBlock());
             texturePool.generateFor(woodFamily);
-            bmg.createHangingSign(strippedLog, ceilingHangingSign, wallHangingSign);
         }
     }
     public abstract static class SC_RecipeProvider extends FabricRecipeProvider {

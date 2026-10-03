@@ -41,6 +41,7 @@ import net.qbaesz13.dungeons_reborn.DungeonsReborn;
 import net.qbaesz13.dungeons_reborn._included_libs.skycore.items.SC_BowItem;
 import net.qbaesz13.dungeons_reborn._included_libs.skycore.items.SC_CrossbowItem;
 
+import java.util.ArrayList;
 import java.util.function.Function;
 import java.util.function.ToIntFunction;
 import java.util.function.UnaryOperator;
@@ -55,6 +56,18 @@ public class SkyCore {
         }
         return original.call(instance, item);
     }
+    /* <Resource key getters> */
+    public static <T> ResourceKey<T> getResourceKey(T obj) {
+        if (obj instanceof Item item) return (ResourceKey<T>) BuiltInRegistries.ITEM.getResourceKey(item).get();
+        if (obj instanceof Block block) return (ResourceKey<T>) BuiltInRegistries.BLOCK.getResourceKey(block).get();
+        return null;
+    }
+    public static <T> ResourceKey<T>[] getResourceKeys(T... objs) {
+        ArrayList<ResourceKey<T>> arrayList = new ArrayList<>();
+        for (T obj : objs) arrayList.add(getResourceKey(obj));
+        return arrayList.toArray(new ResourceKey[0]);
+    }
+    /* </Resource key getters> */
     public static class RegistryPresets {
         /* <ResourceKey creation helper methods> */
         public static ResourceKey<Enchantment> createEnchantmentResourceKey(String name) {

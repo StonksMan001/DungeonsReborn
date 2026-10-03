@@ -54,10 +54,10 @@ public abstract class PlayerMixin extends LivingEntity {
         return isAttackCharged(instance) ? MaceBaseItem.DEFAULT_DISABLE_BLOCKING_TIME : original.call(instance);
     }
 
-    @Definition(id = "secondsToDisableBlocking", local = @Local(type = float.class))
+    @Definition(id = "secondsToDisableBlocking", local = @Local(type = float.class, name = "secondsToDisableBlocking"))
     @Expression("secondsToDisableBlocking > 0.0")
     @ModifyExpressionValue(method = "blockUsingItem", at = @At("MIXINEXTRAS:EXPRESSION"))
-    private boolean disableShieldOnCriticalMaceHit1(boolean original, @Local(argsOnly = true) LivingEntity attacker) {
+    private boolean disableShieldOnCriticalMaceHit1(boolean original, @Local(argsOnly = true, name = "attacker") LivingEntity attacker) {
         return original || isAttackCharged(attacker);
     }
     @Unique

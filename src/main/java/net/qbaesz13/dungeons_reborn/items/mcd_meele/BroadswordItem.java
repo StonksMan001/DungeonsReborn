@@ -1,8 +1,8 @@
 package net.qbaesz13.dungeons_reborn.items.mcd_meele;
 
+import com.mojang.datafixers.util.Pair;
 import net.minecraft.network.chat.Component;
 import net.minecraft.server.level.ServerLevel;
-import net.minecraft.util.Tuple;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.item.ItemStack;
@@ -40,7 +40,7 @@ public class BroadswordItem extends ClaymoreBaseItem implements GrindStoneExperi
         super.inventoryTick(itemStack, level, owner, slot);
     }
     @Override @NullUnmarked
-    public Tuple<@NonNull Double, Double> getAttackDamagePair(McdRarity mcdRarity) {
-        return new Tuple<>(10d, null);
+    public Pair<@NonNull Double, Double> getAttackDamagePair(McdRarity mcdRarity) {
+        return new Pair<>(10d, null);
     }
 }

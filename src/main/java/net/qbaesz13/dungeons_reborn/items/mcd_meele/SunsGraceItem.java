@@ -1,10 +1,10 @@
 package net.qbaesz13.dungeons_reborn.items.mcd_meele;
 
+import com.mojang.datafixers.util.Pair;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.particles.DustParticleOptions;
 import net.minecraft.network.chat.Component;
 import net.minecraft.server.level.ServerLevel;
-import net.minecraft.util.Tuple;
 import net.minecraft.world.entity.*;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.inventory.ClickAction;
@@ -87,11 +87,11 @@ public class SunsGraceItem extends MaceBaseItem {
         super.inventoryTick(itemStack, level, owner, slot);
     }
     @Override @NullUnmarked
-    public Tuple<@NonNull Double, Double> getAttackDamagePair(McdRarity mcdRarity) {
-        return new Tuple<>(8d, 12d);
+    public Pair<@NonNull Double, Double> getAttackDamagePair(McdRarity mcdRarity) {
+        return new Pair<>(8d, 12d);
     }
     @Override @NullUnmarked
-    public Tuple<@NonNull Double, Double> getAttackSpeedPair(McdRarity mcdRarity) {
-        return new Tuple<>(1.6d, 0.6d);
+    public Pair<@NonNull Double, Double> getAttackSpeedPair(McdRarity mcdRarity) {
+        return new Pair<>(1.6d, 0.6d);
     }
 }

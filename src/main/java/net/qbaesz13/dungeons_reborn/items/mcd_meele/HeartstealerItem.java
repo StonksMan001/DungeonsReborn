@@ -1,9 +1,9 @@
 package net.qbaesz13.dungeons_reborn.items.mcd_meele;
 
+import com.mojang.datafixers.util.Pair;
 import net.minecraft.core.particles.DustParticleOptions;
 import net.minecraft.network.chat.Component;
 import net.minecraft.server.level.ServerLevel;
-import net.minecraft.util.Tuple;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.Mob;
 import net.minecraft.world.entity.player.Player;
@@ -49,7 +49,7 @@ public class HeartstealerItem extends ClaymoreBaseItem {
         super.postHurtEnemy(itemStack, target, attacker);
     }
     @Override @NullUnmarked
-    public Tuple<@NonNull Double, Double> getAttackDamagePair(McdRarity mcdRarity) {
-        return new Tuple<>(10d, null);
+    public Pair<@NonNull Double, Double> getAttackDamagePair(McdRarity mcdRarity) {
+        return new Pair<>(10d, null);
     }
 }

@@ -1,8 +1,8 @@
 package net.qbaesz13.dungeons_reborn.items.mcd_meele;
 
+import com.mojang.datafixers.util.Pair;
 import net.minecraft.network.chat.Component;
 import net.minecraft.server.level.ServerLevel;
-import net.minecraft.util.Tuple;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.item.ItemStack;
@@ -36,14 +36,14 @@ public class SteelMaceItem extends MaceBaseItem {
         super.inventoryTick(itemStack, level, owner, slot);
     }
     @Override @NullUnmarked
-    public Tuple<@NonNull Double, Double> getAttackDamagePair(McdRarity mcdRarity) {
-        if (mcdRarity == McdRarity.COMMON) return new Tuple<>(7d, 11d);
-        if (mcdRarity == McdRarity.RARE) return new Tuple<>(8d, 12d);
+    public Pair<@NonNull Double, Double> getAttackDamagePair(McdRarity mcdRarity) {
+        if (mcdRarity == McdRarity.COMMON) return new Pair<>(7d, 11d);
+        if (mcdRarity == McdRarity.RARE) return new Pair<>(8d, 12d);
         return null;
     }
     @Override @NullUnmarked
-    public Tuple<@NonNull Double, Double> getAttackSpeedPair(McdRarity mcdRarity) {
-        if (mcdRarity == McdRarity.COMMON || mcdRarity == McdRarity.RARE) return new Tuple<>(1.6d, 0.6d);
+    public Pair<@NonNull Double, Double> getAttackSpeedPair(McdRarity mcdRarity) {
+        if (mcdRarity == McdRarity.COMMON || mcdRarity == McdRarity.RARE) return new Pair<>(1.6d, 0.6d);
         return null;
     }
 }

@@ -1,0 +1,7 @@
+{
+  "parent": "minecraft:block/template_wall_hanging_sign",
+  "textures": {
+    "all": "dungeons_reborn:block/palm_hanging_sign",
+    "particle": "dungeons_reborn:block/stripped_palm_beam"
+  }
+}

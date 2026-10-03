@@ -39,7 +39,7 @@ public abstract class ItemInHandRendererMixin {
     private static boolean itemTagCheck7(ItemStack instance, Object o, Operation<Boolean> original) {
         return SkyCore.wrapRangedWeaponHardcodedCallsIfPresent(instance, (Item) o, original);
     }
-    @WrapOperation(method = "renderArmWithItem", at = @At(value = "INVOKE", ordinal = 0, target = "Lnet/minecraft/world/item/ItemStack;is(Ljava/lang/Object;)Z"))
+    @WrapOperation(method = "submitArmWithItem", at = @At(value = "INVOKE", ordinal = 0, target = "Lnet/minecraft/world/item/ItemStack;is(Ljava/lang/Object;)Z"))
     private boolean itemTagCheck8(ItemStack instance, Object o, Operation<Boolean> original) {
         return SkyCore.wrapRangedWeaponHardcodedCallsIfPresent(instance, (Item) o, original);
     }

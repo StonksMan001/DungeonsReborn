@@ -109,7 +109,7 @@ public class MCD_ConfiguredFeatures {
                 patch,
                 Feature.VEGETATION_PATCH,
                 new VegetationPatchConfiguration(
-                        BlockTags.MOSS_REPLACEABLE,
+                        ctx.lookup(Registries.BLOCK).getOrThrow(BlockTags.MOSS_REPLACEABLE),
                         BlockStateProvider.simple(base),
                         PlacementUtils.inlinePlaced(ctx.lookup(Registries.CONFIGURED_FEATURE).getOrThrow(vegetation)),
                         CaveSurface.FLOOR,
@@ -126,7 +126,7 @@ public class MCD_ConfiguredFeatures {
                 bonemeal_patch,
                 Feature.VEGETATION_PATCH,
                 new VegetationPatchConfiguration(
-                        BlockTags.MOSS_REPLACEABLE,
+                        ctx.lookup(Registries.BLOCK).getOrThrow(BlockTags.MOSS_REPLACEABLE),
                         BlockStateProvider.simple(base),
                         PlacementUtils.inlinePlaced(ctx.lookup(Registries.CONFIGURED_FEATURE).getOrThrow(vegetation)),
                         CaveSurface.FLOOR,

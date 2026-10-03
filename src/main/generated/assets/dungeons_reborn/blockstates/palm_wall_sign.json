@@ -1,7 +1,19 @@
 {
   "variants": {
-    "": {
-      "model": "dungeons_reborn:block/palm_sign"
+    "facing=east": {
+      "model": "dungeons_reborn:block/palm_wall_sign",
+      "y": 270
+    },
+    "facing=north": {
+      "model": "dungeons_reborn:block/palm_wall_sign",
+      "y": 180
+    },
+    "facing=south": {
+      "model": "dungeons_reborn:block/palm_wall_sign"
+    },
+    "facing=west": {
+      "model": "dungeons_reborn:block/palm_wall_sign",
+      "y": 90
     }
   }
 }

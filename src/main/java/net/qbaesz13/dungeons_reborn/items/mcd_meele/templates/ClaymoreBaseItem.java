@@ -1,10 +1,10 @@
 package net.qbaesz13.dungeons_reborn.items.mcd_meele.templates;
 
+import com.mojang.datafixers.util.Pair;
 import net.minecraft.core.component.DataComponents;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
-import net.minecraft.util.Tuple;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.LivingEntity;
@@ -73,7 +73,7 @@ public abstract class ClaymoreBaseItem extends SkyCoreToolAPI.SwordItem implemen
         else return McdItem.getMcdItemBarColor();
     }
     @Override @NullUnmarked
-    public Tuple<@NonNull Double, Double> getAttackKnockbackPair(McdRarity mcdRarity) {
-        return new Tuple<>(4d, 7d);
+    public Pair<@NonNull Double, Double> getAttackKnockbackPair(McdRarity mcdRarity) {
+        return new Pair<>(4d, 7d);
     }
 }

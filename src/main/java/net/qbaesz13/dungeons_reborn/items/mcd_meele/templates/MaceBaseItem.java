@@ -1,10 +1,10 @@
 package net.qbaesz13.dungeons_reborn.items.mcd_meele.templates;
 
+import com.mojang.datafixers.util.Pair;
 import net.minecraft.core.component.DataComponents;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
-import net.minecraft.util.Tuple;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.EquipmentSlotGroup;
@@ -73,7 +73,7 @@ public abstract class MaceBaseItem extends SkyCoreToolAPI.SwordItem implements C
         super.inventoryTick(itemStack, level, owner, slot);
     }
     @Override @NullUnmarked
-    public abstract Tuple<@NonNull Double, Double> getAttackDamagePair(McdRarity mcdRarity);
+    public abstract Pair<@NonNull Double, Double> getAttackDamagePair(McdRarity mcdRarity);
     @Override @NullUnmarked
-    public abstract Tuple<@NonNull Double, Double> getAttackSpeedPair(McdRarity mcdRarity);
+    public abstract Pair<@NonNull Double, Double> getAttackSpeedPair(McdRarity mcdRarity);
 }

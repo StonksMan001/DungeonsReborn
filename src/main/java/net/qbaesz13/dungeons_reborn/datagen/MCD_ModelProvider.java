@@ -46,8 +46,6 @@ public class MCD_ModelProvider extends SkyCoreDataGenAPI.SC_ModelProvider {
                 MCD_Blocks.PALM_WOOD,
                 MCD_Blocks.STRIPPED_PALM_BEAM,
                 MCD_Blocks.STRIPPED_PALM_WOOD,
-                (CeilingHangingSignBlock) MCD_Blocks.PALM_HANGING_SIGN,
-                (WallHangingSignBlock) MCD_Blocks.PALM_WALL_HANGING_SIGN,
                 MCD_BlockFamilies.PALM
         );
         bmg.createPlantWithDefaultItem(MCD_Blocks.PALM_SAPLING, MCD_Blocks.POTTED_PALM_SAPLING, BlockModelGenerators.PlantType.NOT_TINTED);

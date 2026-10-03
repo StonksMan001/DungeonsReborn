@@ -93,7 +93,6 @@ public class MCD_RecipeProvider extends SkyCoreDataGenAPI.SC_RecipeProvider {
                 planksFromLog(MCD_Blocks.PALM_PLANKS, MCD_ItemTags.PALM_LOGS, 4);
                 woodFromLogs(MCD_Blocks.PALM_WOOD, MCD_Blocks.PALM_BEAM);
                 woodFromLogs(MCD_Blocks.STRIPPED_PALM_WOOD, MCD_Blocks.STRIPPED_PALM_BEAM);
-                hangingSign(MCD_Items.PALM_HANGING_SIGN, MCD_Blocks.STRIPPED_PALM_BEAM);
                 woodenBoat(MCD_Items.PALM_BOAT, MCD_Blocks.PALM_PLANKS);
                 chestBoat(MCD_Items.PALM_CHEST_BOAT, MCD_Items.PALM_BOAT);
             }

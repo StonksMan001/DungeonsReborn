@@ -6,8 +6,8 @@ import com.llamalad7.mixinextras.injector.ModifyExpressionValue;
 import com.llamalad7.mixinextras.injector.wrapoperation.Operation;
 import com.llamalad7.mixinextras.injector.wrapoperation.WrapOperation;
 import com.llamalad7.mixinextras.sugar.Local;
+import com.mojang.datafixers.util.Pair;
 import net.minecraft.core.Holder;
-import net.minecraft.util.Tuple;
 import net.minecraft.world.entity.ai.attributes.Attribute;
 import net.minecraft.world.entity.ai.attributes.AttributeModifier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
@@ -67,11 +67,11 @@ public abstract class ItemAttributeModifiers$Display$DefaultMixin {
         return original || (player != null && modifier.is(DungeonsReborn.identifierOfDungeonsReborn("base_attack_knockback")));
     }
     @Unique
-    private String getChainAttackWeaponParameters(Operation<String> original, DecimalFormat instance, @Nullable Tuple<@NonNull Double, @Nullable Double> pair) {
+    private String getChainAttackWeaponParameters(Operation<String> original, DecimalFormat instance, @Nullable Pair<@NonNull Double, @Nullable Double> pair) {
         if (pair == null) return null;
-        String base = original.call(instance, pair.getA());
-        String critical = pair.getB() != null ? original.call(instance, pair.getB()) : null;
-        String diff = pair.getB() != null ? original.call(instance, pair.getB() - pair.getA()) : null;
+        String base = original.call(instance, pair.getFirst());
+        String critical = pair.getSecond() != null ? original.call(instance, pair.getSecond()) : null;
+        String diff = pair.getSecond() != null ? original.call(instance, pair.getSecond() - pair.getFirst()) : null;
         if (diff != null && diff.charAt(0) != '-') diff = "+" + diff;
         return critical != null ? String.format("[%s/%s/%s] (%s)", base, base, critical, diff) : base;
     }

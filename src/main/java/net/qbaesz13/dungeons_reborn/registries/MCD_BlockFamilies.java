@@ -14,9 +14,12 @@ public class MCD_BlockFamilies {
             .slab(MCD_Blocks.MIDNIGHT_MOSSY_COBBLESTONE_SLAB)
             .getFamily();
     public static final BlockFamily PALM = BlockFamilies.familyBuilder(MCD_Blocks.PALM_PLANKS)
+            .log(MCD_Blocks.PALM_BEAM)
+            .strippedLog(MCD_Blocks.STRIPPED_PALM_BEAM)
             .button(MCD_Blocks.PALM_BUTTON)
             .fence(MCD_Blocks.PALM_FENCE)
             .fenceGate(MCD_Blocks.PALM_FENCE_GATE)
+            .hangingSign(MCD_Blocks.PALM_HANGING_SIGN, MCD_Blocks.PALM_WALL_HANGING_SIGN)
             .pressurePlate(MCD_Blocks.PALM_PRESSURE_PLATE)
             .sign(MCD_Blocks.PALM_SIGN, MCD_Blocks.PALM_WALL_SIGN)
             .slab(MCD_Blocks.PALM_SLAB)
