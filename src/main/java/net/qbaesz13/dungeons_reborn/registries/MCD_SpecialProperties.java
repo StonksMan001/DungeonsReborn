@@ -32,7 +32,6 @@ public class MCD_SpecialProperties {
             CompostingChanceRegistry.INSTANCE.add(MCD_Blocks.HIGHLAND_MOSS_CARPET, DungeonsHelpers.getCompostingValue(Blocks.MOSS_CARPET));
             CompostingChanceRegistry.INSTANCE.add(MCD_Blocks.MEDIUM_HIGHLAND_GRASS, DungeonsHelpers.getCompostingValue(Blocks.SHORT_GRASS));
             CompostingChanceRegistry.INSTANCE.add(MCD_Blocks.SHORT_HIGHLAND_GRASS, DungeonsHelpers.getCompostingValue(Blocks.SHORT_GRASS));
-            CompostingChanceRegistry.INSTANCE.add(MCD_Blocks.POP_FLOWER, DungeonsHelpers.getCompostingValue(Blocks.SHORT_GRASS));
             CompostingChanceRegistry.INSTANCE.add(MCD_Items.SOUR_BERRIES, DungeonsHelpers.getCompostingValue(Items.SWEET_BERRIES));
 
             CompostingChanceRegistry.INSTANCE.add(MCD_Items.PALM_LEAVES, DungeonsHelpers.getCompostingValue(Items.JUNGLE_LEAVES));
